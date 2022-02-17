@@ -92,7 +92,10 @@ module.exports = function (/* ctx */) {
       importStrategy: 'auto',
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify',
+        'Loading'
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -109,8 +112,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'jardin app',
-        short_name: 'jardin app',
+        name: 'Country Club',
+        short_name: 'Country Club',
         description: 'aplicacion para jardines y colegios',
         display: 'standalone',
         orientation: 'portrait',

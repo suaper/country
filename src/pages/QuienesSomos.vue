@@ -11,8 +11,7 @@
         infinite
         :autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-py-md all_width gris_home">
@@ -21,14 +20,7 @@
           <q-card class="my-card sin_fondo">
             <q-card-section>
               <div class="text-h6 center text-center q-my-lg">Quiénes Somos</div>
-              <p class="text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-              </p>
-              <p class="text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-              </p>
+              <p class="text-center" v-html="info.body[0].value"></p>
             </q-card-section>
           </q-card>
         </div>
@@ -39,6 +31,7 @@
 
 <script>
 import Menusomos from 'pages/submenus/Menusomos'
+import configServices from '../services/config'
 
 export default {
   name: 'QuienesSomos',
@@ -49,7 +42,25 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      autoplay: true
+      autoplay: true,
+      info: {}
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/6?_format=json', {
+        callBack: (data) => {
+          console.log(data.field_banner_seccion)
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

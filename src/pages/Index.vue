@@ -10,28 +10,20 @@
         infinite
         :autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="banner in banners" :key="banner.title" :name="banner.title" :img-src="urlSite + banner.field_slider_home" />
       </q-carousel>
     </div>
     <div class="q-py-md all_width gris_home">
       <div class="row_wrap no-wrap flex justify-between first_row_home">
         <div class="q-py-md">
 
-         <iframe width="560" height="400" src="https://www.youtube.com/embed/mDQcgdE_1N4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         <iframe width="560" height="400" :src="'https://www.youtube.com/embed/' + introHome.field_video_youtube[1]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="q-pa-md row items-start q-gutter-md">
           <q-card class="my-card sin_fondo">
             <q-card-section>
-              <div class="text-h6">Sé partede del mejor<br>Club De Golf</div>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-              </p>
+              <div class="text-h6">{{ introHome.title }}</div>
+              <p v-html="introHome.body"></p>
             </q-card-section>
           </q-card>
         </div>
@@ -64,13 +56,44 @@
 </template>
 
 <script>
+import configServices from '../services/config'
+
 export default {
   name: 'PageIndex',
   data () {
     return {
       sliders: true,
       slide: 1,
-      autoplay: true
+      autoplay: true,
+      banners: [],
+      urlSite: 'http://www.pwcc.markablanka.com/',
+      introHome: {}
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getBanners()
+    this.getIntroHome()
+  },
+  methods: {
+    getBanners () {
+      var _this = this
+      configServices.loadData(this, 'slider-home/json', {
+        callBack: (data) => {
+          _this.banners = data
+          _this.slide = data[0].title
+        }
+      })
+    },
+    getIntroHome () {
+      var _this = this
+      configServices.loadData(this, 'intro-home/json', {
+        callBack: (data) => {
+          data[0].field_video_youtube = data[0].field_video_youtube.split('=')
+          _this.introHome = data[0]
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

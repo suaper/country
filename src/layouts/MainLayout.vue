@@ -10,7 +10,7 @@
         </div>
       </div>
       <q-tabs align="center">
-        <q-route-tab to="/Inicio" label="Inicio" />
+        <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/quienes_somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
         <q-route-tab to="/Hazte" label="Hazte Socio" />
         <q-route-tab to="/Eventos" label="Eventos" />
