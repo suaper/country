@@ -1,0 +1,7 @@
+<svg id="Cerrar" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <circle id="Elipse_10" data-name="Elipse 10" cx="12" cy="12" r="12" fill="#1f2660"/>
+  <g id="Grupo_144" data-name="Grupo 144" transform="translate(7.785 7.807)">
+    <path id="Línea_156" data-name="Línea 156" d="M0,8.974a1,1,0,0,1-.707-.293,1,1,0,0,1,0-1.414L7.267-.707a1,1,0,0,1,1.414,0,1,1,0,0,1,0,1.414L.707,8.682A1,1,0,0,1,0,8.974Z" transform="translate(0 0)" fill="#fff"/>
+    <path id="Línea_157" data-name="Línea 157" d="M7.974,8.974a1,1,0,0,1-.707-.293L-.707.707a1,1,0,0,1,0-1.414,1,1,0,0,1,1.414,0L8.682,7.267a1,1,0,0,1-.707,1.707Z" transform="translate(0 0)" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg id="Icono_información" data-name="Icono / información" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <rect id="Rectángulo_387" data-name="Rectángulo 387" width="30" height="30" fill="none"/>
+  <g id="Elipse_9751" data-name="Elipse 9751" transform="translate(2 2)" fill="#fff" stroke="#ca9e64" stroke-width="1">
+    <circle cx="13" cy="13" r="13" stroke="none"/>
+    <circle cx="13" cy="13" r="12.5" fill="none"/>
+  </g>
+  <text id="i" transform="translate(12 21)" fill="#1f2660" font-size="22" font-family="CormorantGaramond-Italic, Cormorant Garamond" font-style="italic" letter-spacing="-0.02em"><tspan x="0" y="0">i</tspan></text>
+</svg>

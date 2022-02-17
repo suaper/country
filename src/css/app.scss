@@ -1,0 +1,121 @@
+// app global css in SCSS form
+.home{
+    header{
+        .wrap_top{
+            text-align: center;
+            position: relative;
+            .btn_right_top{
+                position: absolute;
+                right: 20px;
+                top: 15px;
+            }
+        }
+        .q-tabs{
+            background: #1f2660;
+            width: 100%;
+            .q-tabs__content{
+                max-width: 1200px;
+                margin: 0px auto;
+            }
+        }
+    }
+}
+.first_row_home{
+    >div{
+        width: 50%;
+        .sin_fondo{
+            width: 85%;
+        }
+    }
+}
+.banner_top.q-carousel{
+    margin-top: 20px;
+}
+.sin_fondo{
+    background: transparent;
+    box-shadow: none;
+}
+.all_width{
+    width: 100%;
+}
+.row_wrap{
+    width: 1200px;
+    margin: 0px auto;
+}
+.gris_home{
+    background: #f5f4f4;
+}
+.bg_beige{
+    background: #fdf9f3;
+}
+.azul{
+    color: #111e51;
+}
+.bg_azul{
+    background: #111e51;
+}
+.esquma_inferior{
+    td{
+        padding: 5px;
+    }
+    img{
+        width: 100%;
+    }
+}
+.q-footer {
+    ul{
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        width: 100%;
+        li{
+            list-style: none;
+            width: 20%;
+            position: relative;
+            &:after{
+                content: "";
+                height: 52px;
+                width: 1px;
+                background: #575656;
+                right: 0;
+                top: 15px;
+                position: absolute;
+            }
+            p{
+                margin: 1px;
+            }
+            strong{
+                margin: 0px 0px 15px;
+            }
+        }
+    }
+}
+.text-h6{
+    color: #111e51;
+    font-size: 36px;
+    line-height: 1.2;
+}
+.color_submenu{
+    color: #ca9e64;
+}
+.text-submenu {
+    color: #ca9e64 !important;
+  }
+.bg-submenu {
+    background: #ca9e64 !important;
+}
+.sub_menu{
+    margin-top: 30px;
+    margin-bottom: -40px;
+    position: relative;
+    z-index: 99;
+    background: #fff;
+    .q-btn__content{
+        color: #111e51 !important;
+    }
+}
+.view_quienes_somos{
+    background: #f5f4f4;
+}
