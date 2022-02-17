@@ -1,4 +1,19 @@
 // app global css in SCSS form
+.cuarenta{
+    width: 40%;
+}
+.cincuenta{
+    width: 50%;
+}
+.sesenta{
+    width: 60%;
+}
+.setenta{
+    width: 70%;
+}
+.cien{
+    width: 100%;
+}
 .home{
     header{
         .wrap_top{
@@ -118,4 +133,57 @@
 }
 .view_quienes_somos{
     background: #f5f4f4;
+}
+.view_mision{
+    .content_mision{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 512px;
+        margin: 0px auto;
+        padding: 0;
+        li{
+            width: 100%;
+            padding: 25px;
+            margin: 20px 0;
+            background: #fff;
+            border-radius: 20px;
+            position: relative;
+            list-style: none;
+            min-height: 160px;
+
+
+            &.left{
+                margin-left: -100px;
+                padding-left: 155px;
+                img{
+                    position: absolute;
+                    left: -120px;
+                    top: -50px;
+                }
+            }
+            &.right{
+                margin-right: -100px;
+                padding-right: 155px;
+
+                img{
+                    position: absolute;
+                    right: -120px;
+                    top: -50px;
+                }
+            }
+            hr{
+                width: 100px;
+                background: #CA9E64;
+                height: 2px;
+                left: 0;
+                text-align: left;
+                margin-left: 0px
+            }
+            .content_text{
+                text-align: left;
+            }
+        }
+    }
 }
