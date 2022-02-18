@@ -55,6 +55,7 @@
                     <img src="../../assets/QuienesSomos/mision4.png">
                 </li>
             </ul>
+            <p>Prueba push</p>
         </div>
     </div>
   </q-page>
