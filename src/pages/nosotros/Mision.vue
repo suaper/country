@@ -19,7 +19,7 @@
             <div class="text-h6 text-center q-my-lg">Misión</div>
             <p class="destacado text-center azul" v-html="info.body[0].value"></p>
         </div>
-        <div class="rwo_1 row_wrap setenta">
+        <div class="rwo_1 row_wrap setenta q-py-xl">
             <ul class="content_mision">
 
                 <li :class="isOdd(key)" v-for="(item, key) in items" :key="key">

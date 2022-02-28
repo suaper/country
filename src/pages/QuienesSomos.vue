@@ -14,13 +14,13 @@
         <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
-    <div class="q-py-md all_width gris_home">
+    <div class="q-pb-md all_width gris_home">
       <div class="row_wrap no-wrap flex justify-between first_row_somos">
-        <div class="q-pa-md row items-start q-gutter-md">
-          <q-card class="my-card sin_fondo">
+        <div class="q-px-md row items-start centrar q-gutter-md">
+          <q-card class="my-card sin_fondo q-pb-md ">
             <q-card-section>
-              <div class="text-h6 center text-center q-my-lg">Quiénes Somos</div>
-              <p class="text-center" v-html="info.body[0].value"></p>
+              <div class="center text-center q-my-lg titulos">Quiénes Somos</div>
+              <p class="text-center w_800" v-html="info.body[0].value"></p>
             </q-card-section>
           </q-card>
         </div>
