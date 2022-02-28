@@ -43,7 +43,13 @@ export default {
       sliders: true,
       slide: 1,
       autoplay: true,
-      info: {}
+      info: {
+        body: [
+          {
+            value: ''
+          }
+        ]
+      }
     }
   },
   created () {
@@ -55,7 +61,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/node/6?_format=json', {
         callBack: (data) => {
-          console.log(data.field_banner_seccion)
           _this.info = data
           _this.slide = data.field_banner_seccion[0].target_uuid
           _this.$q.loading.hide()
