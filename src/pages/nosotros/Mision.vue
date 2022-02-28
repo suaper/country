@@ -17,10 +17,10 @@
     </div>
     <div class="q-py-md all_width gris_home">
          <div class="rwo_1 row_wrap setenta">
-            <div class="text-h6 text-center q-my-lg">Misión</div>
-            <p class="destacado text-center azul">“Ser un incomparable lugar de encuentro para toda la familia, con servicios e instalaciones de primer nivel para la práctica del deporte y recreación, compartiendo los valores y tradiciones Británicas”.</p>
+            <div class="text-center q-my-lg titulos">Misión</div>
+            <p class="destacado destacado_italic w_850 centrar text-center azul">“Ser un incomparable lugar de encuentro para toda la familia, con servicios e instalaciones de primer nivel para la práctica del deporte y recreación, compartiendo los valores y tradiciones Británicas”.</p>
         </div>
-        <div class="rwo_1 row_wrap setenta">
+        <div class="rwo_1 row_wrap setenta q-py-xl">
             <ul class="content_mision">
 
                 <li class="left">

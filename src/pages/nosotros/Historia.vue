@@ -21,7 +21,7 @@
                 <img class="cien" src="../../assets/QuienesSomos/image-historia.svg">
             </div>
             <div class="sesenta">
-                <div class="text-h6 text-left q-my-lg">Historia</div>
+                <div class="text-left q-my-lg titulos">Historia</div>
 
                 <p>El Prince of Wales Country Club fue fundado en 1925, en un momento completamente distinto de la historia de Chile, en el cual existía una importante presencia inglesa y el Príncipe de Gales era invitado a visitar el país por varios días, no importando que los viajes fuesen largos, la ciudad muy pequeña y el club ubicado fuera de la ciudad en campo abierto.</p>
                 <p> En 1925 no había ninguna construcción importante en aquel extenso terreno de Tobalaba que la Sociedad Inmobiliaria Británica Príncipe de Gales compró a Joaquín Echeñique en trescientos mil pesos para levantar un country. Los únicos vestigios de actividad humana estaban sustentados en la prístina belleza de un campo donde resaltaban algunas chacras, los potreros de luminosos yuyos, unas pircas separatorias de los mismos y, a lo lejos, unos modestos ranchos de inquilinos.</p>

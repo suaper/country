@@ -1,17 +1,16 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline color="submenu" label="Quiénes Somos" />
-      <q-btn outline  @click="IrHistoria()" color="submenu" label="Historia" />
-      <q-btn outline  @click="IrMision()" color="submenu" label="Misión" />
-      <q-btn outline @click="IrDirectorio()"  color="submenu" label="Directorio" />
-      <q-btn outline @click="IrExpresidentes()" color="submenu" label="Ex Presidentes" />
+      <q-btn outline color="submenu" label="Clubes de intercambio" />
+      <q-btn outline  @click="IrHistoria()" color="submenu" label="Etiquetas" />
+      <q-btn outline  @click="IrMision()" color="submenu" label="Cuotas Sociales y Reglamento" />
+      <q-btn outline @click="IrDirectorio()"  color="submenu" label="Beneficios de los Socios" />
     </q-btn-group>
 </template>
 
 <script>
 
 export default {
-  name: 'Menusomos',
+  name: 'Menumiclub',
 
   methods: {
     IrHistoria () {

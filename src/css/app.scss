@@ -1,4 +1,11 @@
 // app global css in SCSS form
+//fuentes
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+$font-title: 'Cormorant Garamond', serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+$font-text: 'Open Sans', sans-serif;
+
 .cuarenta{
     width: 40%;
 }
@@ -13,6 +20,56 @@
 }
 .cien{
     width: 100%;
+}
+.text-h6{
+    font-family: $font-title;
+}
+.titulos{
+    font-family: $font-title;
+    font-size: 54px;
+    letter-spacing: -1.08px;
+    color: #1F2660;
+}
+.subtitle{
+    font-family: $font-title;
+    font-size: 46px;
+    letter-spacing: -1.08px;
+    color: #1F2660;
+}
+.w_800{
+    width: 800px;
+}
+.w_850{
+    width: 850px;
+}
+.w_1200{
+    width: 1200px;
+}
+.centrar{
+    margin: 0px auto;
+}
+.bg_amarillo{
+    background: #FDF9F2 0% 0% no-repeat padding-box;
+}
+.open{
+    font-family: $font-text;
+    font-weight: 400;
+}
+p{
+    letter-spacing: 0px;
+    color: #7C7E91;
+    opacity: 1;
+    font-family: $font-text;
+    font-size: 16px;
+}
+.destacado_italic{
+    text-align: center;
+    font-family: $font-title;
+    font-size: 22px;
+    letter-spacing: -0.44px;
+    color: #3A4286;
+    opacity: 1;
+    font-style: italic;
 }
 .home{
     header{
@@ -185,5 +242,276 @@
                 text-align: left;
             }
         }
+    }
+}
+.wrp_submenu{
+    display: flex;
+    justify-content: center;
+
+    .sub_menu{
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+}
+.view_directorio{
+    .title{
+        text-align: center;
+        font-size: 54px;
+        letter-spacing: -1.08px;
+        color: #1F2660;
+        opacity: 1;
+    }
+    .row_director.bg_amarillo{
+        ul{
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            background: #FDF9F2 0% 0% no-repeat padding-box;
+            li{
+                display: flex;
+                width: 350px;
+                justify-content: space-between;
+                align-items: center;
+
+                img{
+                    width: 126px;
+                    height: 126px;
+                }
+                .name{
+                    text-align: left;
+                    letter-spacing: 0px;
+                    font-size: 17px;
+                    color: #1F2660;
+                    opacity: 1;
+                    display: block;
+                    width: 100%;
+                    padding-left: 15px;
+                    position: relative;
+                    margin-bottom: 20px;
+                    &:after{
+                        content: "";
+                        width: 37px;
+                        height: 0px;
+                        border: 1px solid #CA9E64;
+                        left: 12px;
+                        bottom: -10px;
+                        position: absolute;
+                    }
+                }
+                .cargo{
+                    text-align: left;
+                    font-size: 15px;
+                    font-weight: bold;
+                    letter-spacing: 0px;
+                    color: #1F2660;
+                    opacity: 1;
+                    display: block;
+                    padding-left: 15px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .content{
+        max-width: 1200px;
+        margin: 10px auto;
+    }
+    .list_directivos{
+        ul{
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            li{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #fff;
+                border-radius: 12px;
+                padding: 9px;
+                width: 30%;
+                margin: 15px;
+
+                img{
+                    width: 126px;
+                    height: 126px;
+                }
+                .name{
+                    text-align: left;
+                    letter-spacing: 0px;
+                    font-size: 15px;
+                    color: #1F2660;
+                    opacity: 1;
+                    display: block;
+                    width: 70%;
+                    padding-left: 15px;
+                    position: relative;
+                    margin-bottom: 20px;
+                    &:after{
+                        content: "";
+                        width: 37px;
+                        height: 0px;
+                        border: 1px solid #CA9E64;
+                        left: 12px;
+                        bottom: -10px;
+                        position: absolute;
+                    }
+                }
+                .cargo{
+                    text-align: left;
+                    font-size: 15px;
+                    font-weight: bold;
+                    letter-spacing: 0px;
+                    color: #1F2660;
+                    opacity: 1;
+                    display: block;
+                    padding-left: 15px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.caja_directivos{
+    width: 494px;
+    height: 337px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    margin: 10px auto 0px;
+    overflow-y: scroll;
+    ul.list_expresidentes{
+        padding: 10px;
+        li{
+            display: flex;
+            justify-content: center;
+        }
+        .fecha{
+            font-size: 16px;
+            letter-spacing: 3.2px;
+            color: #1F2660;
+            text-transform: uppercase;
+            opacity: 1;
+            width: 120px;
+        }
+        .separador{
+            height: 31px;
+            width: 1px;
+            background: #CA9E64;
+            margin: 0px 24px;
+        }
+        .nombre{
+            text-align: left;
+            font-size: 17px;
+            letter-spacing: -0.36px;
+            color: #1F2660;
+            opacity: 1;
+        }
+    }
+}
+.wrp_expresidentes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 520px;
+    margin: 0px auto;
+    .actiones_scroll{
+        ul{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            li{
+                margin: 20px 20px 15px;
+                list-style: none;
+                span{
+                    width: 27px;
+                    height: 27px;
+                    display: inline-block;
+                    color: #1F2660;
+                    border-radius: 50%;
+                    position: relative;
+                    background: #CA9E64 0% 0% no-repeat padding-box;
+
+                    &.up{
+                        &:after{
+                            content: "\0221f";
+                            position: absolute;
+                            left: 7px;
+                            font-weight: bold;
+                            top: 6px;
+                            color: #1F2660;
+                            font-size: 15px;
+                            transform: rotate(134deg);
+                        }
+                    }
+                    &.down{
+                        &:after{
+                            content: "\0221f";
+                            position: absolute;
+                            left: 6px;
+                            font-weight: 700;
+                            top: 2px;
+                            color: #1F2660;
+                            font-size: 15px;
+                            transform: rotate(315deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.wrp_club{
+    .table_clubes{
+        table{
+            width: 95%;
+            border-collapse: collapse;
+            tr{
+                th{
+                    padding: 4px 28px 2px;
+                    background: #fff;
+                    font-family: "Open Sans", sans-serif;
+                    letter-spacing: 0px;
+                    font-size: 25px;
+                    font-weight: 500;
+                    color: #1F2660;
+                    opacity: 1;
+                    border-bottom: 2px solid #E8C28F;
+
+                    img{
+                        width: 35px;
+                    }
+                }
+                td{
+                    padding: 9px 28px 6px;
+                    background: #fff;
+                    font-family: "Open Sans", sans-serif;
+                    letter-spacing: 0px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #7C7E91;
+                    opacity: 1;
+                    border-bottom: 1px solid #E8C28F;
+                    &:first-child{
+                        font-weight: 700;
+                    }
+                    span{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+.pop_club{
+    justify-content: space-between;
+    border-bottom: 1px solid #CA9E64;
+    .desc_club{
+        width: 63%;
+    }
+    .enlace{
+        width: 27%;
     }
 }
