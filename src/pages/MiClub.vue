@@ -67,6 +67,7 @@
                             <td>Santiago</td>
                         </tr>
                     </table>
+                    <q-btn outline class="azul q-my-md" label="Cuotas Sociales y Reglamento" icon-right="arrow_right_alt"/>
                 </div>
                 <div class="img_clubes">
                 <img class="cien" src="../assets/MiClub/club01.png">
@@ -92,6 +93,209 @@
             </q-card>
         </q-dialog>
     </div>
+
+    <div class="q-pb-md all_width gris_home wrp_club">
+        <div class="centrar w_1200">
+            <h4 class="subtitle">Convenios de intercambio con otros Clubes Internacionales</h4>
+            <div class="flex flex-center items-start w_1200">
+                <div class="img_clubes left text-left q-mr-md">
+                    <img class="cien" src="../assets/MiClub/club02.png">
+                </div>
+                <div class="table_clubes sesenta">
+                    <table>
+                        <tr>
+                            <th class="text-left">
+                                País
+                            </th>
+                            <th class="text-left">
+                                Club
+                            </th>
+                            <th class="text-left">
+                                <img src="../assets/MiClub/i-gps.svg">
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium2 = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                        <tr>
+                            <td>Argentina</td>
+                            <td>
+                                <span class="openpop" @click="medium = true">  San Isidro Golf Club</span>
+                            </td>
+                            <td>Buenos Aires</td>
+                        </tr>
+                    </table>
+                    <q-btn outline class="azul q-my-md" label="Cuotas Sociales y Reglamento" icon-right="arrow_right_alt"/>
+                </div>
+            </div>
+        </div>
+        <q-dialog v-model="medium" >
+            <q-card style="width: 700px; max-width: 80vw;">
+                <q-card-section class="row items-center q-pb-none">
+                    <div class="text-h6">Club Naval de Campo Las Salinas</div>
+                    <q-space />
+                    <q-btn icon="close" flat round dense v-close-popup />
+                </q-card-section>
+
+                <q-card-section class="flex pop_club">
+                    <span class="desc_club"> Juan S. Fernández 386 - (1642) | San Isidro - Buenos Aires - Argentina</span>
+                    <span class="enlace">https://www.clubdegolf.com </span>
+                </q-card-section>
+                <q-card-section class="flex flex-start pop_descargar">
+                    <h4>Reglamento</h4>
+                    <div class="box_download flex">
+                        <img src="../assets/MiClub/i-pdf.svg">
+                        <div class="text">
+                            <span class="bold">Reglamento del Club</span>
+                            <span>Ver o descargar</span>
+                        </div>
+                    </div>
+                </q-card-section>
+            </q-card>
+        </q-dialog>
+        <q-dialog v-model="medium2" >
+            <q-card style="width: 700px; max-width: 80vw;">
+                <q-card-section class="row items-center q-pb-none">
+                    <div class="text-h6">Club Naval de Campo Las Salinas</div>
+                    <q-space />
+                    <q-btn icon="close" flat round dense v-close-popup />
+                </q-card-section>
+
+                <q-card-section class="flex pop_club">
+                    <span class="desc_club"> Juan S. Fernández 386 - (1642) | San Isidro - Buenos Aires - Argentina</span>
+                    <span class="enlace">https://www.clubdegolf.com </span>
+                </q-card-section>
+                <q-card-section class="flex flex-start wrp_list_pop">
+                    <h4>Condiciones</h4>
+                    <div class="list_detail flex">
+                        <ul>
+                        <li>Abierto de los jueves</li>
+                        <li>Suspendidos </li>
+                        <li>Semiabiertos(Abertura, Clasusura, La Familiia) </li>
+                        <li> $6000 Sabados / $5000 Domingos</li>
+                        <li>Semi aberto Damas</li>
+                        </ul>
+                    </div>
+                </q-card-section>
+            </q-card>
+        </q-dialog>
+    </div>
   </q-page>
 </template>
 
@@ -109,7 +313,8 @@ export default {
       slide: 1,
       autoplay: true,
       info: {},
-      medium: false
+      medium: false,
+      medium2: false
     }
   }
 }

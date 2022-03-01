@@ -49,6 +49,20 @@ const routes = [
       { path: '', component: () => import('pages/MiClub.vue') }
     ]
   },
+  {
+    path: '/etiquetas',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/miclub/Etiquetas.vue') }
+    ]
+  },
+  {
+    path: '/cuotas_reglamento',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/miclub/CuotasReglamento.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
