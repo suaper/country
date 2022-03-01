@@ -11,48 +11,23 @@
         infinite
         :autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-py-md all_width gris_home">
          <div class="rwo_1 row_wrap setenta">
-            <div class="text-center q-my-lg titulos">Misión</div>
-            <p class="destacado destacado_italic w_850 centrar text-center azul">“Ser un incomparable lugar de encuentro para toda la familia, con servicios e instalaciones de primer nivel para la práctica del deporte y recreación, compartiendo los valores y tradiciones Británicas”.</p>
+            <div class="text-h6 text-center q-my-lg">Misión</div>
+            <p class="destacado text-center azul" v-html="info.body[0].value"></p>
         </div>
         <div class="rwo_1 row_wrap setenta q-py-xl">
             <ul class="content_mision">
 
-                <li class="left">
-                    <img src="../../assets/QuienesSomos/mision01.png">
+                <li :class="isOdd(key)" v-for="(item, key) in items" :key="key">
+                    <img :src="urlSite + item.field_imagen_item">
                     <div class="content_text">
                         <hr>
-                        <p>Lograr una cada vez mejor experiencia del socio, mediante la entrega de <span class="azul"> servicios oportunos y de calidad.</span></p>
+                        <p v-html="item.field_texto_item"></p>
                     </div>
-                </li>
-
-                <li class="right">
-                    <div class="content_text">
-                        <hr>
-                        <p>Consolidar una <span class="azul">infraestructura de alto estándar</span> es una necesidad permanente para la óptima práctica de los distintos deportes o actividades.</p>
-                    </div>
-                    <img src="../../assets/QuienesSomos/mision2.png">
-                </li>
-
-                <li class="left">
-                    <img src="../../assets/QuienesSomos/mision3.png">
-                    <div class="content_text">
-                        <hr>
-                        <p>Definir e implementar un modelo de <span class="azul">sustentabilidad de largo plazo</span> que permita el desarrollo de nuestro club, asegurando una sólida situación financiera.</p>
-                    </div>
-                </li>
-
-                <li class="right">
-                    <div class="content_text">
-                        <hr>
-                        <p>Finalmente, y probablemente el aspecto más importante, se refiere a fortalecer una comunidad de socios que promueva en todo momento un <span class="azul">ambiente cordial y de respeto entre nosotros</span>, con nuestro personal y visitantes al club.</p>
-                    </div>
-                    <img src="../../assets/QuienesSomos/mision4.png">
                 </li>
             </ul>
         </div>
@@ -62,6 +37,7 @@
 
 <script>
 import Menusomos from '../../pages/submenus/Menusomos'
+import configServices from '../../services/config'
 
 export default {
   name: 'Historia',
@@ -72,7 +48,48 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      autoplay: true
+      autoplay: true,
+      info: {
+        body: [
+          {
+            value: ''
+          }
+        ]
+      },
+      items: [],
+      urlSite: 'http://www.pwcc.markablanka.com/'
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getMisionItems()
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/112?_format=json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    getMisionItems () {
+      var _this = this
+      configServices.loadData(this, '/mision-items/json', {
+        callBack: (data) => {
+          _this.items = data
+        }
+      })
+    },
+    isOdd (key) {
+      if (key % 2) {
+        return 'right'
+      }
+      return 'left'
     }
   }
 }

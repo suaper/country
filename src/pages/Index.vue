@@ -40,13 +40,15 @@
         <div class="q-py-md">
           <table class="esquma_inferior">
             <tr>
-              <td class="tg-0pky" rowspan="2"><img class="q-mx-none" alt="img1" src="../assets/Eventos/experiencia03.png"></td>
-              <td class="tg-0pky"><img class="q-mx-none" alt="img2" src="../assets/Eventos/experiencia04.png"></td>
-              <td class="tg-0pky" rowspan="2"><img class="q-mx-none" alt="img2" src="../assets/Eventos/experiencia06.png"></td>
-              <td class="tg-0pky" rowspan="2"><img class="q-mx-none" alt="img2" src="../assets/Eventos/experiencia07.png"></td>
+              <td class="tg-0pky" rowspan="2">
+                <img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].image">
+                </td>
+              <td class="tg-0pky"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].image"></td>
+              <td class="tg-0pky" rowspan="2"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].image"></td>
+              <td class="tg-0pky" rowspan="2"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].image"></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><img class="q-mx-none" alt="img2" src="../assets/Eventos/experiencia05.png"></td>
+              <td class="tg-0pky"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].image"></td>
             </tr>
           </table>
         </div>
@@ -67,13 +69,17 @@ export default {
       autoplay: true,
       banners: [],
       urlSite: 'http://www.pwcc.markablanka.com/',
-      introHome: {}
+      introHome: {
+        field_video_youtube: []
+      },
+      multimediaHome: []
     }
   },
   created () {
     this.$q.loading.show()
     this.getBanners()
     this.getIntroHome()
+    this.getMultimediaHome()
   },
   methods: {
     getBanners () {
@@ -91,6 +97,22 @@ export default {
         callBack: (data) => {
           data[0].field_video_youtube = data[0].field_video_youtube.split('=')
           _this.introHome = data[0]
+        }
+      })
+    },
+    getMultimediaHome () {
+      var _this = this
+      configServices.loadData(this, 'multimedia-home/json', {
+        callBack: (data) => {
+          for (const item in data) {
+            var image = {}
+            image.type = data[item].field_multimedia_home
+            image.image = data[item].field_galeria_home
+            image.video = data[item].field_video_youtube
+
+            _this.multimediaHome.push(image)
+            console.log(_this.multimediaHome)
+          }
           _this.$q.loading.hide()
         }
       })
