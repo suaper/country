@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center view_historia">
-    <Menusomos />
-    <div class="q-py-none all_width">
+    <Menusomos currentItem="/quienes-somos/historia" />
+    <div class="q-py-none all_width" v-if="info.length != 0">
       <q-carousel
         animated
         v-model="slide"
@@ -14,7 +14,7 @@
         <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
-    <div class="q-py-md all_width gris_home">
+    <div class="q-py-md all_width gris_home" v-if="info.length != 0">
         <div class="row_2 row_wrap flex no-wrap flex justify-between">
             <div class="cuarenta">
                 <img class="cien" :src="info.field_imagen_seccion[0].url">
@@ -45,7 +45,7 @@ export default {
       sliders: true,
       slide: 1,
       autoplay: true,
-      info: {}
+      info: []
     }
   },
   created () {
@@ -57,8 +57,10 @@ export default {
       var _this = this
       configServices.loadData(this, '/node/111?_format=json', {
         callBack: (data) => {
-          console.log(data)
+          console.log(_this.info.length)
           _this.info = data
+          console.log(_this.info.length)
+
           _this.slide = data.field_banner_seccion[0].target_uuid
           _this.$q.loading.hide()
         }

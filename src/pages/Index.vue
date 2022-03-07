@@ -9,6 +9,7 @@
         navigation
         infinite
         :autoplay="autoplay"
+        v-if="banners.length"
       >
         <q-carousel-slide v-for="banner in banners" :key="banner.title" :name="banner.title" :img-src="urlSite + banner.field_slider_home" />
       </q-carousel>
@@ -38,7 +39,7 @@
       </div>
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
-          <table class="esquma_inferior">
+          <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
                 <img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].image">
@@ -111,7 +112,6 @@ export default {
             image.video = data[item].field_video_youtube
 
             _this.multimediaHome.push(image)
-            console.log(_this.multimediaHome)
           }
           _this.$q.loading.hide()
         }

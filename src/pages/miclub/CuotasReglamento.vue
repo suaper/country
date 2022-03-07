@@ -1,24 +1,12 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menumiclub />
-    <div class="q-py-none all_width">
-      <q-carousel
-        animated
-        v-model="slide"
-        arrows
-        class="banner_top"
-        navigation
-        infinite
-        :autoplay="autoplay"
-      >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-      </q-carousel>
-    </div>
+    <Menumiclub currentItem="/mi-club/cuotas-reglamento" />
     <div class="q-pb-md all_width gris_home etiquetas">
+        <br>
+        <div class="center text-center q-my-lg titulos q-mt-2">Country Club</div>
         <div class="centrar w_1200">
-        <div class="left text-left q-my-lg titulos">Country Club</div>
-        <p class="intro">El monto de la cuota trimestral depende de la edad y estado civil del postulante.</p>
+        <div class="left text-left q-my-lg titulos">Cuota Trimestral</div>
+        <p class="intro" v-html="info.field_cuota_trimestral[0].value" />
             <div class="q-pa-md row items-start q-gutter-md">
                 <q-btn outline
                     class="azul q-my-md bg_white"
@@ -79,6 +67,7 @@
 
 <script>
 import Menumiclub from 'pages/submenus/Menumiclub'
+import configServices from '../../services/config'
 
 export default {
   name: 'CuotasReglamento',
@@ -92,6 +81,21 @@ export default {
       autoplay: true,
       info: {},
       pop_cuota: false
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/99?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

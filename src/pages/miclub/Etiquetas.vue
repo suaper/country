@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menumiclub />
+    <Menumiclub currentItem="/mi-club/etiquetas" />
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -11,61 +11,20 @@
         infinite
         :autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home etiquetas">
         <div class="center text-center q-my-lg titulos">Etiquetas</div>
         <div class="centrar w_1200">
-            <p class="intro text-center">Los socios y su grupo familiar deberán mantener en forma constante un comportamiento y conducta acorde con la categoría de nuestro club, observándose respeto y cortesía como también apegándose a normas de moral y buenas costumbres.</p>
+            <p class="intro text-center" v-html="info.body[0].value" />
 
-            <div class="q-pa-md row items-start q-gutter-md">
-                <q-card class="card_etiquetas w_30">
-                <q-card-section>
-                    <h5>Comedor Principal</h5>
-                    <ul>
-                        <li>Entrada sólo para mayores de 10 años.</li>
-                        <li>Tenida formal o casual. </li>
-                        <li>Prohibido el uso de bermudas, shorts o tenida deportiva.</li>
-                        <li>Prohibido el uso de dispositivos móviles. </li>
-                    </ul>
-                </q-card-section>
-                </q-card>
-                <q-card class="card_etiquetas w_30">
-                <q-card-section>
-                    <h5>Comedor Principal</h5>
-                    <ul>
-                        <li>Entrada sólo para mayores de 10 años.</li>
-                        <li>Tenida formal o casual. </li>
-                        <li>Prohibido el uso de bermudas, shorts o tenida deportiva.</li>
-                        <li>Prohibido el uso de dispositivos móviles. </li>
-                    </ul>
-                </q-card-section>
-                </q-card>
-
-                <q-card class="card_etiquetas w_30">
-                <q-card-section>
-                    <h5>Comedor Principal</h5>
-                    <ul>
-                        <li>Entrada sólo para mayores de 10 años.</li>
-                        <li>Tenida formal o casual. </li>
-                        <li>Prohibido el uso de bermudas, shorts o tenida deportiva.</li>
-                        <li>Prohibido el uso de dispositivos móviles. </li>
-                    </ul>
-                </q-card-section>
-                </q-card>
-
-                <q-card class="card_etiquetas w_30">
-                <q-card-section>
-                    <h5>Comedor Principal</h5>
-                    <ul>
-                        <li>Entrada sólo para mayores de 10 años.</li>
-                        <li>Tenida formal o casual. </li>
-                        <li>Prohibido el uso de bermudas, shorts o tenida deportiva.</li>
-                        <li>Prohibido el uso de dispositivos móviles. </li>
-                    </ul>
-                </q-card-section>
+            <div class="q-pa-md row items-start q-gutter-md" v-if="tags.length != 0">
+                <q-card class="card_etiquetas w_30" v-for="(item, key) in tags" :key="key">
+                  <q-card-section>
+                      <h5>{{ item.title }}</h5>
+                      <div class="card-ul" v-html="item.body" />
+                  </q-card-section>
                 </q-card>
             </div>
         </div>
@@ -75,6 +34,7 @@
 
 <script>
 import Menumiclub from 'pages/submenus/Menumiclub'
+import configServices from '../../services/config'
 
 export default {
   name: 'Etiquetas',
@@ -86,7 +46,37 @@ export default {
       sliders: true,
       slide: 1,
       autoplay: true,
-      info: {}
+      info: {
+        body: [
+          {}
+        ]
+      },
+      tags: []
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+    this.getTags()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/91?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+    },
+    getTags () {
+      var _this = this
+      configServices.loadData(this, '/etiquetas/json', {
+        callBack: (data) => {
+          _this.tags = data
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

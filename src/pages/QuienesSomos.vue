@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menusomos />
+    <Menusomos currentItem="/quienes-somos"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated

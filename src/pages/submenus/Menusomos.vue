@@ -1,10 +1,10 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline color="submenu" label="Quiénes Somos" />
-      <q-btn outline  @click="IrHistoria()" color="submenu" label="Historia" />
-      <q-btn outline  @click="IrMision()" color="submenu" label="Misión" />
-      <q-btn outline @click="IrDirectorio()"  color="submenu" label="Directorio" />
-      <q-btn outline @click="IrExpresidentes()" color="submenu" label="Ex Presidentes" />
+      <q-btn outline :disable="getDisable('/quienes-somos')" color="submenu" label="Quiénes Somos" @click="goItem('/quienes-somos')" />
+      <q-btn outline :disable="getDisable('/quienes-somos/historia')"  @click="goItem('/quienes-somos/historia')" color="submenu" label="Historia" />
+      <q-btn outline :disable="getDisable('/quienes-somos/mision')" @click="goItem('/quienes-somos/mision')" color="submenu" label="Misión" />
+      <q-btn outline :disable="getDisable('/quienes-somos/directorio')" @click="goItem('/quienes-somos/directorio')"  color="submenu" label="Directorio" />
+      <q-btn outline :disable="getDisable('/quienes-somos/expresidentes')" @click="goItem('/quienes-somos/expresidentes')" color="submenu" label="Ex Presidentes" />
     </q-btn-group>
 </template>
 
@@ -12,19 +12,21 @@
 
 export default {
   name: 'Menusomos',
-
+  props: {
+    currentItem: String
+  },
+  data () {
+    return {
+      current: this.currentItem
+    }
+  },
   methods: {
-    IrHistoria () {
-      this.$router.push('/historia')
+    goItem (route) {
+      this.$router.push(route)
     },
-    IrMision () {
-      this.$router.push('/mision')
-    },
-    IrDirectorio () {
-      this.$router.push('/directorio')
-    },
-    IrExpresidentes () {
-      this.$router.push('/expresidentes')
+    getDisable (route) {
+      if (this.current === route) return true
+      return false
     }
   }
 }

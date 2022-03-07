@@ -8,56 +8,56 @@ const routes = [
     ]
   },
   {
-    path: '/quienes_somos',
+    path: '/quienes-somos',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/QuienesSomos.vue') }
     ]
   },
   {
-    path: '/historia',
+    path: '/quienes-somos/historia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/nosotros/Historia.vue') }
     ]
   },
   {
-    path: '/mision',
+    path: '/quienes-somos/mision',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/nosotros/Mision.vue') }
     ]
   },
   {
-    path: '/directorio',
+    path: '/quienes-somos/directorio',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/nosotros/Directorio.vue') }
     ]
   },
   {
-    path: '/expresidentes',
+    path: '/quienes-somos/expresidentes',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/nosotros/expresidentes.vue') }
     ]
   },
   {
-    path: '/mi_club',
+    path: '/mi-club',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/MiClub.vue') }
     ]
   },
   {
-    path: '/etiquetas',
+    path: '/mi-club/etiquetas',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/miclub/Etiquetas.vue') }
     ]
   },
   {
-    path: '/cuotas_reglamento',
+    path: '/mi-club/cuotas-reglamento',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/miclub/CuotasReglamento.vue') }

@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menumiclub />
+    <Menumiclub currentItem="/mi-club"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -11,8 +11,7 @@
         infinite
         :autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
@@ -301,6 +300,7 @@
 
 <script>
 import Menumiclub from 'pages/submenus/Menumiclub'
+import configServices from '../services/config'
 
 export default {
   name: 'Miclub',
@@ -313,8 +313,44 @@ export default {
       slide: 1,
       autoplay: true,
       info: {},
+      clubsI: [],
+      clubsN: [],
       medium: false,
       medium2: false
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+    this.getClubsI()
+    this.getClubsN()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/74?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+    },
+    getClubsI () {
+      var _this = this
+      configServices.loadData(this, '/node/102?_format=json', {
+        callBack: (data) => {
+          _this.clubsI = data
+        }
+      })
+    },
+    getClubsN () {
+      var _this = this
+      configServices.loadData(this, '/node/101?_format=json', {
+        callBack: (data) => {
+          _this.clubsN = data
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }
