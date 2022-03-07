@@ -3,7 +3,7 @@
       <q-btn outline color="submenu" label="Clubes de intercambio" />
       <q-btn outline  @click="IrEtiquetas()" color="submenu" label="Etiquetas" />
       <q-btn outline  @click="IrCuotasReglamento()" color="submenu" label="Cuotas Sociales y Reglamento" />
-      <q-btn outline @click="IrDirectorio()"  color="submenu" label="Beneficios de los Socios" />
+      <q-btn outline @click="IrBeneficiosSocios()"  color="submenu" label="Beneficios de los Socios" />
     </q-btn-group>
 </template>
 
@@ -16,8 +16,8 @@ export default {
     IrEtiquetas () {
       this.$router.push('/etiquetas')
     },
-    IrMision () {
-      this.$router.push('/mision')
+    IrBeneficiosSocios () {
+      this.$router.push('/beneficios_socios')
     },
     IrCuotasReglamento () {
       this.$router.push('/cuotas_reglamento')
