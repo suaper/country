@@ -54,15 +54,30 @@ $font-text: 'Open Sans', sans-serif;
 .centrar{
     margin: 0px auto;
 }
+.hr_amarillo{
+    border: 1px solid #CA9E64;
+}
 .bg_amarillo{
     background: #FDF9F2 0% 0% no-repeat padding-box;
 }
 .bg_white{
     background: #fff;
 }
+.bg_white_i{
+    background: #fff!important;
+}
 .open{
     font-family: $font-text;
     font-weight: 400;
+}
+.italic{
+    text-align: center;
+    font-size: 22px;
+    font-family: $font-title;
+    font-style: italic;
+    letter-spacing: -0.44px;
+    color: #1F2660;
+    opacity: 1;
 }
 p{
     letter-spacing: 0px;
@@ -742,6 +757,59 @@ p{
     .q-carousel__arrow {
         .text-primary{
             color: #CA9E64 !important;
+        }
+    }
+}
+.hazte_socio{
+    .sesenta{
+        img{
+            max-width: 500px;
+        }
+        border-right: 1px solid #CA9E64;
+    }
+    .treintaycinco{
+        width: 35%;
+        margin-left: 15px;
+    }
+    td{
+        vertical-align: top;
+        padding: 5px;
+        h5{
+            text-align: left;
+            margin-top: 0;
+            font-size: 24px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #1F2660;
+            opacity: 1;
+            margin-bottom: 10px;
+        }
+    }
+}
+.sin_margen{
+    margin: 0;
+}
+.contacto_footer{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    li{
+        list-style: none;
+        border: 1px solid #CA9E64;
+        border-radius: 25px;
+        background: #fff;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span{
+            font-size: 15px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #7C7E91;
+            opacity: 1;
+            margin-left: 15px;
         }
     }
 }
