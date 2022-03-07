@@ -9,6 +9,9 @@ $font-text: 'Open Sans', sans-serif;
 .cuarenta{
     width: 40%;
 }
+.treinta{
+    width: 30%;
+}
 .cincuenta{
     width: 50%;
 }
@@ -51,15 +54,30 @@ $font-text: 'Open Sans', sans-serif;
 .centrar{
     margin: 0px auto;
 }
+.hr_amarillo{
+    border: 1px solid #CA9E64;
+}
 .bg_amarillo{
     background: #FDF9F2 0% 0% no-repeat padding-box;
 }
 .bg_white{
     background: #fff;
 }
+.bg_white_i{
+    background: #fff!important;
+}
 .open{
     font-family: $font-text;
     font-weight: 400;
+}
+.italic{
+    text-align: center;
+    font-size: 22px;
+    font-family: $font-title;
+    font-style: italic;
+    letter-spacing: -0.44px;
+    color: #1F2660;
+    opacity: 1;
 }
 p{
     letter-spacing: 0px;
@@ -670,5 +688,128 @@ p{
 .cuotas{
     .box_download{
         margin: 0;
+    }
+}
+.wrp_gallery_beneficios{
+    .galeria_beneficios{
+        background: transparent;
+    }
+    .azul_galery{
+        text-align: center;
+        font-family: $font-title;
+        font-size: 22px;
+        letter-spacing: -0.44px;
+        color: #1F2660;
+    }
+    .tex_galery{
+        text-align: center;
+        font-size: 15px;
+        font-family: $font-text;
+        letter-spacing: 0px;
+        color: #7C7E91;
+    }
+    .treintaydos{
+        background: #fff;
+        width: 32%;
+        padding: 0px 14px 15px;
+        border-radius: 10px;
+    }
+    .botones{
+        button{
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: none;
+            background-image: none!important;
+            margin: 6px;
+            .q-btn__wrapper{
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                color: #666;
+            }
+            &.bg-primary{
+                .q-btn__wrapper{
+                    color: #1f2660;
+                    font-weight: bold;
+                    border: 1px solid #CA9E64;
+                }
+            }
+        }
+        .q-btn-group > .q-btn-item:not(:last-child) {
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .q-btn-group > .q-btn-item:not(:first-child) {
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+        .q-btn-group{
+            box-shadow: none;
+        }
+        .q-btn__wrapper {
+            padding: 1px 9px;
+            min-height: 0.572em;
+            border-radius: inherit;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .q-carousel__arrow {
+        .text-primary{
+            color: #CA9E64 !important;
+        }
+    }
+}
+.hazte_socio{
+    .sesenta{
+        img{
+            max-width: 500px;
+        }
+        border-right: 1px solid #CA9E64;
+    }
+    .treintaycinco{
+        width: 35%;
+        margin-left: 15px;
+    }
+    td{
+        vertical-align: top;
+        padding: 5px;
+        h5{
+            text-align: left;
+            margin-top: 0;
+            font-size: 24px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #1F2660;
+            opacity: 1;
+            margin-bottom: 10px;
+        }
+    }
+}
+.sin_margen{
+    margin: 0;
+}
+.contacto_footer{
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    li{
+        list-style: none;
+        border: 1px solid #CA9E64;
+        border-radius: 25px;
+        background: #fff;
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span{
+            font-size: 15px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #7C7E91;
+            opacity: 1;
+            margin-left: 15px;
+        }
     }
 }

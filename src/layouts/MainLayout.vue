@@ -13,7 +13,7 @@
         <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
         <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
-        <q-route-tab to="/Hazte" label="Hazte Socio" />
+        <q-route-tab to="/hazte-socio" @click="IrHazteSocio()" label="Hazte Socio" />
         <q-route-tab to="/Eventos" label="Eventos" />
         <q-route-tab to="/Deportes" label="Deportes" />
         <q-route-tab to="/Gastronomía" label="Gastronomía" />
@@ -85,7 +85,10 @@ export default {
       this.$router.push('/quienes-somos')
     },
     IrMiClub () {
-      this.$router.push('/mi-club')
+      this.$router.push('/mi_club')
+    },
+    IrHazteSocio () {
+      this.$router.push('/hazte_socio')
     }
   }
 }
