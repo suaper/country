@@ -77,6 +77,55 @@ const routes = [
       { path: '', component: () => import('pages/HazteSocio.vue') }
     ]
   },
+  {
+    path: '/hijos_socios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/HijosSocios.vue') }
+    ]
+  },
+  {
+    path: '/hijos_ex_socios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/HijosExSocios.vue') }
+    ]
+  },
+  {
+    path: '/nuevos_socios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/NuevosSocios.vue') }
+    ]
+  },
+  {
+    path: '/extranjeros_de_paso',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/ExtranjerosDePaso.vue') }
+    ]
+  },
+  {
+    path: '/senior',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/Senior.vue') }
+    ]
+  },
+  {
+    path: '/familia_de_socios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/FamiliaDeSocios.vue') }
+    ]
+  },
+  {
+    path: '/familia_rama_deportiva',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

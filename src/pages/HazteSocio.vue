@@ -21,9 +21,97 @@
             <p class="intro text-center">Si estás interesado en ser socio de nuestro Club, contáctanos <br> y conoce las condiciones para postular al PWCC. ¡Te esperamos!</p>
             <hr class="hr_amarillo">
              <h5 class="italic">Para recibir el detalle del proceso de postulación, haz click en el siguiente botón:</h5>
-             <q-btn outline class="azul q-my-md centrar bg_white_i" label="Más información" icon-right="arrow_right_alt"/>
+             <q-btn outline @click="pop_form_socio = true" class="azul q-my-md centrar bg_white_i" label="Más información" icon-right="arrow_right_alt"/>
         </div>
     </div>
+    <q-dialog v-model="pop_form_socio" >
+        <q-card class="flex pop_hazte_socio">
+            <div class="wrp_left sesenta">
+                <q-card-section class="row items-center q-pb-none">
+                    <div class="text-h6 open">1. Datos Principales</div>
+                    <q-space />
+                </q-card-section>
+
+                <q-card-section class="flex pop_club">
+                    <q-form
+                        @submit="onSubmit"
+                        @reset="onReset"
+                        class="q-gutter-md"
+                        >
+                        <q-input
+                            outlined
+                            v-model="name"
+                            label="Nombre completo *"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        />
+                        <q-input outlined v-model="date" mask="date" :rules="['date']">
+                        <template v-slot:append>
+                            <q-icon name="event" class="cursor-pointer">
+                            <q-popup-proxy ref="qDateProxy" cover transition-show="scale" transition-hide="scale">
+                                <q-date v-model="date">
+                                <div class="row items-center justify-end">
+                                    <q-btn v-close-popup label="Close" color="primary" flat />
+                                </div>
+                                </q-date>
+                            </q-popup-proxy>
+                            </q-icon>
+                        </template>
+                        </q-input>
+                        <q-input
+                            outlined
+                            v-model="name"
+                            label="Nacionalidad *"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        />
+                        <q-input
+                            outlined
+                            v-model="age"
+                            label="Teléfono *"
+                        />
+
+                        <q-input
+                            outlined
+                            v-model="name"
+                            label="Celular *"
+                        />
+
+                        <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
+
+                        <q-select outlined v-model="estado_civil" :options="options_civil" label="Estado Civil" />
+                    </q-form>
+                </q-card-section>
+            </div>
+            <div class="wrp_left cuarenta bg_amarillo">
+                <q-card-section class="row items-center q-pb-none">
+                    <div class="text-h6 open">2. Datos Postulación</div>
+                    <q-space />
+                    <q-btn class="close_top" icon="close" flat round dense v-close-popup />
+                </q-card-section>
+
+                <q-card-section class="pop_radio q-px-md">
+                    <div class="q-px-md vertical">
+                        <div class="label_radio">
+                            <p>Selecciona la categoría a la que deseas postularte:</p>
+                        </div>
+                        <q-radio name="shape" v-model="shape" val="line" label="Line" />
+                        <q-radio name="shape" v-model="shape" val="rectangle" label="Rectangle" />
+                        <q-radio name="shape" v-model="shape" val="ellipse" label="Ellipse" />
+                        <q-radio name="shape" v-model="shape" val="polygon" label="Polygon" />
+                        <q-radio name="shape" v-model="shape" val="otro" label="Rectangle" />
+                        <q-radio name="shape" v-model="shape" val="otro1" label="Ellipse" />
+                        <q-radio name="shape" v-model="shape" val="otro1" label="Polygon" />
+
+                        <div>
+                            <q-btn outline @click="pop_form_socio = true" class="text_white mt_10 centrar bg_orange" label="Enviar Formulario" icon-right="arrow_right_alt"/>
+                        </div>
+                    </div>
+                </q-card-section>
+
+            </div>
+        </q-card>
+    </q-dialog>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Noticias</h4>
@@ -94,7 +182,14 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {}
+      info: {},
+      pop_form_socio: false,
+      shape: 'false',
+      options_civil: [
+        'Solter@', 'Casad@', 'Viud@', 'Unión libre'
+      ],
+      estado_civil: null,
+      date: '2019/02/01'
     }
   }
 }

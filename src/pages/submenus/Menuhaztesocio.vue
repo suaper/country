@@ -1,13 +1,13 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
       <q-btn outline color="submenu" label="Hazte Socio" />
-      <q-btn outline  @click="IrEtiquetas()" color="submenu" label="Hijos de Socios" />
-      <q-btn outline  @click="IrCuotasReglamento()" color="submenu" label="Hijos de Ex Socios" />
-      <q-btn outline @click="IrBeneficiosSocios()"  color="submenu" label="Nuevos Socios" />
-      <q-btn outline  @click="IrEtiquetas()" color="submenu" label="Extranjeros de Paso" />
-      <q-btn outline  @click="IrCuotasReglamento()" color="submenu" label="Senior sin cargas" />
-      <q-btn outline @click="IrBeneficiosSocios()"  color="submenu" label="Familia de Socios" />
-      <q-btn outline @click="IrBeneficiosSocios()"  color="submenu" label="Familia de Rama Deportiva" />
+      <q-btn outline  @click="IrHijosSocios()" color="submenu" label="Hijos de Socios" />
+      <q-btn outline  @click="IrHijosExSocios()" color="submenu" label="Hijos de Ex Socios" />
+      <q-btn outline @click="IrNuevosSocios()"  color="submenu" label="Nuevos Socios" />
+      <q-btn outline  @click="IrExtranjeros()" color="submenu" label="Extranjeros de Paso" />
+      <q-btn outline  @click="IrSenior()" color="submenu" label="Senior sin cargas" />
+      <q-btn outline @click="IrFamiliaSocios()"  color="submenu" label="Familia de Socios" />
+      <q-btn outline @click="IrFamiliaRamaDeportiva()"  color="submenu" label="Familia de Rama Deportiva" />
     </q-btn-group>
 </template>
 
@@ -17,17 +17,26 @@ export default {
   name: 'Menuhaztesocio',
 
   methods: {
-    IrEtiquetas () {
-      this.$router.push('/etiquetas')
+    IrHijosSocios () {
+      this.$router.push('/hijos_socios')
     },
-    IrBeneficiosSocios () {
-      this.$router.push('/beneficios_socios')
+    IrHijosExSocios () {
+      this.$router.push('/hijos_ex_socios')
     },
-    IrCuotasReglamento () {
-      this.$router.push('/cuotas_reglamento')
+    IrNuevosSocios () {
+      this.$router.push('/nuevos_socios')
     },
-    IrExpresidentes () {
-      this.$router.push('/expresidentes')
+    IrExtranjeros () {
+      this.$router.push('/extranjeros_de_paso')
+    },
+    IrSenior () {
+      this.$router.push('/senior')
+    },
+    IrFamiliaSocios () {
+      this.$router.push('/familia_de_socios')
+    },
+    IrFamiliaRamaDeportiva () {
+      this.$router.push('/familia_rama_deportiva')
     }
   }
 }
