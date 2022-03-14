@@ -26,7 +26,7 @@
                     <img src="../../assets/MiClub/i-pdf.svg">
                     <div class="text">
                         <span class="bold">Reglamento del Club</span>
-                        <span>Ver o descargar</span>
+                        <a :href="info.field_descargar_archivo[0].url" target="_blank"><span>Ver o descargar</span></a>
                     </div>
                 </div>
             </div>
@@ -48,15 +48,10 @@
                         <th>Cuota Trimestral</th>
                         <th>Cuota Trimestral</th>
                     </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>735.888</td>
-                        <td>Jefe de Familia</td>
-                    </tr>
-                    <tr>
-                        <td>Senior sin carga mayor 55 años</td>
-                        <td>735.888</td>
-                        <td>Jefe de Familia</td>
+                    <tr v-for="(item, key) in cuotas" :key="key">
+                        <td>{{ item.field_categoria_cuota }}</td>
+                        <td>{{ item.field_cuota }}</td>
+                        <td>{{ item.field_tipo_de_cuota_trimestral }}</td>
                     </tr>
                 </table>
             </q-card-section>
@@ -79,20 +74,37 @@ export default {
       sliders: true,
       slide: 1,
       autoplay: true,
-      info: {},
-      pop_cuota: false
+      info: {
+        field_cuota_trimestral: [
+          {}
+        ]
+      },
+      urlSite: 'http://www.pwcc.markablanka.com/',
+      pop_cuota: false,
+      cuotas: []
     }
   },
   created () {
     this.$q.loading.show()
     this.getInfo()
+    this.getCuotas()
   },
   methods: {
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/99?_format=json', {
+      configServices.loadData(this, '/node/128?_format=json', {
         callBack: (data) => {
           _this.info = data
+          console.log(_this.info)
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    getCuotas () {
+      var _this = this
+      configServices.loadData(this, '/cuotas/json', {
+        callBack: (data) => {
+          _this.cuotas = data
           _this.$q.loading.hide()
         }
       })

@@ -3,7 +3,7 @@
       <q-btn outline :disable="getDisable('/mi-club')" color="submenu" label="Clubes de intercambio" @click="goItem('/mi-club')"/>
       <q-btn outline :disable="getDisable('/mi-club/etiquetas')" @click="goItem('/mi-club/etiquetas')" color="submenu" label="Etiquetas" />
       <q-btn outline :disable="getDisable('/mi-club/cuotas-reglamento')" @click="goItem('/mi-club/cuotas-reglamento')" color="submenu" label="Cuotas Sociales y Reglamento" />
-      <q-btn outline :disable="getDisable('/mi-club/beneficios-socios')" @click="goItem('/mi-club/cuotas-reglamento')"  color="submenu" label="Beneficios de los Socios" />
+      <q-btn outline :disable="getDisable('/mi-club/beneficios-socios')" @click="goItem('/mi-club/beneficios-socios')"  color="submenu" label="Beneficios de los Socios" />
     </q-btn-group>
 </template>
 
