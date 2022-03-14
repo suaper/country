@@ -120,12 +120,56 @@ const routes = [
     ]
   },
   {
+    path: '/spa',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Spa.vue') }
+    ]
+  },
+  {
+    path: '/fitness',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/Fitness.vue') }
+    ]
+  },
+  {
+    path: '/peluqueria',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/Peluqueria.vue') }
+    ]
+  },
+  {
+    path: '/estetica',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/Estetica.vue') }
+    ]
+  },
+  {
+    path: '/kinesiologia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/Kinesiologia.vue') }
+    ]
+  },
+  {
+    path: '/contacto_spa',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/ContactoSpa.vue') }
+    ]
+  },
+
+  {
     path: '/familia_rama_deportiva',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
     ]
   },
+
   // Always leave this as last one,
   // but you can also remove it
   {

@@ -16,6 +16,7 @@
         <q-route-tab to="/hazte-socio" @click="IrHazteSocio()" label="Hazte Socio" />
         <q-route-tab to="/Eventos" label="Eventos" />
         <q-route-tab to="/Deportes" label="Deportes" />
+        <q-route-tab to="/spa" label="Spa & Wellness" />
         <q-route-tab to="/Gastronomía" label="Gastronomía" />
         <q-route-tab to="/Multimedia" label="Multimedia" />
         <q-route-tab to="/Contacto" label="Contacto" />

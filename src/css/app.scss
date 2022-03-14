@@ -88,6 +88,10 @@ body{
     color: #1F2660;
     opacity: 1;
 }
+h3{
+    font-family: $font-title;
+    color: #1F2660;
+}
 p{
     letter-spacing: 0px;
     color: #7C7E91;
@@ -103,6 +107,15 @@ p{
     color: #3A4286;
     opacity: 1;
     font-style: italic;
+}
+.row_2{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    label{
+        width: 49%;
+    }
 }
 .home{
     header{
@@ -891,6 +904,48 @@ p{
         }
     }
 }
+
+.pop_reserva_spa{
+    max-width: 100%;
+    min-width: 800px;
+    background: #FDF9F2;
+    padding: 40px;
+    padding-top: 0;
+    .wrp_midle{
+        width: 100%;
+    }
+    .mt_10{
+        margin-top: 10px;
+    }
+    .close_top{
+        margin-top: -50px;
+    }
+    .text-h6 {
+        text-align: left;
+        font-family: $font-text;
+        font-size: 24px;
+        letter-spacing: 0px;
+        color: #1F2660;
+        opacity: 1;
+        margin-bottom: 20px;
+        margin-top: 5px;
+    }
+    form{
+        width: 100%;
+        background: #fff;
+        padding: 30px;
+        label{
+            padding-bottom: 0;
+            margin-top: 10px;
+            .q-field__control{
+                color: #d47c06;
+                &:before{
+                    border: 1px solid #E8C28F;
+                }
+            }
+        }
+    }
+}
 .mt_20_negativo{
     margin-top: -20px;
 }
@@ -955,6 +1010,284 @@ p{
             td{
                 padding: 25px;
             }
+        }
+    }
+}
+.view_fitness{
+    .wrp_actions_center_spa{
+        width: 400px;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        margin: 20px auto;
+        li{
+            list-style: none;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            width: 190px;
+            height: 142px;
+
+            img{
+                margin: 10px;
+                width: 41px;
+                height: 43px;
+            }
+            strong{
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                letter-spacing: 0px;
+                color: #1F2660;
+            }
+            a{
+                text-align: center;
+                font-size: 15px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                color: #1F2660;
+                margin: 7px;
+                text-decoration: none;
+            }
+        }
+    }
+    .contenido_fitness{
+        td{
+            padding: 0px 20px;
+        }
+        h6{
+            font-size: 44px;
+            font-weight: 300;
+            font-family: $font-title;
+            letter-spacing: -0.88px;
+            color: #1F2660;
+            opacity: 1;
+            margin: 40px 0;
+        }
+    }
+    .table_fitnes{
+        tr{
+            background: #fff;
+            margin: 23px 0;
+            display: flex;
+            justify-content: center;
+            align-items: inherit;
+            padding: 5px;
+            td{
+                font-weight: 400;
+                font-size: 15px;
+                letter-spacing: 0px;
+                color: #7C7E91;
+                opacity: 1;
+                li{
+                    list-style: none;
+                    strong{
+                        margin-top: 12px;
+                        display: inherit;
+                    }
+                }
+            }
+            .align_right{
+                text-align: right;
+                width: 38%;
+                padding-right: 18px;
+                border-right: 1px solid #CA9E64;
+            }
+            .center{
+                text-align: center;
+                width: 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 400;
+                font-size: 24px;
+                letter-spacing: 0px;
+                color: #1F2660;
+                opacity: 1;
+                min-height: 86px;
+            }
+            .align_left{
+                text-align: left;
+                width: 38%;
+                padding-left: 18px;
+                border-left: 1px solid #CA9E64;
+            }
+        }
+        .sin_fondo{
+            background: transparent;
+            justify-content: space-around;
+            th{
+                text-align: left;
+                font-size: 40px;
+                font-weight: 400;
+                font-family: $font-title;
+                letter-spacing: 0px;
+                color: #1F2660;
+                opacity: 1;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+.fitnes_last{
+    justify-content: space-between;
+    .staff{
+        width: 45%;
+    }
+    .form_fitness{
+        width: 45%;
+    }
+    .raius{
+        width: 118px;
+        height: 118px;
+        border-radius: 50%;
+    }
+    .datos_staff{
+        background: #fff;
+        border-radius: 12px;
+        td{
+            padding: 10px;
+
+            .border_40{
+                width: 40%;
+                border: 1px solid #CA9E64;
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    }
+    .contacto_footer{
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 0;
+        li{
+            margin: 9px 0;
+        }
+    }
+    .title_text{
+        text-align: left;
+        font-size: 40px;
+        font-weight: 400;
+        font-family: $font-title;
+        letter-spacing: 0px;
+        color: #1F2660;
+        opacity: 1;
+        margin-bottom: 25px;
+        margin-top: 20px;
+    }
+    .form_fitness{
+        margin-top: 5px;
+        form{
+            width: 100%;
+            margin-top: 10px;
+            label{
+                width: 100%;
+                padding-bottom: 0;
+                margin-top: 10px;
+                background: #fff;
+                .q-field__control{
+                    color: #d47c06;
+                    &:before{
+                        border: 1px solid #E8C28F;
+                    }
+                }
+            }
+            .text-left{
+                margin-top: 0;
+            }
+        }
+    }
+}
+.wrp_actions_center_peluqueria{
+    max-width: 800px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    li{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        align-items: center;
+
+        a{
+            text-align: center;
+            background: #fff;
+            font-size: 15px;
+            font-weight: 400;
+            border: 1px solid #1F2660;
+            letter-spacing: 0px;
+            color: #1F2660;
+            margin: 7px 20px;
+            text-decoration: none;
+            width: 90%;
+            padding: 10px 20px;
+            display: block;
+        }
+    }
+}
+h6.peluqueria{
+    margin-top: 0 !important;
+    font-size: 44px;
+    font-weight: 300;
+    font-family: $font-title;
+    letter-spacing: -0.88px;
+    color: #1F2660;
+    opacity: 1;
+    margin-bottom: 22px;
+}
+.contenido_pelu{
+    width: 100%;
+}
+.datos_peluqueria{
+    margin: 25px 0;
+    width: 100%;
+    th{
+        text-align: left;
+        font-size: 26px;
+        font-weight: 400;
+        font-family: $font-text;
+        letter-spacing: 0px;
+        color: #1F2660;
+        opacity: 1;
+        margin-bottom: 0px;
+    }
+    tr{
+        td{
+            padding: 9px 8px 3px 0px !important;
+            font-family: "Open Sans", sans-serif;
+            letter-spacing: 0px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #7C7E91;
+            opacity: 1;
+            border-bottom: 1px solid #E8C28F;
+            &.sin_borde{
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+.datos_staff_contacto{
+    border-radius: 12px;
+    td{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .border_40{
+            width: 40%;
+            border: 1px solid #CA9E64;
+            display: block;
+            margin: 5px 0;
+        }
+        p{
+            margin: 0;
         }
     }
 }
