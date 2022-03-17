@@ -161,7 +161,62 @@ const routes = [
       { path: '', component: () => import('pages/spa/ContactoSpa.vue') }
     ]
   },
-
+  {
+    path: '/gastronomia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Gastronomia.vue') }
+    ]
+  },
+  {
+    path: '/staff',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/gastronomia/Staff.vue') }
+    ]
+  },
+  {
+    path: '/restaurantes',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/gastronomia/Restaurantes.vue') }
+    ]
+  },
+  {
+    path: '/special_day',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/gastronomia/SpecialDay.vue') }
+    ]
+  },
+  {
+    path: '/country',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/gastronomia/Country.vue') }
+    ]
+  },
+  {
+    path: '/multimedia_gastronomia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/gastronomia/MultimediaGastronomia.vue') }
+    ]
+  },
+  {
+    path: '/contacto_gastronomia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/gastronomia/ContactoGastronomia.vue') }
+    ]
+  },
+  {
+    path: '/kids',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Kids.vue') }
+    ]
+  },
   {
     path: '/familia_rama_deportiva',
     component: () => import('layouts/MainLayout.vue'),
