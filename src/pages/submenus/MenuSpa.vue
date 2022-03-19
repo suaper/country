@@ -1,12 +1,12 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline color="submenu" label="Spa & Wellness" />
-      <q-btn outline  @click="IrFitness()" color="submenu" label="Fitness" />
-      <q-btn outline  @click="IrPeluqueria()" color="submenu" label="Peluquería" />
-      <q-btn outline @click="IrEstetica()"  color="submenu" label="Centro de Estética" />
-      <q-btn outline  @click="IrKinesiologia()" color="submenu" label="Kinesiología" />
-      <q-btn outline  @click="IrSenior()" color="submenu" label="Multimedia" />
-      <q-btn outline @click="IrContactoSpa()"  color="submenu" label="Contacto" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa')"  @click="goItem('/spa')" label="Spa & Wellness" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/fitness')"  @click="goItem('/spa/fitness')" label="Fitness" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/peluqueria')"  @click="goItem('/spa/peluqueria')" label="Peluquería" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/estetica')"  @click="goItem('/spa/estetica')" label="Centro de Estética" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/kinesiologia')"  @click="goItem('/spa/kinesiologia')" label="Kinesiología" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/hijos-socios')"  @click="goItem('/spa/hijos-socios')" label="Multimedia" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/contacto')"  @click="goItem('/spa/contacto_spa')" label="Contacto" />
     </q-btn-group>
 </template>
 
@@ -14,25 +14,21 @@
 
 export default {
   name: 'Menuspa',
-
+  props: {
+    currentItem: String
+  },
+  data () {
+    return {
+      current: this.currentItem
+    }
+  },
   methods: {
-    IrFitness () {
-      this.$router.push('/fitness')
+    goItem (route) {
+      this.$router.push(route)
     },
-    IrPeluqueria () {
-      this.$router.push('/peluqueria')
-    },
-    IrEstetica () {
-      this.$router.push('/estetica')
-    },
-    IrKinesiologia () {
-      this.$router.push('/kinesiologia')
-    },
-    IrSenior () {
-      this.$router.push('/senior')
-    },
-    IrContactoSpa () {
-      this.$router.push('/contacto_spa')
+    getDisable (route) {
+      if (this.current === route) return true
+      return false
     }
   }
 }

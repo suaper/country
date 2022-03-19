@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios">
-    <Menuhaztesocio/>
+    <Menuhaztesocio currentItem="/hazte-socio/senior"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -10,29 +10,28 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info[0].field_banner_seccion" :key="key" :name="key" :img-src="urlSite + banner.trim()" />
       </q-carousel>
     </div>
+
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Senior sin cargas</div>
-            <p class="intro text-center">Todo aquel postulante soltero o casado que esté interesado en ser parte del Club,<strong> mayor de 55 años </strong>que no tenga hijos menores de 25 años o que postule sin ellos.</p>
+            <div class="center text-center q-my-lg titulos">Senior sin Cargas</div>
+            <p class="intro text-center" v-html="info[0].body"></p>
         </div>
     </div>
 
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Requisitos</h4>
-            <p class="intro text-left">Todo aquel postulante soltero o casado (mayores de 55 años) que esté interesado en ser parte del Club y sus actividades. No debe tener cargas activas y puede postular a esta categoría con valores preferenciales y cupos limitados.</p>
-            <p class="intro text-left"> Las postulaciones a socio se presentan en formularios especiales y necesitan ser acompañados de 2 cartas de presentación firmadas por dos socios que tengan más de cinco años de antigüedad en el Club, que no sean familiares directos y que no tengan relación comercial con el postulante.</p>
+            <p class="intro text-left" v-html="info[0].field_requisitos"></p>
         </div>
     </div>
 
     <div class="q-pb-md all_width gris_home wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Cuota Trimestral</h4>
-            <p class="intro text-left">El monto de la cuota trimestral corresponde a la categoría Senior sin cargas.</p>
+            <p class="intro text-left" v-html="info[0].field_cuota_trimestral"></p>
             <q-btn outline @click="pop_consultar = true" class="azul q-my-md centrar bg_white_i" label="Revisar el valor correspondiente aquí" icon-right="arrow_right_alt"/>
         </div>
     </div>
@@ -51,25 +50,10 @@
                         <th class="veinte">Cuota</th>
                         <th class="cuarenta">Requisitos</th>
                     </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años.</td>
-                    </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años.</td>
-                    </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años.</td>
-                    </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años. Mayor de 30 años. Mayor de 30 años.</td>
+                    <tr v-for="(item, key) in info" :key="key">
+                        <td>{{ item.field_categoria_cuota }}</td>
+                        <td>$ {{ addCommas(item.field_cuota) }}</td>
+                        <td>{{ item.field_tipo_de_cuota_trimestral }}</td>
                     </tr>
                 </table>
             </q-card-section>
@@ -85,6 +69,7 @@
 
 <script>
 import Menuhaztesocio from 'pages/submenus/Menuhaztesocio'
+import configServices from '../../services/config'
 
 export default {
   name: 'Senior',
@@ -94,9 +79,35 @@ export default {
   data () {
     return {
       sliders: true,
-      slide: 1,
-      info: {},
-      pop_consultar: false
+      slide: 0,
+      info: [
+        {
+          field_banner_seccion: ''
+        }
+      ],
+      pop_consultar: false,
+      urlSite: 'http://www.pwcc.markablanka.com/'
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/subseccion-socios/108/json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.info[0].field_banner_seccion = _this.info[0].field_banner_seccion.split(',')
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    addCommas (x) {
+      if (typeof x !== 'undefined') {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+      }
     }
   }
 }

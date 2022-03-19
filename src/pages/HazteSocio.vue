@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menuhaztesocio/>
+    <Menuhaztesocio currentItem="/hazte-socio"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -9,23 +9,27 @@
         class="banner_top"
         navigation
         infinite
-        :autoplay="autoplay"
+        autoplay
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Hazte Socio</div>
-            <p class="intro text-center">Si estás interesado en ser socio de nuestro Club, contáctanos <br> y conoce las condiciones para postular al PWCC. ¡Te esperamos!</p>
+            <p class="intro text-center" v-html="info.body[0].summary"></p>
             <hr class="hr_amarillo">
-             <h5 class="italic">Para recibir el detalle del proceso de postulación, haz click en el siguiente botón:</h5>
+             <h5 class="italic" v-html="info.body[0].value"></h5>
              <q-btn outline @click="pop_form_socio = true" class="azul q-my-md centrar bg_white_i" label="Más información" icon-right="arrow_right_alt"/>
         </div>
     </div>
     <q-dialog v-model="pop_form_socio" >
         <q-card class="flex pop_hazte_socio">
+            <q-form
+              @submit="onSubmit"
+              @reset="onReset"
+              class="q-gutter-md"
+              >
             <div class="wrp_left sesenta">
                 <q-card-section class="row items-center q-pb-none">
                     <div class="text-h6 open">1. Datos Principales</div>
@@ -33,11 +37,6 @@
                 </q-card-section>
 
                 <q-card-section class="flex pop_club">
-                    <q-form
-                        @submit="onSubmit"
-                        @reset="onReset"
-                        class="q-gutter-md"
-                        >
                         <q-input
                             outlined
                             v-model="name"
@@ -60,27 +59,26 @@
                         </q-input>
                         <q-input
                             outlined
-                            v-model="name"
+                            v-model="country"
                             label="Nacionalidad *"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Please type something']"
                         />
                         <q-input
                             outlined
-                            v-model="age"
+                            v-model="phone"
                             label="Teléfono *"
                         />
 
                         <q-input
                             outlined
-                            v-model="name"
+                            v-model="mobile"
                             label="Celular *"
                         />
 
                         <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
 
-                        <q-select outlined v-model="estado_civil" :options="options_civil" label="Estado Civil" />
-                    </q-form>
+                        <q-select outlined label="Estado Civil" v-model="civilStatus" :options="options_civil"  />
                 </q-card-section>
             </div>
             <div class="wrp_left cuarenta bg_amarillo">
@@ -101,29 +99,29 @@
                         <q-radio name="shape" v-model="shape" val="polygon" label="Polygon" />
                         <q-radio name="shape" v-model="shape" val="otro" label="Rectangle" />
                         <q-radio name="shape" v-model="shape" val="otro1" label="Ellipse" />
-                        <q-radio name="shape" v-model="shape" val="otro1" label="Polygon" />
+                        <q-radio name="shape" v-model="shape" val="otro2" label="Polygon" />
 
                         <div>
-                            <q-btn outline @click="pop_form_socio = true" class="text_white mt_10 centrar bg_orange" label="Enviar Formulario" icon-right="arrow_right_alt"/>
+                            <q-btn outline type="submit" class="text_white mt_10 centrar bg_orange" label="Enviar Formulario" icon-right="arrow_right_alt"/>
                         </div>
                     </div>
                 </q-card-section>
-
             </div>
+          </q-form>
         </q-card>
     </q-dialog>
-    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio" v-if="notices.lenght !== 0">
         <div class="centrar w_1200">
             <h4 class="subtitle">Noticias</h4>
             <div class="row flex justify-center  items-start">
                 <table class="sesenta">
                     <tr>
                         <td>
-                            <img src="../assets/HazteSocio/socio01.png" />
+                            <img :src="urlSite + notices[0].field_imagen_noticia" />
                         </td>
                         <td>
-                            <h5 class="titulo_noticias">Título de la principal noticia de esta sección, texto falso.</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet…</p>
+                            <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
+                            <p v-html="notices[0].body"></p>
                             <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
@@ -131,15 +129,15 @@
                 <table class="treintaycinco">
                     <tr>
                         <td>
-                            <h5 class="titulo_noticias">Título de noticias secundarias, texto falso.</h5>
-                            <p>Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet lorem…</p>
+                            <h5 class="titulo_noticias">{{ notices[1].title }}</h5>
+                            <p v-html="notices[1].body"></p>
                             <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="titulo_noticias">Título de noticias secundarias, texto falso.</h5>
-                            <p>Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique…</p>
+                            <h5 class="titulo_noticias">{{ notices[2].title }}</h5>
+                            <p v-html="notices[2].body"></p>
                             <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
@@ -154,15 +152,15 @@
             <ul class="contacto_footer">
                 <li class="mail">
                     <img src="../assets/HazteSocio/i-correo.svg" />
-                    <span>mvaldivia@pwcc.cl</span>
+                    <span>{{ info.field_correo[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 9 98215362</span>
+                    <span>{{ info.field_telefono_1[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 2 2757 5700 </span>
+                    <span>{{ info.field_telefono_2[0].value }}</span>
                 </li>
             </ul>
         </div>
@@ -172,6 +170,7 @@
 
 <script>
 import Menuhaztesocio from 'pages/submenus/Menuhaztesocio'
+import configServices from '../services/config'
 
 export default {
   name: 'Haztesocio',
@@ -182,14 +181,118 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
+      urlSite: 'http://www.pwcc.markablanka.com/',
+      info: {
+        body: [
+          {
+            value: '',
+            summary: ''
+          }
+        ],
+        field_correo: [
+          {
+            value: ''
+          }
+        ],
+        field_telefono_1: [
+          {
+            value: ''
+          }
+        ],
+        field_telefono_2: [
+          {
+            value: ''
+          }
+        ]
+      },
       pop_form_socio: false,
       shape: 'false',
       options_civil: [
         'Solter@', 'Casad@', 'Viud@', 'Unión libre'
       ],
-      estado_civil: null,
-      date: '2019/02/01'
+      civilStatus: null,
+      mobile: '',
+      date: '',
+      country: '',
+      phone: '',
+      email: '',
+      name: '',
+      age: '',
+      notices: [
+        {
+          title: '',
+          field_imagen_noticia: ''
+        },
+        {
+          title: '',
+          field_imagen_noticia: ''
+        },
+        {
+          title: '',
+          field_imagen_noticia: ''
+        }
+      ]
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+    this.getNotices()
+  },
+  methods: {
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailHazteSocio',
+        email: this.email,
+        name: this.name,
+        phone: this.phone,
+        mobile: this.mobile,
+        civilStatus: this.civilStatus,
+        birthdate: this.date,
+        country: this.country,
+        category: this.shape
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.phone = ''
+          this.mobile = ''
+          this.civilStatus = ''
+          this.date = ''
+          this.country = ''
+          this.shape = ''
+          this.pop_form_socio = false
+        }
+      })
+    },
+    onReset () {
+
+    },
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/1?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+    },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias/hazte-socio/json', {
+        callBack: (data) => {
+          _this.notices = data
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }
