@@ -10,220 +10,69 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Peluquería</div>
-            <p class="intro text-center">Horario de atención desde las <strong>10:00</strong> a las <strong>19:00</strong> horario continuado.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <ul class="wrp_actions_center_peluqueria">
             <li>
-                <a href="#" icon-right="arrow_right_alt">Mujeres</a>
+                <a href="#" @click="goToAnchor($event, '#mujeres-item')" icon-right="arrow_right_alt">Mujeres</a>
             </li>
             <li>
-                <a href="#" icon-right="arrow_right_alt">Hombres</a>
+                <a href="#" @click="goToAnchor($event, '#hombres-item')" icon-right="arrow_right_alt">Hombres</a>
             </li>
         </ul>
     </div>
-
+    <a href="" id="mujeres-item"></a>
     <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-          <table class="contenido_pelu">
+          <table class="contenido_pelu" v-if="womanServices.length !== 0">
               <tr>
                   <td>
                         <h6 class="peluqueria q-mt-none">Mujeres</h6>
-                        <table class="datos_peluqueria">
+                        <table class="datos_peluqueria" v-for="item in womanServices" :key="item.nid">
                             <tr>
-                                <th colspan="2">Peluquería</th>
+                                <th colspan="2">{{ item.title }}</th>
                             </tr>
-                            <tr>
-                                <td> Lavado pelo corto </td>
-                                <td>$2.000 </td>
+                            <tr v-for="(subItem) in item.subServices" :key="subItem.title" v-show="subItem.price !== ''">
+                                <td> {{ subItem.title }} </td>
+                                <td>$ {{ addCommas(subItem.price) }} </td>
                             </tr>
-                            <tr>
-                                <td> Lavado pelo largo </td>
-                                <td>$3.000 </td>
-                            </tr>
-
-                            <tr>
-                                <td> Corte de pelo </td>
-                                <td>$10.000 </td>
-                            </tr>
-
-                            <tr>
-                                <td> Recorte </td>
-                                <td>$5.000 </td>
-                            </tr>
-                            <tr>
-                                <td> Flequillo (chasquilla) </td>
-                                <td>$3.000 </td>
-                            </tr>
-
-                            <tr>
-                                <td> Corte de niño- niñas pequeños</td>
-                                <td>$6.000</td>
-                            </tr>
-                        </table>
-
-                        <table class="datos_peluqueria">
-                            <tr>
-                                <th colspan="2">Color / Tintura</th>
-                            </tr>
-                            <tr>
-                                <td> Pelo corto </td>
-                                <td>$2.000 </td>
-                            </tr>
-                            <tr>
-                                <td> Pelo largo Reflejos</td>
-                                <td>$3.000 </td>
-                            </tr>
-
-                            <tr>
-                                <td>PReflejos </td>
-                                <td>$10.000 </td>
-                            </tr>
-                        </table>
-
-                        <table class="datos_peluqueria">
-                            <tr>
-                                <th colspan="2">Masaje capilar, crema y ampolla <br> <span class="italic">No incluye peinado</span> </th>
-                            </tr>
-                            <tr>
-                                <td>Pelo corto y mediano </td>
-                                <td>$2.000 </td>
-                            </tr>
-                            <tr>
-                                <td> Pelo mediano a largo</td>
-                                <td>$3.000 </td>
-                            </tr>
-                        </table>
-
-                        <table class="datos_peluqueria">
-                            <tr>
-                                <th colspan="2">Peinados</th>
-                            </tr>
-                            <tr>
-                                <td>Pelo corto, incluye lavado </td>
-                                <td>$2.000 </td>
-                            </tr>
-                            <tr>
-                                <td>Pelo largo, incluye lavado</td>
-                                <td>$3.000 </td>
-                            </tr>
-                        </table>
-                        <table class="datos_peluqueria">
-                            <tr>
-                                <th colspan="2">Alisado</th>
-                            </tr>
-                            <tr>
+                            <tr v-for="(subItem, subKey) in item.subServices" :key="subKey" v-show="subItem.price === ''">
                                 <td colspan="2">Está sujeto a evaluación de pelo, largo y cantidad.</td>
                             </tr>
                         </table>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="info.field_imagenes_mujer[0].url" /><img :src="info.field_imagenes_mujer[1].url" /><img :src="info.field_imagenes_mujer[2].url" />
                   </td>
               </tr>
           </table>
         </div>
     </div>
-
+    <a href="" id="hombres-item"></a>
     <div class="q-py-md all_width gris_home wrp_club hazte_socio">
         <div class="centrar w_1200">
           <table class="contenido_pelu">
               <tr>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="info.field_imagenes_hombre[0].url" /><img :src="info.field_imagenes_hombre[1].url" /><img :src="info.field_imagenes_hombre[2].url" />
                   </td>
                   <td>
                     <h6 class="peluqueria q-mt-none">Hombres</h6>
-                    <table class="datos_peluqueria">
+                    <table class="datos_peluqueria" v-for="item in menServices" :key="item.nid">
                         <tr>
-                            <th colspan="2">Peluquería</th>
+                            <th colspan="2">{{ item.title }}</th>
                         </tr>
-                        <tr>
-                            <td> Lavado pelo corto </td>
-                            <td>$2.000 </td>
+                        <tr v-for="(subItem) in item.subServices" :key="subItem.title" v-show="subItem.price !== ''">
+                            <td> {{ subItem.title }} </td>
+                            <td>$ {{ addCommas(subItem.price) }} </td>
                         </tr>
-                        <tr>
-                            <td> Lavado pelo largo </td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td> Corte de pelo </td>
-                            <td>$10.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td> Recorte </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td> Flequillo (chasquilla) </td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td> Corte de niño- niñas pequeños</td>
-                            <td>$6.000</td>
-                        </tr>
-                    </table>
-
-                    <table class="datos_peluqueria">
-                        <tr>
-                            <th colspan="2">Color / Tintura</th>
-                        </tr>
-                        <tr>
-                            <td> Pelo corto </td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td> Pelo largo Reflejos</td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>PReflejos </td>
-                            <td>$10.000 </td>
-                        </tr>
-                    </table>
-
-                    <table class="datos_peluqueria">
-                        <tr>
-                            <th colspan="2">Masaje capilar, crema y ampolla <br> <span class="italic">No incluye peinado</span> </th>
-                        </tr>
-                        <tr>
-                            <td>Pelo corto y mediano </td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td> Pelo mediano a largo</td>
-                            <td>$3.000 </td>
-                        </tr>
-                    </table>
-
-                    <table class="datos_peluqueria">
-                        <tr>
-                            <th colspan="2">Peinados</th>
-                        </tr>
-                        <tr>
-                            <td>Pelo corto, incluye lavado </td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Pelo largo, incluye lavado</td>
-                            <td>$3.000 </td>
-                        </tr>
-                    </table>
-                    <table class="datos_peluqueria">
-                        <tr>
-                            <th colspan="2">Alisado</th>
-                        </tr>
-                        <tr>
+                        <tr v-for="(subItem, subKey) in item.subServices" :key="subKey" v-show="subItem.price === ''">
                             <td colspan="2">Está sujeto a evaluación de pelo, largo y cantidad.</td>
                         </tr>
                     </table>
@@ -237,6 +86,7 @@
 
 <script>
 import Menuspa from 'pages/submenus/Menuspa'
+import configServices from '../../services/config'
 
 export default {
   name: 'Fitness',
@@ -247,8 +97,116 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
-      pop_consultar: false
+      info: {
+        body: [
+          { value: '' }
+        ],
+        field_imagenes_mujer: [
+          {
+            url: ''
+          },
+          {
+            url: ''
+          },
+          {
+            url: ''
+          }
+        ],
+        field_imagenes_hombre: [
+          {
+            url: ''
+          },
+          {
+            url: ''
+          },
+          {
+            url: ''
+          }
+        ]
+      },
+      pop_consultar: false,
+      menServices: [],
+      womanServices: []
+    }
+  },
+  created () {
+    this.getInfo()
+  },
+  methods: {
+    goToAnchor (e, item) {
+      e.preventDefault()
+      const el = document.querySelector(item)
+      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
+    addCommas (x) {
+      if (typeof x !== 'undefined') {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+      }
+    },
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/259?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+      configServices.loadData(this, 'servicios-peluqueria/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var service = {
+              nid: item.nid,
+              title: item.title,
+              subServices: [
+                {
+                  title: item.field_nombre_item,
+                  price: item.field_valor
+                }
+              ]
+            }
+            if (item.field_genero === 'Mujer') {
+              const isFound = _this.womanServices.find((element, index) => {
+                if (element.title === item.title) {
+                  _this.womanServices.splice(index, 1)
+                  return index
+                }
+              })
+
+              if (isFound) {
+                isFound.subServices.push({
+                  title: item.field_nombre_item,
+                  price: item.field_valor
+                })
+
+                _this.womanServices.push(isFound)
+              } else {
+                _this.womanServices.push(service)
+              }
+            }
+            if (item.field_genero === 'Hombre') {
+              const isFound = _this.menServices.find((element, index) => {
+                if (element.title === item.title) {
+                  _this.menServices.splice(index, 1)
+                  return index
+                }
+              })
+
+              if (isFound) {
+                isFound.subServices.push({
+                  title: item.field_nombre_item,
+                  price: item.field_valor
+                })
+
+                _this.menServices.push(isFound)
+              } else {
+                _this.menServices.push(service)
+              }
+            }
+          })
+
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

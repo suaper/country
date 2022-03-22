@@ -5,8 +5,8 @@
       <q-btn outline color="submenu" :disable="getDisable('/spa/peluqueria')"  @click="goItem('/spa/peluqueria')" label="Peluquería" />
       <q-btn outline color="submenu" :disable="getDisable('/spa/estetica')"  @click="goItem('/spa/estetica')" label="Centro de Estética" />
       <q-btn outline color="submenu" :disable="getDisable('/spa/kinesiologia')"  @click="goItem('/spa/kinesiologia')" label="Kinesiología" />
-      <q-btn outline color="submenu" :disable="getDisable('/spa/hijos-socios')"  @click="goItem('/spa/hijos-socios')" label="Multimedia" />
-      <q-btn outline color="submenu" :disable="getDisable('/spa/contacto')"  @click="goItem('/spa/contacto_spa')" label="Contacto" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/multimedia')"  @click="goItem('/spa/multimedia')" label="Multimedia" />
+      <q-btn outline color="submenu" :disable="getDisable('/spa/contacto')"  @click="goItem('/spa/contacto')" label="Contacto" />
     </q-btn-group>
 </template>
 

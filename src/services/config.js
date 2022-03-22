@@ -12,7 +12,6 @@ const configService = {
     componente.$q.loading.show()
     var basicAuth = 'Basic ' + btoa(datosConfiguracion.user + ':' + datosConfiguracion.password)
 
-    console.log(datosConfiguracion.apiUrl + endpoind)
     componente.$axios.post(datosConfiguracion.apiUrl + endpoind, datosJson, {
       headers: { Authorization: basicAuth }
     })

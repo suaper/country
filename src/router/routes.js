@@ -155,6 +155,13 @@ const routes = [
     ]
   },
   {
+    path: '/spa/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('src/pages/spa/MultimediaSpa.vue') }
+    ]
+  },
+  {
     path: '/spa/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
