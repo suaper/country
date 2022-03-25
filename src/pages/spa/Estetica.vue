@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <Menuspa/>
+    <Menuspa currentItem="/spa/estetica"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -10,14 +10,13 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Peluquería</div>
-            <p class="intro text-center">Horario de atención desde las <strong>10:00</strong> a las <strong>19:00</strong> horario continuado.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <ul class="wrp_actions_center_peluqueria">
             <li>
@@ -382,6 +381,7 @@
 
 <script>
 import Menuspa from 'pages/submenus/Menuspa'
+import configServices from '../../services/config'
 
 export default {
   name: 'Estetica',
@@ -391,9 +391,33 @@ export default {
   data () {
     return {
       sliders: true,
-      slide: 1,
-      info: {},
+      slide: 0,
+      info: {
+        body: [
+          { value: '' }
+        ]
+      },
       pop_consultar: false
+    }
+  },
+  created () {
+    this.getInfo()
+  },
+  methods: {
+    goToAnchor (e, item) {
+      e.preventDefault()
+      const el = document.querySelector(item)
+      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/300?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

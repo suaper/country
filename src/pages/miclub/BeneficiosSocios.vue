@@ -98,12 +98,8 @@ export default {
           value: key
         }
 
-        console.log(n)
-
         _this.options.push(n)
       })
-
-      console.log(this.options)
     }
   }
 }

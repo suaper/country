@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center gris_home view_hijos_socios view_fitness">
-    <Menuspa/>
+    <Menuspa currentItem="/spa/contacto"/>
 
  <div class="q-py-md q-my-xl all_width gris_home wrp_club">
         <div class="q-py-md centrar text-center w_1200">
@@ -27,11 +27,11 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="telefono"
+                          v-model="rut"
                           label="Rut *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>
@@ -74,6 +74,7 @@
 
 <script>
 import Menuspa from 'pages/submenus/Menuspa'
+import configServices from '../../services/config'
 
 export default {
   name: 'Contactospa',
@@ -85,7 +86,44 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      pop_consultar: false
+      pop_consultar: false,
+      telefono: '',
+      email: '',
+      name: '',
+      rut: ''
+    }
+  },
+  methods: {
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Spa & Wellness',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          console.log(data)
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    onReset () {
+      // reset
     }
   }
 }
