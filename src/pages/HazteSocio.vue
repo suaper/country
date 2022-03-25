@@ -181,7 +181,7 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       info: {
         body: [
           {

@@ -98,7 +98,7 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_reservar_spa: false
     }

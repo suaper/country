@@ -124,7 +124,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_reservar_spa: false,
       telefono: '',

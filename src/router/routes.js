@@ -225,14 +225,17 @@ const routes = [
     ]
   },
   {
-<<<<<<< HEAD
     path: '/kids/summer-activities',
-=======
-    path: '/hazte-socio/familia-rama-deportiva',
->>>>>>> fdbfd87f172ee4b524bf36972ebb80c0c7339817
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/kids/SummerActivities.vue') }
+    ]
+  },
+  {
+    path: '/hazte-socio/familia-rama-deportiva',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
     ]
   },
   {

@@ -163,7 +163,7 @@ export default {
       name: '',
       telefono: '',
       email: '',
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       items: [],
       itemsCorporativo: [],
       fitnessTypes: [],

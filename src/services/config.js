@@ -1,6 +1,5 @@
-
 const datosConfiguracion = {
-  apiUrl: 'http://www.pwcc.markablanka.com/',
+  apiUrl: 'https://pwccdev.mkbk.digital/administrador/',
   mensajeErrorServer: 'Tenemos problemas en nuestro sistemas :( por favor envianos un pantallazo de este mensaje para seguir mejorando',
   mensajeNoInternet: 'Tenemos problemas en nuestro sistemas :( por favor envianos un pantallazo de este mensaje para seguir mejorando',
   user: 'pwcc_api',

@@ -23,27 +23,27 @@
         <div class="w_1200 enlaces centrar">
             <ul class="list_img_link centrer">
                 <li>
-                    <img src="http://www.pwcc.markablanka.com//sites/default/files/2022-03/ewt.png" alt="">
+                    <img src="https://pwccdev.mkbk.digital//sites/default/files/2022-03/ewt.png" alt="">
                     <h6 class="title">Summer Activities</h6>
                     <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
                 <li>
-                    <img src="http://www.pwcc.markablanka.com//sites/default/files/2022-03/ewt.png" alt="">
+                    <img src="https://pwccdev.mkbk.digital//sites/default/files/2022-03/ewt.png" alt="">
                     <h6 class="title">Summer Activities</h6>
                     <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
                 <li>
-                    <img src="http://www.pwcc.markablanka.com//sites/default/files/2022-03/ewt.png" alt="">
+                    <img src="https://pwccdev.mkbk.digital//sites/default/files/2022-03/ewt.png" alt="">
                     <h6 class="title">Summer Activities</h6>
                     <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
                 <li>
-                    <img src="http://www.pwcc.markablanka.com//sites/default/files/2022-03/ewt.png" alt="">
+                    <img src="https://pwccdev.mkbk.digital//sites/default/files/2022-03/ewt.png" alt="">
                     <h6 class="title">Summer Activities</h6>
                     <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
                 <li>
-                    <img src="http://www.pwcc.markablanka.com//sites/default/files/2022-03/ewt.png" alt="">
+                    <img src="https://pwccdev.mkbk.digital//sites/default/files/2022-03/ewt.png" alt="">
                     <h6 class="title">Summer Activities</h6>
                     <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
@@ -161,7 +161,7 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_reservar_spa: false
     }

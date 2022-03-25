@@ -79,7 +79,7 @@ export default {
           {}
         ]
       },
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       pop_cuota: false,
       cuotas: []
     }

@@ -15,171 +15,72 @@
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Peluquería</div>
+            <div class="center text-center q-my-lg titulos">Centro de Estética</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <ul class="wrp_actions_center_peluqueria">
             <li>
-                <a href="#" icon-right="arrow_right_alt">Masajes</a>
+                <a href="#" @click="goToAnchor($event, '#masajes-item')" icon-right="arrow_right_alt">Masajes</a>
             </li>
             <li>
-                <a href="#" icon-right="arrow_right_alt">Depilación</a>
+                <a href="#" @click="goToAnchor($event, '#depilacion-item')" icon-right="arrow_right_alt">Depilación</a>
             </li>
             <li>
-                <a href="#" icon-right="arrow_right_alt">Cosmetología</a>
+                <a href="#" @click="goToAnchor($event, '#cosmetologia-item')" icon-right="arrow_right_alt">Cosmetología</a>
             </li>
             <li>
-                <a href="#" icon-right="arrow_right_alt">Manicure</a>
+                <a href="#" @click="goToAnchor($event, '#manicure-item')" icon-right="arrow_right_alt">Manicure</a>
             </li>
             <li>
-                <a href="#" icon-right="arrow_right_alt">Pedicure</a>
+                <a href="#" @click="goToAnchor($event, '#pedicure-item')" icon-right="arrow_right_alt">Pedicure</a>
             </li>
         </ul>
     </div>
 
-    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio" id="masajes-item">
         <div class="centrar w_1200">
           <table class="contenido_pelu">
               <tr>
                   <td>
                     <h6 class="peluqueria q-mt-none">Masajes</h6>
-                    <table class="datos_peluqueria">
+                    <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '271'">
                         <tr>
                             <th>Peluquería</th>
                             <th>Tiempo</th>
                             <th>Precio</th>
                         </tr>
-                        <tr>
-                            <td>Reductor</td>
-                            <td></td>
-                            <td>$2.000 </td>
+                        <tr v-for="(subItem, key) in item.subServices" :key="key">
+                            <td :class="(subItem.duplicate) ? 'sin_borde' : ''">{{ (!subItem.duplicate) ? subItem.title : ''}}</td>
+                            <td>{{ subItem.time }} Minutos</td>
+                            <td>$ {{ addCommas(subItem.price) }}</td>
                         </tr>
-                        <tr>
-                            <td class="sin_borde">Relajación</td>
-                            <td>45 Minutos</td>
-                            <td>$25.000 </td>
-                        </tr>
-                        <tr>
-                            <td class="borde"></td>
-                            <td>60 Minutos</td>
-                            <td>$30.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td class="sin_borde">Descontracturante</td>
-                            <td>45 Minutos</td>
-                            <td>$25.000 </td>
-                        </tr>
-                        <tr>
-                            <td class="borde"></td>
-                            <td>60 Minutos</td>
-                            <td>$30.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td class="sin_borde">Descontracturante con toallas calientes</td>
-                            <td>45 Minutos</td>
-                            <td>$25.000 </td>
-                        </tr>
-                        <tr>
-                            <td class="borde"></td>
-                            <td>60 Minutos</td>
-                            <td>$30.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td class="sin_borde">Drenaje Linfático</td>
-                            <td>45 Minutos</td>
-                            <td>$25.000 </td>
-                        </tr>
-                        <tr>
-                            <td class="borde"></td>
-                            <td>60 Minutos</td>
-                            <td>$30.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td class="sin_borde">Piedras Calientes</td>
-                            <td>45 Minutos</td>
-                            <td>$25.000 </td>
-                        </tr>
-                        <tr>
-                            <td class="borde"></td>
-                            <td>60 Minutos</td>
-                            <td>$30.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Masaje Spa Doble · Terapia de parejas</td>
-                            <td>90 Minutos</td>
-                            <td>$90.000 </td>
-                        </tr>
-
                     </table>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="urlSite + imageMasajes" />
                   </td>
               </tr>
           </table>
         </div>
     </div>
 
-    <div class="q-py-md all_width gris_home wrp_club hazte_socio">
+    <div class="q-py-md all_width gris_home wrp_club hazte_socio" id="depilacion-item">
         <div class="centrar w_1200">
         <h6 class="peluqueria q-mt-none">Depilación</h6>
           <table class="contenido_pelu">
               <tr>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="urlSite + imageDepilacion" />
                   </td>
                   <td>
-                    <table class="datos_peluqueria">
+                    <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '272'">
                         <tr>
                             <th>Zona</th>
                             <th>Precio</th>
                         </tr>
-                        <tr>
-                            <td>Completo con rebaje simple</td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Media pierna</td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Pierna completa</td>
-                            <td>$10.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Axila </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Rebaje</td>
-                            <td>$4.000 | $8.000 | $12.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>Brazos</td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Depilación completa largo </td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Espalda </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Abdomen </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Glúteos </td>
-                            <td>$5.000 </td>
+                        <tr v-for="(subItem, key) in item.subServices" :key="key">
+                            <td>{{ subItem.title }}</td>
+                            <td>$ {{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -187,125 +88,47 @@
           </table>
         </div>
     </div>
-    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio" id="cosmetologia-item">
         <div class="centrar w_1200">
         <h6 class="peluqueria q-mt-none">Cosmetología</h6>
             <table class="contenido_pelu">
               <tr>
                   <td>
-                    <table class="datos_peluqueria">
+                    <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '273'">
                         <tr>
                             <th>Procedimiento</th>
                             <th>Precio</th>
                         </tr>
-                        <tr>
-                            <td>Completo con rebaje simple</td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Media pierna</td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Pierna completa</td>
-                            <td>$10.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Axila </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Rebaje</td>
-                            <td>$4.000 | $8.000 | $12.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>Brazos</td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Depilación completa largo </td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Espalda </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Abdomen </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Glúteos </td>
-                            <td>$5.000 </td>
+                        <tr v-for="(subItem, key) in item.subServices" :key="key">
+                            <td>{{ subItem.title }}</td>
+                            <td>$ {{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="urlSite + imageCosmeto" />
                   </td>
               </tr>
           </table>
         </div>
     </div>
-    <div class="q-py-md all_width gris_home wrp_club hazte_socio">
+    <div class="q-py-md all_width gris_home wrp_club hazte_socio" id="manicure-item">
         <div class="centrar w_1200">
         <h6 class="peluqueria q-mt-none">Manicure</h6>
             <table class="contenido_pelu">
               <tr>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="urlSite + imageManicure" />
                   </td>
                   <td>
-                    <table class="datos_peluqueria">
+                    <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '274'">
                         <tr>
                             <th>Procedimiento</th>
                             <th>Precio</th>
                         </tr>
-                        <tr>
-                            <td>Completo con rebaje simple</td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Media pierna</td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Pierna completa</td>
-                            <td>$10.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Axila </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Rebaje</td>
-                            <td>$4.000 | $8.000 | $12.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>Brazos</td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Depilación completa largo </td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Espalda </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Abdomen </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Glúteos </td>
-                            <td>$5.000 </td>
+                        <tr v-for="(subItem, key) in item.subServices" :key="key">
+                            <td>{{ subItem.title }}</td>
+                            <td>$ {{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -313,64 +136,25 @@
           </table>
         </div>
     </div>
-   <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
+   <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio" id="pedicure-item">
         <div class="centrar w_1200">
         <h6 class="peluqueria q-mt-none">Pedicure</h6>
             <table class="contenido_pelu">
               <tr>
                   <td>
-                    <table class="datos_peluqueria">
+                     <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '298'">
                         <tr>
                             <th>Procedimiento</th>
                             <th>Precio</th>
                         </tr>
-                        <tr>
-                            <td>Completo con rebaje simple</td>
-                            <td>$2.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Media pierna</td>
-                            <td>$3.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Pierna completa</td>
-                            <td>$10.000 </td>
-                        </tr>
-
-                        <tr>
-                            <td>Axila </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Rebaje</td>
-                            <td>$4.000 | $8.000 | $12.000</td>
-                        </tr>
-
-                        <tr>
-                            <td>Brazos</td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Depilación completa largo </td>
-                            <td>$5.000 | $10.000</td>
-                        </tr>
-                        <tr>
-                            <td>Espalda </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Abdomen </td>
-                            <td>$5.000 </td>
-                        </tr>
-                        <tr>
-                            <td>Glúteos </td>
-                            <td>$5.000 </td>
+                        <tr v-for="(subItem, key) in item.subServices" :key="key">
+                            <td>{{ subItem.title }}</td>
+                            <td>$ {{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                       <img :src="urlSite + imagePedicure" />
                   </td>
               </tr>
           </table>
@@ -397,7 +181,14 @@ export default {
           { value: '' }
         ]
       },
-      pop_consultar: false
+      pop_consultar: false,
+      services: [],
+      urlSite: 'https://pwccdev.mkbk.digital/',
+      imageMasajes: '',
+      imageDepilacion: '',
+      imageCosmeto: '',
+      imageManicure: '',
+      imagePedicure: ''
     }
   },
   created () {
@@ -409,12 +200,87 @@ export default {
       const el = document.querySelector(item)
       el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     },
+    addCommas (x) {
+      if (typeof x !== 'undefined') {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+      }
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/300?_format=json', {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
+          _this.$q.loading.hide()
+        }
+      })
+
+      configServices.loadData(this, 'servicios-estetica/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            switch (item.nid) {
+              case '298':
+                _this.imagePedicure = item.field_imagen_servicio
+                break
+              case '274':
+                _this.imageManicure = item.field_imagen_servicio
+                break
+              case '273':
+                _this.imageCosmeto = item.field_imagen_servicio
+                break
+              case '272':
+                _this.imageDepilacion = item.field_imagen_servicio
+                break
+              case '271':
+                _this.imageMasajes = item.field_imagen_servicio
+                break
+            }
+            var service = {
+              nid: item.nid,
+              title: item.title,
+              image: item.field_imagen_servicio,
+              subServices: [
+                {
+                  title: item.field_nombre_item,
+                  price: item.field_valor,
+                  time: item.field_tiempo
+                }
+              ]
+            }
+
+            const isFound = _this.services.find((element, index) => {
+              const isSubFound = element.subServices.find((subElement, subIndex) => {
+                if (typeof subElement !== 'undefined') {
+                  if (item.field_nombre_item === subElement.title) {
+                    subElement.duplicate = true
+                  }
+                }
+              })
+
+              if (typeof isSubFound !== 'undefined') {
+                element.subServices.push(isSubFound)
+              }
+              if (element.title === item.title) {
+                _this.services.splice(index, 1)
+                return element
+              }
+            })
+
+            if (typeof isFound !== 'undefined') {
+              isFound.subServices.push({
+                title: item.field_nombre_item,
+                price: item.field_valor,
+                time: item.field_tiempo
+              })
+
+              _this.services.push(isFound)
+            } else {
+              _this.services.push(service)
+            }
+          })
+
+          console.log(_this.services)
+
           _this.$q.loading.hide()
         }
       })

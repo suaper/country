@@ -86,7 +86,7 @@ export default {
         }
       ],
       pop_consultar: false,
-      urlSite: 'http://www.pwcc.markablanka.com/'
+      urlSite: 'https://pwccdev.mkbk.digital/'
     }
   },
   created () {
@@ -98,6 +98,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/subseccion-socios/106/json', {
         callBack: (data) => {
+          console.log(data)
           _this.info = data
           _this.info[0].field_banner_seccion = _this.info[0].field_banner_seccion.split(',')
           _this.$q.loading.hide()

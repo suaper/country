@@ -195,6 +195,7 @@
 
 <script>
 import Menuspa from 'pages/submenus/Menuspa'
+import configServices from '../../services/config'
 
 export default {
   name: 'MultimediaSpa',
@@ -222,6 +223,18 @@ export default {
     }
   },
   methods: {
+    getMultimedia () {
+      var _this = this
+      configServices.loadData(this, '/multimedia-secciones/Spa & Wellness/json', {
+        callBack: (data) => {
+          console.log(data)
+          for (const item in data) {
+            _this.multimediaHome.push(data[item])
+          }
+          _this.$q.loading.hide()
+        }
+      })
+    },
     getOptions () {
       var _this = this
       this.slidersContent.map((item, key) => {
