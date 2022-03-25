@@ -12,6 +12,9 @@ body{
 .cuarenta{
     width: 40%;
 }
+.cuarentaycinco{
+    width: 45%;
+}
 .treinta{
     width: 30%;
 }
@@ -51,11 +54,17 @@ body{
 .w_30{
     width: 30%;
 }
+.w_1000{
+    width: 1000px;
+}
 .w_1200{
     width: 1200px;
 }
 .centrar{
     margin: 0px auto;
+}
+.m_left_20{
+    margin-left: 20px;
 }
 .hr_amarillo{
     border: 1px solid #CA9E64;
@@ -596,6 +605,7 @@ p{
 .box_download{
     text-align: left;
     letter-spacing: 0px;
+    max-width: 280px;
     color: #7C7E91;
     opacity: 1;
     border: 1px solid #CA9E64;
@@ -603,7 +613,7 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 20px;
+    padding: 20px 20px;
 
     span{
         display: block;
@@ -616,6 +626,9 @@ p{
         &.bold{
             font-weight: bold;
         }
+    }
+    a{
+        text-decoration: none;
     }
 }
 .pop_descargar{
@@ -1150,12 +1163,21 @@ p{
 .fitnes_last{
     justify-content: space-between;
 
-
     .staff{
         width: 45%;
     }
     .form_fitness{
         width: 45%;
+        position: relative;
+        &:after{
+            position: absolute;
+            content: "";
+            right: -65px;
+            top: 0;
+            border-right: 1px solid #CA9E64;
+            width: 1px;
+            height: 100%;
+        }
     }
     .raius{
         width: 118px;
@@ -1569,6 +1591,119 @@ h6.peluqueria{
                 font-weight: bold;
                 margin-bottom: 5px;
                 display: block;
+            }
+        }
+    }
+}
+.list_img_link{
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-self: start;
+    padding:20px;
+    li{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #CA9E64;
+        background-color: #fff;
+        img{
+            width: 190px;
+            height: 198px;
+        }
+        h6{
+            margin: 5px 0;
+            font-size: 20px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            font-weight: lighter;
+            color: #1F2660;
+            margin-bottom: 0;
+        }
+        a{
+            margin: 5px 0;
+            font-size: 15px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            font-weight: lighter;
+            text-decoration: none;
+            color: #1F2660;
+            margin-top: 0;
+        }
+    }
+}
+.view_kids{
+    .title_text{
+        font-size: 34px;
+        letter-spacing: 0px;
+        color: #1F2660;
+        font-family: $font-title;
+        opacity: 1;
+        margin: 25px 0px;
+    }
+    .wrp_table{
+        background: #fff;
+        border-radius: 10px;
+        padding: 10px 40px;
+    }
+    .wrp_fechas{
+        .txt_norm{
+            margin-top: 0;
+            text-align: left;
+            font-size: 24px;
+            letter-spacing: 0px;
+            color: #1F2660;
+            font-weight: bold;
+        }
+        ul{
+            padding: 0;
+            li{
+                list-style: none;
+                margin: 15px 0;
+                line-height: 1.3;
+            }
+        }
+        p{
+            margin: 0px 0;
+        }
+        strong{
+            text-align: left;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 0px;
+            color: #7C7E91;
+        }
+        span{
+            text-align: left;
+            font-size: 15px;
+            letter-spacing: 0px;
+            color: #7C7E91;
+        }
+    }
+    .bg_white{
+        border-collapse: collapse;
+        border-radius: 10px;
+        width: 100%;
+        th{
+            text-align: left;
+            font-size: 24px;
+            letter-spacing: 0px;
+            color: #1F2660;
+            opacity: 1;
+            border-bottom: 1px solid #CA9E64;
+            padding: 10px;
+        }
+        td{
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 8px 10px;
+            letter-spacing: 0px;
+            color: #7C7E91;
+            opacity: 1;
+            &:last-child{
+                font-weight: 400;
             }
         }
     }

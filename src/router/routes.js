@@ -218,10 +218,17 @@ const routes = [
     ]
   },
   {
-    path: '/familia_rama_deportiva',
+    path: '/kids/summer-activities',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
+      { path: '', component: () => import('pages/kids/SummerActivities.vue') }
+    ]
+  },
+  {
+    path: '/kids/winter-activities',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/WinterActivities.vue') }
     ]
   },
 
