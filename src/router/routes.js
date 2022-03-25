@@ -78,42 +78,42 @@ const routes = [
     ]
   },
   {
-    path: '/hijos_socios',
+    path: '/hazte-socio/hijos-socios',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/HijosSocios.vue') }
     ]
   },
   {
-    path: '/hijos_ex_socios',
+    path: '/hazte-socio/hijos-ex-socios',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/HijosExSocios.vue') }
     ]
   },
   {
-    path: '/nuevos_socios',
+    path: '/hazte-socio/nuevos-socios',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/NuevosSocios.vue') }
     ]
   },
   {
-    path: '/extranjeros_de_paso',
+    path: '/hazte-socio/extranjeros-de-paso',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/ExtranjerosDePaso.vue') }
     ]
   },
   {
-    path: '/senior',
+    path: '/hazte-socio/senior',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/Senior.vue') }
     ]
   },
   {
-    path: '/familia_de_socios',
+    path: '/hazte-socio/familia-de-socios',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/haztesocio/FamiliaDeSocios.vue') }
@@ -127,35 +127,42 @@ const routes = [
     ]
   },
   {
-    path: '/fitness',
+    path: '/spa/fitness',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/spa/Fitness.vue') }
     ]
   },
   {
-    path: '/peluqueria',
+    path: '/spa/peluqueria',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/spa/Peluqueria.vue') }
     ]
   },
   {
-    path: '/estetica',
+    path: '/spa/estetica',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/spa/Estetica.vue') }
     ]
   },
   {
-    path: '/kinesiologia',
+    path: '/spa/kinesiologia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/spa/Kinesiologia.vue') }
     ]
   },
   {
-    path: '/contacto_spa',
+    path: '/spa/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('src/pages/spa/MultimediaSpa.vue') }
+    ]
+  },
+  {
+    path: '/spa/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/spa/ContactoSpa.vue') }
@@ -218,10 +225,24 @@ const routes = [
     ]
   },
   {
-    path: '/familia_rama_deportiva',
+    path: '/hazte-socio/familia-rama-deportiva',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
+      { path: '', component: () => import('pages/kids/SummerActivities.vue') }
+    ]
+  },
+  {
+    path: '/kids/summer-activities',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/SummerActivities.vue') }
+    ]
+  },
+  {
+    path: '/kids/winter-activities',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/WinterActivities.vue') }
     ]
   },
 
