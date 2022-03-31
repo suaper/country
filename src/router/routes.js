@@ -176,42 +176,42 @@ const routes = [
     ]
   },
   {
-    path: '/staff',
+    path: '/gastronomia/staff',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/Staff.vue') }
     ]
   },
   {
-    path: '/restaurantes',
+    path: '/gastronomia/restaurantes',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/Restaurantes.vue') }
     ]
   },
   {
-    path: '/special_day',
+    path: '/gastronomia/special-day',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/SpecialDay.vue') }
     ]
   },
   {
-    path: '/country',
+    path: '/gastronomia/country',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/Country.vue') }
     ]
   },
   {
-    path: '/multimedia_gastronomia',
+    path: '/gastronomia/multimedia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/MultimediaGastronomia.vue') }
     ]
   },
   {
-    path: '/contacto_gastronomia',
+    path: '/gastronomia/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/ContactoGastronomia.vue') }

@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center gris_home view_hijos_socios view_fitness">
-    <Menuspa/>
+  <Menugastronomia currentItem="/gastronomia/contacto"/>
 
  <div class="q-py-md q-my-xl all_width gris_home wrp_club">
         <div class="q-py-md centrar text-center w_1200">
@@ -46,12 +46,12 @@
 </template>
 
 <script>
-import Menuspa from 'pages/submenus/Menuspa'
+import Menugastronomia from 'pages/submenus/Menugastronomia'
 
 export default {
   name: 'Contactogastronomia',
   components: {
-    Menuspa
+    Menugastronomia
   },
   data () {
     return {
