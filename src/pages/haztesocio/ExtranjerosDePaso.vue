@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios">
-    <Menuhaztesocio/>
+    <Menuhaztesocio currentItem="/hazte-socio/extranjeros-de-paso"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -10,29 +10,28 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info[0].field_banner_seccion" :key="key" :name="key" :img-src="urlSite + banner.trim()" />
       </q-carousel>
     </div>
+
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Extranjeros de paso</div>
-            <p class="intro text-center">Extranjeros de paso en Chile con fecha limitada de regreso a su país de origen u otro no pagan cuota de incorporación.</p>
+            <div class="center text-center q-my-lg titulos">Extranjeros de Paso</div>
+            <p class="intro text-center" v-html="info[0].body"></p>
         </div>
     </div>
 
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Requisitos</h4>
-            <p class="intro text-left">Las postulaciones a socio Extranjero de Paso se presentan en formularios especiales y es necesario acompañar el Currículum Vitae del postulante.</p>
-            <p class="intro text-left">El proceso de postulación consiste en una entrevista de conocimiento del postulante y su cónyuge con un Director del Club, quien es responsable de la postulación y presenta luego el caso al Directorio. Una vez que el Directorio haya analizado y aprobado la postulación presentada, ésta es resuelta por la Junta Calificadora, organismo anónimo y autónomo que acepta o rechaza la postulación.</p>
+            <p class="intro text-left" v-html="info[0].field_requisitos"></p>
         </div>
     </div>
 
     <div class="q-pb-md all_width gris_home wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Cuota Trimestral</h4>
-            <p class="intro text-left">Los extranjeros de paso no pagan cuota de incorporación al Club, sí una trimestralidad por grupo familiar diferente.</p>
+            <p class="intro text-left" v-html="info[0].field_cuota_trimestral"></p>
             <q-btn outline @click="pop_consultar = true" class="azul q-my-md centrar bg_white_i" label="Revisar el valor correspondiente aquí" icon-right="arrow_right_alt"/>
         </div>
     </div>
@@ -51,25 +50,10 @@
                         <th class="veinte">Cuota</th>
                         <th class="cuarenta">Requisitos</th>
                     </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años.</td>
-                    </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años.</td>
-                    </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años.</td>
-                    </tr>
-                    <tr>
-                        <td>Jefe de Familia</td>
-                        <td>$ 697.614</td>
-                        <td>Mayor de 30 años. Mayor de 30 años. Mayor de 30 años.</td>
+                    <tr v-for="(item, key) in info" :key="key">
+                        <td>{{ item.field_categoria_cuota }}</td>
+                        <td>$ {{ addCommas(item.field_cuota) }}</td>
+                        <td>{{ item.field_tipo_de_cuota_trimestral }}</td>
                     </tr>
                 </table>
             </q-card-section>
@@ -85,6 +69,7 @@
 
 <script>
 import Menuhaztesocio from 'pages/submenus/Menuhaztesocio'
+import configServices from '../../services/config'
 
 export default {
   name: 'Extranjerosdepaso',
@@ -94,9 +79,35 @@ export default {
   data () {
     return {
       sliders: true,
-      slide: 1,
-      info: {},
-      pop_consultar: false
+      slide: 0,
+      info: [
+        {
+          field_banner_seccion: ''
+        }
+      ],
+      pop_consultar: false,
+      urlSite: 'https://pwccdev.mkbk.digital/'
+    }
+  },
+  created () {
+    this.$q.loading.show()
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/subseccion-socios/107/json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.info[0].field_banner_seccion = _this.info[0].field_banner_seccion.split(',')
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    addCommas (x) {
+      if (typeof x !== 'undefined') {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+      }
     }
   }
 }

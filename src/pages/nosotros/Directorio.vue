@@ -63,7 +63,7 @@ export default {
       slide: 1,
       autoplay: true,
       directory: [],
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       president: [],
       gerent: []
     }

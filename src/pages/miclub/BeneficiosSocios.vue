@@ -59,7 +59,7 @@ export default {
       sliders: true,
       slide: 0,
       autoplay: true,
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       info: {
         body: [
           {
@@ -98,12 +98,8 @@ export default {
           value: key
         }
 
-        console.log(n)
-
         _this.options.push(n)
       })
-
-      console.log(this.options)
     }
   }
 }

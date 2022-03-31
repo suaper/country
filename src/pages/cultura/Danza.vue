@@ -1,6 +1,6 @@
 <template>
-  <q-page class="flex flex-center view_quienes_somos">
-    <Menugastronomia/>
+  <q-page class="flex flex-center view_quienes_somos view_danza">
+    <Menucultura/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -9,26 +9,34 @@
         class="banner_top"
         navigation
         infinite
-        :autoplay="autoplay"
+        autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
+        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
         <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Gastronomía</div>
-            <p class="intro text-center">Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero, a pretium massa auctor..</p>
+            <div class="center text-center q-my-lg titulos">Danza</div>
+            <p class="intro text-center">El ballet clásico o danza clásica es una forma de danza cuyos movimientos están basados en el control total y absoluto del cuerpo, se recomienda empezar desde temprana edad debido a su grado de dificultad. A diferencia de otras danzas, en el ballet cada paso está codificado. Participan invariablemente las manos, brazos, tronco, cabeza, pies, rodillas, todo el cuerpo en una conjunción simultánea de dinámica muscular y mental que debe expresarse en total armonía de movimientos.</p>
+        </div>
+        <div class="setenta centrar">
+            <ul class="wrp_actions_center_spa">
+               <li><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-compania_0.png"><strong>Escuelas</strong><a href="" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+                 <li><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-compania_0.png"><strong>Compañía</strong><a href="" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+                 <li><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-obras_0.png"><strong>Obras</strong><a href="" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+            </ul>
         </div>
     </div>
+
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-            <h4 class="subtitle">Country al día</h4>
+            <h4 class="subtitle">Noticias</h4>
             <div class="row flex justify-center  items-start">
                 <table class="sesenta">
                     <tr>
                         <td>
-                            <img src="../assets/HazteSocio/socio01.png" />
+                            <img src="../../assets/HazteSocio/socio01.png" />
                         </td>
                         <td>
                             <h5 class="titulo_noticias">Título de la principal noticia de esta sección, texto falso.</h5>
@@ -57,7 +65,7 @@
         </div>
     </div>
 
-    <div class="q-py-xl all_width bg_gris wrp_club">
+    <div class="q-py-xl all_width gris_home wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
             <h3 class="q-my-none">Multimedia</h3>
             <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
@@ -81,17 +89,60 @@
         </div>
       </div>
     </div>
+    <div class="q-py-none all_width bg_amarillo wrp_club">
+        <div class="row_wrap no-wrap flex justify-start">
+        <div class="q-py-md centrar text-center w_1200">
+          <div class="row_2 fitnes_last">
+              <div class="form_fitness">
+                  <h6 class="title_text">Contacto</h6>
+                  <q-form
+                      @submit="onSubmit"
+                      @reset="onReset"
+                      class="q-gutter-md"
+                  >
+                      <q-input
+                          outlined
+                          v-model="name"
+                          label="Nombres y Apellidos *"
+                          lazy-rules
+                          :rules="[ val => val && val.length > 0 || 'Please type something']"
+                      />
+                      <q-input
+                          outlined
+                          v-model="telefono"
+                          label="Número de contacto *"
+                      />
+                      <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
+                      <q-input
+                          outlined
+                          v-model="telefono"
+                          label="Rut *"
+                      />
+                      <div class="text-left">
+                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                      </div>
+                  </q-form>
+              </div>
+              <div class="staff">
+                <span>
+                aca va el widget de twitter, por favor borrar el texto cuando se coloque el widgec</span>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </q-page>
 </template>
 
 <script>
-import Menugastronomia from 'pages/submenus/Menugastronomia'
-import configServices from '../services/config'
+import Menucultura from 'pages/submenus/Menucultura'
+import configServices from '../../services/config'
 
 export default {
-  name: 'Gastronomia',
+  name: 'Danza',
   components: {
-    Menugastronomia
+    Menucultura
   },
   data () {
     return {

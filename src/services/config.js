@@ -1,6 +1,5 @@
-
 const datosConfiguracion = {
-  apiUrl: 'http://www.pwcc.markablanka.com/',
+  apiUrl: 'https://pwccdev.mkbk.digital/administrador/',
   mensajeErrorServer: 'Tenemos problemas en nuestro sistemas :( por favor envianos un pantallazo de este mensaje para seguir mejorando',
   mensajeNoInternet: 'Tenemos problemas en nuestro sistemas :( por favor envianos un pantallazo de este mensaje para seguir mejorando',
   user: 'pwcc_api',
@@ -10,29 +9,21 @@ const datosConfiguracion = {
 const configService = {
   consumerStandar: (componente, endpoind, datosJson, opciones) => {
     componente.$q.loading.show()
-    var token = ''
     var basicAuth = 'Basic ' + btoa(datosConfiguracion.user + ':' + datosConfiguracion.password)
-    componente.$axios.get(datosConfiguracion.apiUrl + 'session/token', {
+
+    componente.$axios.post(datosConfiguracion.apiUrl + endpoind, datosJson, {
       headers: { Authorization: basicAuth }
     })
       .then((response) => {
-        token = response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-    componente.$axios.post(datosConfiguracion.apiUrl + endpoind, datosJson, {
-      headers: { Authorization: basicAuth, 'x-CSRF-Token': token }
-    })
-      .then((response) => {
-        if (typeof response.data.id !== 'object') {
+        console.log(response)
+        if (typeof response.data !== 'object') {
           componente.$q.notify({
             color: 'red-4',
             textColor: 'white',
             icon: 'cloud_done',
             message: 'Ha ocurrido un error intente más tarde'
           })
-        } else if (typeof response.data.id === 'object') {
+        } else if (typeof response.data === 'object') {
           if (opciones.callBack !== undefined) {
             opciones.callBack(response.data)
           }

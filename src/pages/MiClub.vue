@@ -165,7 +165,7 @@ export default {
       info: {},
       clubsI: [],
       clubsN: [],
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       medium: false,
       medium2: false,
       itemMedium: {},

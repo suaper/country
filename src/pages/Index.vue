@@ -49,7 +49,7 @@
               <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
+              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
             </tr>
           </table>
         </div>
@@ -82,7 +82,7 @@ export default {
       video: false,
       currentVideo: '',
       banners: [],
-      urlSite: 'http://www.pwcc.markablanka.com/',
+      urlSite: 'https://pwccdev.mkbk.digital/',
       introHome: {
         field_video_youtube: []
       },
