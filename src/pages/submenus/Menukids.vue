@@ -22,13 +22,13 @@ export default {
       this.$router.push('/kids/winter-activities')
     },
     IrPlayroom () {
-      this.$router.push('/special_day')
+      this.$router.push('/kids/play-room')
     },
     IrMotor () {
-      this.$router.push('/country')
+      this.$router.push('/kids/motor-skills')
     },
     IrSport () {
-      this.$router.push('/multimedia_gastronomia')
+      this.$router.push('/kids/sport-kids')
     }
   }
 }

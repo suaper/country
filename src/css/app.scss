@@ -9,6 +9,9 @@ $font-text: 'Open Sans', sans-serif;
 body{
     font-family: $font-text;
 }
+.centrar{
+    margin: 0px auto;
+}
 .cuarenta{
     width: 40%;
 }
@@ -60,11 +63,11 @@ body{
 .w_1200{
     width: 1200px;
 }
-.centrar{
-    margin: 0px auto;
-}
 .m_left_20{
     margin-left: 20px;
+}
+.m_y_20{
+    margin: 20px 0;
 }
 .hr_amarillo{
     border: 1px solid #CA9E64;
@@ -81,6 +84,15 @@ body{
 .bg_orange{
     background: #CA9E64!important;
 }
+.ma_to_50{
+    margin-top: 50px;
+}
+.ma_to_30{
+    margin-top: 30px;
+}
+.ma_bo_30{
+    margin-bottom: 30px;
+}
 .open{
     font-family: $font-text;
     font-weight: 400;
@@ -90,6 +102,15 @@ body{
 }
 .text_azul{
     color: #1F2660;
+}
+.btn_bg_beige{
+    background: #CA9E64 padding-box !important;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    .q-btn__wrapper:before {
+        border: none;
+    }
 }
 .italic{
     text-align: center;
@@ -189,6 +210,17 @@ p{
 }
 .bg_azul{
     background: #111e51;
+}
+.franja_azul{
+    background: #111e51;
+    padding: 10px;
+    text-align: center;
+    h5{
+        font-family: $font-title;
+        font-size: 53px;
+        font-weight: 300;
+        margin: 15px 35px 15px 0;
+    }
 }
 .esquma_inferior{
     td{
@@ -765,6 +797,91 @@ p{
         width: 32%;
         padding: 0px 14px 15px;
         border-radius: 10px;
+    }
+    .botones{
+        button{
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: none;
+            background-image: none!important;
+            margin: 6px;
+            .q-btn__wrapper{
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                color: #666;
+            }
+            &.bg-primary{
+                .q-btn__wrapper{
+                    color: #1f2660;
+                    font-weight: bold;
+                    border: 1px solid #CA9E64;
+                }
+            }
+        }
+        .q-btn-group > .q-btn-item:not(:last-child) {
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .q-btn-group > .q-btn-item:not(:first-child) {
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+        .q-btn-group{
+            box-shadow: none;
+        }
+        .q-btn__wrapper {
+            padding: 1px 9px;
+            min-height: 0.572em;
+            border-radius: inherit;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .q-carousel__arrow {
+        .text-primary{
+            color: #CA9E64 !important;
+        }
+    }
+}
+
+.wrp_gallery_biblioteca{
+    .galeria_beneficios{
+        background: transparent;
+    }
+    .azul_galery{
+        text-align: center;
+        font-family: $font-title;
+        font-size: 22px;
+        letter-spacing: -0.44px;
+        color: #1F2660;
+    }
+    .tex_galery{
+        text-align: center;
+        font-size: 15px;
+        font-family: $font-text;
+        letter-spacing: 0px;
+        color: #7C7E91;
+    }
+    .treintaydos_general{
+        background: #fff;
+        width: 32%;
+        padding: 25px 14px 15px;
+        border-radius: 10px;
+        td{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .img_biblioteca{
+                width: 167px;
+                height: 129px;
+            }
+            .btn_bg_beige{
+                border-radius: 50px;
+                padding: 0;
+            }
+        }
     }
     .botones{
         button{
@@ -1468,6 +1585,54 @@ h6.peluqueria{
     }
 }
 
+.wrp_gallery_noticias{
+    .galeria_noticias{
+        background: transparent;
+    }
+    .q-carousel__control.q-carousel__navigation{
+        bottom: -12px;
+        .text-primary{
+            color: #1f2660 !important;
+        }
+    }
+    .noticia_slider{
+        width: 300px;
+        .item_galeria{
+            position: relative;
+            img{
+                width: 300px;
+                height: 380px;
+            }
+            .info_bottom{
+                background: #1F2660E6 ;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                color: #fff;
+                padding: 15px 20px;
+
+                .desc{
+                    color: #fff;
+                    margin-bottom: 5px;
+                    font-size: 14px;
+                    line-height: 1.2;
+                }
+                button{
+                    margin: 5px 0 5px;
+                    text-transform: initial;
+                }
+                .fecha{
+                    font-size: 12px;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
 .wrp_gallery_multimedia{
     .galeria_multimedia{
         background: transparent;
@@ -1558,7 +1723,7 @@ h6.peluqueria{
         }
 
         .info_bottom{
-            background: #1F2660 ;
+            background: #111958e8;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -1598,7 +1763,7 @@ h6.peluqueria{
 .list_img_link{
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-betw1een;
     align-self: start;
     padding:20px;
     li{
@@ -1698,12 +1863,108 @@ h6.peluqueria{
             text-align: left;
             font-weight: bold;
             font-size: 14px;
-            padding: 8px 10px;
+            padding: 12px 10px;
             letter-spacing: 0px;
             color: #7C7E91;
             opacity: 1;
             &:last-child{
                 font-weight: 400;
+            }
+            &.border_top{
+                border-top: 1px solid #CA9E64;
+            }
+            p{
+                margin: 0;
+            }
+        }
+    }
+}
+.weight_normal{
+    font-weight: 400;
+}
+.staff_general{
+    .raius{
+        width: 118px;
+        height: 118px;
+        border-radius: 50%;
+    }
+    .datos_staff_contacto td {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.wrp_staff_biblioteca{
+    ul{
+        padding: 0;
+    }
+    .staff_biblioteca{
+        .raius{
+            width: 118px;
+            height: 118px;
+            border-radius: 50%;
+        }
+        .datos_staff_biblioteca tr{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            td {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                p{
+                    margin: 4px;
+                }
+                .noventaycinco{
+                    width: 95%;
+                }
+            }
+        }
+    }
+}
+
+.view_danza{
+    .wrp_actions_center_spa{
+        width: auto;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+        li{
+            list-style: none;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+            width: 190px;
+            height: 142px;
+
+            img{
+                margin: 10px;
+                width: 41px;
+                height: 43px;
+            }
+            strong{
+                text-align: center;
+                font-size: 15px;
+                font-weight: bold;
+                letter-spacing: 0px;
+                color: #1F2660;
+            }
+            a{
+                text-align: center;
+                font-size: 15px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                color: #1F2660;
+                margin: 7px;
+                text-decoration: none;
             }
         }
     }

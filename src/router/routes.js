@@ -225,6 +225,13 @@ const routes = [
     ]
   },
   {
+    path: '/hazte-socio/familia-rama-deportiva',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/SummerActivities.vue') }
+    ]
+  },
+  {
     path: '/kids/summer-activities',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -235,7 +242,7 @@ const routes = [
     path: '/hazte-socio/familia-rama-deportiva',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
+      { path: '', component: () => import('pages/kids/WinterActivities.vue') }
     ]
   },
   {
@@ -245,7 +252,90 @@ const routes = [
       { path: '', component: () => import('pages/kids/WinterActivities.vue') }
     ]
   },
-
+  {
+    path: '/kids/play-room',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/PlayRoom.vue') }
+    ]
+  },
+  {
+    path: '/kids/motor-skills',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/MotorSkills.vue') }
+    ]
+  },
+  {
+    path: '/kids/sport-kids',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/SportKids.vue') }
+    ]
+  },
+  {
+    path: '/cultura',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Cultura.vue') }
+    ]
+  },
+  {
+    path: '/cultura/charlas-culturales',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/CharlasCulturales.vue') }
+    ]
+  },
+  {
+    path: '/cultura/danza',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Danza.vue') }
+    ]
+  },
+  {
+    path: '/cultura/biblioteca',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Biblioteca.vue') }
+    ]
+  },
+  {
+    path: '/cultura/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Noticias.vue') }
+    ]
+  },
+  {
+    path: '/cultura/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/eventos',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Eventos.vue') }
+    ]
+  },
+  {
+    path: '/eventos/staff',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/eventos/Staff.vue') }
+    ]
+  },
+  {
+    path: '/eventos/tipo-eventos',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/eventos/TipoEventos.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
