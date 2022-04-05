@@ -127,12 +127,11 @@ export default {
       })
     },
     openItem (multimedia) {
-      console.log(multimedia)
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
     }

@@ -1,38 +1,34 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline color="submenu" label="Gastronomía" />
-      <q-btn outline  @click="IrStaff()" color="submenu" label="Staff" />
-      <q-btn outline  @click="IrRestaurantes()" color="submenu" label="Restaurantes" />
-      <q-btn outline @click="IrSpecialDay()"  color="submenu" label="Special Days" />
-      <q-btn outline  @click="IrCountry()" color="submenu" label="Country al día" />
-      <q-btn outline  @click="IrMultimedia()" color="submenu" label="Multimedia" />
-      <q-btn outline @click="IrContactoGastronimioa()"  color="submenu" label="Contacto" />
+      <q-btn outline :disable="getDisable('/gastronomia')"  @click="goItem('/gastronomia')" color="submenu" label="Gastronomía" />
+      <q-btn outline :disable="getDisable('/gastronomia/staff')"  @click="goItem('/gastronomia/staff')" color="submenu" label="Staff" />
+      <q-btn outline :disable="getDisable('/gastronomia/restaurantes')"  @click="goItem('/gastronomia/restaurantes')" color="submenu" label="Restaurantes" />
+      <q-btn outline :disable="getDisable('/gastronomia/special-day')"  @click="goItem('/gastronomia/special-day')" color="submenu" label="Special Days" />
+      <q-btn outline :disable="getDisable('/gastronomia/country')"  @click="goItem('/gastronomia/country')" color="submenu" label="Country al día" />
+      <q-btn outline :disable="getDisable('/gastronomia/multimedia')"  @click="goItem('/gastronomia/multimedia')" color="submenu" label="Multimedia" />
+      <q-btn outline :disable="getDisable('/gastronomia/contacto')"  @click="goItem('/gastronomia/contacto')" color="submenu" label="Contacto" />
     </q-btn-group>
 </template>
 
 <script>
 
 export default {
-  name: 'Menuspa',
-
+  name: 'Menugastronomia',
+  props: {
+    currentItem: String
+  },
+  data () {
+    return {
+      current: this.currentItem
+    }
+  },
   methods: {
-    IrStaff () {
-      this.$router.push('/staff')
+    goItem (route) {
+      this.$router.push(route)
     },
-    IrRestaurantes () {
-      this.$router.push('/restaurantes')
-    },
-    IrSpecialDay () {
-      this.$router.push('/special_day')
-    },
-    IrCountry () {
-      this.$router.push('/country')
-    },
-    IrMultimedia () {
-      this.$router.push('/multimedia_gastronomia')
-    },
-    IrContactoGastronimioa () {
-      this.$router.push('/contacto_gastronomia')
+    getDisable (route) {
+      if (this.current === route) return true
+      return false
     }
   }
 }

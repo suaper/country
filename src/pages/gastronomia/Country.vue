@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <Menugastronomia/>
+    <Menugastronomia currentItem="/gastronomia/country"/>
     <div class="q-pt-xl all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Country al día</div>

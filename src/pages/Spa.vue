@@ -90,19 +90,30 @@
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
+                <a @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
               </td>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
+              <td class="tg-1pky"><a @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+              <td class="tg-2pky" rowspan="2"><a @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+              <td class="tg-3pky" rowspan="2"><a @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
+              <td class="tg-4pky"><a @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
             </tr>
           </table>
         </div>
       </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -131,7 +142,9 @@ export default {
       email: '',
       apellido: '',
       name: '',
-      rut: ''
+      rut: '',
+      video: false,
+      currentVideo: ''
     }
   },
   created () {
@@ -173,7 +186,7 @@ export default {
     },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/Spa & Wellness/json', {
+      configServices.loadData(this, '/multimedia-secciones/spa-multimedia-home/json', {
         callBack: (data) => {
           console.log(data)
           for (const item in data) {
@@ -193,11 +206,12 @@ export default {
       })
     },
     openItem (multimedia) {
+      console.log(multimedia)
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
         this.$router.push('/multimedia/' + multimedia.nid)
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
     }
