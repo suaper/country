@@ -3,9 +3,10 @@
       <q-btn outline color="submenu" label="Eventos" />
       <q-btn outline  @click="IrEventos()" color="submenu" label="Staff" />
       <q-btn outline  @click="IrTipoEventos()" color="submenu" label="Tipos de Eventos" />
-      <q-btn outline @click="IrBiblioteca()"  color="submenu" label="Espacios y Salones" />
-      <q-btn outline  @click="IrNoticias()" color="submenu" label="Country Streaming / Experience" />
+      <q-btn outline @click="IrEspacios()"  color="submenu" label="Espacios y Salones" />
+      <q-btn outline  @click="IrCountryExperience()" color="submenu" label="Country Streaming / Experience" />
       <q-btn outline  @click="IrMultimedia()" color="submenu" label="Servicios" />
+      <q-btn outline  @click="IrMatrimonios()" color="submenu" label="Matrimonios" />
       <q-btn outline color="submenu" label="Multimedia" />
       <q-btn outline color="submenu" label="Reservas" />
       <q-btn outline color="submenu" label="Contacto" />
@@ -24,11 +25,14 @@ export default {
     IrTipoEventos () {
       this.$router.push('/eventos/tipo-eventos')
     },
-    IrBiblioteca () {
-      this.$router.push('/cultura/biblioteca')
+    IrEspacios () {
+      this.$router.push('/eventos/espacios-salones')
     },
-    IrNoticias () {
-      this.$router.push('/cultura/noticias')
+    IrCountryExperience () {
+      this.$router.push('/eventos/country-experience')
+    },
+    IrMatrimonios () {
+      this.$router.push('/eventos/matrimonios')
     },
     IrMultimedia () {
       this.$router.push('/cultura/multimedia')

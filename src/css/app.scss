@@ -60,6 +60,9 @@ body{
 .w_1000{
     width: 1000px;
 }
+.w_1100{
+    width: 1100px;
+}
 .w_1200{
     width: 1200px;
 }
@@ -106,6 +109,15 @@ body{
 .btn_bg_beige{
     background: #CA9E64 padding-box !important;
     color: #fff;
+    border: none;
+    padding: 5px;
+    .q-btn__wrapper:before {
+        border: none;
+    }
+}
+.sin_borde{
+    background: none padding-box !important;
+    color: #1F2660;
     border: none;
     padding: 5px;
     .q-btn__wrapper:before {
@@ -1967,5 +1979,61 @@ h6.peluqueria{
                 text-decoration: none;
             }
         }
+    }
+}
+.browse_salones{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.card_espacios{
+    border-radius: 0px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #CA9E64;
+    opacity: 1;
+    box-shadow: none;
+    margin: 25px 15px;
+    .q-card__section{
+        padding: 0px;
+    }
+    h5{
+        margin: 6px 0;
+        text-align: center;
+        font-size: 24px;
+        font-family: $font-text;
+        letter-spacing: 0px;
+        color: #1F2660;
+        opacity: 1;
+    }
+    ul{
+        padding: 0;
+        margin: 0;
+        li{
+            text-align: center;
+            font-size: 15px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #7C7E91;
+            opacity: 1;
+            list-style: none;
+            position: relative;
+
+            img{
+                width: 295px;
+                height: 210px;
+            }
+        }
+    }
+}
+.row_1_experience{
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: start;
+    justify-content: space-between;
+
+    img{
+        max-width: 460px;
     }
 }
