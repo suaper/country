@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <Menueventos/>
+    <Menueventos currentItem="/gastronomia/staff"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -10,44 +10,37 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info[0].field_banner_seccion" :key="key" :name="key" :img-src="urlSite + banner.trim()" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Staff</div>
-            <p class="intro text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero sollicitudin, a pretium massa auctor.</p>
+            <p class="intro text-center" v-html="info[0].body"></p>
         </div>
     </div>
 
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
+    <div :class="key % 2 === 0 ? 'q-py-xl all_width bg_amarillo wrp_club hazte_socio' : 'q-py-xl all_width gris_home wrp_club hazte_socio'" v-for="(item, key) in info" :key="key">
         <div class="centrar w_1200">
-          <table class="contenido_fitness">
+          <table class="contenido_fitness" v-show="key % 2 === 0">
               <tr>
                   <td>
-                      <h6 class="title_text">Titulo 1 <br>/Staff 1</h6>
-                      <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan.</p>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan.</p>
+                      <h6 class="title_text">{{ item.field_titulo_bloque }}</h6>
+                      <p v-html="item.field_bloque_texto"></p>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio01.png" />
+                      <img :src="urlSite + item.field_imagen_bloque" />
                   </td>
               </tr>
           </table>
-        </div>
-    </div>
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_fitness">
+          <table class="contenido_fitness" v-show="key % 2 !== 0">
               <tr>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                      <img :src="urlSite + item.field_imagen_bloque" />
                   </td>
                   <td>
-                      <h6 class="title_text">Titulo 2 <br>/Staff 2</h6>
-                      <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan.</p>
+                      <h6 class="title_text">{{ item.field_titulo_bloque }}</h6>
+                      <p v-html="item.field_bloque_texto"></p>
                   </td>
               </tr>
           </table>
@@ -58,6 +51,7 @@
 
 <script>
 import Menueventos from 'pages/submenus/Menueventos'
+import configServices from '../../services/config'
 
 export default {
   name: 'Staff',
@@ -68,8 +62,30 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
-      pop_consultar: false
+      info: [
+        {
+          field_banner_seccion: ''
+        }
+      ],
+      pop_consultar: false,
+      urlSite: 'https://pwccdev.mkbk.digital/'
+    }
+  },
+  created () {
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/staff-eventos/json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.info = data
+          _this.slide = 0
+          _this.info[0].field_banner_seccion = _this.info[0].field_banner_seccion.split(',')
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

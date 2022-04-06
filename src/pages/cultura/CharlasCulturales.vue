@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menucultura/>
+    <Menucultura currentItem="/cultura/charlas-culturales"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -11,14 +11,13 @@
         infinite
         autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Charlas Culturales</div>
-            <p class="intro text-center">Cada año el Country agenda una entretenida cartelera de charlas culturales en convenio con la Red Cultural. Magdalena Merbilháa y Bárbara Bustamante nos deleitan una vez al mes con distintas temáticas que abordan desde la historia, los detalles inéditos y en una sesión interactiva los socios pueden conocer la vida y obra de los más interesantes personajes o también procesos históricos como guerras, revoluciones o incluso movimientos que cambiaron el mundo.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
     </div>
 
@@ -38,97 +37,18 @@
                 height="300px"
                 class="galeria_beneficios"
                 >
-                <q-carousel-slide :name="1" class="column no-wrap">
+                <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in events" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general">
+                        <div class="treintaydos_general" v-for="(event, eventKey) in item" :key="eventKey">
                             <table class="galeri_event">
                                 <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
+                                    <th class="fecha">{{ getDate(event.field_fecha_evento) }}</th>
+                                    <th class="hora">{{ getHour(event.field_fecha_evento) }}</th>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </q-carousel-slide>
-                <q-carousel-slide  :name="2" class="column no-wrap">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
+                                        <h5 class="name_event">{{ event.title }}</h5>
+                                        <p class="desc_event" v-html="event.field_detalle_evento"></p>
                                         <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
@@ -139,8 +59,9 @@
                 </q-carousel>
                 <div class="row justify-center botones">
                     <q-btn-toggle
-                        glossy
-                        v-model="slidecontent"
+                      glossy
+                      v-model="slidecontent"
+                      :options="[]"
                     />
                 </div>
             </div>
@@ -155,17 +76,17 @@
 
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
-          <table class="esquma_inferior" v-if="multimediaHome.length">
+          <table class="esquma_inferior">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
               </td>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
+              <td class="tg-1pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
+              <td class="tg-4pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
             </tr>
           </table>
         </div>
@@ -197,40 +118,27 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="telefono"
+                          v-model="rut"
                           label="Rut *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>
               <div class="staff">
               <h6 class="title_text">Staff</h6>
                  <div class="flex">
-                    <table class="datos_staff_contacto">
+                    <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
                         <tr>
                             <td>
-                                <img class="raius" src="../../assets/HazteSocio/socio01.png" />
+                                <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
                             </td>
                             <td>
-                                <p><strong> Nombres y apellidos  </strong></p>
-                                <p><strong> Cargo </strong></p>
-                                <p>correo@pwcc.cl </p>
-                                <p>123123123</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td>
-                                <img class="raius" src="../../assets/HazteSocio/socio01.png" />
-                            </td>
-                            <td>
-                                <p><strong> Nombres y apellidos  </strong></p>
-                                <p><strong> Cargo </strong></p>
-                                <p>correo@pwcc.cl </p>
-                                <p>123123123</p>
+                                <p><strong>{{ personal.field_nombre_staff }}</strong></p>
+                                <p><strong> {{ personal.field_cargo_staff }} </strong></p>
+                                <p>{{ personal.field_correo_staff }}</p>
+                                <p>{{ personal.field_numero_staff }}</p>
                             </td>
                         </tr>
                     </table>
@@ -240,6 +148,17 @@
         </div>
       </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -255,22 +174,122 @@ export default {
   data () {
     return {
       sliders: true,
+      video: false,
+      currentVideo: '',
       slide: 1,
-      info: {},
+      slidecontent: 0,
+      info: {
+        body: [
+          { value: '' }
+        ]
+      },
       urlSite: 'https://pwccdev.mkbk.digital/',
-      multimediaHome: [],
-      pop_reservar_spa: false
+      multimediaHome: [
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' }
+      ],
+      pop_reservar_spa: false,
+      name: '',
+      email: '',
+      telefono: '',
+      rut: '',
+      personal: {
+        field_imagen_perfil: ''
+      },
+      events: []
     }
   },
   created () {
+    this.getInfo()
     this.getMultimediaHome()
+    this.getEvents()
   },
   methods: {
+    onReset () {
+
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Charlas Culturales',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    getDate (dateInput) {
+      var date = new Date(dateInput)
+      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
+      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
+    },
+    getHour (dateInput) {
+      var date = new Date(dateInput)
+      var dateAmPm = this.formatAMPM(date)
+
+      var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
+      var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
+
+      return hours + ':' + minutes + ' ' + dateAmPm
+    },
+    formatAMPM (date) {
+      var hours = date.getHours()
+      var ampm = hours >= 12 ? 'pm' : 'am'
+      return ampm
+    },
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/180?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+        callBack: (data) => {
+          _this.personal = data
+        }
+      })
+    },
+    getEvents () {
+      var _this = this
+      configServices.loadData(this, '/eventos/cultura/json', {
+        callBack: (data) => {
+          const n = 3
+          _this.events = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+        }
+      })
+    },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
+      configServices.loadData(this, '/multimedia-secciones/charlas-culturales/json', {
         callBack: (data) => {
-          console.log(data)
+          _this.multimediaHome = []
+
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }

@@ -10,18 +10,16 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Experience</div>
-            <p class="intro text-center">Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero, a pretium massa auctor.</p>
+            <p class="intro text-center" v-html="info.body[0].value">Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero, a pretium massa auctor.</p>
         </div>
         <div class="w_1100 q-my-xl q-py-xl flex centrar justify-between row_1_experience">
-            <img src="../../assets/HazteSocio/socio01.png" />
-            <img src="../../assets/HazteSocio/socio01.png" />
+            <iframe v-for="(item, key) in info.field_video_youtube" :key="key" width="400" height="300" :src="'https://www.youtube.com/embed/' + item.video_id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -33,18 +31,18 @@
             </div>
             <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
                 <div class="q-py-md">
-                <table class="esquma_inferior" v-if="multimediaHome.length">
-                    <tr>
+                <table class="esquma_inferior">
+                  <tr>
                     <td class="tg-0pky" rowspan="2">
-                        <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                      <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
                     </td>
-                    <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-                    <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-                    <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
-                    </tr>
-                    <tr>
-                    <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
-                    </tr>
+                    <td class="tg-1pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+                    <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+                    <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
+                  </tr>
+                  <tr>
+                    <td class="tg-4pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
+                  </tr>
                 </table>
                 </div>
             </div>
@@ -56,19 +54,30 @@
             <ul class="contacto_footer">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
-                    <span>mvaldivia@pwcc.cl</span>
+                    <span>{{ contactInfo.field_correo_electronico[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 9 98215362</span>
+                    <span>{{ contactInfo.field_numero[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 2 2757 5700 </span>
+                    <span>{{ contactInfo.field_contacto_2[0].value }}</span>
                 </li>
             </ul>
         </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -85,22 +94,41 @@ export default {
     return {
       sliders: true,
       slide: 1,
+      video: false,
+      currentVideo: '',
       info: {},
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
+      contactInfo: [],
       pop_consultar: false,
       slidecontent: 1
     }
   },
   created () {
+    this.getInfo()
     this.getMultimediaHome()
   },
   methods: {
-    getMultimediaHome () {
+    getInfo () {
       var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
+      configServices.loadData(this, '/node/164?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/node/401?_format=json', {
         callBack: (data) => {
           console.log(data)
+          _this.contactInfo = data
+        }
+      })
+    },
+    getMultimediaHome () {
+      var _this = this
+      configServices.loadData(this, 'multimedia-secciones/country-experience/json', {
+        callBack: (data) => {
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }
@@ -109,7 +137,6 @@ export default {
       })
     },
     openItem (multimedia) {
-      console.log(multimedia)
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {

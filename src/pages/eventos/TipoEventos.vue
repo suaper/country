@@ -10,62 +10,56 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">¡Tu evento ideal, lo haces realidad al estilo Country!</div>
-            <p class="intro text-center">Desliza para conocer los diferentes tipos de eventos que tenemos para ti de acuerdo a tus necesidades y requerimientos</p>
+            <div class="center text-center q-my-lg titulos">{{ info.title[0].value }}</div>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
+  <div :class="(key % 2 === 0) ? 'q-py-xl all_width bg_amarillo wrp_club hazte_socio' : 'q-py-xl all_width gris_home wrp_club hazte_socio'" v-for="(item, key) in eventTypes" :key="key">
         <div class="centrar w_1200">
           <table class="contenido_fitness q-my-md">
-              <tr>
+              <tr v-show="key % 2 === 0">
                   <td>
-                  <td>
-                      <h6 class="title_text">Evento Socio</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero sollicitudin, a pretium massa auctor.</p>
-                      <q-btn outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <h6 class="title_text">{{ item.title }}</h6>
+                      <p v-html="item.body"></p>
+                      <q-btn type="a" :href="item.field_cotiza" target="_blank" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio01.png" />
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_fitness">
-              <tr>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-                  <td>
-                  <td>
-                      <h6 class="title_text">Evento Empresa Socio</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero sollicitudin, a pretium massa auctor.</p>
-                      <q-btn outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                    <q-carousel
+                      animated
+                      v-model="item.slide"
+                      arrows
+                      class="banner_top"
+                      infinite
+                    >
+                      <q-carousel-slide :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
+                        <img :src="urlSite + image.trim()" />
+                      </q-carousel-slide>
+                    </q-carousel>
                   </td>
               </tr>
-          </table>
-        </div>
-    </div>
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_fitness q-my-md">
-              <tr>
+              <tr v-show="key % 2 !== 0">
                   <td>
-                  <td>
-                      <h6 class="title_text">Evento Empresa Externo</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero sollicitudin, a pretium massa auctor.</p>
-                      <q-btn outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                    <q-carousel
+                      animated
+                      v-model="item.slide"
+                      arrows
+                      class="banner_top"
+                      infinite
+                    >
+                      <q-carousel-slide :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
+                        <img :src="urlSite + image.trim()" />
+                      </q-carousel-slide>
+                    </q-carousel>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio01.png" />
+                      <h6 class="title_text">{{ item.title }}</h6>
+                      <p v-html="item.body"></p>
+                      <q-btn type="a" :href="item.field_cotiza" target="_blank" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
               </tr>
           </table>
@@ -76,6 +70,7 @@
 
 <script>
 import Menueventos from 'pages/submenus/Menueventos'
+import configServices from '../../services/config'
 
 export default {
   name: 'Staff',
@@ -85,9 +80,50 @@ export default {
   data () {
     return {
       sliders: true,
-      slide: 1,
-      info: {},
-      pop_consultar: false
+      slide: 0,
+      info: {
+        title: [
+          { value: '' }
+        ],
+        field_banner_seccion: [
+          {}
+        ],
+        body: [
+          { value: '' }
+        ],
+        field_cotiza: [
+          { uri: '' }
+        ]
+      },
+      pop_consultar: false,
+      urlSite: 'https://pwccdev.mkbk.digital/',
+      eventTypes: []
+    }
+  },
+  created () {
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/399?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/tipos-eventos/json', {
+        callBack: (data) => {
+          for (const item of data) {
+            item.field_galeria_tipos_eventos = item.field_galeria_tipos_eventos.split(',')
+            item.slide = 0
+            _this.eventTypes.push(item)
+          }
+
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }
