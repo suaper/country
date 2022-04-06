@@ -66,6 +66,15 @@ body{
 .w_1200{
     width: 1200px;
 }
+.w_sesenta{
+    width: 60%;
+}
+.w_cincuenta {
+    width: 50%;
+}
+.w_cuarenta{
+    width: 40%;
+}
 .m_left_20{
     margin-left: 20px;
 }
@@ -137,6 +146,9 @@ h3{
     font-family: $font-title;
     color: #1F2660;
 }
+.text_gry{
+    color: #7C7E91;
+}
 p{
     letter-spacing: 0px;
     color: #7C7E91;
@@ -177,13 +189,14 @@ p{
             background: #1f2660;
             width: 100%;
             .q-tabs__content{
-                max-width: 1200px;
+                max-width: 1500px;
                 margin: 0px auto;
                 display: flex;
                 justify-content: center;
                 flex-wrap: nowrap;
                 .q-tab {
-                    padding: 0 2px;
+                    padding: 0px;
+                    width: 120px;
                 }
             }
         }
@@ -784,6 +797,95 @@ p{
 .cuotas{
     .box_download{
         margin: 0;
+    }
+}
+.wrp_gallery_video{
+    .botones{
+        button{
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: none;
+            background-image: none!important;
+            margin: 6px;
+            .q-btn__wrapper{
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                color: #666;
+            }
+            &.bg-primary{
+                .q-btn__wrapper{
+                    color: #1f2660;
+                    font-weight: bold;
+                    border: 1px solid #CA9E64;
+                }
+            }
+        }
+        .q-btn-group > .q-btn-item:not(:last-child) {
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .q-btn-group > .q-btn-item:not(:first-child) {
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+        .q-btn-group{
+            box-shadow: none;
+        }
+        .q-btn__wrapper {
+            padding: 1px 9px;
+            min-height: 0.572em;
+            border-radius: inherit;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+.wrp_gallery_multimedia{
+    .botones{
+        button{
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: none;
+            background-image: none!important;
+            margin: 6px;
+            .q-btn__wrapper{
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                color: #666;
+            }
+            &.bg-primary{
+                .q-btn__wrapper{
+                    color: #1f2660;
+                    font-weight: bold;
+                    border: 1px solid #CA9E64;
+                }
+            }
+        }
+        .q-btn-group > .q-btn-item:not(:last-child) {
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .q-btn-group > .q-btn-item:not(:first-child) {
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+        .q-btn-group{
+            box-shadow: none;
+        }
+        .q-btn__wrapper {
+            padding: 1px 9px;
+            min-height: 0.572em;
+            border-radius: inherit;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .q-carousel__arrow {
+        .text-primary{
+            color: #CA9E64 !important;
+        }
     }
 }
 .wrp_gallery_beneficios{
@@ -1400,6 +1502,12 @@ p{
             display: block;
         }
     }
+    &.menos_p{
+        max-width: 1200px;
+        a{
+            padding: 10px 10px;
+        }
+    }
 }
 h6.peluqueria{
     margin-top: 0 !important;
@@ -1581,6 +1689,7 @@ h6.peluqueria{
                     margin-bottom: 5px;
                     font-size: 14px;
                     line-height: 1.2;
+                    display: block;
                 }
                 button{
                     margin: 5px 0 5px;
@@ -1678,17 +1787,22 @@ h6.peluqueria{
                 .desc{
                     color: #fff;
                     margin-bottom: 5px;
-                    font-size: 24px;
+                    font-size: 22px;
                     line-height: 1.2;
+                    display: block;
+                    width: 67%;
                 }
                 button{
-                    margin: 5px 0 5px;
+                    margin: 5px 5px 5px;
                     text-transform: initial;
                     .q-btn__wrapper:before{
                         box-shadow: none;
                     }
                     .q-btn__wrapper{
                         padding: 0;
+                    }
+                    .on-right {
+                        margin-left: 5px;
                     }
                 }
                 .fecha{
@@ -2035,5 +2149,10 @@ h6.peluqueria{
 
     img{
         max-width: 460px;
+    }
+}
+.sin_borde{
+    &:after{
+        display: none;
     }
 }
