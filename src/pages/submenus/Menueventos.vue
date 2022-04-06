@@ -7,9 +7,8 @@
       <q-btn outline  @click="IrCountryExperience()" color="submenu" label="Country Streaming / Experience" />
       <q-btn outline  @click="IrMultimedia()" color="submenu" label="Servicios" />
       <q-btn outline  @click="IrMatrimonios()" color="submenu" label="Matrimonios" />
-      <q-btn outline color="submenu" label="Multimedia" />
-      <q-btn outline color="submenu" label="Reservas" />
-      <q-btn outline color="submenu" label="Contacto" />
+      <q-btn outline color="submenu"  @click="IrMultimedia()" label="Multimedia" />
+      <q-btn outline color="submenu" @click="IrContacto()" label="Contacto" />
     </q-btn-group>
 </template>
 
@@ -35,7 +34,10 @@ export default {
       this.$router.push('/eventos/matrimonios')
     },
     IrMultimedia () {
-      this.$router.push('/cultura/multimedia')
+      this.$router.push('/eventos/multimedia')
+    },
+    IrContacto () {
+      this.$router.push('/eventos/contacto')
     }
   }
 }

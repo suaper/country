@@ -357,6 +357,27 @@ const routes = [
       { path: '', component: () => import('pages/eventos/Matrimonios.vue') }
     ]
   },
+  {
+    path: '/eventos/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/eventos/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/eventos/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/eventos/Contacto.vue') }
+    ]
+  },
+  {
+    path: '/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Noticias.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

@@ -18,7 +18,7 @@
         <q-route-tab to="/cultura" label="Cultura" />
         <q-route-tab to="/Deportes" label="Deportes" />
         <q-route-tab to="/spa" label="Spa & Wellness" />
-        <q-route-tab to="/Multimedia" label="Multimedia" />
+        <q-route-tab to="/noticias" label="Noticias" />
         <q-route-tab to="/gastronomia" label="Gastronomía" />
         <q-route-tab to="/kids" label="Kids" />
         <q-route-tab to="/Contacto" label="Contacto" />
