@@ -392,6 +392,27 @@ const routes = [
       { path: '', component: () => import('pages/DetalleMultimedia.vue') }
     ]
   },
+  {
+    path: '/calendario',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Calendario.vue') }
+    ]
+  },
+  {
+    path: '/calendario/deportes',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/calendario/CalendarioDeportes.vue') }
+    ]
+  },
+  {
+    path: '/calendario/spa',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/calendario/CalendarioSpa.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
