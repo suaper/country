@@ -38,7 +38,7 @@
                         <td>
                             <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
                             <p v-html="notices[0].body"></p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn outline class="azul q-my-md centrar bg_white_i" @click="irDetalleNoticia()" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>
@@ -283,6 +283,9 @@ export default {
         this.currentVideo = currentVideo[0]
         this.video = true
       }
+    },
+    irDetalleNoticia () {
+      this.$router.push('/detalle-noticia')
     }
   }
 }
