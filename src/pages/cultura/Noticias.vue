@@ -1,20 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos view_danza">
-    <Menucultura/>
-    <div class="q-py-none all_width">
-      <q-carousel
-        animated
-        v-model="slide"
-        arrows
-        class="banner_top"
-        navigation
-        infinite
-        autoplay="autoplay"
-      >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-      </q-carousel>
-    </div>
+    <Menucultura currentItem="/cultura/noticias"/>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Noticias</div>
@@ -36,68 +22,14 @@
                         height="400px"
                         class="galeria_noticias"
                         >
-                        <q-carousel-slide :name="1" class="column no-wrap">
+                        <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in notices" :key="key">
                             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                                <div class="noticia_slider">
+                                <div class="noticia_slider" v-for="(notice, noticeKey) in item" :key="noticeKey">
                                     <div class="item_galeria">
-                                        <img src="../../assets/Gastronomia/i_contry_f.jpeg" />
+                                        <img :src="urlSite + notice.field_imagen_noticia" />
                                         <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </q-carousel-slide>
-                        <q-carousel-slide :name="2" class="column no-wrap">
-                            <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
+                                            <span class="fecha">{{ notice.created }}</span>
+                                            <p class="desc" v-html="notice.body"></p>
                                             <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -109,6 +41,7 @@
                             <q-btn-toggle
                                 glossy
                                 v-model="slidecontent"
+                                :options="[]"
                             />
                         </div>
                     </div>
@@ -135,35 +68,25 @@ export default {
       info: {},
       slidecontent: 1,
       urlSite: 'https://pwccdev.mkbk.digital/',
-      multimediaHome: [],
+      notices: [],
       pop_reservar_spa: false
     }
   },
   created () {
-    this.getMultimediaHome()
+    this.getNotices()
   },
   methods: {
-    getMultimediaHome () {
+    getNotices () {
       var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
+      configServices.loadData(this, '/noticias/cultura/json', {
         callBack: (data) => {
-          console.log(data)
-          for (const item in data) {
-            _this.multimediaHome.push(data[item])
-          }
+          const n = 3
+          _this.notices = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
           _this.$q.loading.hide()
         }
       })
-    },
-    openItem (multimedia) {
-      console.log(multimedia)
-      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
-      } else {
-        var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
-        this.video = true
-      }
     }
   }
 }

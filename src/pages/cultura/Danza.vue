@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos view_danza">
-    <Menucultura/>
+    <Menucultura currentItem="/cultura/danza"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -11,20 +11,17 @@
         infinite
         autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Danza</div>
-            <p class="intro text-center">El ballet clásico o danza clásica es una forma de danza cuyos movimientos están basados en el control total y absoluto del cuerpo, se recomienda empezar desde temprana edad debido a su grado de dificultad. A diferencia de otras danzas, en el ballet cada paso está codificado. Participan invariablemente las manos, brazos, tronco, cabeza, pies, rodillas, todo el cuerpo en una conjunción simultánea de dinámica muscular y mental que debe expresarse en total armonía de movimientos.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <div class="setenta centrar">
             <ul class="wrp_actions_center_spa">
-               <li><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-compania_0.png"><strong>Escuelas</strong><a href="" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
-                 <li><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-compania_0.png"><strong>Compañía</strong><a href="" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
-                 <li><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-obras_0.png"><strong>Obras</strong><a href="" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+               <li v-for="(item, key) in ballet" :key="key"><img :src="urlSite + item.field_icono_item"><strong>{{ item.field_titulo_item_1 }}</strong><a :href="item.field_enlace_item" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
             </ul>
         </div>
     </div>
@@ -36,11 +33,11 @@
                 <table class="sesenta">
                     <tr>
                         <td>
-                            <img src="../../assets/HazteSocio/socio01.png" />
+                            <img :src="urlSite + notices[0].field_imagen_noticia" />
                         </td>
                         <td>
-                            <h5 class="titulo_noticias">Título de la principal noticia de esta sección, texto falso.</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet…</p>
+                            <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
+                            <p v-html="notices[0].body"></p>
                             <q-btn outline class="azul q-my-md centrar bg_white_i" @click="irDetalleNoticia()" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
@@ -48,15 +45,15 @@
                 <table class="treintaycinco">
                     <tr>
                         <td>
-                            <h5 class="titulo_noticias">Título de noticias secundarias, texto falso.</h5>
-                            <p>Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet lorem…</p>
+                            <h5 class="titulo_noticias">{{ notices[1].title }}</h5>
+                            <p v-html="notices[1].body"></p>
                             <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <h5 class="titulo_noticias">Título de noticias secundarias, texto falso.</h5>
-                            <p>Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique…</p>
+                            <h5 class="titulo_noticias">{{ notices[2].title }}</h5>
+                            <p v-html="notices[2].body"></p>
                             <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
@@ -73,17 +70,17 @@
 
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
-          <table class="esquma_inferior" v-if="multimediaHome.length">
+          <table class="esquma_inferior">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
               </td>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
+              <td class="tg-1pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
+              <td class="tg-4pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
             </tr>
           </table>
         </div>
@@ -132,6 +129,17 @@
         </div>
       </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -147,22 +155,119 @@ export default {
   data () {
     return {
       sliders: true,
+      video: false,
+      currentVideo: '',
       slide: 1,
-      info: {},
+      slidecontent: 0,
+      info: {
+        body: [
+          { value: '' }
+        ]
+      },
       urlSite: 'https://pwccdev.mkbk.digital/',
-      multimediaHome: [],
-      pop_reservar_spa: false
+      multimediaHome: [
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' },
+        { field_portada_multimedia: '' }
+      ],
+      pop_reservar_spa: false,
+      name: '',
+      email: '',
+      telefono: '',
+      rut: '',
+      personal: {
+        field_imagen_perfil: ''
+      },
+      ballet: [],
+      notices: [
+        {
+          title: '',
+          field_imagen_noticia: ''
+        },
+        {
+          title: '',
+          field_imagen_noticia: ''
+        },
+        {
+          title: '',
+          field_imagen_noticia: ''
+        }
+      ]
     }
   },
   created () {
+    this.getInfo()
     this.getMultimediaHome()
+    this.getNotices()
   },
   methods: {
-    getMultimediaHome () {
+    onReset () {
+
+    },
+    onSubmit () {
       var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Charlas Culturales',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/199?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/items-ballet/json', {
+        callBack: (data) => {
+          _this.ballet = data
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+        callBack: (data) => {
+          _this.personal = data
+        }
+      })
+    },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias/danza-y-ballet/json', {
         callBack: (data) => {
           console.log(data)
+          _this.notices = data
+        }
+      })
+    },
+    getMultimediaHome () {
+      var _this = this
+      configServices.loadData(this, 'multimedia-secciones/danza-y-ballet/json', {
+        callBack: (data) => {
+          _this.multimediaHome = []
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }
@@ -171,7 +276,6 @@ export default {
       })
     },
     openItem (multimedia) {
-      console.log(multimedia)
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {
