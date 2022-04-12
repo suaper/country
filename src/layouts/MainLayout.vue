@@ -6,7 +6,7 @@
       <div class="wrap_top center">
         <img class="q-mt-lg" alt="img2" src="../assets/Home/logo-country-club.png">
         <div class="btn_right_top">
-          <a href=""><span class="icono"></span> <span class="enlace">Ingresa si eres socio </span></a>
+
         </div>
       </div>
       <q-tabs align="center">
@@ -18,9 +18,10 @@
         <q-route-tab to="/cultura" label="Cultura" />
         <q-route-tab to="/Deportes" label="Deportes" />
         <q-route-tab to="/spa" label="Spa & Wellness" />
-        <q-route-tab to="/noticias" label="Noticias" />
         <q-route-tab to="/gastronomia" label="Gastronomía" />
         <q-route-tab to="/kids" label="Kids" />
+        <q-route-tab to="/noticias" label="Noticias" />
+        <q-route-tab to="/calendario" label="Calendario" />
         <q-route-tab to="/Contacto" label="Contacto" />
       </q-tabs>
     </q-header>

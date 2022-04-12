@@ -60,6 +60,9 @@ body{
 .w_850{
     width: 850px;
 }
+.w_500{
+    width: 500px;
+}
 .w_30{
     width: 30%;
 }
@@ -2179,6 +2182,85 @@ h6.peluqueria{
             list-style: none;
             img{
                 max-width: 230px;
+            }
+        }
+    }
+}
+.view_calendario{
+    .wrp_actions_calendario{
+        width: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin: 0px auto 20px;
+        li{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 00px 10px 20px 10px;
+            width: 85px;
+            .wrp_animate{
+                background: #fff;
+                width: 85px;
+                height: 90px;
+                padding: 15px;
+                border-radius: 10px;
+                text-align: center;
+                .activa{
+                    display: none;
+                }
+            }
+            img{
+                margin: 10px;
+                width: 41px;
+                height: 43px;
+            }
+            strong{
+                text-align: center;
+                font-size: 15px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                color: #1F2660;
+                line-height: 1.1;
+                margin-top: 7px;
+                display: block;
+                padding: 0px 4px;
+            }
+            a{
+                text-align: center;
+                font-size: 15px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                color: #1F2660;
+                margin: 7px;
+                text-decoration: none;
+            }
+            &.active{
+                .wrp_animate{
+                    background: #7c7e8f;
+                    .normal{
+                        display: none;
+                    }
+                    .activa{
+                        display: block;
+                    }
+                }
+                strong{
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .wrp_busca_mes{
+        label{
+            padding-bottom: 0;
+            margin-top: 10px;
+            .q-field__control{
+                color: #d47c06;
+                &:before{
+                    border: 1px solid #E8C28F;
+                }
             }
         }
     }
