@@ -34,7 +34,7 @@
     <div class="q-py-md all_width bg_beige">
       <div class="row_wrap no-wrap flex justify-start">
         <h3 class="q-my-none">Multimedia</h3>
-        <q-btn class="q-ml-lg" @click="irDetalleMultimedia()" outline color="indigo-10" icon-right="east" label="Ver más" />
+        <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
 
       </div>
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
@@ -42,14 +42,14 @@
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
               </td>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
+              <td class="tg-0pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
+              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
+              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
+              <td class="tg-0pky"><a href="#" @click="openItem($event, multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
             </tr>
           </table>
         </div>
@@ -118,7 +118,6 @@ export default {
       var _this = this
       configServices.loadData(this, 'multimedia-home/json', {
         callBack: (data) => {
-          console.log(data)
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }
@@ -126,9 +125,11 @@ export default {
         }
       })
     },
-    openItem (multimedia) {
+    openItem (e, multimedia) {
+      e.preventDefault()
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
+        localStorage.setItem('multimediaId', multimedia.field_multimedia_enlace_1)
+        this.$router.push('/detalle-multimedia')
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
         this.currentVideo = currentVideo[1]

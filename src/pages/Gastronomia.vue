@@ -32,7 +32,7 @@
                         <td>
                             <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
                             <p v-html="notices[0].body"></p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[0].nid)" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>
@@ -41,14 +41,14 @@
                         <td>
                             <h5 class="titulo_noticias">{{ notices[1].title }}</h5>
                             <p v-html="notices[1].body"></p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[1].nid)" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <h5 class="titulo_noticias">{{ notices[2].title }}</h5>
                             <p v-html="notices[2].body"></p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[2].nid)" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>
@@ -67,14 +67,14 @@
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
+                <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
               </td>
-              <td class="tg-1pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
-              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
-              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
+              <td class="tg-1pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
             </tr>
             <tr>
-              <td class="tg-4pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
+              <td class="tg-4pky"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
             </tr>
           </table>
         </div>
@@ -143,7 +143,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/multimedia-secciones/gastronomia-multimedia-home/json', {
         callBack: (data) => {
-          console.log(data)
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }
@@ -168,9 +167,15 @@ export default {
         }
       })
     },
-    openItem (multimedia) {
+    goNotice (nid) {
+      localStorage.setItem('noticeId', nid)
+      this.$router.push('/detalle-noticia')
+    },
+    openItem (e, multimedia) {
+      e.preventDefault()
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
+        localStorage.setItem('multimediaId', multimedia.nid)
+        this.$router.push('/detalle-multimedia')
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
         this.currentVideo = currentVideo[1]

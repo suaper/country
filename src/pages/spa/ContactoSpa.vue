@@ -91,7 +91,6 @@ export default {
 
       configServices.loadData(this, '/personal-staff/spa-&-wellness', {
         callBack: (data) => {
-          console.log(data)
           _this.personal = data
           _this.$q.loading.hide()
         }
@@ -110,7 +109,6 @@ export default {
       }
       configServices.consumerStandar(this, 'pwcc-rest/post', data, {
         callBack: (data) => {
-          console.log(data)
           if (data.status) {
             _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
           } else {

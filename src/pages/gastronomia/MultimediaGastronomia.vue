@@ -32,7 +32,7 @@
                                 <img :src="urlSite + subItem.field_portada_multimedia" />
                                 <div class="info_bottom">
                                     <p class="desc">{{ subItem.title }}</p>
-                                    <q-btn class="text_white centrar btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
+                                    <q-btn @click="openItem(subItem)" class="text_white centrar btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                 </div>
                             </div>
                         </div>
@@ -65,32 +65,38 @@
                 height="470px"
                 class="galeria_video"
                 >
-                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in slidersContentImages" :key="key">
+                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in slidersContentVideos" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <table class="item_cien">
                             <tr>
                                 <td class="first" rowspan="0">
-                                    <img :src="urlSite + item[0].field_portada_multimedia" />
-                                    <div class="info_bottom text-center">
-                                        <p class="desc">{{ item[0].title }}</p>
-                                        <span v-html="item[0].body"></span>
-                                    </div>
+                                    <a href="#" @click="openVideo($event, item[0])">
+                                      <img :src="urlSite + item[0].field_portada_multimedia" />
+                                      <div class="info_bottom text-center">
+                                          <p class="desc">{{ item[0].title }}</p>
+                                          <span v-html="item[0].body"></span>
+                                      </div>
+                                    </a>
                                 </td>
                                 <td class="othet">
-                                    <img :src="urlSite + item[1].field_portada_multimedia" />
+                                    <a href="#" @click="openVideo($event, item[1])">
+                                    <img :src="(typeof item[1] !== 'undefined') ? urlSite + item[1].field_portada_multimedia : urlSite + item[0].field_portada_multimedia" />
                                     <div class="info_bottom text-center">
-                                        <p class="desc">{{ item[1].title }}</p>
-                                        <span v-html="item[1].body"></span>
+                                        <p class="desc">{{ (typeof item[1] !== 'undefined') ? item[1].title : item[0].title }}</p>
+                                        <span v-html="(typeof item[1] !== 'undefined') ? item[1].body : item[0].body"></span>
                                     </div>
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="othet">
-                                    <img :src="urlSite + item[2].field_portada_multimedia" />
+                                    <a href="#" @click="openVideo($event, item[2])">
+                                    <img :src="(typeof item[2] !== 'undefined') ? urlSite + item[2].field_portada_multimedia : urlSite + item[0].field_portada_multimedia" />
                                     <div class="info_bottom text-center">
-                                        <p class="desc">{{ item[2].title }}</p>
-                                        <span v-html="item[2].body"></span>
+                                        <p class="desc">{{ (typeof item[2] !== 'undefined') ? item[2].title : item[0].title }}</p>
+                                        <span v-html="(typeof item[2] !== 'undefined') ? item[2].body : item[0].body"></span>
                                     </div>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -108,6 +114,17 @@
             </div>
         </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -133,6 +150,8 @@ export default {
       optionsVideo: [],
       slidersContentImages: [],
       slidersContentVideos: [],
+      video: false,
+      currentVideo: '',
       images: [],
       videos: []
     }
@@ -165,6 +184,28 @@ export default {
           _this.$q.loading.hide()
         }
       })
+    },
+    openItem (multimedia) {
+      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
+        localStorage.setItem('multimediaId', multimedia.nid)
+        this.$router.push('/detalle-multimedia')
+      } else {
+        var currentVideo = multimedia.field_video_youtube.split('=')
+        this.currentVideo = currentVideo[0]
+        this.video = true
+      }
+    },
+    openVideo (e, multimedia) {
+      e.preventDefault()
+      console.log(multimedia)
+      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
+        localStorage.setItem('multimediaId', multimedia.nid)
+        this.$router.push('/detalle-multimedia')
+      } else {
+        var currentVideo = multimedia.field_video_youtube.split('=')
+        this.currentVideo = currentVideo[1]
+        this.video = true
+      }
     },
     getOptions () {
       var _this = this

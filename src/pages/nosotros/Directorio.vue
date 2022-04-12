@@ -77,7 +77,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/directorio/json', {
         callBack: (data) => {
-          console.log(data)
           var president = data.filter(item => {
             if (item.field_cargo === 'Presidente') {
               return true

@@ -279,8 +279,6 @@ export default {
             }
           })
 
-          console.log(_this.services)
-
           _this.$q.loading.hide()
         }
       })

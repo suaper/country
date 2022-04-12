@@ -120,7 +120,6 @@ export default {
 
       configServices.loadData(this, '/node/401?_format=json', {
         callBack: (data) => {
-          console.log(data)
           _this.contactInfo = data
         }
       })

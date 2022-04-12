@@ -7,9 +7,9 @@
     </div>
 
     <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar q-pb-xl  w_1200">
+        <div class="centrar q-pb-xl w_1200">
             <div class="cincuenta q-pd-md centrar text-center">
-              <div class="center text-center titulos">Fotos</div>
+              <div class="center text-center titulos">{{ data.title[0].value }}</div>
             </div>
             <div class="wrp_gallery_multimedia">
                 <q-carousel
@@ -24,15 +24,11 @@
                 height="250px"
                 class="galeria_multimedia"
                 >
-                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in slidersContentImages" :key="key">
+                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in info" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">
                             <div class="item_galeria">
-                                <img :src="urlSite + subItem.field_portada_multimedia" />
-                                <div class="info_bottom">
-                                    <p class="desc">{{ subItem.title }}</p>
-                                    <q-btn class="text_white centrar btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                </div>
+                                <img :src="subItem.url" />
                             </div>
                         </div>
                     </div>
@@ -42,13 +38,13 @@
                     <q-btn-toggle
                         glossy
                         v-model="slidecontent"
-                        :options="options"
+                        :options="[]"
                     />
                 </div>
             </div>
         </div>
     </div>
-    <div class="q-py-md all_width gris_home">
+    <!--<div class="q-py-md all_width gris_home">
         <div class="w_1200 q-py-md centrar text-center">
         <div class="center text-center q-my-md titulos">Videos</div>
             <div class="wrp_gallery_video">
@@ -106,7 +102,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
   </q-page>
 </template>
 
@@ -115,71 +111,36 @@ import configServices from '../services/config'
 
 export default {
   name: 'Detallemultimedia',
-
   data () {
     return {
       sliders: true,
-      slide: 1,
-      info: {},
-      pop_consultar: false,
       slidecontent: 0,
-      slidevideo: 0,
+      autoplay: true,
+      info: [],
+      data: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
-      options: [],
-      optionsVideo: [],
-      slidersContentImages: [],
-      slidersContentVideos: [],
-      images: [],
-      videos: []
+      pop_cuota: false,
+      cuotas: [],
+      id: ''
     }
   },
-  mounted () {
-    this.getMultimedia()
+  created () {
+    this.id = localStorage.getItem('multimediaId')
+    this.getInfo()
   },
   methods: {
-    getMultimedia () {
+    getInfo () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/gastronomia-multimedia-interno/json', {
+      configServices.loadData(this, '/node/' + _this.id + '?_format=json', {
         callBack: (data) => {
-          data.map((item, key) => {
-            if (item.field_tipo_de_multimedia === 'Video') {
-              _this.videos.push(item)
-            } else {
-              _this.images.push(item)
-            }
-          })
           const n = 3
-          _this.slidersContentImages = new Array(Math.ceil(_this.images.length / n))
+          _this.data = data
+          _this.info = new Array(Math.ceil(data.field_galeria_.length / n))
             .fill()
-            .map(_ => _this.images.splice(0, n))
+            .map(_ => data.field_galeria_.splice(0, n))
 
-          _this.slidersContentVideos = new Array(Math.ceil(_this.videos.length / n))
-            .fill()
-            .map(_ => _this.videos.splice(0, n))
-
-          _this.getOptions()
           _this.$q.loading.hide()
         }
-      })
-    },
-    getOptions () {
-      var _this = this
-      this.slidersContentImages.map((item, key) => {
-        var n = {
-          label: key + 1,
-          value: key
-        }
-
-        _this.options.push(n)
-      })
-
-      this.slidersContentVideos.map((item, key) => {
-        var n = {
-          label: key + 1,
-          value: key
-        }
-
-        _this.optionsVideo.push(n)
       })
     }
   }

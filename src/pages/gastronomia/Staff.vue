@@ -79,7 +79,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/staff-gastronomia/json', {
         callBack: (data) => {
-          console.log(data)
           _this.info = data
           _this.slide = 0
           _this.info[0].field_banner_seccion = _this.info[0].field_banner_seccion.split(',')

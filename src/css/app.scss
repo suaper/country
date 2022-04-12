@@ -2162,8 +2162,11 @@ h6.peluqueria{
         display: none;
     }
 }
+.noticias{
+    td{padding: 10px;}
+}
 .text_noticias{
-    text-align: left;
+    text-align: justify;
     font-size: 15px;
     letter-spacing: 0px;
     color: #7C7E91;

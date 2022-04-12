@@ -31,7 +31,7 @@
                                 <div class="info_bottom">
                                     <span class="fecha" >{{ getDate(subItem.created) }}</span>
                                     <p class="desc" v-html="subItem.body"></p>
-                                    <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
+                                    <q-btn @click="goNotice(subItem.nid)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                 </div>
                             </div>
                         </div>
@@ -88,6 +88,10 @@ export default {
       var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
 
       return hours + ':' + minutes + ' ' + dateAmPm
+    },
+    goNotice (nid) {
+      localStorage.setItem('noticeId', nid)
+      this.$router.push('/detalle-noticia')
     },
     getNotices () {
       var _this = this

@@ -57,10 +57,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/node/111?_format=json', {
         callBack: (data) => {
-          console.log(_this.info.length)
           _this.info = data
-          console.log(_this.info.length)
-
           _this.slide = data.field_banner_seccion[0].target_uuid
           _this.$q.loading.hide()
         }

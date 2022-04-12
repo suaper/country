@@ -265,7 +265,6 @@ export default {
       var _this = this
       configServices.loadData(this, 'multimedia-home/json', {
         callBack: (data) => {
-          console.log(data)
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }
@@ -274,7 +273,6 @@ export default {
       })
     },
     openItem (multimedia) {
-      console.log(multimedia)
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {

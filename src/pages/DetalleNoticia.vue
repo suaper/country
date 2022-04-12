@@ -3,17 +3,20 @@
     <div class="q-pb-md all_width gris_home etiquetas">
         <div class="center text-center q-my-lg titulos q-mt-2">Noticias</div>
         <div class="centrar w_1200">
-          <div class="center text-left q-my-lg titulo2 q-mt-2">Las mejores adaptaciones de la literatura al ballet</div>
+          <div class="center text-center q-my-lg titulo2 q-mt-2">{{ info.title[0].value }}</div>
         </div>
-        <div class="img_noticia"><img src="https://cdn.quasar.dev/img/parallax1.jpg" alt="#"></div>
+        <div class="img_noticia centrar w_1200 text-center"><img :src="info.field_imagen_noticia_2[0].url" alt="#"></div>
+        <div class="centrar w_1200 text_noticias" v-html="info.body[0].value"></div>
         <div class="centrar w_1200 text_noticias">
-          <p>Tiene un especial mérito por parte del grupo Elephant in the Black Box seguir adelante, creando y ofreciendo espectáculos con público en directo, en una época gris en la que se ha impuesto el diferido y otras formas virtuales</p>
-          <p>Comienza André Lepecki su libro Agotar la danza (2006) con una cita escogida con retranca e ironía de la decana de los críticos de ballet y danza de The New York Times, Anna Kisselgoff, publicada el 31 de diciembre de 2000. El fragmento, sacado de contexto, no ayuda mucho pero, visto en retrospectiva, sigue teniendo vigencia. Dice Kisselgoff: “Parar y seguir. Llamémoslo tendencia o tic, la creciente frecuencia de secuencias espasmódicas en la coreografía es algo imposible de ignorar. Los espectadores interesados en un flujo o continuidad de movimiento han encontrado últimamente escasos ejemplos de ello en numerosos estrenos”. Y apunta de manera arriesgada Lepecki que Kisselgoff, tras enlistar a algunos “coreógrafos espasmódicos”, informa su consideración de lo visto en David Dorfman (Nueva York) y en William Forsythe (entonces en la dirección del conjunto de Frankfurt) con una frase conclusiva: “Todo muy de hoy. ¿Y mañana qué?”. Pues estamos en ese mañana, habida cuenta de que han pasado algo más de 20 años de aquel premonitorio escrito.</p>
-
-          <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+          <table class="noticias">
+            <tr>
+              <td><img :src="info.field_imagen_noticia[0].url" alt="#"></td>
+              <td v-html="info.field_bloque_2_noticias[0].value"></td>
+            </tr>
+          </table>
         </div>
     </div>
-    <div class="q-pa-md all_width bg_white logos_footer">
+    <!--<div class="q-pa-md all_width bg_white logos_footer">
       <div class="centrar w_1200">
         <ul class="q-pd-none">
             <li class="flex flex-start">
@@ -30,11 +33,12 @@
             </li>
         </ul>
       </div>
-    </div>
+    </div>-->
   </q-page>
 </template>
 
 <script>
+import configServices from '../services/config'
 
 export default {
   name: 'Noticiadetalle',
@@ -50,7 +54,23 @@ export default {
       },
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_cuota: false,
-      cuotas: []
+      cuotas: [],
+      id: ''
+    }
+  },
+  created () {
+    this.id = localStorage.getItem('noticeId')
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/' + _this.id + '?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }
