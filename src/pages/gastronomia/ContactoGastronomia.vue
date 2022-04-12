@@ -7,7 +7,7 @@
           <div class="row_2 fitnes_last">
               <div class="form_fitness">
                   <h6 class="title_text sin_margen_top">Contacto</h6>
-                  <p class="text-left">Diligencie este formulario para recibir más información:</p>
+                  <p class="text-left" v-html="info.body[0].value"></p>
                   <q-form
                       @submit="onSubmit"
                       @reset="onReset"
@@ -28,16 +28,16 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="telefono"
+                          v-model="rut"
                           label="Rut *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>
               <div class="img_contacto">
-                <img src="../../assets/HazteSocio/socio01.png" />
+                <img :src="info.field_imagen_contacto[0].url" />
               </div>
           </div>
         </div>
@@ -47,6 +47,7 @@
 
 <script>
 import Menugastronomia from 'pages/submenus/Menugastronomia'
+import configServices from '../../services/config'
 
 export default {
   name: 'Contactogastronomia',
@@ -57,8 +58,68 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
-      pop_consultar: false
+      info:
+      {
+        body: [
+          { value: '' }
+        ],
+        field_imagen_contacto: [
+          { url: '' }
+        ]
+      },
+      pop_consultar: false,
+      telefono: '',
+      email: '',
+      urlSite: 'https://pwccdev.mkbk.digital/',
+      name: '',
+      rut: '',
+      personal: []
+    }
+  },
+  mounted () {
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+
+      configServices.loadData(this, '/node/173?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Gastronomia',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          console.log(data)
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    onReset () {
+      // reset
     }
   }
 }

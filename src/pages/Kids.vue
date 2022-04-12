@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menukids/>
+    <Menukids currentItem="/kids"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -11,41 +11,20 @@
         infinite
         autoplay="autoplay"
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">kids</div>
-            <p class="intro text-center">El éxito es solo el resultado del duro entrenamiento. Por ello, el deporte forma parte de nuestra idiosincrasia y cultura.</p>
+            <div class="center text-center q-my-lg titulos">Kids</div>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <div class="w_1200 enlaces centrar">
             <ul class="list_img_link centrer">
-                <li>
-                    <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/ewt.png" alt="">
-                    <h6 class="title">Summer Activities</h6>
-                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                </li>
-                <li>
-                    <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/ewt.png" alt="">
-                    <h6 class="title">Summer Activities</h6>
-                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                </li>
-                <li>
-                    <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/ewt.png" alt="">
-                    <h6 class="title">Summer Activities</h6>
-                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                </li>
-                <li>
-                    <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/ewt.png" alt="">
-                    <h6 class="title">Summer Activities</h6>
-                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                </li>
-                <li>
-                    <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/ewt.png" alt="">
-                    <h6 class="title">Summer Activities</h6>
-                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
+                <li v-for="(item, key) in portadas" :key="key">
+                    <img :src="urlSite + item.field_portada_kids" alt="">
+                    <h6 class="title">{{ item.title }}</h6>
+                    <a :href="'/#/kids/' + item.title.replaceAll(' ', '-').toLowerCase()">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
             </ul>
         </div>
@@ -62,14 +41,14 @@
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
               </td>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
+              <td class="tg-1pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
+              <td class="tg-4pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
             </tr>
           </table>
         </div>
@@ -101,40 +80,27 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="telefono"
+                          v-model="rut"
                           label="Rut *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>
               <div class="staff">
               <h6 class="title_text">Staff</h6>
                  <div class="flex">
-                    <table class="datos_staff_contacto">
+                    <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
                         <tr>
                             <td>
-                                <img class="raius" src="../assets/HazteSocio/socio01.png" />
+                                <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
                             </td>
                             <td>
-                                <p><strong> Nombres y apellidos  </strong></p>
-                                <p><strong> Cargo </strong></p>
-                                <p>correo@pwcc.cl </p>
-                                <p>123123123</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td>
-                                <img class="raius" src="../assets/HazteSocio/socio01.png" />
-                            </td>
-                            <td>
-                                <p><strong> Nombres y apellidos  </strong></p>
-                                <p><strong> Cargo </strong></p>
-                                <p>correo@pwcc.cl </p>
-                                <p>123123123</p>
+                                <p><strong>{{ personal.field_nombre_staff }}</strong></p>
+                                <p><strong> {{ personal.field_cargo_staff }} </strong></p>
+                                <p>{{ personal.field_correo_staff }}</p>
+                                <p>{{ personal.field_numero_staff }}</p>
                             </td>
                         </tr>
                     </table>
@@ -144,6 +110,17 @@
         </div>
       </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -160,21 +137,84 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
+      info: {
+        body: [
+          { value: '' }
+        ]
+      },
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
-      pop_reservar_spa: false
+      pop_reservar_spa: false,
+      portadas: [],
+      personal: [],
+      video: false,
+      currentVideo: '',
+      name: '',
+      email: '',
+      telefono: '',
+      rut: ''
     }
   },
   created () {
+    this.getInfo()
     this.getMultimediaHome()
   },
   methods: {
+    onReset () {
+
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Charlas Culturales',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/374?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/secciones-kids/json', {
+        callBack: (data) => {
+          _this.portadas = data
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/kids', {
+        callBack: (data) => {
+          _this.personal = data
+        }
+      })
+    },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
+      configServices.loadData(this, '/multimedia-secciones/kids/json', {
         callBack: (data) => {
-          console.log(data)
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }

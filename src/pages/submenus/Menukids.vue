@@ -1,11 +1,11 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline color="submenu" label="Kids" />
-      <q-btn outline  @click="IrSummer()" color="submenu" label="Summer Activities" />
-      <q-btn outline  @click="IrWinter()" color="submenu" label="Winter Activities" />
-      <q-btn outline @click="IrPlayroom()"  color="submenu" label="Playroom" />
-      <q-btn outline  @click="IrMotor()" color="submenu" label="Motor Skills" />
-      <q-btn outline  @click="IrSport()" color="submenu" label="Sport Kids" />
+      <q-btn outline :disable="getDisable('/kids')" @click="goItem('/kids')" color="submenu" label="Kids" />
+      <q-btn outline :disable="getDisable('/kids/summer-activities')" @click="goItem('/kids/summer-activities')" color="submenu" label="Summer Activities" />
+      <q-btn outline :disable="getDisable('/kids/winter-activities')" @click="goItem('/kids/winter-activities')" color="submenu" label="Winter Activities" />
+      <q-btn outline :disable="getDisable('/kids/play-room')" @click="goItem('/kids/play-room')" color="submenu" label="Playroom" />
+      <q-btn outline :disable="getDisable('/kids/motor-skills')" @click="goItem('/kids/motor-skills')" color="submenu" label="Motor Skills" />
+      <q-btn outline :disable="getDisable('/kids/sport-kids')" @click="goItem('/kids/sport-kids')" color="submenu" label="Sport Kids" />
     </q-btn-group>
 </template>
 
@@ -13,22 +13,21 @@
 
 export default {
   name: 'Menukids',
-
+  props: {
+    currentItem: String
+  },
+  data () {
+    return {
+      current: this.currentItem
+    }
+  },
   methods: {
-    IrSummer () {
-      this.$router.push('/kids/summer-activities')
+    goItem (route) {
+      this.$router.push(route)
     },
-    IrWinter () {
-      this.$router.push('/kids/winter-activities')
-    },
-    IrPlayroom () {
-      this.$router.push('/kids/play-room')
-    },
-    IrMotor () {
-      this.$router.push('/kids/motor-skills')
-    },
-    IrSport () {
-      this.$router.push('/kids/sport-kids')
+    getDisable (route) {
+      if (this.current === route) return true
+      return false
     }
   }
 }

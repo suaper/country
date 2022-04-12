@@ -7,28 +7,10 @@
         <div class="centrar w_1200">
         <ul class="wrp_actions_center_peluqueria menos_p">
             <li>
-                <a href="#" icon-right="arrow_right_alt">Todas las noticias</a>
+                <a href="#" @click="filterNotices($event, 'all')" icon-right="arrow_right_alt">Todas las noticias</a>
             </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Mi Club</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Hazte Socio</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Eventos</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Deportes</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Spa & Wellness</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Vivamos el Club</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Gastronomía</a>
+            <li v-for="(item, key) in filters" :key="key">
+                <a href="#" @click="filterNotices($event, item)" icon-right="arrow_right_alt">{{ item.title }}</a>
             </li>
         </ul>
             <div class="q-py-md all_width gris_home wrp_club hazte_socio">
@@ -47,68 +29,14 @@
                         height="400px"
                         class="galeria_noticias"
                         >
-                        <q-carousel-slide :name="1" class="column no-wrap">
+                        <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in notices" :key="key">
                             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                                <div class="noticia_slider">
+                                <div class="noticia_slider" v-for="(itemNotice, keyNotice) in item" :key="keyNotice">
                                     <div class="item_galeria">
-                                        <img src="../assets/Gastronomia/i_contry_f.jpeg" />
+                                        <img :src="urlSite + itemNotice.field_imagen_noticia" />
                                         <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </q-carousel-slide>
-                        <q-carousel-slide :name="2" class="column no-wrap">
-                            <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
-                                            <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="noticia_slider">
-                                    <div class="item_galeria">
-                                        <img src="../assets/Gastronomia/i_contry_f.jpeg" />
-                                        <div class="info_bottom">
-                                            <span class="fecha" >DD Mes/AAAA</span>
-                                            <p class="desc">Descripción breve descripción.</p>
+                                            <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
+                                            <p class="desc" v-html="itemNotice.body"></p>
                                             <q-btn class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -120,6 +48,7 @@
                             <q-btn-toggle
                                 glossy
                                 v-model="slidecontent"
+                                :options="[]"
                             />
                         </div>
                     </div>
@@ -141,37 +70,72 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      slidecontent: 1,
+      slidecontent: 0,
+      notices: [],
+      filters: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_reservar_spa: false
     }
   },
   created () {
-    this.getMultimediaHome()
+    this.getNotices()
   },
   methods: {
-    getMultimediaHome () {
-      var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
-        callBack: (data) => {
-          console.log(data)
-          for (const item in data) {
-            _this.multimediaHome.push(data[item])
+    getDate (dateInput) {
+      var date = new Date(dateInput)
+      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
+      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
+    },
+    filterNotices (e, item) {
+      e.preventDefault()
+      if (item === 'all') {
+        this.getNotices()
+      } else {
+        var filter = item.title.replaceAll(' ', '-').toLowerCase()
+        var _this = this
+        configServices.loadData(this, '/noticias/' + filter + '/json', {
+          callBack: (data) => {
+            const n = 3
+            _this.notices = new Array(Math.ceil(data.length / n))
+              .fill()
+              .map(_ => data.splice(0, n))
+            _this.$q.loading.hide()
           }
+        })
+      }
+    },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias-todas/json', {
+        callBack: (data) => {
+          const n = 3
+          data.map((item, key) => {
+            var filter = {
+              title: item.field_mostra_en_
+            }
+            const isFound = _this.filters.find((element, index) => {
+              if (element.title === item.field_mostra_en_) {
+                _this.filters.splice(index, 1)
+                return element
+              }
+            })
+
+            if (typeof isFound !== 'undefined') {
+              _this.filters.push(filter)
+            } else {
+              _this.filters.push(filter)
+            }
+          })
+
+          _this.notices = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+
           _this.$q.loading.hide()
         }
       })
-    },
-    openItem (multimedia) {
-      console.log(multimedia)
-      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
-      } else {
-        var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
-        this.video = true
-      }
     }
   }
 }

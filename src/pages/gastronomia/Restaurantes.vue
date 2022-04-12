@@ -1,292 +1,76 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness view_restaurantes">
     <Menugastronomia currentItem="/gastronomia/restaurantes"/>
-    <div class="q-py-none all_width">
-      <q-carousel
-        animated
-        v-model="slide"
-        arrows
-        class="banner_top"
-        navigation
-        infinite
-      >
-        <q-carousel-slide :name="1" img-src="../../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-      </q-carousel>
-    </div>
+    <div class="q-py-none all_width"></div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Restaurantes</div>
         </div>
         <ul class="wrp_actions_center_peluqueria">
-            <li>
-                <a href="#bar">Bar / Comedor</a>
-            </li>
-            <li>
-                <a href="#terraza">Terraza</a>
-            </li>
-            <li>
-                <a href="#pub">PUB</a>
-            </li>
-            <li>
-                <a href="#sports">Sports Café</a>
-            </li>
-            <li>
-                <a href="#pasada">Pasada de Golf</a>
-            </li>
-            <li>
-                <a href="#gazebo">Gazebo</a>
-            </li>
-            <li>
-                <a href="#work">Co - Work</a>
+            <li v-for="(item, key) in items" :key="key">
+                <a href="#" @click="goToAnchor($event, '#' + item.title.replaceAll(' ', '-').replaceAll('/','').toLowerCase())">{{ item.title }}</a>
             </li>
         </ul>
     </div>
 
-    <a name="uno" id="bar"></a>
-    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
+    <div :id="item.title.replaceAll(' ', '-').replaceAll('/','').toLowerCase()" v-for="(item, key) in items" :key="key" :class="key % 2 === 0 ? 'q-py-md all_width bg_amarillo wrp_club hazte_socio' : 'q-py-md all_width gris_home wrp_club hazte_socio'">
         <div class="centrar w_1200">
           <table class="contenido_pelu" id="bar">
-              <tr>
+              <tr v-show="key % 2 === 0">
                   <td>
-
-                      <h6 class="peluqueria q-mt-none">Bar / Comedor</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
+                    <h6 class="peluqueria q-mt-none">{{ item.title }}</h6>
+                    <p class="q-mt-md" v-html="item.body"></p>
+                    <hr class="hr_restaurante">
 
                     <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
+                      <li v-for="(subItem, subKey) in item.items" :key="subKey">
+                          <a href="#" @click="goToAction($event, subItem)" ><img :src="urlSite + subItem.icon"></a>
+                          <strong>{{ subItem.type }}</strong>
+                      </li>
+                    </ul>
                   </td>
                   <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
+                    <img :src="urlSite + item.image" />
+                  </td>
+              </tr>
+              <tr v-show="key % 2 !== 0">
+                  <td>
+                    <img :src="urlSite + item.image" />
+                  </td>
+                  <td>
+                    <h6 class="peluqueria q-mt-none">{{ item.title }}</h6>
+                    <p class="q-mt-md" v-html="item.body"></p>
+                    <hr class="hr_restaurante">
+
+                    <ul class="wrp_actions_center_restaurante">
+                      <li v-for="(subItem, subKey) in item.items" :key="subKey">
+                          <a href="#" @click="goToAction($event, subItem)" ><img :src="urlSite + subItem.icon"></a>
+                          <strong>{{ subItem.type }}</strong>
+                      </li>
+                    </ul>
                   </td>
               </tr>
           </table>
         </div>
     </div>
-    <a name="dos" id="terraza"></a>
-    <div class="q-py-md all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_pelu">
-              <tr>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-                  <td>
-                      <h6 class="peluqueria q-mt-none">Terraza</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
+    <q-dialog v-model="text" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <h3>{{ currentTitle }}</h3>
+          <p v-html="currentText"></p>
+        </q-card-section>
 
-                    <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-    <a name="uno" id="pub"></a>
-    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_pelu">
-              <tr>
-                  <td>
-                      <h6 class="peluqueria q-mt-none">PUB</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
-
-                    <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
-                  </td>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-     <a name="tres" id="sports"></a>
-    <div class="q-py-md all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_pelu">
-              <tr>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-                  <td>
-                      <h6 class="peluqueria q-mt-none">Sports Café</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
-
-                    <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-    <a name="cuatro" id="pasada"></a>
-    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_pelu">
-              <tr>
-                  <td>
-                      <h6 class="peluqueria q-mt-none">Pasada de Golf</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
-
-                    <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
-                  </td>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-    <a name="cinco" id="gazebo"></a>
-   <div class="q-py-md all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_pelu">
-              <tr>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-                  <td>
-                      <h6 class="peluqueria q-mt-none">Gazebo</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
-
-                    <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-    <a name="seis" id="work"></a>
-    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_pelu">
-              <tr>
-                  <td>
-                      <h6 class="peluqueria q-mt-none">Co - Work</h6>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 23:00</p>
-                      <p class="q-mt-md"><strong>Cierre de cocina:</strong>30 min antes del cierre general.</p>
-                      <hr class="hr_restaurante">
-
-                    <ul class="wrp_actions_center_restaurante">
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Carta</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Políticas</strong>
-                            </li>
-                            <li>
-                                <img src="../../assets/MiClub/i-gps.svg">
-                                <strong>Reserva</strong>
-                            </li>
-                        </ul>
-                  </td>
-                  <td>
-                      <img src="../../assets/HazteSocio/socio02.png" />
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import Menugastronomia from 'pages/submenus/Menugastronomia'
+import configServices from '../../services/config'
 
 export default {
   name: 'Restaurantes',
@@ -295,10 +79,85 @@ export default {
   },
   data () {
     return {
+      text: false,
+      currentText: '',
+      currentTitle: '',
       sliders: true,
       slide: 1,
-      info: {},
+      items: [],
+      urlSite: 'https://pwccdev.mkbk.digital/',
       pop_consultar: false
+    }
+  },
+  mounted () {
+    this.getItems()
+  },
+  methods: {
+    goToAction (e, item) {
+      e.preventDefault()
+      switch (item.type) {
+        case 'Carta':
+          window.open(this.urlSite + item.pdf)
+          break
+        case 'Políticas':
+          this.currentText = item.info
+          this.currentTitle = item.title
+          this.text = true
+          break
+        case 'Reservas':
+          window.open(item.link)
+          break
+      }
+    },
+    goToAnchor (e, item) {
+      e.preventDefault()
+      const el = document.querySelector(item)
+      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
+    getItems () {
+      var _this = this
+      configServices.loadData(this, '/restaurantes/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var restaurant = {
+              title: item.title,
+              body: item.body,
+              image: item.field_image,
+              items: []
+            }
+
+            var subItem = {
+              type: item.field_tipo_de_elemento,
+              pdf: item.field_archivo_pdf,
+              link: item.field_enlace_item,
+              icon: item.field_icono_item,
+              info: item.field_informacion_item,
+              title: item.field_titulo_item_restaurante
+            }
+            restaurant.items.push(subItem)
+
+            if (_this.items.length === 0) {
+              _this.items.push(restaurant)
+            } else {
+              const isFound = _this.items.find((element, index) => {
+                if (element.title === item.title) {
+                  _this.items.splice(index, 1)
+                  return element
+                }
+              })
+
+              if (typeof isFound !== 'undefined') {
+                isFound.items.push(subItem)
+                _this.items.push(isFound)
+              } else {
+                _this.items.push(restaurant)
+              }
+            }
+          })
+
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

@@ -228,7 +228,7 @@ const routes = [
     path: '/hazte-socio/familia-rama-deportiva',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/kids/SummerActivities.vue') }
+      { path: '', component: () => import('pages/haztesocio/FamiliaRamaDeportiva.vue') }
     ]
   },
   {
