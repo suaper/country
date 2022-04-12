@@ -41,7 +41,7 @@
                         <td>
                             <h5 class="titulo_noticias">Título de la principal noticia de esta sección, texto falso.</h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet…</p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn outline class="azul q-my-md centrar bg_white_i" @click="irDetalleNoticia()" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>
@@ -179,6 +179,9 @@ export default {
         this.currentVideo = currentVideo[0]
         this.video = true
       }
+    },
+    irDetalleNoticia () {
+      this.$router.push('/detalle-noticia')
     }
   }
 }

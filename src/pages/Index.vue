@@ -34,7 +34,7 @@
     <div class="q-py-md all_width bg_beige">
       <div class="row_wrap no-wrap flex justify-start">
         <h3 class="q-my-none">Multimedia</h3>
-        <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
+        <q-btn class="q-ml-lg" @click="irDetalleMultimedia()" outline color="indigo-10" icon-right="east" label="Ver más" />
 
       </div>
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
@@ -134,6 +134,9 @@ export default {
         this.currentVideo = currentVideo[1]
         this.video = true
       }
+    },
+    irDetalleMultimedia () {
+      this.$router.push('/detalle-multimedia')
     }
   }
 }
