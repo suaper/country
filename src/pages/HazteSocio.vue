@@ -112,7 +112,7 @@
     </q-dialog>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio" v-if="notices.lenght !== 0">
         <div class="centrar w_1200">
-            <h4 class="subtitle">Noticias</h4>
+            <h4 class="subtitle">Información</h4>
             <div class="row flex justify-center  items-start">
                 <table class="sesenta">
                     <tr>

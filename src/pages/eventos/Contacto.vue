@@ -2,11 +2,11 @@
   <q-page class="flex flex-center gris_home view_hijos_socios view_fitness">
   <Menueventos currentItem="/gastronomia/contacto"/>
 
- <div class="q-py-md q-my-xl all_width gris_home wrp_club">
+    <div class="q-py-md q-my-xl all_width gris_home wrp_club">
+      <h6 class="title centrar text-center q-py-md ">Contacto</h6>
         <div class="q-py-md centrar text-center w_1200">
           <div class="row_2 fitnes_last">
               <div class="form_fitness sin_borde">
-                  <h6 class="title_text sin_margen_top">Contacto</h6>
                   <p class="text-left">Diligencie este formulario para recibir más información:</p>
                   <q-form
                       @submit="onSubmit"
@@ -32,7 +32,7 @@
                           label="Rut *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i border_blue" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>

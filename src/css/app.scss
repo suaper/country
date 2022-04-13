@@ -54,6 +54,12 @@ body{
     letter-spacing: -1.08px;
     color: #1F2660;
 }
+.subtitle_open{
+    font-family: $font-text;
+    font-size: 25px;
+    letter-spacing: -1.08px;
+    color: #1F2660;
+}
 .w_800{
     width: 800px;
 }
@@ -410,7 +416,7 @@ p{
     background: #ca9e64 !important;
 }
 .sub_menu{
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: -40px;
     position: relative;
     z-index: 99;
@@ -956,7 +962,7 @@ p{
             }
             &.bg-primary{
                 .q-btn__wrapper{
-                    color: #1f2660;
+                    color: #CA9E64;
                     font-weight: bold;
                     border: 1px solid #CA9E64;
                 }
@@ -1039,6 +1045,8 @@ p{
         font-size: 22px;
         letter-spacing: -0.44px;
         color: #1F2660;
+        font-weight: bold;
+        font-style: italic;
     }
     .tex_galery{
         text-align: center;
@@ -1052,6 +1060,7 @@ p{
         width: 32%;
         padding: 0px 14px 15px;
         border-radius: 10px;
+        min-height: 252px;
     }
     .botones{
         button{
@@ -1220,12 +1229,12 @@ p{
     li{
         list-style: none;
         border: 1px solid #CA9E64;
-        border-radius: 25px;
         background: #fff;
-        padding: 15px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-radius: 34px;
+        padding: 11px 15px;
 
         span{
             font-size: 15px;
@@ -2279,6 +2288,15 @@ h6.peluqueria{
                 width: 295px;
                 height: 210px;
             }
+            &:nth-child(3){
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    .sin_borde{
+        .q-btn__content{
+            text-transform: capitalize;
         }
     }
 }
@@ -2415,4 +2433,108 @@ h6.peluqueria{
 }
 .f_44{
     font-size: 44px;
+}
+.q-dialog__inner{
+    .pop_descargar{
+        .box_download{
+            padding: 20px 20px 10px;
+            a{
+                display: flex;
+            }
+        }
+    }
+}
+.pop_mi_c{
+    padding: 0 20px;
+    border: 1px solid #CA9E64;
+    .enlace{
+        a{
+            color: #7C7E91;
+            font-size: 14px;
+            text-decoration: none;
+        }
+    }
+    >.row{
+        button{
+            margin-top: -18px;
+            margin-right: -18px;
+            .q-icon{
+                color: #fff;
+                border-radius: 50%;
+                background: #1F2660;
+                padding: 2px;
+            }
+        }
+    }
+}
+.pop_cuotas{
+    padding: 0 20px;
+    border: 1px solid #CA9E64;
+    button{
+        margin-top: -18px;
+        margin-right: -18px;
+        .q-icon{
+            color: #fff;
+            border-radius: 50%;
+            background: #1F2660;
+            padding: 2px;
+        }
+    }
+}
+.wrp_pop_consulta{
+    padding: 0 20px;
+    border: 1px solid #CA9E64;
+    button{
+        margin-top: -18px;
+        margin-right: -28px;
+        .q-icon{
+            color: #fff;
+            border-radius: 50%;
+            background: #1F2660;
+            padding: 2px;
+        }
+    }
+}
+.table_clubes{
+    .f_normal{
+        font-weight: 400 !important;
+    }
+    .strong{
+        font-weight: bold !important;
+    }
+}
+.galeria_beneficios{
+    .q-carousel__arrow .q-icon {
+        font-size: 28px;
+        background: #CA9E64;
+        color: #1F2660;
+        border-radius: 50%;
+    }
+}
+button.bg_white_i{
+    .q-btn__content{
+        text-transform: capitalize;
+    }
+    &:hover{
+        background: #1F2660 !important;
+        .q-btn__content{
+            color: #fff;
+        }
+    }
+}
+button.bg_orange{
+    border: 1px solid #CA9E64;
+    .q-btn__content{
+        text-transform: capitalize;
+    }
+    &:hover{
+        background: #fff !important;
+        border: 1px solid #CA9E64;
+        .q-btn__content{
+            color: #CA9E64;
+        }
+    }
+}
+.border_blue{
+    border: 1px solid #1F2660 ;
 }

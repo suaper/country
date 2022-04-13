@@ -38,7 +38,6 @@
                             <td>{{ item.field_ciudad_club }}</td>
                         </tr>
                     </table>
-                    <q-btn outline class="azul q-my-md" label="Cuotas Sociales y Reglamento" icon-right="arrow_right_alt"/>
                 </div>
                 <div class="img_clubes">
                 <img class="cien" src="../assets/MiClub/club01.png">
@@ -46,7 +45,7 @@
             </div>
         </div>
         <q-dialog v-model="medium" >
-            <q-card style="width: 700px; max-width: 80vw;">
+            <q-card class="pop_mi_c" style="width: 700px; max-width: 80vw;">
                 <q-card-section class="row items-center q-pb-none">
                     <div class="text-h6">{{ itemMedium.field_nombre_club }}</div>
                     <q-space />
@@ -82,19 +81,18 @@
                             </th>
                         </tr>
                         <tr v-for="(item, key) in clubsI" :key="key">
-                            <td>{{ item.field_pais_club }}</td>
-                            <td>
+                            <td class="f_normal">{{ item.field_pais_club }}</td>
+                            <td class="strong">
                                 <span class="openpop" @click="openMediumTwoPopup(item)">{{ item.field_nombre_club }}</span>
                             </td>
                             <td>{{ item.field_ciudad_club }}</td>
                         </tr>
                     </table>
-                    <q-btn outline class="azul q-my-md" label="Cuotas Sociales y Reglamento" icon-right="arrow_right_alt"/>
                 </div>
             </div>
         </div>
         <q-dialog v-model="medium2" >
-            <q-card style="width: 700px; max-width: 80vw;">
+            <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c">
                 <q-card-section class="row items-center q-pb-none">
                     <div class="text-h6">{{ itemTwoMedium.field_nombre_club }}</div>
                     <q-space />

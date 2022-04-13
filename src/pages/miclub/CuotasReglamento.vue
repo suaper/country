@@ -34,7 +34,7 @@
     </div>
 
     <q-dialog v-model="pop_cuota" >
-        <q-card style="width: 700px; max-width: 80vw;">
+        <q-card class="pop_cuotas" style="width: 700px; max-width: 80vw;">
             <q-card-section class="row items-center q-pb-none">
                 <div class="text-h6 open">Cuota Trimestral</div>
                 <q-space />
