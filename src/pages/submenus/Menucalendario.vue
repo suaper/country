@@ -1,8 +1,8 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline  @click="IrCulturaCalendario()" color="submenu" label="Cultura" />
-      <q-btn outline  @click="IrDeportesCalendario()" color="submenu" label="Deportes" />
-      <q-btn outline @click="IrSpaCalendario()"  color="submenu" label="Spa & Wellness" />
+      <q-btn :disable="getDisable('/calendario')" @click="goItem('/calendario')" outline color="submenu" label="calendario" />
+      <q-btn :disable="getDisable('/calendario/deportes')" @click="goItem('/calendario/deportes')" outline color="submenu" label="Deportes" />
+      <q-btn :disable="getDisable('/calendario/spa')" @click="goItem('/calendario/spa')" outline color="submenu" label="Spa & Wellness" />
     </q-btn-group>
 </template>
 
@@ -10,16 +10,21 @@
 
 export default {
   name: 'Menucalendario',
-
+  props: {
+    currentItem: String
+  },
+  data () {
+    return {
+      current: this.currentItem
+    }
+  },
   methods: {
-    IrCulturaCalendario () {
-      this.$router.push('/calendario')
+    goItem (route) {
+      this.$router.push(route)
     },
-    IrDeportesCalendario () {
-      this.$router.push('/calendario/deportes')
-    },
-    IrSpaCalendario () {
-      this.$router.push('/calendario/spa')
+    getDisable (route) {
+      if (this.current === route) return true
+      return false
     }
   }
 }

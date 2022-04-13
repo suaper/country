@@ -1,41 +1,24 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos view_calendario">
-    <Menucalendario/>
+    <Menucalendario currentItem="/calendario/spa"/>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-xl titulos">Calendario Spa & Wellness</div>
         </div>
         <div class="w_1200 centrar">
             <ul class="wrp_actions_calendario">
-                <li class="active">
+                <li :class="(currentItem === item.name) ? 'active' : ''" v-for="(item, key) in categories" :key="key">
+                    <a href="#" @click="filterItem($event, item.name)">
                     <div class="wrp_animate">
-                        <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-escuelas.png">
-                        <img class="activa" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-escuelas.png">
+                        <img class="normal" :src="urlSite + item.field_icono_1">
+                        <img class="activa" :src="urlSite + item.field_icono_2">
                     </div>
-                    <strong>Charlas culturales</strong>
-                </li>
-                <li>
-                    <div class="wrp_animate">
-                        <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-compania.png">
-                        <img class="activa" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-compania.png">
-                    </div>
-                    <strong>Ballet y Danza</strong></li>
-                <li>
-                    <div class="wrp_animate">
-                        <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-obras.png">
-                        <img class="activa" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-obras.png">
-                    </div>
-                    <strong>Eventos Culturales</strong>
-                </li>
-                <li> <div class="wrp_animate">
-                        <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-obras.png">
-                        <img class="activa" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/i-obras.png">
-                    </div>
-                    <strong>Special Days</strong>
+                    <strong>{{ item.name }}</strong>
+                    </a>
                 </li>
             </ul>
             <div class="wrp_busca_mes w_500 centrar">
-                <q-select outlined label="Seleccione el mes" v-model="civilStatus" :options="options"  />
+                <q-select outlined label="Seleccione el mes" v-model="month" :options="options" @input="getEventsByMonth()" />
             </div>
         </div>
         <div class="q-py-none all_width gris_home wrp_club hazte_socio">
@@ -92,7 +75,7 @@ import Menucalendario from 'pages/submenus/Menucalendario'
 import configServices from '../../services/config'
 
 export default {
-  name: 'Calendariospa',
+  name: 'Calendario',
   components: {
     Menucalendario
   },
@@ -101,8 +84,11 @@ export default {
       sliders: true,
       video: false,
       currentVideo: '',
+      currentItem: 'Fitness',
+      month: '',
       slide: 1,
       slidecontent: 0,
+      categories: [],
       info: {
         body: [
           { value: '' }
@@ -110,25 +96,44 @@ export default {
       },
       urlSite: 'https://pwccdev.mkbk.digital/',
       options: [
-        'Enero', 'Febrero', 'Marzo', 'Abril'
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
       ],
-      events: []
+      events: [],
+      allEvents: []
     }
   },
   created () {
     this.getInfo()
-    this.getMultimediaHome()
     this.getEvents()
   },
   methods: {
-    onReset () {
+    getEventsByMonth () {
+      var _this = this
+      var events = JSON.stringify(this.allEvents)
+      var newEvents = []
+      events = JSON.parse(events)
 
+      events.map((item, key) => {
+        var month = _this.getMonth(item.field_fecha_evento)
+
+        if (month === _this.month) {
+          newEvents.push(item)
+        }
+      })
+
+      var n = 3
+      _this.events = new Array(Math.ceil(newEvents.length / n))
+        .fill()
+        .map(_ => newEvents.splice(0, n))
+    },
+    getMonth (dateInput) {
+      var date = new Date(dateInput)
+      return this.options[date.getUTCMonth()]
     },
     getDate (dateInput) {
       var date = new Date(dateInput)
-      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
       var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
+      return day + ' ' + this.options[date.getUTCMonth()] + '/' + date.getFullYear()
     },
     getHour (dateInput) {
       var date = new Date(dateInput)
@@ -146,52 +151,33 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
+      configServices.loadData(this, '/categorias/spa-&-wellness/json', {
         callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
+          _this.categories = data
         }
       })
-
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
-        callBack: (data) => {
-          _this.personal = data
-        }
-      })
+    },
+    filterItem (e, item) {
+      e.preventDefault()
+      this.currentItem = item
+      this.getEvents()
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, '/eventos/cultura/json', {
+      configServices.loadData(this, 'eventos-calendario/' + _this.currentItem + '/json', {
         callBack: (data) => {
-          const n = 3
-          _this.events = new Array(Math.ceil(data.length / n))
-            .fill()
-            .map(_ => data.splice(0, n))
-        }
-      })
-    },
-    getMultimediaHome () {
-      var _this = this
-      configServices.loadData(this, '/multimedia-secciones/charlas-culturales/json', {
-        callBack: (data) => {
-          _this.multimediaHome = []
+          _this.allEvents = data
 
-          for (const item in data) {
-            _this.multimediaHome.push(data[item])
-          }
+          var newData = JSON.stringify(data)
+          newData = JSON.parse(newData)
+
+          const n = 3
+          _this.events = new Array(Math.ceil(newData.length / n))
+            .fill()
+            .map(_ => newData.splice(0, n))
           _this.$q.loading.hide()
         }
       })
-    },
-    openItem (multimedia) {
-      console.log(multimedia)
-      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
-      } else {
-        var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
-        this.video = true
-      }
     }
   }
 }
