@@ -190,10 +190,10 @@ const routes = [
     ]
   },
   {
-    path: '/gastronomia/special-day',
+    path: '/special-days',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/gastronomia/SpecialDay.vue') }
+      { path: '', component: () => import('pages/SpecialDays.vue') }
     ]
   },
   {

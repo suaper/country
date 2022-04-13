@@ -3,7 +3,6 @@
       <q-btn outline :disable="getDisable('/gastronomia')"  @click="goItem('/gastronomia')" color="submenu" label="Gastronomía" />
       <q-btn outline :disable="getDisable('/gastronomia/staff')"  @click="goItem('/gastronomia/staff')" color="submenu" label="Staff" />
       <q-btn outline :disable="getDisable('/gastronomia/restaurantes')"  @click="goItem('/gastronomia/restaurantes')" color="submenu" label="Restaurantes" />
-      <q-btn outline :disable="getDisable('/gastronomia/special-day')"  @click="goItem('/gastronomia/special-day')" color="submenu" label="Special Days" />
       <q-btn outline :disable="getDisable('/gastronomia/country')"  @click="goItem('/gastronomia/country')" color="submenu" label="Country al día" />
       <q-btn outline :disable="getDisable('/gastronomia/multimedia')"  @click="goItem('/gastronomia/multimedia')" color="submenu" label="Multimedia" />
       <q-btn outline :disable="getDisable('/gastronomia/contacto')"  @click="goItem('/gastronomia/contacto')" color="submenu" label="Contacto" />

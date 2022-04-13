@@ -15,6 +15,7 @@
         <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
         <q-route-tab to="/hazte-socio" @click="IrHazteSocio()" label="Hazte Socio" />
         <q-route-tab to="/eventos" label="Eventos" />
+        <q-route-tab to="/special-days" label="Special Days" />
         <q-route-tab to="/cultura" label="Cultura" />
         <q-route-tab to="/Deportes" label="Deportes" />
         <q-route-tab to="/spa" label="Spa & Wellness" />

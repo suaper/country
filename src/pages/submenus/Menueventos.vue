@@ -1,6 +1,5 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline :disable="getDisable('/eventos')" @click="goItem('/eventos')" color="submenu" label="Eventos" />
       <q-btn outline :disable="getDisable('/eventos/staff')" @click="goItem('/eventos/staff')" color="submenu" label="Staff" />
       <q-btn outline :disable="getDisable('/eventos/tipo-eventos')" @click="goItem('/eventos/tipo-eventos')" color="submenu" label="Tipos de Eventos" />
       <q-btn outline :disable="getDisable('/eventos/espacios-salones')" @click="goItem('/eventos/espacios-salones')" color="submenu" label="Espacios y Salones" />
