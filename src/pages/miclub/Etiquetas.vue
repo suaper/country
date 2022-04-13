@@ -15,11 +15,11 @@
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home etiquetas">
-        <div class="center text-center q-my-lg titulos">Etiquetas</div>
+        <div class="center text-center q-my-lg titulos">Normas de Convivencia</div>
         <div class="centrar w_1200">
             <p class="intro text-center" v-html="info.body[0].value" />
 
-            <div class="q-pa-md row items-start q-gutter-md" v-if="tags.length != 0">
+            <div class="q-pa-md row q-gutter-md" v-if="tags.length != 0">
                 <q-card class="card_etiquetas w_30" v-for="(item, key) in tags" :key="key">
                   <q-card-section>
                       <h5>{{ item.title }}</h5>
