@@ -20,7 +20,7 @@
                 <img class="cien" :src="info.field_imagen_seccion[0].url">
             </div>
             <div class="sesenta">
-              <div class="text-h6 text-left q-my-lg">Historia</div>
+              <div class="text-h6 text-left q-my-lg f_44">Historia</div>
               <div class="html" v-html="info.body[0].value"></div>
             </div>
         </div>

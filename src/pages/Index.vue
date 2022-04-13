@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="q-py-md all_width">
+    <div class="q-py-xs all_width">
       <q-carousel
         animated
         v-model="slide"
@@ -17,13 +17,14 @@
     <div class="q-py-md all_width gris_home">
       <div class="row_wrap no-wrap flex justify-between first_row_home">
         <div class="q-py-md">
-
-         <iframe width="560" height="400" :src="'https://www.youtube.com/embed/' + introHome.field_video_youtube[1]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="hover_iframe">
+            <iframe width="560" height="400" :src="'https://www.youtube.com/embed/' + introHome.field_video_youtube[1]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
         </div>
         <div class="q-pa-md row items-start q-gutter-md">
           <q-card class="my-card sin_fondo">
             <q-card-section>
-              <div class="text-h6">{{ introHome.title }}</div>
+              <div class="text-h6-home">{{ introHome.title }}</div>
               <p v-html="introHome.body"></p>
             </q-card-section>
           </q-card>
@@ -32,10 +33,9 @@
     </div>
 
     <div class="q-py-md all_width bg_beige">
-      <div class="row_wrap no-wrap flex justify-start">
-        <h3 class="q-my-none">Multimedia</h3>
-        <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
-
+      <div class="row_wrap no-wrap q-py-md flex justify-start">
+        <h3 class="q-my-none title_multimedia">Multimedia</h3>
+        <q-btn class="q-ml-lg bg_white_i h_44 ver_mas_multimedia" outline color="indigo-10"  icon-right="east" label="Ver más" />
       </div>
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">

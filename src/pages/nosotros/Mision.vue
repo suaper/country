@@ -16,7 +16,7 @@
     </div>
     <div class="q-py-md all_width gris_home">
          <div class="rwo_1 row_wrap setenta">
-            <div class="text-h6 text-center q-my-lg">Misión</div>
+            <div class="text-h6 text-center q-my-lg f_44">Misión</div>
             <p class="destacado text-center azul" v-html="info.body[0].value"></p>
         </div>
         <div class="rwo_1 row_wrap setenta q-py-xl">
