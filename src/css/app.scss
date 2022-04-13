@@ -2538,3 +2538,21 @@ button.bg_orange{
 .border_blue{
     border: 1px solid #1F2660 ;
 }
+.pop_descargar{
+    .wrp_list_eventos{
+        padding: 10px;
+        .list_desc{
+            letter-spacing: 0px;
+            color: #7C7E91;
+            font-size: 15px;
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            .bold{
+                font-weight: bold;
+                padding-right: 15px;
+                min-width: 100px;
+            }
+        }
+    }
+}
