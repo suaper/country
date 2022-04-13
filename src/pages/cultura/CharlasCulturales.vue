@@ -49,7 +49,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">{{ event.title }}</h5>
                                         <p class="desc_event" v-html="event.field_detalle_evento"></p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn @click="openDetalleEvento(event)" class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -66,6 +66,32 @@
                 </div>
             </div>
         </div>
+        <q-dialog v-model="dtevento" >
+            <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c">
+                <q-card-section class="row items-center q-pb-none">
+                    <div class="text-h6">{{ event.title }}</div>
+                    <q-space />
+                    <q-btn icon="close" flat round dense v-close-popup />
+                </q-card-section>
+
+                <q-card-section class="pop_club">
+                    <span class="desc_club strong">Evento {{ event.field_tipo_evento }}</span><br>
+                    <span class="desc_club">{{ getDate(event.field_fecha_evento) }} {{ getHour(event.field_fecha_evento) }}</span>
+                </q-card-section>
+                <q-card-section class="flex flex-start pop_descargar">
+                    <div class="wrp_list_eventos">
+                        <div class="list_desc flex">
+                            <span class="bold">Ubicación</span>
+                            <span>{{ event.field_ubicacion }}</span>
+                        </div>
+                        <div class="list_desc flex">
+                            <span class="bold">Duración</span>
+                            <span>{{ event.field_duracion }}</span>
+                        </div>
+                    </div>
+                </q-card-section>
+            </q-card>
+        </q-dialog>
     </div>
 
     <div class="q-py-xl all_width gris_home wrp_club">
@@ -199,7 +225,9 @@ export default {
       personal: {
         field_imagen_perfil: ''
       },
-      events: []
+      events: [],
+      dtevento: false,
+      event: {}
     }
   },
   created () {
@@ -237,6 +265,10 @@ export default {
           this.pop_reservar_spa = false
         }
       })
+    },
+    openDetalleEvento (event) {
+      this.event = event
+      this.dtevento = true
     },
     getDate (dateInput) {
       var date = new Date(dateInput)
@@ -304,7 +336,7 @@ export default {
         this.$router.push('/detalle-multimedia')
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
     }

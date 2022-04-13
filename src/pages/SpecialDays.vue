@@ -35,98 +35,19 @@
                 height="300px"
                 class="galeria_beneficios"
                 >
-                <q-carousel-slide :name="1" class="column no-wrap">
+                <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in events" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general">
+                        <div class="treintaydos_general" v-for="(event, eventKey) in item" :key="eventKey">
                             <table class="galeri_event">
                                 <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
+                                    <th class="fecha">{{ getDate(event.field_fecha_evento) }}</th>
+                                    <th class="hora">{{ getHour(event.field_fecha_evento) }}</th>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </q-carousel-slide>
-                <q-carousel-slide  :name="2" class="column no-wrap">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="treintaydos_general">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha" >DD Mes/AAAA</th>
-                                    <th class="hora" >13:30 p.m.</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">Nombre del Evento</h5>
-                                        <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <h5 class="name_event">{{ event.title }}</h5>
+                                        <p class="desc_event" v-html="event.field_detalle_evento"></p>
+                                        <q-btn @click="openDetalleEvento(event)" class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -136,8 +57,9 @@
                 </q-carousel>
                 <div class="row justify-center botones">
                     <q-btn-toggle
-                        glossy
-                        v-model="slidecontent"
+                      glossy
+                      v-model="slidecontent"
+                      :options="[]"
                     />
                 </div>
             </div>
@@ -145,28 +67,24 @@
         <q-dialog v-model="dtevento" >
             <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c">
                 <q-card-section class="row items-center q-pb-none">
-                    <div class="text-h6">Nombre del Evento</div>
+                    <div class="text-h6">{{ event.title }}</div>
                     <q-space />
                     <q-btn icon="close" flat round dense v-close-popup />
                 </q-card-section>
 
                 <q-card-section class="pop_club">
-                    <span class="desc_club strong">Evento Presencial </span><br>
-                    <span class="desc_club">3:30 p.m. 5 May/2021</span>
+                    <span class="desc_club strong">Evento {{ event.field_tipo_evento }}</span><br>
+                    <span class="desc_club">{{ getDate(event.field_fecha_evento) }} {{ getHour(event.field_fecha_evento) }}</span>
                 </q-card-section>
                 <q-card-section class="flex flex-start pop_descargar">
                     <div class="wrp_list_eventos">
                         <div class="list_desc flex">
                             <span class="bold">Ubicación</span>
-                            <span>Cancha NNN</span>
+                            <span>{{ event.field_ubicacion }}</span>
                         </div>
                         <div class="list_desc flex">
                             <span class="bold">Duración</span>
-                            <span>3 horas</span>
-                        </div>
-                        <div class="list_desc flex">
-                            <span class="bold">Jugadores</span>
-                            <span>Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido.</span>
+                            <span>{{ event.field_duracion }}</span>
                         </div>
                     </div>
                 </q-card-section>
@@ -174,45 +92,33 @@
         </q-dialog>
     </div>
 
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
+    <div :class="(key % 2) === 0 ? 'q-py-xl all_width gris_home wrp_club hazte_socio' : 'q-py-xl all_width gris_home wrp_club hazte_socio'" v-for="(item, key) in moments" :key="key" >
         <div class="centrar w_1200">
-        <div class="center text-center q-mb-lg titulos">Momentos</div>
-        <hr class="hr_amarillo">
-          <table class="contenido_fitness q-my-md">
+        <div class="center text-center q-mb-lg titulos" v-show="item.title === 'Happy Hour'">Momentos</div>
+        <hr class="hr_amarillo" v-show="item.title === 'Happy Hour'">
+          <table class="contenido_fitness q-my-md" v-show="item.title === 'Happy Hour'">
               <tr>
                   <td>
                   <td>
-                      <h6 class="title_text open">Happy Hour</h6>
-                      <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque  massa pulvinar est loborti ante accumsan.</p>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 20:00</p>
-
-                      <q-btn outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <h6 class="title_text open">{{ item.title }}</h6>
+                      <p v-html="item.body"></p>
+                      <q-btn type="a" :to="item.field_reservar" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
                   <td>
-                      <img src="../assets/HazteSocio/socio01.png" />
+                      <img :src="urlSite + item.field_image" />
                   </td>
               </tr>
           </table>
-        </div>
-    </div>
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_fitness">
+
+          <table class="contenido_fitness q-my-md" v-show="item.title !== 'Happy Hour'">
               <tr>
                   <td>
-                      <img src="../assets/HazteSocio/socio02.png" />
+                      <img :src="urlSite + item.field_image" />
                   </td>
                   <td>
-                  <td>
-                      <h6 class="title_text open">Sunset</h6>
-                      <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque  massa pulvinar est loborti ante accumsan.</p>
-                      <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
-
-                      <p class="q-mt-md"><strong>Domingos y feriados:</strong>10:00 a 20:00</p>
-
-                      <q-btn outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <h6 class="title_text open">{{ item.title }}</h6>
+                      <p v-html="item.body"></p>
+                      <q-btn type="a" :to="item.field_reservar" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
               </tr>
           </table>
@@ -226,18 +132,18 @@
             </div>
             <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
                 <div class="q-py-md">
-                <table class="esquma_inferior" v-if="multimediaHome.length">
-                    <tr>
+                <table class="esquma_inferior">
+                  <tr>
                     <td class="tg-0pky" rowspan="2">
-                        <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                      <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
                     </td>
-                    <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-                    <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-                    <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
-                    </tr>
-                    <tr>
-                    <td class="tg-0pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
-                    </tr>
+                    <td class="tg-1pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
+                    <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
+                    <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
+                  </tr>
+                  <tr>
+                    <td class="tg-4pky"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
+                  </tr>
                 </table>
                 </div>
             </div>
@@ -249,19 +155,30 @@
             <ul class="contacto_footer">
                 <li class="mail">
                     <img src="../assets/HazteSocio/i-correo.svg" />
-                    <span>mvaldivia@pwcc.cl</span>
+                    <span>{{ contactInfo.field_correo_electronico[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 9 98215362</span>
+                    <span>{{ contactInfo.field_numero[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 2 2757 5700 </span>
+                    <span>{{ contactInfo.field_contacto_2[0].value }}</span>
                 </li>
             </ul>
         </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -274,33 +191,101 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
+      video: false,
+      currentVideo: '',
+      info: {
+        body: [
+          { value: '' }
+        ]
+      },
+      contactInfo: {
+        field_correo_electronico: [
+          { value: '' }
+        ],
+        field_numero: [
+          { value: '' }
+        ],
+        field_contacto_2: [
+          { value: '' }
+        ]
+      },
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_consultar: false,
       slidecontent: 1,
-      dtevento: false
+      events: [],
+      dtevento: false,
+      event: {},
+      moments: []
     }
   },
   created () {
     this.getInfo()
     this.getMultimediaHome()
+    this.getEvents()
   },
   methods: {
+    openDetalleEvento (event) {
+      this.event = event
+      this.dtevento = true
+    },
+    getDate (dateInput) {
+      var date = new Date(dateInput)
+      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
+      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
+    },
+    getHour (dateInput) {
+      var date = new Date(dateInput)
+      var dateAmPm = this.formatAMPM(date)
+
+      var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
+      var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
+
+      return hours + ':' + minutes + ' ' + dateAmPm
+    },
+    formatAMPM (date) {
+      var hours = date.getHours()
+      var ampm = hours >= 12 ? 'pm' : 'am'
+      return ampm
+    },
+    getEvents () {
+      var _this = this
+      configServices.loadData(this, '/eventos/special-days/json', {
+        callBack: (data) => {
+          const n = 3
+          _this.events = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+        }
+      })
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/313?_format=json', {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
-          _this.$q.loading.hide()
+        }
+      })
+
+      configServices.loadData(this, '/special-moments/json', {
+        callBack: (data) => {
+          _this.moments = data
+        }
+      })
+
+      configServices.loadData(this, '/node/492?_format=json', {
+        callBack: (data) => {
+          _this.contactInfo = data
         }
       })
     },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, 'multimedia-home/json', {
+      configServices.loadData(this, '/multimedia-secciones/special-days/json', {
         callBack: (data) => {
+          console.log(data)
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }
@@ -308,17 +293,16 @@ export default {
         }
       })
     },
-    openItem (multimedia) {
+    openItem (e, multimedia) {
+      e.preventDefault()
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
+        localStorage.setItem('multimediaId', multimedia.nid)
+        this.$router.push('/detalle-multimedia')
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
-    },
-    openDetalleEvento () {
-      this.dtevento = true
     }
   }
 }
