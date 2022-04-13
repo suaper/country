@@ -22,7 +22,6 @@
         <q-route-tab to="/kids" label="Kids" />
         <q-route-tab to="/noticias" label="Noticias" />
         <q-route-tab to="/calendario" label="Calendario" />
-        <q-route-tab to="/Contacto" label="Contacto" />
       </q-tabs>
     </q-header>
    <q-page-container>

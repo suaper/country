@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <Menueventos currentItem="/gastronomia/multimedia"/>
+    <Menueventos currentItem="/eventos/multimedia"/>
     <div class="q-pt-xl all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Multimedia</div>
@@ -70,27 +70,33 @@
                         <table class="item_cien">
                             <tr>
                                 <td class="first" rowspan="0">
-                                    <img :src="urlSite + item[0].field_portada_multimedia" />
-                                    <div class="info_bottom text-center">
-                                        <p class="desc">{{ item[0].title }}</p>
-                                        <span v-html="item[0].body"></span>
-                                    </div>
+                                    <a href="#" @click="openVideo($event, item[0])">
+                                      <img :src="urlSite + item[0].field_portada_multimedia" />
+                                      <div class="info_bottom text-center">
+                                          <p class="desc">{{ item[0].title }}</p>
+                                          <span v-html="item[0].body"></span>
+                                      </div>
+                                    </a>
                                 </td>
                                 <td class="othet">
-                                    <img :src="urlSite + item[1].field_portada_multimedia" />
+                                    <a href="#" @click="openVideo($event, item[1])">
+                                    <img :src="(typeof item[1] !== 'undefined') ? urlSite + item[1].field_portada_multimedia : urlSite + item[0].field_portada_multimedia" />
                                     <div class="info_bottom text-center">
-                                        <p class="desc">{{ item[1].title }}</p>
-                                        <span v-html="item[1].body"></span>
+                                        <p class="desc">{{ (typeof item[1] !== 'undefined') ? item[1].title : item[0].title }}</p>
+                                        <span v-html="(typeof item[1] !== 'undefined') ? item[1].body : item[0].body"></span>
                                     </div>
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="othet">
-                                    <img :src="urlSite + item[2].field_portada_multimedia" />
+                                    <a href="#" @click="openVideo($event, item[2])">
+                                    <img :src="(typeof item[2] !== 'undefined') ? urlSite + item[2].field_portada_multimedia : urlSite + item[0].field_portada_multimedia" />
                                     <div class="info_bottom text-center">
-                                        <p class="desc">{{ item[2].title }}</p>
-                                        <span v-html="item[2].body"></span>
+                                        <p class="desc">{{ (typeof item[2] !== 'undefined') ? item[2].title : item[0].title }}</p>
+                                        <span v-html="(typeof item[2] !== 'undefined') ? item[2].body : item[0].body"></span>
                                     </div>
+                                    </a>
                                 </td>
                             </tr>
                         </table>
@@ -108,6 +114,17 @@
             </div>
         </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -134,16 +151,39 @@ export default {
       slidersContentImages: [],
       slidersContentVideos: [],
       images: [],
-      videos: []
+      videos: [],
+      video: false,
+      currentVideo: ''
     }
   },
   mounted () {
     this.getMultimedia()
   },
   methods: {
+    openItem (multimedia) {
+      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
+        localStorage.setItem('multimediaId', multimedia.nid)
+        this.$router.push('/detalle-multimedia')
+      } else {
+        var currentVideo = multimedia.field_video_youtube.split('=')
+        this.currentVideo = currentVideo[0]
+        this.video = true
+      }
+    },
+    openVideo (e, multimedia) {
+      e.preventDefault()
+      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
+        localStorage.setItem('multimediaId', multimedia.nid)
+        this.$router.push('/detalle-multimedia')
+      } else {
+        var currentVideo = multimedia.field_video_youtube.split('=')
+        this.currentVideo = currentVideo[1]
+        this.video = true
+      }
+    },
     getMultimedia () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/eventos-interno/json', {
+      configServices.loadData(this, '/multimedia-secciones/eventos/json', {
         callBack: (data) => {
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {

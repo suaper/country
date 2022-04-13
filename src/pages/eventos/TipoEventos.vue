@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <Menueventos/>
+    <Menueventos currentItem="/eventos/tipo-eventos"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated

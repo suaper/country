@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <Menueventos/>
+    <Menueventos currentItem="/eventos/espacios-salones"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -25,13 +25,49 @@
                             <li><img :src="urlSite + item.field_imagen_espacios" /></li>
                             <li><h5>{{ item.title }}</h5></li>
                             <li v-html="'Capacidad: ' + item.field_capacidad_espacios"></li>
-                            <li><q-btn outline class="azul q-my-md centrar sin_borde" label="Ver más" icon-right="arrow_right_alt"/></li>
+                            <li><q-btn @click="openPopup(item)" outline class="azul q-my-md centrar sin_borde" label="Ver más" icon-right="arrow_right_alt"/></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <q-dialog v-model="video" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <div class="row">
+            <div class="col-12 image">
+              <img :src="urlSite + itemPopup.field_imagen_espacios" alt="">
+            </div>
+            <div class="col-12 title">
+              <h3>{{ itemPopup.title }}</h3>
+            </div>
+          </div>
+          <table>
+            <tr>
+              <td><strong>Ubicación</strong></td>
+              <td v-html="itemPopup.field_ubicacion_espacio"></td>
+            </tr>
+            <tr>
+              <td><strong>Ocasión</strong></td>
+              <td v-html="itemPopup.field_ocasion_espacios"></td>
+            </tr>
+            <tr>
+              <td><strong>Capacidad</strong></td>
+              <td v-html="itemPopup.field_capacidad_espacios"></td>
+            </tr>
+            <tr>
+              <td><strong>Servicios</strong></td>
+              <td v-html="itemPopup.field_servicios_espacios"></td>
+            </tr>
+          </table>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cotiza tu evento" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -48,6 +84,8 @@ export default {
     return {
       sliders: true,
       slide: 0,
+      slidecontent: 0,
+      itemPopup: [],
       info: {
         title: [
           { value: '' }
@@ -64,13 +102,19 @@ export default {
       },
       pop_consultar: false,
       urlSite: 'https://pwccdev.mkbk.digital/',
-      eventTypes: []
+      eventTypes: [],
+      video: false,
+      currentVideo: ''
     }
   },
   created () {
     this.getInfo()
   },
   methods: {
+    openPopup (item) {
+      this.itemPopup = item
+      this.video = true
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/118?_format=json', {

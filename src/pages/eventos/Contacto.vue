@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center gris_home view_hijos_socios view_fitness">
-  <Menueventos currentItem="/gastronomia/contacto"/>
+  <Menueventos currentItem="/eventos/contacto"/>
 
  <div class="q-py-md q-my-xl all_width gris_home wrp_club">
         <div class="q-py-md centrar text-center w_1200">
@@ -28,19 +28,19 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="telefono"
+                          v-model="rut"
                           label="Rut *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>
               <div class="img_contacto">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.5578739053026!2d-74.05875988593355!3d4.6726203966059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b3802c5b6e1%3A0x7ecf37db912a7617!2sClub%20Country%20Tower!5e0!3m2!1ses!2sco!4v1649261423109!5m2!1ses!2sco" width="500" height="340" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="iframe" v-html="info.field_mapa_contacto[0].value"></div>
                 <ul class="q-pa-none">
                     <li class="flex flex-start items-center text_gry">
-                        <img src="../../assets/MiClub/i-gps.svg"> <span>Las Arañas 1901, La Reina, Santiago, Chile</span>
+                        <img src="../../assets/MiClub/i-gps.svg"> <span>{{ info.field_direccion[0].value }}</span>
                     </li>
                 </ul>
               </div>
@@ -52,6 +52,7 @@
 
 <script>
 import Menueventos from 'pages/submenus/Menueventos'
+import configServices from '../../services/config'
 
 export default {
   name: 'Contactogastronomia',
@@ -62,8 +63,66 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      info: {},
-      pop_consultar: false
+      info: {
+        field_mapa_contacto: [
+          { value: '' }
+        ],
+        field_direccion: [
+          { value: '' }
+        ]
+      },
+      pop_consultar: false,
+      telefono: '',
+      email: '',
+      urlSite: 'https://pwccdev.mkbk.digital/',
+      name: '',
+      rut: '',
+      personal: []
+    }
+  },
+  mounted () {
+    this.getInfo()
+  },
+  methods: {
+    getInfo () {
+      var _this = this
+
+      configServices.loadData(this, '/node/173?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Spa & Wellness',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    onReset () {
+      // reset
     }
   }
 }

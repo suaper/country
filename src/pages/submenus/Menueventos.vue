@@ -1,14 +1,12 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-      <q-btn outline color="submenu" label="Eventos" />
-      <q-btn outline  @click="IrEventos()" color="submenu" label="Staff" />
-      <q-btn outline  @click="IrTipoEventos()" color="submenu" label="Tipos de Eventos" />
-      <q-btn outline @click="IrEspacios()"  color="submenu" label="Espacios y Salones" />
-      <q-btn outline  @click="IrCountryExperience()" color="submenu" label="Country Streaming / Experience" />
-      <q-btn outline  @click="IrMultimedia()" color="submenu" label="Servicios" />
-      <q-btn outline  @click="IrMatrimonios()" color="submenu" label="Matrimonios" />
-      <q-btn outline color="submenu"  @click="IrMultimedia()" label="Multimedia" />
-      <q-btn outline color="submenu" @click="IrContacto()" label="Contacto" />
+      <q-btn outline :disable="getDisable('/eventos')" @click="goItem('/eventos')" color="submenu" label="Eventos" />
+      <q-btn outline :disable="getDisable('/eventos/staff')" @click="goItem('/eventos/staff')" color="submenu" label="Staff" />
+      <q-btn outline :disable="getDisable('/eventos/tipo-eventos')" @click="goItem('/eventos/tipo-eventos')" color="submenu" label="Tipos de Eventos" />
+      <q-btn outline :disable="getDisable('/eventos/espacios-salones')" @click="goItem('/eventos/espacios-salones')" color="submenu" label="Espacios y Salones" />
+      <q-btn outline :disable="getDisable('/eventos/matrimonios')" @click="goItem('/eventos/matrimonios')" color="submenu" label="Matrimonios" />
+      <q-btn outline :disable="getDisable('/eventos/multimedia')" @click="goItem('/eventos/multimedia')" color="submenu" label="Multimedia" />
+      <q-btn outline :disable="getDisable('/eventos/contacto')" @click="goItem('/eventos/contacto')" color="submenu" label="Contacto" />
     </q-btn-group>
 </template>
 
@@ -16,28 +14,21 @@
 
 export default {
   name: 'Menueventos',
-
+  props: {
+    currentItem: String
+  },
+  data () {
+    return {
+      current: this.currentItem
+    }
+  },
   methods: {
-    IrEventos () {
-      this.$router.push('/eventos/staff')
+    goItem (route) {
+      this.$router.push(route)
     },
-    IrTipoEventos () {
-      this.$router.push('/eventos/tipo-eventos')
-    },
-    IrEspacios () {
-      this.$router.push('/eventos/espacios-salones')
-    },
-    IrCountryExperience () {
-      this.$router.push('/eventos/country-experience')
-    },
-    IrMatrimonios () {
-      this.$router.push('/eventos/matrimonios')
-    },
-    IrMultimedia () {
-      this.$router.push('/eventos/multimedia')
-    },
-    IrContacto () {
-      this.$router.push('/eventos/contacto')
+    getDisable (route) {
+      if (this.current === route) return true
+      return false
     }
   }
 }
