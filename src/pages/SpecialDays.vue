@@ -9,14 +9,13 @@
         navigation
         infinite
       >
-        <q-carousel-slide :name="1" img-src="../assets/Home/banner-home.png" />
-        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Special Days</div>
-            <p class="intro text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque  massa pulvinar est loborti ante accumsan. Aenean condimentum neque a libero sollicitudin, a pretium massa auctor.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
     </div>
 
@@ -253,9 +252,20 @@ export default {
     }
   },
   created () {
+    this.getInfo()
     this.getMultimediaHome()
   },
   methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/313?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+          _this.$q.loading.hide()
+        }
+      })
+    },
     getMultimediaHome () {
       var _this = this
       configServices.loadData(this, 'multimedia-home/json', {
