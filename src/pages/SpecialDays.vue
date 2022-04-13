@@ -47,7 +47,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">Nombre del Evento</h5>
                                         <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -62,7 +62,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">Nombre del Evento</h5>
                                         <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -77,7 +77,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">Nombre del Evento</h5>
                                         <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -96,7 +96,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">Nombre del Evento</h5>
                                         <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -111,7 +111,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">Nombre del Evento</h5>
                                         <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -126,7 +126,7 @@
                                     <td colspan="2">
                                         <h5 class="name_event">Nombre del Evento</h5>
                                         <p class="desc_event">Descripción breve descripción breve descripción breve descripción breve.</p>
-                                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                        <q-btn class="text_azul centrar bg_white btn_centrar" @click="openDetalleEvento()" label="Ver más" icon-right="arrow_right_alt"/>
                                     </td>
                                 </tr>
                             </table>
@@ -142,6 +142,36 @@
                 </div>
             </div>
         </div>
+        <q-dialog v-model="dtevento" >
+            <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c">
+                <q-card-section class="row items-center q-pb-none">
+                    <div class="text-h6">Nombre del Evento</div>
+                    <q-space />
+                    <q-btn icon="close" flat round dense v-close-popup />
+                </q-card-section>
+
+                <q-card-section class="pop_club">
+                    <span class="desc_club strong">Evento Presencial </span><br>
+                    <span class="desc_club">3:30 p.m. 5 May/2021</span>
+                </q-card-section>
+                <q-card-section class="flex flex-start pop_descargar">
+                    <div class="wrp_list_eventos">
+                        <div class="list_desc flex">
+                            <span class="bold">Ubicación</span>
+                            <span>Cancha NNN</span>
+                        </div>
+                        <div class="list_desc flex">
+                            <span class="bold">Duración</span>
+                            <span>3 horas</span>
+                        </div>
+                        <div class="list_desc flex">
+                            <span class="bold">Jugadores</span>
+                            <span>Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido.</span>
+                        </div>
+                    </div>
+                </q-card-section>
+            </q-card>
+        </q-dialog>
     </div>
 
     <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
@@ -248,7 +278,8 @@ export default {
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_consultar: false,
-      slidecontent: 1
+      slidecontent: 1,
+      dtevento: false
     }
   },
   created () {
@@ -285,6 +316,9 @@ export default {
         this.currentVideo = currentVideo[0]
         this.video = true
       }
+    },
+    openDetalleEvento () {
+      this.dtevento = true
     }
   }
 }
