@@ -19,7 +19,7 @@
             <div class="center text-center q-my-lg titulos">Kids</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
-        <div class="w_1200 enlaces centrar">
+        <div class="w_1100 enlaces centrar">
             <ul class="list_img_link centrer">
                 <li v-for="(item, key) in portadas" :key="key">
                     <img :src="urlSite + item.field_portada_kids" alt="">

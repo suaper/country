@@ -57,7 +57,7 @@
                                         <img class="img_biblioteca" :src="urlSite + book.field_imagen_libro" />
                                         <h5 class="name_event">{{ book.title }}</h5>
                                         <p class="desc_event text-center" v-html="book.body"></p>
-                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro"/>
+                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail()"/>
                                     </td>
                                 </tr>
                             </table>
@@ -66,15 +66,109 @@
                 </q-carousel-slide>
                 </q-carousel>
                 <div class="row justify-center botones">
-                    <q-btn-toggle
-                        glossy
-                        v-model="slideMoreReads"
-                        :options="[]"
-                    />
+                  <q-btn-toggle
+                      glossy
+                      v-model="slideMoreReads"
+                      :options="[]"
+                  />
                 </div>
             </div>
         </div>
     </div>
+    <q-dialog v-model="detalle" >
+        <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige">
+            <q-card-section class="row items-center q-pb-none relative ">
+                <q-btn class="btn_cerrar" icon="close" flat round dense v-close-popup />
+            </q-card-section>
+
+            <q-card-section class="pop_club bg_white libro_icn">
+                <span class="desc_club">Nombre del Libro</span><br>
+                <span class="autor bold">Autor</span>
+            </q-card-section>
+            <q-card-section class="pop_descargar bg_white list_biblioteca">
+              <ul>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                  <li>Sinopsis corta, breve texto que describa el género. </li>
+              </ul>
+              <q-btn @click="openPopForm()" outline class="azul q-my-md centrar sin_borde" label="Reservar" icon-right="arrow_right_alt"/>
+            </q-card-section>
+        </q-card>
+    </q-dialog>
+
+    <q-dialog v-model="formulario" >
+        <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige">
+            <q-card-section class="row items-center q-pb-none relative ">
+                <q-btn class="btn_cerrar" icon="close" flat round dense v-close-popup />
+            </q-card-section>
+
+            <q-card-section class="pop_club bg_white libro_icn">
+              <span class="desc_club">Reserva de Libro de la Biblioteca</span><br>
+              <span class="desc_club">Nombre del Libro</span><br>
+              <span class="autor bold">Autor</span>
+            </q-card-section>
+            <q-card-section class="pop_descargar bg_white list_biblioteca">
+              <q-form
+                  @submit="onSubmit"
+                  @reset="onReset"
+                  class="q-gutter-md form_biblioteca"
+                  >
+
+                  <div class="row_2">
+                    <q-input
+                        outlined
+                        v-model="name"
+                        label="Nombre *"
+                        lazy-rules
+                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                    />
+                    <q-input
+                        outlined
+                        v-model="apellido"
+                        label="Apellidos *"
+                        lazy-rules
+                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                    />
+                  </div>
+
+                  <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="telefono"
+                        label="Número de contacto *"
+                        lazy-rules
+                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                    />
+                  </div>
+
+                  <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="correo"
+                        label="Correo electrónico*"
+                    />
+                  </div>
+
+                  <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="rut"
+                        label="Rut"
+                    />
+                  </div>
+                  <div class="fila">
+                      <q-btn outline type="submit" class="azul text_white mt_10 bg_white" label="Reservar" icon-right="arrow_right_alt"/>
+                  </div>
+              </q-form>
+            </q-card-section>
+        </q-card>
+    </q-dialog>
     <div class="q-pb-xl all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
         <div class="text-left q-mb-none q-mt-xl titulos">Literatura Infantil</div>
@@ -181,7 +275,9 @@ export default {
       pop_reservar_spa: false,
       booksMoreReads: [],
       booksChild: [],
-      personal: []
+      personal: [],
+      detalle: false,
+      formulario: false
     }
   },
   created () {
@@ -205,6 +301,16 @@ export default {
           _this.personal = data[0]
         }
       })
+    },
+    openDetail () {
+      this.detalle = true
+    },
+    openPopForm () {
+      this.detalle = false
+      this.formulario = true
+    },
+    cerrarFormulario () {
+      this.formulario = false
     },
     getMultimediaHome () {
       var _this = this

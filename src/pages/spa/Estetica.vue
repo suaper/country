@@ -38,11 +38,11 @@
     </div>
 
     <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio" id="masajes-item">
-        <div class="centrar w_1200">
+        <div class="centrar w_1000">
+        <h6 class="peluqueria q-mt-none">Masajes</h6>
           <table class="contenido_pelu">
               <tr>
                   <td>
-                    <h6 class="peluqueria q-mt-none">Masajes</h6>
                     <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '271'">
                         <tr>
                             <th>Peluquería</th>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="q-py-md all_width gris_home wrp_club hazte_socio" id="depilacion-item">
-        <div class="centrar w_1200">
+        <div class="centrar w_1000">
         <h6 class="peluqueria q-mt-none">Depilación</h6>
           <table class="contenido_pelu">
               <tr>
@@ -89,7 +89,7 @@
         </div>
     </div>
     <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio" id="cosmetologia-item">
-        <div class="centrar w_1200">
+        <div class="centrar w_1000">
         <h6 class="peluqueria q-mt-none">Cosmetología</h6>
             <table class="contenido_pelu">
               <tr>
@@ -113,7 +113,7 @@
         </div>
     </div>
     <div class="q-py-md all_width gris_home wrp_club hazte_socio" id="manicure-item">
-        <div class="centrar w_1200">
+        <div class="centrar w_1000">
         <h6 class="peluqueria q-mt-none">Manicure</h6>
             <table class="contenido_pelu">
               <tr>
@@ -137,7 +137,7 @@
         </div>
     </div>
    <div class="q-py-md all_width bg_amarillo wrp_club hazte_socio" id="pedicure-item">
-        <div class="centrar w_1200">
+        <div class="centrar w_1000">
         <h6 class="peluqueria q-mt-none">Pedicure</h6>
             <table class="contenido_pelu">
               <tr>
