@@ -42,14 +42,54 @@
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home"></a>
+                <a href="#" @click="openItem($event, multimediaHome[4])">
+                  <img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home">
+                  <div class="wrp_over_1">
+                      <span class="text-white">Titulo video</span>
+                      <span class="desc_white">Descripción Corta</span>
+                  </div>
+                </a>
               </td>
-              <td class="tg-0pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home"></a></td>
-              <td class="tg-0pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home"></a></td>
+              <td class="tg-0pky minivideo">
+                <a href="#" @click="openItem($event, multimediaHome[2])">
+                  <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home">
+                  <div class="wrp_over">
+                      <span class="text-white">Titulo video</span>
+                      <span class="desc_white">Descripción Corta</span>
+                  </div>
+                </a>
+              </td>
+              <td class="tg-0pky" rowspan="2">
+                <a href="#" @click="openItem($event, multimediaHome[1])">
+                  <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home">
+                  <div class="wrp_over">
+                      <span class="text-white">Titulo</span>
+                      <span class="desc_white">Descripción</span>
+                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
+                  </div>
+                </a>
+              </td>
+              <td class="tg-0pky" rowspan="2">
+                <a href="#" @click="openItem($event, multimediaHome[0])">
+                 <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home">
+                  <div class="wrp_over">
+                      <span class="text-white">Titulo</span>
+                      <span class="desc_white">Descripción</span>
+                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
+                  </div>
+                </a>
+              </td>
             </tr>
             <tr>
-              <td class="tg-0pky"><a href="#" @click="openItem($event, multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home"></a></td>
+              <td class="tg-0pky minivideo">
+                <a href="#" @click="openItem($event, multimediaHome[3])">
+                  <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home">
+                  <div class="wrp_over">
+                      <span class="text-white">Titulo video</span>
+                      <span class="desc_white">Descripción Corta</span>
+                  </div>
+                </a>
+              </td>
             </tr>
           </table>
         </div>

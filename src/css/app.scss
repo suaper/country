@@ -134,11 +134,15 @@ body{
 .text_azul{
     color: #1F2660;
 }
+.color_p{
+    color: #7C7E91;
+}
 .btn_bg_beige{
     background: #CA9E64 padding-box !important;
     color: #fff;
     border: none;
     padding: 5px;
+    text-transform: capitalize;
     .q-btn__wrapper:before {
         border: none;
     }
@@ -324,13 +328,88 @@ p{
                 &:after{
                     width: 100%;
                     height: 97%;
-                    background: #1027a58a;
+                    background: #0c164eba;
                     z-index: 9;
                     left: 0;
                     top: 0;
                     position: absolute;
                     content: "";
                     pointer-events: none;
+                }
+                .wrp_over_1{
+                    display: block;
+                }
+                .wrp_over{
+                    display: block;
+                }
+            }
+            .wrp_over_1{
+                width: 100%;
+                position: absolute;
+                z-index: 99999999;
+                bottom: 43px;
+                display: none;
+                span{
+                    display: block;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 30px;
+                    color: #fff;
+                    &.desc_white{
+                        font-size: 15px;
+                        margin-top: 0px;
+                    }
+                }
+            }
+            .wrp_over{
+                width: 100%;
+                position: absolute;
+                z-index: 99999999;
+                bottom: 15px;
+                line-height: 1;
+                display: none;
+                text-align: center;
+                span{
+                    display: block;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 26px;
+                    color: #fff;
+                    &.desc_white{
+                        font-size: 15px;
+                        margin-top: 0px;
+                    }
+                }
+                button.bg_white_home{
+                    background: #fff !important;
+                    color: #1F2660 !important;
+                    margin: 9px auto 0;
+                    .btn__wrapper{
+                        height: 20px;
+                    }
+                    .q-btn__content{
+                        text-transform: capitalize;
+                        color: #1F2660 !important;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        font-size: 14px;
+                        span{
+                            color: #1F2660 !important;
+                            font-size: 15px;
+                        }
+                        .on-right{
+                            margin-left: 3px;
+                        }
+                    }
+                    &:hover{
+                        background: #1F2660 !important;
+                        .q-btn__content{
+                            color: #fff !important;
+                            span{
+                                color: #fff !important;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -353,6 +432,17 @@ p{
                         left: 50%;
                         margin-left: -30px;
                         margin-top: -30px;
+                        transition: 0.3s;
+                    }
+                }
+            }
+            &.minivideo{
+                a{
+                    &:hover{
+                        &:before{
+                            content: "";
+                            top: 40%;
+                        }
                     }
                 }
             }
@@ -1144,6 +1234,7 @@ p{
             .btn_bg_beige{
                 border-radius: 50px;
                 padding: 0;
+                text-transform: capitalize;
             }
         }
     }
@@ -1430,6 +1521,7 @@ p{
         margin: 20px auto;
         li{
             list-style: none;
+            margin-top: 15px;
             background: #fff;
             display: flex;
             flex-direction: column;
@@ -1438,6 +1530,7 @@ p{
             border-radius: 10px;
             width: 190px;
             height: 142px;
+            transition: 0.3s;
 
             img{
                 margin: 10px;
@@ -1459,6 +1552,9 @@ p{
                 color: #1F2660;
                 margin: 7px;
                 text-decoration: none;
+            }
+            &:hover{
+                margin-top: 5px;
             }
         }
     }
@@ -1523,6 +1619,9 @@ p{
                 width: 38%;
                 padding-left: 18px;
                 border-left: 1px solid #CA9E64;
+                ul{
+                    padding-left: 0;
+                }
             }
         }
         .sin_fondo{
@@ -1624,6 +1723,7 @@ p{
         }
     }
 }
+
 .wrp_actions_center_peluqueria{
     max-width: 1000px;
     padding: 0;
@@ -1658,6 +1758,32 @@ p{
             padding: 10px 10px;
         }
     }
+    &.wrp_actions_center_peluqueria{
+        &.igualar{
+            li{
+                background: #fff;
+                border: 1px solid #1F2660;
+                margin: 0px 6px;
+                flex-direction: inherit;
+
+                a{
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    padding: 12px 14px;
+                    margin: 0;
+                    line-height: 1.1;
+                }
+                &:hover{
+                    color: #fff;
+                    background:#1F2660;
+                    a{
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
 }
 h6.peluqueria{
     margin-top: 0 !important;
@@ -1671,9 +1797,21 @@ h6.peluqueria{
 }
 .contenido_pelu{
     width: 100%;
+    tr{
+        td{
+            width: 45%;
+            img{
+                margin-bottom: 4px;
+                margin-top: 20px;
+                &:nth-child(3){
+                    margin-left: 18px;
+                }
+            }
+        }
+    }
 }
 .datos_peluqueria{
-    margin: 25px 0;
+    margin: 0px 0;
     width: 100%;
     th{
         text-align: left;
@@ -1687,7 +1825,7 @@ h6.peluqueria{
     }
     tr{
         td{
-            padding: 9px 8px 3px 0px !important;
+            padding: 8px 8px 2px 0px !important;
             font-family: "Open Sans", sans-serif;
             letter-spacing: 0px;
             font-size: 15px;
@@ -1885,9 +2023,12 @@ h6.peluqueria{
 
                 .desc{
                     color: #fff;
-                    margin-bottom: 5px;
+                    margin-bottom: 2px;
                     font-size: 14px;
                     line-height: 1.2;
+                }
+                p{
+                    color: #fff;
                 }
                 button{
                     margin: 5px 0 5px;
@@ -2522,6 +2663,26 @@ button.bg_white_i{
         }
     }
 }
+button.bg_white_home{
+    background: #fff !important;
+    color: #1F2660 !important;
+    .q-btn__content{
+        text-transform: capitalize;
+        color: #1F2660 !important;
+        span{
+            color: #1F2660 !important;
+        }
+    }
+    &:hover{
+        background: #1F2660 !important;
+        .q-btn__content{
+            color: #fff !important;
+            span{
+                color: #fff !important;
+            }
+        }
+    }
+}
 button.bg_orange{
     border: 1px solid #CA9E64;
     .q-btn__content{
@@ -2554,5 +2715,106 @@ button.bg_orange{
                 min-width: 100px;
             }
         }
+    }
+}
+.view_danza{
+    .sesenta {
+        width: 63%;
+    }
+}
+.relative{
+    position: relative;
+}
+.btn_cerrar{
+    position: absolute;
+    right: 0;
+    top: 15px;
+    z-index: 99;
+}
+
+.pob_biblioteca{
+    padding: 20px 30px;
+    .libro_icn{
+        position: relative;
+        padding-left: 104px;
+        padding-bottom: 0px;
+        padding-top: 20px;
+        &:before{
+            content: "";
+            background: url("../assets/Cultura/libro01.png") top left no-repeat;
+            width: 97px;
+            height: 114px;
+            position: absolute;
+            top: 15px;
+            z-index: 9;
+            left: -18px;
+            background-size: cover;
+        }
+        .bold{
+            color: #7C7E91;
+            font-weight: bold;
+        }
+    }
+    .pop_club{
+        border-bottom: none;
+    }
+    .list_biblioteca{
+        padding-left: 70px;
+        padding-top: 3px;
+        font-size: 15px;
+        font-weight: 300;
+        letter-spacing: 0px;
+        color: #7C7E91;
+        ul{
+            li{
+                list-style: none;
+            }
+        }
+        .sin_borde{
+            display: block;
+        }
+    }
+}
+.form_biblioteca{
+    width: 100%;
+    margin-top: 15px;
+    .fila{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0px 0px 0px 20px;
+        flex-wrap: nowrap;
+        margin-left: 0;
+
+        label{
+            padding-bottom: 0;
+            margin-top: 10px;
+            width: 100%;
+            .q-field__control{
+                color: #d47c06;
+                &:before{
+                    border: 1px solid #E8C28F;
+                }
+            }
+        }
+    }
+    .row_2{
+        label{
+            padding-bottom: 0;
+            margin-top: 10px;
+            width: 48%;
+            .q-field__control{
+                color: #d47c06;
+                &:before{
+                    border: 1px solid #E8C28F;
+                }
+            }
+        }
+    }
+}
+.q-form{
+    .q-field__label{
+        font-size: 15px;
     }
 }

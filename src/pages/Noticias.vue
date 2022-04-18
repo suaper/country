@@ -5,7 +5,7 @@
             <div class="center text-center q-my-lg titulos">Noticias</div>
         </div>
         <div class="centrar w_1200">
-        <ul class="wrp_actions_center_peluqueria menos_p">
+        <ul class="wrp_actions_center_peluqueria menos_p igualar">
             <li>
                 <a href="#" @click="filterNotices($event, 'all')" icon-right="arrow_right_alt">Todas las noticias</a>
             </li>

@@ -3,7 +3,7 @@
     <Menucultura currentItem="/cultura/noticias"/>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Noticias</div>
+            <div class="center text-center q-my-xl titulos">Noticias</div>
         </div>
         <div class="centrar w_1200">
             <div class="q-py-md all_width gris_home wrp_club hazte_socio">

@@ -109,30 +109,30 @@
                   </q-form>
               </div>
               <div class="staff">
-              <h6 class="title_text">Entrenador Personal</h6>
+              <h6 class="title_text">Staff</h6>
                 <table class="datos_staff">
-                    <tr>
-                        <td>
-                            <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
-                        </td>
-                        <td>
-                            <p>
-                              {{ personal.field_nombre_staff }}
-                            </p>
-                            <span class="border_40"></span>
-                            <strong>{{ personal.field_cargo_staff }}</strong>
-                        </td>
-                    </tr>
+                  <tr>
+                    <td>
+                        <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
+                    </td>
+                    <td>
+                        <p>
+                          {{ personal.field_nombre_staff }}
+                        </p>
+                        <span class="border_40"></span>
+                        <strong class="color_p">{{ personal.field_cargo_staff }}</strong>
+                    </td>
+                  </tr>
                 </table>
                 <ul class="contacto_footer">
-                    <li class="mail">
-                        <img src="../../assets/HazteSocio/i-correo.svg" />
-                        <span>{{ personal.field_correo_staff }}</span>
-                    </li>
-                    <li class="tel">
-                        <img src="../../assets/HazteSocio/i-phone.svg" />
-                        <span>{{ personal.field_numero_staff }}</span>
-                    </li>
+                  <li class="mail">
+                      <img src="../../assets/HazteSocio/i-correo.svg" />
+                      <span>{{ personal.field_correo_staff }}</span>
+                  </li>
+                  <li class="tel">
+                      <img src="../../assets/HazteSocio/i-phone.svg" />
+                      <span>{{ personal.field_numero_staff }}</span>
+                  </li>
                 </ul>
               </div>
           </div>
