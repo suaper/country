@@ -101,17 +101,23 @@
           <table class="contenido_fitness">
               <tr>
                   <td>
-                    <a href="#" @click="openVideoInscription($event)"><img class="q-mr-md" :src="howInscription.field_portada_video[0].url" /></a>
+                    <a class="etiqueta_video" href="#" @click="openVideoInscription($event)">
+                      <img class="img_video" :src="howInscription.field_portada_video[0].url" />
+                      <div class="wrp_over">
+                          <span class="text-white">Titulo video</span>
+                          <span class="desc_white">Descripción Corta</span>
+                      </div>
+                    </a>
                   </td>
-                  <td>
-                      <h6 class="title_text">{{ howInscription.title[0].value }}</h6>
+                  <td class="q-pl-md">
+                      <h6 class="title_text t_kid">{{ howInscription.title[0].value }}</h6>
                       <p v-html="howInscription.body[0].value"></p>
                   </td>
               </tr>
           </table>
         </div>
     </div>
-    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio wrp_noticias">
         <div class="centrar w_1200">
             <h4 class="subtitle">Noticias</h4>
             <div class="row flex justify-center  items-start">

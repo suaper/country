@@ -4,7 +4,7 @@
     <div class="q-py-none all_width"></div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Restaurantes</div>
+            <div class="center q-pt-md text-center q-my-lg titulos">Restaurantes</div>
         </div>
         <ul class="wrp_actions_center_peluqueria">
             <li v-for="(item, key) in items" :key="key">

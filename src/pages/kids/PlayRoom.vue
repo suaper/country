@@ -84,59 +84,9 @@
         </div>
       </div>
     </div>
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
-        <div class="centrar w_1200">
-          <table class="contenido_fitness">
-              <tr>
-                  <td>
-                      <img class="q-mr-md" src="../../assets/HazteSocio/socio01.png" />
-                  </td>
-                  <td>
-                      <h6 class="title_text">Cómo inscribirse a las Summer Activities</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit et libero varius egestas. Morbi ultricies consequat orci, eu lobortis nisl maximus nec. Mauris id nunc id libero tempus vehicula. Donec id erat tempor, tincidunt orci et, commodo magna. Fusce porta libero viverra sem facilisis, eget consectetur tortor euismod. Phasellus varius odio quis risus feugiat tempus.</p>
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
-    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
-            <h4 class="subtitle">Noticias</h4>
-            <div class="row flex justify-center  items-start">
-                <table class="sesenta">
-                    <tr>
-                        <td>
-                            <img src="../../assets/HazteSocio/socio01.png" />
-                        </td>
-                        <td>
-                            <h5 class="titulo_noticias">Título de la principal noticia de esta sección, texto falso.</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet…</p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
-                        </td>
-                    </tr>
-                </table>
-                <table class="treintaycinco">
-                    <tr>
-                        <td>
-                            <h5 class="titulo_noticias">Título de noticias secundarias, texto falso.</h5>
-                            <p>Sed iaculis, erat a tristique vestibulum, urna ipsum aliquet lorem…</p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h5 class="titulo_noticias">Título de noticias secundarias, texto falso.</h5>
-                            <p>Cras rutrum tellus a nibh volutpat ultricies. Sed iaculis, erat a tristique…</p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
-            <h4 class="subtitle sin_margen">Contáctanos</h4>
+            <h4 class="subtitle sin_margen">Staff</h4>
             <ul class="contacto_footer">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />

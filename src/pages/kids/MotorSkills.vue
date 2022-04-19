@@ -21,9 +21,9 @@
             <div class="right sesenta q-mb-xl centrar wrp_table ma_to_50">
                 <table class="bg_white">
                     <tr>
-                        <th class="treinta">Categoría</th>
-                        <th class="cuarenta">Horarios</th>
-                        <th class="treinta">Staff</th>
+                        <th class="treinta f_400">Categoría</th>
+                        <th class="cuarenta f_400">Horarios</th>
+                        <th class="treinta f_400">Staff</th>
                     </tr>
                     <tr v-for="(item, key) in cronograma" :key="key">
                         <td><p class="weight_bold">{{ item.field_categoria }}</p></td>
