@@ -20,7 +20,7 @@
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
     </div>
-    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio wrp_noticias">
         <div class="centrar w_1200">
             <h4 class="subtitle">Country al día</h4>
             <div class="row flex justify-center  items-start">
