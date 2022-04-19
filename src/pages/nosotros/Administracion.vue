@@ -1,4 +1,4 @@
-<template>
+  <template>
   <q-page class="flex flex-center view_hijos_socios view_kids">
     <Menusomos currentItem="/quienes-somos/administracion" />
     <div class="q-py-none all_width">
@@ -17,112 +17,16 @@
         <div class="setenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Administración</div>
         </div>
-        <div class="row_wrap no-wrap">
+        <div :class="(key % 2 === 0) ? 'row_wrap no-wrap' : 'q-py-md row_wrap no-wrap'" v-for="(item, key) in personal" :key="key">
             <div class="staff_general">
                  <div class="flex" style="justify-content: space-between;">
-                    <table class="datos_staff_contacto">
+                    <table class="datos_staff_contacto" v-for="(subItem, subKey) in item" :key="subKey">
                         <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
+                            <td><img :src="urlSite + subItem.field_imagen_persona" class="raius"></td>
                             <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="q-py-md row_wrap no-wrap">
-            <div class="staff_general">
-                 <div class="flex" style="justify-content: space-between;">
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
-                            </td>
-                        </tr>
-                    </table>
-                    <table class="datos_staff_contacto">
-                        <tr>
-                            <td><img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-play6.png" class="raius"></td>
-                            <td>
-                                <p><strong>Denise Maringer Durán  </strong></p>
-                                <p><strong>Gerente de Deportes</strong></p>
-                                <p>correo@pwcc.cl</p>
+                                <p><strong>{{ subItem.title }}</strong></p>
+                                <p style="font-size: 13px;"><strong>{{ subItem.field_cargo }}</strong></p>
+                                <p>{{ subItem.field_email }}</p>
                             </td>
                         </tr>
                     </table>
@@ -160,45 +64,27 @@ export default {
 
   created () {
     this.getInfo()
-    this.getMultimediaHome()
   },
   methods: {
-    getMultimediaHome () {
-      var _this = this
-      configServices.loadData(this, '/multimedia-secciones/playroom/json', {
-        callBack: (data) => {
-          for (const item in data) {
-            _this.multimediaHome.push(data[item])
-          }
-          _this.$q.loading.hide()
-        }
-      })
-    },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/365?_format=json', {
+      configServices.loadData(this, '/node/400?_format=json', {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
         }
       })
 
-      configServices.loadData(this, '/personal-staff/playroom', {
+      configServices.loadData(this, 'personal-administracion/json', {
         callBack: (data) => {
-          _this.personal = data
+          const n = 5
+
+          _this.personal = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+          _this.$q.loading.hide()
         }
       })
-    },
-    openItem (e, multimedia) {
-      e.preventDefault()
-      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        localStorage.setItem('multimediaId', multimedia.nid)
-        this.$router.push('/detalle-multimedia')
-      } else {
-        var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[1]
-        this.video = true
-      }
     }
   }
 }
