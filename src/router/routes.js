@@ -43,6 +43,20 @@ const routes = [
     ]
   },
   {
+    path: '/quienes-somos/administracion',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/nosotros/administracion.vue') }
+    ]
+  },
+  {
+    path: '/quienes-somos/memoria-anual',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/nosotros/MemoriaAnual.vue') }
+    ]
+  },
+  {
     path: '/mi-club',
     component: () => import('layouts/MainLayout.vue'),
     children: [
