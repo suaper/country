@@ -45,8 +45,8 @@
                 <a href="#" @click="openItem($event, multimediaHome[4])">
                   <img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_galeria_home">
                   <div class="wrp_over_1">
-                      <span class="text-white">Titulo video</span>
-                      <span class="desc_white">Descripción Corta</span>
+                      <span class="text-white">{{ multimediaHome[4].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[4].body"></span>
                   </div>
                 </a>
               </td>
@@ -54,8 +54,8 @@
                 <a href="#" @click="openItem($event, multimediaHome[2])">
                   <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_galeria_home">
                   <div class="wrp_over">
-                      <span class="text-white">Titulo video</span>
-                      <span class="desc_white">Descripción Corta</span>
+                      <span class="text-white">{{ multimediaHome[2].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[2].body"></span>
                   </div>
                 </a>
               </td>
@@ -63,8 +63,8 @@
                 <a href="#" @click="openItem($event, multimediaHome[1])">
                   <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_galeria_home">
                   <div class="wrp_over">
-                      <span class="text-white">Titulo</span>
-                      <span class="desc_white">Descripción</span>
+                      <span class="text-white">{{ multimediaHome[1].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[1].body"></span>
                       <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
                   </div>
                 </a>
@@ -73,8 +73,8 @@
                 <a href="#" @click="openItem($event, multimediaHome[0])">
                  <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_galeria_home">
                   <div class="wrp_over">
-                      <span class="text-white">Titulo</span>
-                      <span class="desc_white">Descripción</span>
+                      <span class="text-white">{{ multimediaHome[0].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[0].body"></span>
                       <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
                   </div>
                 </a>
@@ -85,8 +85,8 @@
                 <a href="#" @click="openItem($event, multimediaHome[3])">
                   <img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_galeria_home">
                   <div class="wrp_over">
-                      <span class="text-white">Titulo video</span>
-                      <span class="desc_white">Descripción Corta</span>
+                      <span class="text-white">{{ multimediaHome[3].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[3].body"></span>
                   </div>
                 </a>
               </td>
@@ -158,6 +158,7 @@ export default {
       var _this = this
       configServices.loadData(this, 'multimedia-home/json', {
         callBack: (data) => {
+          console.log(data)
           for (const item in data) {
             _this.multimediaHome.push(data[item])
           }

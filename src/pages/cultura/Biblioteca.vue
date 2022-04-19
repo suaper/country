@@ -57,7 +57,7 @@
                                         <img class="img_biblioteca" :src="urlSite + book.field_imagen_libro" />
                                         <h5 class="name_event">{{ book.title }}</h5>
                                         <p class="desc_event text-center" v-html="book.body"></p>
-                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail()"/>
+                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail(book)"/>
                                     </td>
                                 </tr>
                             </table>
@@ -75,27 +75,19 @@
             </div>
         </div>
     </div>
-    <q-dialog v-model="detalle" >
+    <q-dialog v-model="detalle">
         <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige">
             <q-card-section class="row items-center q-pb-none relative ">
                 <q-btn class="btn_cerrar" icon="close" flat round dense v-close-popup />
             </q-card-section>
 
             <q-card-section class="pop_club bg_white libro_icn">
-                <span class="desc_club">Nombre del Libro</span><br>
-                <span class="autor bold">Autor</span>
+                <span class="desc_club">{{ currentBook.title }}</span><br>
+                <span class="autor bold">{{ currentBook.field_autor }}</span>
             </q-card-section>
             <q-card-section class="pop_descargar bg_white list_biblioteca">
               <ul>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
-                  <li>Sinopsis corta, breve texto que describa el género. </li>
+                <li><p v-html="currentBook.body"></p></li>
               </ul>
               <q-btn @click="openPopForm()" outline class="azul q-my-md centrar sin_borde" label="Reservar" icon-right="arrow_right_alt"/>
             </q-card-section>
@@ -194,7 +186,7 @@
                                         <img class="img_biblioteca" :src="urlSite + book.field_imagen_libro" />
                                         <h5 class="name_event">{{ book.title }}</h5>
                                         <p class="desc_event text-center" v-html="book.body"></p>
-                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro"/>
+                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail(book)"/>
                                     </td>
                                 </tr>
                             </table>
@@ -261,6 +253,7 @@ export default {
       sliders: true,
       slide: 1,
       slideMoreReads: 0,
+      currentBook: {},
       slideChild: 0,
       info: {
         body: [
@@ -277,7 +270,12 @@ export default {
       booksChild: [],
       personal: [],
       detalle: false,
-      formulario: false
+      formulario: false,
+      telefono: '',
+      correo: '',
+      name: '',
+      rut: '',
+      apellido: ''
     }
   },
   created () {
@@ -287,6 +285,36 @@ export default {
     this.getBooksChild()
   },
   methods: {
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Biblioteca: Libro ' + _this.currentBook.title,
+        email: this.correo,
+        name: this.name,
+        lastname: this.apellido,
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.formulario = false
+        }
+      })
+    },
+    onReset () {
+      // reset
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/201?_format=json', {
@@ -302,7 +330,8 @@ export default {
         }
       })
     },
-    openDetail () {
+    openDetail (book) {
+      this.currentBook = book
       this.detalle = true
     },
     openPopForm () {

@@ -54,14 +54,31 @@
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
               <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
+                <a @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
+                      <span class="text-white">{{ multimediaHome[4].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[4].body"></span>
+                  </div></a>
               </td>
-              <td class="tg-1pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
-              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
-              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
+              <td class="tg-1pky"><a @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"><div class="wrp_over">
+                      <span class="text-white">{{ multimediaHome[2].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[2].body"></span>
+                  </div></a></td>
+              <td class="tg-2pky" rowspan="2"><a @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"><div class="wrp_over">
+                      <span class="text-white">{{ multimediaHome[1].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[1].body"></span>
+                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
+                  </div></a></td>
+              <td class="tg-3pky" rowspan="2"><a @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"><div class="wrp_over">
+                      <span class="text-white">{{ multimediaHome[0].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[0].body"></span>
+                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
+                  </div></a></td>
             </tr>
             <tr>
-              <td class="tg-4pky"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
+              <td class="tg-4pky"><a @click="openItem($event, multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"><div class="wrp_over">
+                      <span class="text-white">{{ multimediaHome[3].title }}</span>
+                      <span class="desc_white" v-html="multimediaHome[3].body"></span>
+                  </div></a></td>
             </tr>
           </table>
         </div>
