@@ -24,7 +24,7 @@
             <h3 class="q-my-none">Staff</h3>
               <div class="staff_general">
                  <div class="flex" style="justify-content: space-between;">
-                    <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
+                    <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key" v-show="personal.nid === '384'">
                         <tr>
                             <td>
                                 <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
@@ -90,11 +90,11 @@
             <ul class="contacto_footer">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
-                    <span>mvaldivia@pwcc.cl</span>
+                    <span>{{ personal[0].field_correo_staff }}</span>
                 </li>
                 <li class="tel">
                     <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>+56 9 98215362</span>
+                    <span>{{ personal[0].field_numero_staff }}</span>
                 </li>
             </ul>
         </div>
@@ -121,6 +121,7 @@ export default {
         ]
       },
       personal: [],
+      contactInfo: [],
       secondPersonal: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: []
@@ -154,6 +155,7 @@ export default {
 
       configServices.loadData(this, '/personal-staff/playroom', {
         callBack: (data) => {
+          console.log(data)
           _this.personal = data
         }
       })

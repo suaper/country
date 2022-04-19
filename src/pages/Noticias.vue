@@ -114,7 +114,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias-todas/json', {
         callBack: (data) => {
-          const n = 3
+          const n = 6
           data.map((item, key) => {
             var filter = {
               title: item.field_mostra_en_
