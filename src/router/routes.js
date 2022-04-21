@@ -309,6 +309,27 @@ const routes = [
     ]
   },
   {
+    path: '/cultura/escuelas',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Escuelas.vue') }
+    ]
+  },
+  {
+    path: '/cultura/compania',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Compania.vue') }
+    ]
+  },
+  {
+    path: '/cultura/obras',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/Obras.vue') }
+    ]
+  },
+  {
     path: '/cultura/biblioteca',
     component: () => import('layouts/MainLayout.vue'),
     children: [

@@ -23,6 +23,9 @@
             <ul class="wrp_actions_center_spa">
                <li v-for="(item, key) in ballet" :key="key"><img :src="urlSite + item.field_icono_item"><strong>{{ item.field_titulo_item_1 }}</strong><a :href="item.field_enlace_item" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
             </ul>
+            <q-btn outline @click="goEscuelas()" color="submenu" label="Escuelas" />
+            <q-btn outline @click="goCompania()" color="submenu" label="Compañia" />
+            <q-btn outline @click="goObra()" color="submenu" label="Obras" />
         </div>
     </div>
 
@@ -222,6 +225,15 @@ export default {
   methods: {
     onReset () {
 
+    },
+    goEscuelas () {
+      this.$router.push('/cultura/escuelas')
+    },
+    goCompania () {
+      this.$router.push('/cultura/compania')
+    },
+    goObra () {
+      this.$router.push('/cultura/obras')
     },
     goNotice (nid) {
       localStorage.setItem('noticeId', nid)
