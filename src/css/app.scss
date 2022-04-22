@@ -3110,3 +3110,29 @@ a.etiqueta_video{
         }
     }
 }
+.barra_logos{
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li{
+        padding: 0 10px;
+        text-align: center;
+        list-style: none;
+        position: relative;
+        &:after{
+            height: 50px;
+            width: 1px;
+            background: #ccc;
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 20px;
+        }
+        .q-img{
+            height: 99px;
+            width: auto;
+        }
+    }
+}
