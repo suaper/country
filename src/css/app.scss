@@ -3135,4 +3135,13 @@ a.etiqueta_video{
             width: auto;
         }
     }
+    &.cuatro{
+        li{
+            width: 24%;
+            width: 100%;
+            .q-img {
+                width: 100%;
+            }
+        }
+    }
 }

@@ -107,7 +107,7 @@
     </div>
     <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
       <div class="centrar w_1200">
-        <ul class="barra_logos">
+        <ul class="barra_logos cuatro">
             <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
             <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
             <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
@@ -157,6 +157,7 @@ export default {
   },
   created () {
     this.getInfo()
+    this.getMultimediaHome()
     this.getEvents()
   },
   methods: {
@@ -213,6 +214,18 @@ export default {
       configServices.loadData(this, '/node/492?_format=json', {
         callBack: (data) => {
           _this.contactInfo = data
+        }
+      })
+    },
+    getMultimediaHome () {
+      var _this = this
+      configServices.loadData(this, '/multimedia-secciones/special-days/json', {
+        callBack: (data) => {
+          console.log(data)
+          for (const item in data) {
+            _this.multimediaHome.push(data[item])
+          }
+          _this.$q.loading.hide()
         }
       })
     },
