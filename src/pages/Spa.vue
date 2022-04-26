@@ -202,11 +202,23 @@ export default {
     },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/spa-multimedia-home/json', {
+      configServices.loadData(this, '/multimedia-secciones/spa-&-wellness/json', {
         callBack: (data) => {
+          const videos = []
+          const images = []
           for (const item in data) {
-            _this.multimediaHome.push(data[item])
+            if (data[item].field_tipo_de_multimedia === 'Video') {
+              videos.push(data[item])
+            } else {
+              images.push(data[item])
+            }
           }
+
+          _this.multimediaHome.push(images[0])
+          _this.multimediaHome.push(images[1])
+          _this.multimediaHome.push(videos[0])
+          _this.multimediaHome.push(videos[1])
+          _this.multimediaHome.push(videos[2])
           _this.$q.loading.hide()
         }
       })

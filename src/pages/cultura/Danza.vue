@@ -138,9 +138,7 @@
                   </q-form>
               </div>
               <div class="staff">
-                <span>
-                aca va el widget de twitter, por favor borrar el texto cuando se coloque el widgec</span>
-
+                <iframe width="320" height="460" src="https://www.instagram.com/p/CcGUHYUOD8y/embed" frameborder="0"></iframe>
               </div>
           </div>
         </div>
@@ -218,6 +216,14 @@ export default {
     this.getInfo()
     this.getMultimediaHome()
     this.getNotices()
+  },
+  mounted () {
+    const recaptchaScript = document.createElement('script')
+    recaptchaScript.setAttribute('src', 'https://cdn2.woxo.tech/a.js#6261ba73ca8ed3002fe4f3d6')
+    recaptchaScript.setAttribute('async', 'asyng')
+    recaptchaScript.setAttribute('data-usrc', 'data-usrc')
+
+    document.head.appendChild(recaptchaScript)
   },
   methods: {
     onReset () {
@@ -302,9 +308,21 @@ export default {
       configServices.loadData(this, 'multimedia-secciones/danza-y-ballet/json', {
         callBack: (data) => {
           _this.multimediaHome = []
+          const videos = []
+          const images = []
           for (const item in data) {
-            _this.multimediaHome.push(data[item])
+            if (data[item].field_tipo_de_multimedia === 'Video') {
+              videos.push(data[item])
+            } else {
+              images.push(data[item])
+            }
           }
+
+          _this.multimediaHome.push(images[0])
+          _this.multimediaHome.push(images[1])
+          _this.multimediaHome.push(videos[0])
+          _this.multimediaHome.push(videos[1])
+          _this.multimediaHome.push(videos[2])
           _this.$q.loading.hide()
         }
       })

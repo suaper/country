@@ -7,26 +7,10 @@
             <div class="back"> <q-btn round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas justify-center">
-            <div class="wrp_img_obras">
-                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
+            <div class="wrp_img_obras" v-for="(item, key) in obras" :key="key">
+                <q-img :src="urlSite + item.field_imagen_elenco">
                     <div class="absolute-bottom text-subtitle1 text-center">
-                        Cascanueces
-                        <q-btn class="q-ml-lg sin_borde" outline color="indigo-10" icon-right="east" label="Ver más" />
-                    </div>
-                </q-img>
-            </div>
-            <div class="wrp_img_obras">
-                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-                    <div class="absolute-bottom text-subtitle1 text-center">
-                        Cascanueces
-                        <q-btn class="q-ml-lg sin_borde" outline color="indigo-10" icon-right="east" label="Ver más" />
-                    </div>
-                </q-img>
-            </div>
-            <div class="wrp_img_obras">
-                <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-                    <div class="absolute-bottom text-subtitle1 text-center">
-                        Cascanueces
+                        {{ item.title }} <br>
                         <q-btn class="q-ml-lg sin_borde" outline color="indigo-10" icon-right="east" label="Ver más" />
                     </div>
                 </q-img>
@@ -108,10 +92,7 @@
     <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
       <div class="centrar w_1200">
         <ul class="barra_logos cuatro">
-            <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
-            <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
-            <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
-            <li><q-img src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img></li>
+          <li v-for="(item, key) in info.field_galeria_" :key="key"><q-img :src="item.url"></q-img></li>
         </ul>
       </div>
     </div>
@@ -146,7 +127,7 @@ export default {
         ]
       },
       urlSite: 'https://pwccdev.mkbk.digital/',
-      multimediaHome: [],
+      obras: [],
       pop_consultar: false,
       slidecontent: 1,
       events: [],
@@ -157,7 +138,7 @@ export default {
   },
   created () {
     this.getInfo()
-    this.getMultimediaHome()
+    this.getObras()
     this.getEvents()
   },
   methods: {
@@ -187,7 +168,7 @@ export default {
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, '/eventos/special-days/json', {
+      configServices.loadData(this, '/eventos/obras/json', {
         callBack: (data) => {
           const n = 3
           _this.events = new Array(Math.ceil(data.length / n))
@@ -198,32 +179,18 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/313?_format=json', {
+      configServices.loadData(this, '/node/343?_format=json', {
         callBack: (data) => {
           _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
-        }
-      })
-
-      configServices.loadData(this, '/special-moments/json', {
-        callBack: (data) => {
-          _this.moments = data
-        }
-      })
-
-      configServices.loadData(this, '/node/492?_format=json', {
-        callBack: (data) => {
-          _this.contactInfo = data
         }
       })
     },
-    getMultimediaHome () {
+    getObras () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/special-days/json', {
+      configServices.loadData(this, '/obras/json', {
         callBack: (data) => {
-          console.log(data)
           for (const item in data) {
-            _this.multimediaHome.push(data[item])
+            _this.obras.push(data[item])
           }
           _this.$q.loading.hide()
         }

@@ -162,7 +162,7 @@ export default {
   methods: {
     getMultimedia () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/gastronomia-multimedia-interno/json', {
+      configServices.loadData(this, '/multimedia-secciones/gastronomia/json', {
         callBack: (data) => {
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {
