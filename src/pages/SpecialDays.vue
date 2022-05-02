@@ -156,7 +156,7 @@
                   </div></a></td>
                   </tr>
                   <tr>
-                    <td class="tg-4pky"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"><div class="wrp_over">
+                    <td class="tg-4pky"><a href="#" @click="openItem($event, multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"><div class="wrp_over">
                       <span class="text-white">{{ multimediaHome[3].title }}</span>
                       <span class="desc_white" v-html="multimediaHome[3].body"></span>
                   </div></a></td>
