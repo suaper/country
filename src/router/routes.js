@@ -462,6 +462,41 @@ const routes = [
       { path: '', component: () => import('pages/deportes/Golf.vue') }
     ]
   },
+  {
+    path: '/deportes/hockey',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Hockey.vue') }
+    ]
+  },
+  {
+    path: '/deportes/nosotros',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Nosotros.vue') }
+    ]
+  },
+  {
+    path: '/deportes/categorias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Categorias.vue') }
+    ]
+  },
+  {
+    path: '/deportes/calendario',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Calendario.vue') }
+    ]
+  },
+  {
+    path: '/deportes/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
