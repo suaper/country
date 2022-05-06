@@ -3470,6 +3470,16 @@ a.etiqueta_video{
         }
     }
 }
+.sin_separador{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+
+    >div{
+        position: relative;
+    }
+}
 .w_45{
     width: 45%;
 }
@@ -3479,8 +3489,19 @@ a.etiqueta_video{
 .w_55{
     width: 55%;
 }
+.w_50{
+    width: 49%;
+}
 .w_60{
     width: 60%;
+}
+.w_100{
+    width: 100%;
+}
+.form_100{
+    .w_100{
+        width: 100%;
+    }
 }
 .wrp_table_clasificacion{
     width: 100%;
@@ -3576,6 +3597,45 @@ a.etiqueta_video{
         justify-content: flex-start;
         >.text{
             margin-left: 10px;
+        }
+    }
+}
+
+ul.text_horarios{
+    padding-left: 0;
+    li{
+        list-style: none;
+        letter-spacing: 0px;
+        color: #7C7E91;
+        opacity: 1;
+        margin: 10px 0;
+        .box_download{
+            margin-left: 0;
+        }
+    }
+}
+.franja_torneos{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    img{
+        margin: 10px auto;
+        width: 100%;
+        max-width: 1900px;
+    }
+    .sobreponer{
+        position: absolute;
+        left: 50px;
+        top: 100px;
+        text-align: left;
+        font-size: 25px;
+        color: #1F2660;
+        opacity: 1;
+        p{
+            text-align: left;
+            font-size: 25px;
+            color: #1F2660;
+            opacity: 1;
         }
     }
 }
