@@ -9,8 +9,7 @@
         infinite
         autoplay="autoplay"
       >
-      <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+      <q-carousel-slide v-for="(banner, key) in info.field_slider_sport" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
 </template>
@@ -19,11 +18,15 @@
 
 export default {
   name: 'Uno',
-
+  props: {
+    banner: Object,
+    bannerSlide: String
+  },
   data () {
     return {
       sliders: true,
-      slide: 1
+      slide: this.bannerSlide,
+      info: this.banner
     }
   }
 }

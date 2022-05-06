@@ -349,11 +349,11 @@ export default {
             }
           }
 
-          _this.multimediaHome.push(images[0])
           _this.multimediaHome.push(images[1])
-          _this.multimediaHome.push(videos[0])
+          _this.multimediaHome.push(images[0])
           _this.multimediaHome.push(videos[1])
           _this.multimediaHome.push(videos[2])
+          _this.multimediaHome.push(videos[0])
           _this.$q.loading.hide()
         }
       })

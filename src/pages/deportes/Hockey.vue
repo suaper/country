@@ -1,33 +1,33 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
     <MenuDeporteInterno />
-    <Banner />
+    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-pb-md all_width bg_white">
-        <Patrocinadores />
+        <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
             <div class="center text-center q-my-lg titulos">Hockey</div>
-            <DescHockey />
+            <DescHockey :info="content" v-if="loadedContent"/>
         </div>
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Noticias</h4>
-            <Noticias />
+            <Noticias :info="notices" v-if="loadedNotices"/>
         </div>
     </div>
     <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Jugador de la semana</h4>
-            <Contenido />
+            <Contenido :info="player" v-if="loadedPlayer"/>
         </div>
     </div>
 
     <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Próximos Encuentros</h4>
-            <Proximos />
+            <Proximos :info="events" v-if="loadedEvents"/>
         </div>
     </div>
 
@@ -37,10 +37,10 @@
           <div class="row_2 fitnes_last">
             <div>
                 <Contacto />
-                <Staff />
+                <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
             <div>
-                <h2>Instagram</h2>
+                <iframe width="320" height="460" src="https://www.instagram.com/p/CcGUHYUOD8y/embed" frameborder="0"></iframe>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default {
       sliders: true,
       video: false,
       currentVideo: '',
-      slide: 1,
+      slide: '1',
       slidecontent: 0,
       info: {
         body: [
@@ -115,11 +115,27 @@ export default {
       },
       events: [],
       dtevento: false,
-      event: {}
+      event: {},
+      images: {},
+      loadedInfo: false,
+      loadedImages: false,
+      loadedContent: false,
+      content: {},
+      notices: [],
+      loadedNotices: false,
+      path: '',
+      player: {},
+      loadedPlayer: false,
+      loadedEvents: false,
+      loadedPersonal: false
     }
   },
   created () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
+
     this.getInfo()
+    this.getNotices()
     this.getMultimediaHome()
     this.getEvents()
   },
@@ -154,6 +170,15 @@ export default {
         }
       })
     },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias/hockey/json', {
+        callBack: (data) => {
+          _this.notices = data
+          _this.loadedNotices = true
+        }
+      })
+    },
     openDetalleEvento (event) {
       this.event = event
       this.dtevento = true
@@ -180,27 +205,53 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
+      console.log(_this.path)
+      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
+          console.log(data)
+          _this.info = data[0]
+          _this.slide = data[0].field_slider_sport[0].target_uuid
+          _this.loadedInfo = true
         }
       })
 
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.images = data[0]
+          _this.loadedImages = true
+        }
+      })
+
+      configServices.loadData(this, '/video-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.content = data[0]
+          _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/jugador-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.player = data[0]
+          _this.loadedPlayer = true
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/' + _this.path, {
         callBack: (data) => {
           _this.personal = data
+          _this.loadedPersonal = true
         }
       })
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, '/eventos/cultura/json', {
+      configServices.loadData(this, '/eventos/hockey/json', {
         callBack: (data) => {
           const n = 3
           _this.events = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
+          _this.loadedEvents = true
         }
       })
     },

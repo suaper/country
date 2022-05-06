@@ -69,34 +69,26 @@
 </template>
 
 <script>
-import configServices from '../../services/config'
 
 export default {
   name: 'CincoProximos',
-
+  props: {
+    info: Array
+  },
   data () {
     return {
       currentVideo: '',
       slide: 1,
       slidecontent: 0,
-      info: {
-        body: [
-          { value: '' }
-        ]
-      },
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_reservar_spa: false,
       personal: {
         field_imagen_perfil: ''
       },
-      events: [],
+      events: this.info,
       dtevento: false,
       event: {}
     }
-  },
-  created () {
-    this.getInfo()
-    this.getEvents()
   },
   methods: {
     openDetalleEvento (event) {
@@ -122,32 +114,6 @@ export default {
       var hours = date.getHours()
       var ampm = hours >= 12 ? 'pm' : 'am'
       return ampm
-    },
-    getInfo () {
-      var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
-        callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
-        }
-      })
-
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
-        callBack: (data) => {
-          _this.personal = data
-        }
-      })
-    },
-    getEvents () {
-      var _this = this
-      configServices.loadData(this, '/eventos/cultura/json', {
-        callBack: (data) => {
-          const n = 3
-          _this.events = new Array(Math.ceil(data.length / n))
-            .fill()
-            .map(_ => data.splice(0, n))
-        }
-      })
     }
   }
 }

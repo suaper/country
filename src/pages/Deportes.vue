@@ -11,13 +11,13 @@
         infinite
         autoplay="autoplay"
       >
-        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_sport" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Deportes</div>
-            <p class="intro text-center" v-html="info.body[0].value"></p>
+            <p class="intro text-center" v-html="intro.body[0].value"></p>
         </div>
         <div class="w_1100 enlaces centrar">
             <div class="wrp_gallery_multimedia">
@@ -33,80 +33,13 @@
                 height="350px"
                 class="galeria_deportes"
                 >
-                <q-carousel-slide :name="0" class="column no-wrap">
+                <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in portadas" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <ul class="wrp_sport_gale">
+                        <ul class="wrp_sport_gale" v-for="(subItem, subKey) in item" :key="subKey">
                             <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
+                                <img :src="urlSite + subItem.field_portada_deporte" alt="img_golf">
                                 <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </q-carousel-slide>
-                <q-carousel-slide :name="1" class="column no-wrap">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="wrp_sport_gale">
-                            <li>
-                                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                                <div class="info_bottom">
-                                    <h6 class="title">Golf</h6>
+                                    <h6 class="title">{{ subItem.title }}</h6>
                                     <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                                 </div>
                             </li>
@@ -133,29 +66,10 @@
         <div class="q-py-md centrar text-center w_1200">
             <div class="center text-left q-my-lg titulos">Valores Deporte Country</div>
                 <ul class="list_valores_deportes">
-                    <li>
-                        <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                        <span class="nro">1</span>
-                        <span class="nro">Fair Play</span>
-                        <p class="desc">Nos comportamos con una actitud, leal, honesta y positiva.</p>
-                    </li>
-                    <li>
-                        <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                        <span class="nro">2</span>
-                        <span class="nro">Team Work</span>
-                        <p class="desc">Nos apoyamos entre todos, para siempre ir por más.</p>
-                    </li>
-                    <li>
-                        <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                        <span class="nro">3</span>
-                        <span class="nro">Give Back</span>
-                        <p class="desc">Nos ponemos a disposición del Club.</p>
-                    </li>
-                    <li>
-                        <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/05_0.png" alt="img_golf">
-                        <span class="nro">4</span>
-                        <span class="nro">Safety</span>
-                        <p class="desc">Nos ponemos a disposición del Club.</p>
+                    <li v-for="(item, key) in valores" :key="key">
+                        <img :src="urlSite + item.field_imagen_valor" alt="img_golf">
+                        <span class="nro" v-ht>{{ item.field_titulo_valor }}</span>
+                        <p class="desc" v-html="item.field_descripcion_valor"></p>
                     </li>
                 </ul>
         </div>
@@ -227,12 +141,12 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="rut"
+                          v-model="sport"
                           label="Seleccione un deporte *"
                       />
                       <q-input
                           outlined
-                          v-model="rut"
+                          v-model="message"
                           label="Mensaje *"
                       />
                       <div class="text-left">
@@ -306,7 +220,14 @@ export default {
       name: '',
       email: '',
       telefono: '',
-      rut: ''
+      sport: '',
+      message: '',
+      intro: {
+        body: [
+          { value: '' }
+        ]
+      },
+      valores: []
     }
   },
   created () {
@@ -320,8 +241,8 @@ export default {
     onSubmit () {
       var _this = this
       var data = {
-        type: 'sendEmailReserva',
-        service: 'Charlas Culturales',
+        type: 'sendEmailDeportes',
+        service: 'Deportes',
         email: this.email,
         name: this.name,
         lastname: '',
@@ -339,6 +260,8 @@ export default {
           this.email = ''
           this.name = ''
           this.telefono = ''
+          this.sport = ''
+          this.message = ''
           this.rut = ''
           this.pop_reservar_spa = false
         }
@@ -346,28 +269,45 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/374?_format=json', {
+      configServices.loadData(this, '/node/581?_format=json', {
         callBack: (data) => {
           _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
+          _this.slide = data.field_slider_sport[0].target_uuid
         }
       })
 
-      configServices.loadData(this, '/secciones-kids/json', {
+      configServices.loadData(this, '/node/582?_format=json', {
         callBack: (data) => {
-          _this.portadas = data
+          _this.intro = data
         }
       })
 
-      configServices.loadData(this, '/personal-staff/kids', {
+      configServices.loadData(this, '/intro-deportes/json', {
+        callBack: (data) => {
+          var n = 4
+          _this.portadas = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+
+          console.log(_this.portadas)
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/deportes', {
         callBack: (data) => {
           _this.personal = data
+        }
+      })
+
+      configServices.loadData(this, '/valores-deporte/json', {
+        callBack: (data) => {
+          _this.valores = data
         }
       })
     },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/kids/json', {
+      configServices.loadData(this, '/multimedia-secciones/deportes/json', {
         callBack: (data) => {
           const videos = []
           const images = []
@@ -379,11 +319,11 @@ export default {
             }
           }
 
-          _this.multimediaHome.push(images[0])
           _this.multimediaHome.push(images[1])
-          _this.multimediaHome.push(videos[0])
+          _this.multimediaHome.push(images[0])
           _this.multimediaHome.push(videos[1])
           _this.multimediaHome.push(videos[2])
+          _this.multimediaHome.push(videos[0])
           _this.$q.loading.hide()
         }
       })

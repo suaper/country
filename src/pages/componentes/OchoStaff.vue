@@ -2,19 +2,35 @@
     <div class="staff">
         <h6 class="title_text">Staff</h6>
         <div class="flex">
-            <table class="datos_staff_contacto">
+            <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
                 <tr>
                     <td>
-                        <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/staff-charlas.png" />
+                        <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
                     </td>
                     <td>
-                        <p><strong>Camila Góngora</strong></p>
-                        <p><strong>Coordinadora </strong></p>
-                        <p>camilagg@pwcc.cl</p>
-                        <p>+56 2 27575748</p>
+                        <p><strong>{{ personal.field_nombre_staff }}</strong></p>
+                        <p><strong> {{ personal.field_cargo_staff }} </strong></p>
+                        <p>{{ personal.field_correo_staff }}</p>
+                        <p>{{ personal.field_numero_staff }}</p>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
 </template>
+
+<script>
+
+export default {
+  name: 'OchoStaff',
+  props: {
+    info: Array
+  },
+  data () {
+    return {
+      personal: this.info,
+      urlSite: 'https://pwccdev.mkbk.digital/'
+    }
+  }
+}
+</script>
