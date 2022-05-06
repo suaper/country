@@ -470,6 +470,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/rugby',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Rugby.vue') }
+    ]
+  },
+  {
     path: '/deportes/nosotros',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -495,6 +502,13 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
     ]
   },
   // Always leave this as last one,
