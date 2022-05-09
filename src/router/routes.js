@@ -637,6 +637,62 @@ const routes = [
       { path: '', component: () => import('pages/deportes/Contacto.vue') }
     ]
   },
+  {
+    path: '/deportes/squash/',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Squash.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/historia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Historia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/historia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Historia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/escuela',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Escuela.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/torneos',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Calendario.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/squash/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
