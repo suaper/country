@@ -15,7 +15,7 @@
         <div class="centrar w_1100 fila_separador ">
             <div class="w_55">
                 <h5 class="style_title q-my-lg ">Tabla de posiciones</h5>
-                <TablaClasificacion />
+                <TablaPosiciones />
             </div>
             <div class="w_35">
                 <h5 class="style_title q-my-lg ">Palmarés</h5>
@@ -30,7 +30,7 @@
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
 import Anclas from 'pages/componentes/Anclas'
-import TablaClasificacion from 'pages/componentes/TableClasificacion'
+import TablaPosiciones from 'pages/componentes/TablaPosiciones'
 import Palmares from 'pages/componentes/Palmares'
 import Fechas from 'pages/componentes/CincoProximos'
 
@@ -40,7 +40,7 @@ export default {
     MenuDeporteInterno,
     Banner,
     Anclas,
-    TablaClasificacion,
+    TablaPosiciones,
     Palmares,
     Fechas
   },
