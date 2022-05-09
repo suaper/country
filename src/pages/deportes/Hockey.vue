@@ -210,7 +210,6 @@ export default {
       console.log(_this.path)
       configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
           _this.loadedInfo = true

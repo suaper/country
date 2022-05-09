@@ -1,14 +1,14 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
-    <Banner />
+    <MenuDeporteInterno currentItem="/deportes/paddle" />
+    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-pb-md all_width bg_white">
         <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Paddle</div>
-            <DescDeporte />
+            <DescDeporte :content="content" v-if="loadedContent" />
         </div>
     </div>
     <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
@@ -19,27 +19,27 @@
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200 bg_amarillo">
             <h4 class="subtitle q-my-md">Noticias</h4>
-            <Noticias />
+            <Noticias :info="notices" v-if="loadedNotices"/>
         </div>
     </div>
 
     <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200 bg_amarillo">
             <h4 class="subtitle q-my-md">Canchas</h4>
-            <DescDeporte />
+            <DescDeporte :content="cancha" v-if="loadedCancha" />
         </div>
     </div>
 
     <div class="q-py-xl all_width bg_gamarillo" id="reglamentos">
         <div class="centrar w_1100">
             <h5 class="style_title q-my-lg" >Reglamentos</h5>
-            <ListaReglamentos/>
+            <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>
         </div>
     </div>
 
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
-            <Multimedia />
+            <Multimedia :path="path"/>
         </div>
     </div>
 
@@ -48,11 +48,10 @@
         <div class="q-py-xl centrar text-center w_1200">
           <div class="row_2 fitnes_last">
             <div class="w_55">
-                <h5 class="style_title q-my-lg text-left" >Contacto</h5>
                 <Contacto />
             </div>
             <div class="w_35">
-                <Staff />
+                <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
           </div>
         </div>
@@ -69,11 +68,12 @@
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
 import DescDeporte from 'pages/componentes/SoloTexto'
+import Patrocinadores from 'pages/componentes/Dos'
 import Noticias from 'pages/componentes/TresNoticias'
 import Multimedia from 'pages/componentes/Multimedia'
 import Contacto from 'pages/componentes/SieteContacto'
 import Staff from 'pages/componentes/OchoStaff'
-import ListaReglamentos from 'pages/componentes/Listareglamentos'
+import ListaReglamentos from 'pages/componentes/ListaReglamentos'
 import configServices from '../../services/config'
 
 export default {
@@ -82,6 +82,7 @@ export default {
     MenuDeporteInterno,
     Banner,
     DescDeporte,
+    Patrocinadores,
     Noticias,
     Multimedia,
     Contacto,
@@ -93,7 +94,7 @@ export default {
       sliders: true,
       video: false,
       currentVideo: '',
-      slide: 1,
+      slide: '1',
       slidecontent: 0,
       info: {
         body: [
@@ -118,7 +119,23 @@ export default {
       },
       events: [],
       dtevento: false,
-      event: {}
+      event: {},
+      images: {},
+      loadedInfo: false,
+      loadedImages: false,
+      loadedContent: false,
+      content: {},
+      notices: [],
+      loadedNotices: false,
+      reglamentos: {},
+      loadedReglamentos: false,
+      path: '',
+      player: {},
+      loadedPlayer: false,
+      loadedEvents: false,
+      loadedPersonal: false,
+      cancha: '',
+      loadedCancha: false
     }
   },
   created () {
@@ -126,9 +143,10 @@ export default {
     this.path = currentPath[2]
 
     localStorage.setItem('sport', this.path)
+
     this.getInfo()
+    this.getNotices()
     this.getMultimediaHome()
-    this.getEvents()
   },
   methods: {
     onReset () {
@@ -161,6 +179,15 @@ export default {
         }
       })
     },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.notices = data
+          _this.loadedNotices = true
+        }
+      })
+    },
     openDetalleEvento (event) {
       this.event = event
       this.dtevento = true
@@ -187,27 +214,54 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
+          _this.info = data[0]
+          _this.slide = data[0].field_slider_sport[0].target_uuid
+          _this.loadedInfo = true
         }
       })
 
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.personal = data
+          console.log(data)
+          _this.images = data[0]
+          _this.loadedImages = true
         }
       })
-    },
-    getEvents () {
-      var _this = this
-      configServices.loadData(this, '/eventos/cultura/json', {
+
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          const n = 3
-          _this.events = new Array(Math.ceil(data.length / n))
-            .fill()
-            .map(_ => data.splice(0, n))
+          _this.content = data[0]
+          _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/jugador-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.player = data[0]
+          _this.loadedPlayer = true
+        }
+      })
+
+      configServices.loadData(this, '/reglamentos-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.reglamentos = data
+          _this.loadedReglamentos = true
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/' + _this.path, {
+        callBack: (data) => {
+          _this.personal = data
+          _this.loadedPersonal = true
+        }
+      })
+
+      configServices.loadData(this, '/node/850?_format=json', {
+        callBack: (data) => {
+          _this.cancha = data
+          _this.loadedCancha = true
         }
       })
     },

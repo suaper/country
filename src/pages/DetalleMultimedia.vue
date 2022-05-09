@@ -24,7 +24,7 @@
                 height="250px"
                 class="galeria_multimedia"
                 >
-                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in info" :key="key">
+                <q-carousel-slide class="column" :name="key" v-for="(item, key) in info" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">
                             <div class="item_galeria">
