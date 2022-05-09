@@ -498,6 +498,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/natacion/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
     path: '/deportes/rugby/multimedia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -513,6 +520,13 @@ const routes = [
   },
   {
     path: '/deportes/hockey/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Contacto.vue') }
@@ -547,6 +561,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/natacion/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
     path: '/deportes/hockey/noticias',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -558,6 +579,62 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Natacion.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/master',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/NatacionMaster.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/triatlon',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Triatlon.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/escuela-natacion',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/EscuelaNatacion.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/natacion-bebes',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/NatacionBebes.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/actividades',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Actividades.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/natacion/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
     ]
   },
   // Always leave this as last one,
