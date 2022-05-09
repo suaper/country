@@ -1,18 +1,18 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
+  <MenuDeporteInterno currentItem="/deportes/natacion/master" />
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Natación Master</div>
-            <DescDeporte />
+            <DescDeporte :content="content" v-if="loadedContent" />
         </div>
     </div>
     <div class="q-pb-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1100 bg_amarillo">
             <h4 class="subtitle q-my-xl">Días de entrenamiento</h4>
             <div class="w_900 centrar">
-              <TablaClasificacion :items="categories" v-if="loadedContent"/>
+              <TablaClasificacion :items="categories" v-if="loadedServices"/>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@ export default {
       comite: {},
       loadedComite: false,
       espiritu: {},
-      loadedEspiritu: false,
+      loadedServices: false,
       categories: [],
       menCategories: [],
       reglamentos: {},
@@ -77,6 +77,13 @@ export default {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
           _this.loadedInfo = true
+        }
+      })
+
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+        callBack: (data) => {
+          _this.content = data[0]
+          _this.loadedContent = true
         }
       })
 
@@ -123,7 +130,7 @@ export default {
             }
           })
 
-          _this.loadedContent = true
+          _this.loadedServices = true
         }
       })
     }

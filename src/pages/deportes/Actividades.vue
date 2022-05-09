@@ -1,18 +1,18 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
+   <MenuDeporteInterno currentItem="/deportes/natacion/actividades" />
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Actividades</div>
             <h4 class="subtitle">Eventos</h4>
-            <Eventos />
+            <Eventos :info="events" v-if="loadedEvents"/>
         </div>
     </div>
     <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1100 bg_amarillo">
             <h4 class="subtitle q-my-md">Descargables</h4>
-            <Descargables />
+            <Descargables :info="descargables" v-if="loadedDescargables" />
         </div>
     </div>
   </q-page>
@@ -46,12 +46,14 @@ export default {
       loadedContent: false,
       comite: {},
       loadedComite: false,
+      loadedEvents: false,
+      events: [],
       espiritu: {},
       loadedEspiritu: false,
       categories: [],
       menCategories: [],
-      reglamentos: {},
-      loadedReglamentos: false
+      descargables: [],
+      loadedDescargables: false
     }
   },
   mounted () {
@@ -60,7 +62,8 @@ export default {
     this.subPath = currentPath[3]
 
     this.getInfo()
-    this.getCategories()
+    this.getDownloads()
+    this.getEvents()
     this.$q.loading.hide()
   },
   methods: {
@@ -71,58 +74,63 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
           _this.loadedInfo = true
         }
       })
-
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+    },
+    getEvents () {
+      var _this = this
+      configServices.loadData(this, '/eventos/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
-          _this.reglamentos = data
-          _this.loadedReglamentos = true
+          const n = 3
+          _this.events = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+          _this.loadedEvents = true
         }
       })
     },
-    getCategories () {
+    getDownloads () {
       var _this = this
-      configServices.loadData(this, '/categorias/' + _this.path + '-' + _this.subPath + '/deportes', {
+      configServices.loadData(this, '/descargables-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
           data.map((item, key) => {
             var service = {
               title: item.title,
-              body: item.body,
+              image: item.field_imagen_item_1,
               subServices: [
                 {
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
+                  field_archivo_pdf: item.field_archivo_pdf,
+                  field_descripcion_pdf_1: item.field_descripcion_pdf_1,
+                  title: item.field_titulo_pdf
                 }
               ]
             }
-            const isFound = _this.categories.find((element, index) => {
+            const isFound = _this.descargables.find((element, index) => {
               if (element.title === item.title) {
-                _this.categories.splice(index, 1)
+                _this.descargables.splice(index, 1)
                 return element
               }
             })
 
             if (isFound && typeof isFound !== 'undefined') {
               isFound.subServices.push({
-                training: item.field_entranamiento,
-                date: item.field_horarios,
-                teacher: item.field_profesor_a
+                field_archivo_pdf: item.field_archivo_pdf,
+                field_descripcion_pdf_1: item.field_descripcion_pdf_1,
+                title: item.field_titulo_pdf
               })
 
-              _this.categories.push(isFound)
+              _this.descargables.push(isFound)
             } else {
-              _this.categories.push(service)
+              _this.descargables.push(service)
             }
           })
 
-          _this.loadedContent = true
+          _this.loadedDescargables = true
         }
       })
     }

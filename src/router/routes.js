@@ -603,7 +603,7 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/natacion/natacion-bebes',
+    path: '/deportes/natacion/natacion-para-bebes',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/NatacionBebes.vue') }

@@ -1,18 +1,18 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
+    <MenuDeporteInterno currentItem="/deportes/natacion/natacion-para-bebes" />
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Natación para Bebés</div>
-            <DescDeporte />
+            <DescDeporte :content="content" v-if="loadedContent" />
         </div>
     </div>
     <div class="q-pb-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1100 bg_amarillo">
             <h4 class="subtitle">Clases y Horarios</h4>
             <div class="w_900 centrar">
-              <TablaClasificacion :items="categories" v-if="loadedContent"/>
+              <TablaClasificacion :items="categories" v-if="loadedServices" :path="subPath"/>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@ export default {
       comite: {},
       loadedComite: false,
       espiritu: {},
-      loadedEspiritu: false,
+      loadedServices: false,
       categories: [],
       menCategories: [],
       reglamentos: {},
@@ -72,7 +72,7 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.subPath + '/json', {
         callBack: (data) => {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
@@ -80,7 +80,14 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.subPath + '/json', {
+        callBack: (data) => {
+          _this.content = data[0]
+          _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '/json', {
         callBack: (data) => {
           _this.reglamentos = data
           _this.loadedReglamentos = true
@@ -89,7 +96,7 @@ export default {
     },
     getCategories () {
       var _this = this
-      configServices.loadData(this, '/categorias/' + _this.path + '-' + _this.subPath + '/deportes', {
+      configServices.loadData(this, '/categorias/' + _this.subPath + '/deportes', {
         callBack: (data) => {
           data.map((item, key) => {
             var service = {
@@ -123,7 +130,7 @@ export default {
             }
           })
 
-          _this.loadedContent = true
+          _this.loadedServices = true
         }
       })
     }

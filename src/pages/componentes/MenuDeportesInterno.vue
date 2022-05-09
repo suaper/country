@@ -19,8 +19,8 @@
       <q-btn :disable="getDisable('/deportes/natacion')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion')" outline color="submenu" label="Natación" />
       <q-btn :disable="getDisable('/deportes/natacion/master')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/master')" outline color="submenu" label="Natación Master" />
       <q-btn :disable="getDisable('/deportes/natacion/triatlon')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/triatlon')" outline color="submenu" label="Triatlon" />
-      <q-btn :disable="getDisable('/deportes/natacion/escuela-natacion')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/escuela-natacion')" outline color="submenu" label="Escuela Natacion" />
-      <q-btn :disable="getDisable('/deportes/natacion/natacion-bebes')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/natacion-bebes')" outline color="submenu" label="Natación para Bebés" />
+      <q-btn :disable="getDisable('/deportes/natacion/escuela-natacion')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/escuela-natacion')" outline color="submenu" label="Escuela de Natacion" />
+      <q-btn :disable="getDisable('/deportes/natacion/natacion-para-bebes')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/natacion-para-bebes')" outline color="submenu" label="Natación para Bebés" />
       <q-btn :disable="getDisable('/deportes/natacion/actividades')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/actividades')" outline color="submenu" label="Actividades" />
       <q-btn :disable="getDisable('/deportes/natacion/noticias')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/natacion/multimedia')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/multimedia')" outline color="submenu" label="Multimedia" />
