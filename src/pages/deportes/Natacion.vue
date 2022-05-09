@@ -12,7 +12,6 @@
         <div class="centrar w_1200 bg_amarillo">
             <h4 class="subtitle q-my-md">Noticias</h4>
             <Noticias />
-
         </div>
     </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
