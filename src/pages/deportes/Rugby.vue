@@ -1,32 +1,32 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
-    <Banner />
+    <MenuDeporteInterno currentItem="/deportes/rugby" />
+    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-pb-md all_width bg_white">
-        <Patrocinadores />
+        <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Rugby</div>
             <h4 class="subtitle q-my-md">Noticias</h4>
-            <Noticias />
+            <Noticias :info="notices" v-if="loadedNotices"/>
         </div>
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200 bg_amarillo">
-            <Multimedia />
+            <Multimedia :path="path"/>
         </div>
     </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle q-my-md">Torneos</h4>
         </div>
-        <TorneosRugby />
+        <TorneosRugby :content="bannerDeportes" v-if="loadedBannerDeportes"/>
     </div>
     <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle q-my-md">Próximos Encuentros</h4>
-            <Proximos />
+            <Proximos :info="events" v-if="loadedEvents"/>
         </div>
     </div>
 
@@ -36,10 +36,10 @@
           <div class="row_2 fitnes_last">
             <div>
                 <Contacto />
-                <Staff />
+                <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
             <div class="w_35">
-                <Imagen />
+                <Imagen :content="image" v-if="loadedImage" :path="path"/>
             </div>
           </div>
         </div>
@@ -91,8 +91,10 @@ export default {
       sliders: true,
       video: false,
       currentVideo: '',
-      slide: 1,
+      slide: '1',
       slidecontent: 0,
+      image: [],
+      loadedImage: false,
       info: {
         body: [
           { value: '' }
@@ -116,11 +118,31 @@ export default {
       },
       events: [],
       dtevento: false,
-      event: {}
+      event: {},
+      images: {},
+      loadedInfo: false,
+      loadedImages: false,
+      loadedContent: false,
+      content: {},
+      notices: [],
+      loadedNotices: false,
+      path: '',
+      player: {},
+      loadedPlayer: false,
+      loadedEvents: false,
+      loadedPersonal: false,
+      bannerDeportes: [],
+      loadedBannerDeportes: false
     }
   },
   created () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
+
+    localStorage.setItem('sport', this.path)
+
     this.getInfo()
+    this.getNotices()
     this.getMultimediaHome()
     this.getEvents()
   },
@@ -155,6 +177,15 @@ export default {
         }
       })
     },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.notices = data
+          _this.loadedNotices = true
+        }
+      })
+    },
     openDetalleEvento (event) {
       this.event = event
       this.dtevento = true
@@ -181,33 +212,71 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
+          _this.info = data[0]
+          _this.slide = data[0].field_slider_sport[0].target_uuid
+          _this.loadedInfo = true
         }
       })
 
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.images = data[0]
+          _this.loadedImages = true
+        }
+      })
+
+      configServices.loadData(this, '/video-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.content = data[0]
+          _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/jugador-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.player = data[0]
+          _this.loadedPlayer = true
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/' + _this.path, {
         callBack: (data) => {
           _this.personal = data
+          _this.loadedPersonal = true
+        }
+      })
+
+      configServices.loadData(this, '/node/723?_format=json', {
+        callBack: (data) => {
+          _this.image = data
+          _this.loadedImage = true
+        }
+      })
+
+      configServices.loadData(this, 'banner-torneo-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.bannerDeportes = data
+          _this.loadedBannerDeportes = true
         }
       })
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, '/eventos/cultura/json', {
+      configServices.loadData(this, '/eventos/' + this.path + '/json', {
         callBack: (data) => {
           const n = 3
           _this.events = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
+          _this.loadedEvents = true
         }
       })
     },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/charlas-culturales/json', {
+      configServices.loadData(this, '/multimedia-secciones/' + _this.path + '/json', {
         callBack: (data) => {
           _this.multimediaHome = []
 

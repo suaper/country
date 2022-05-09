@@ -1,7 +1,7 @@
 <template>
     <div class="wrp_gallery_beneficios">
       <div class="w_1200 centrar">
-        <div class="wrp_busca_mes w_500 centrar">
+        <div class="wrp_busca_mes w_500 centrar" v-if="showFilter()">
             <q-select outlined label="Seleccione el mes" v-model="month" :options="options" @input="eventsByMonth(month)" />
         </div>
       </div>
@@ -100,10 +100,11 @@ export default {
       ]
     }
   },
-  created () {
-    console.log(this.events)
-  },
   methods: {
+    showFilter () {
+      if (typeof this.eventsByMonth !== 'undefined') return true
+      return false
+    },
     openDetalleEvento (event) {
       this.event = event
       this.dtevento = true

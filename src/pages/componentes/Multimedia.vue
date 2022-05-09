@@ -47,7 +47,9 @@ import configServices from '../../services/config'
 
 export default {
   name: 'MultimediaDeportes',
-
+  props: {
+    path: String
+  },
   data () {
     return {
       sliders: true,
@@ -71,28 +73,12 @@ export default {
     }
   },
   created () {
-    this.getInfo()
     this.getMultimediaHome()
   },
   methods: {
-    getInfo () {
-      var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
-        callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
-        }
-      })
-
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
-        callBack: (data) => {
-          _this.personal = data
-        }
-      })
-    },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/charlas-culturales/json', {
+      configServices.loadData(this, '/multimedia-secciones/' + this.path + '/json', {
         callBack: (data) => {
           _this.multimediaHome = []
 

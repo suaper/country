@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/hockey/nosotros"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/nosotros'"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
 
     <div class="q-pb-md all_width bg_gris">
@@ -52,7 +52,7 @@ export default {
       loadedInfo: false,
       content: {},
       loadedContent: false,
-      comite: {},
+      comite: [],
       loadedComite: false,
       espiritu: {},
       loadedEspiritu: false

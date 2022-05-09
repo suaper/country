@@ -1,21 +1,20 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/hockey/calendario"/>
-    <Banner />
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/calendario'"/>
 
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
             <div class="center text-center q-pt-md q-my-lg titulos">Calendario</div>
-            <Anclas :goAnchor="filterItem" :path="subPath"/>
+            <Anclas :goAnchor="filterItem" :path="subPath" v-if="path === 'hockey'"/>
             <Fechas :info="events" v-if="loadedEvents" :eventsByMonth="getEventsByMonth" :key="key"/>
         </div>
     </div>
 
-    <div class="q-py-xl all_width bg_amarillo">
+    <div class="q-py-xl all_width bg_amarillo" v-if="path === 'hockey'">
         <div class="centrar w_1100 fila_separador ">
             <div class="w_55">
                 <h5 class="style_title q-my-lg ">Tabla de posiciones</h5>
-                <TablaPosiciones />
+                <TablaPosiciones :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
             </div>
             <div class="w_35">
                 <h5 class="style_title q-my-lg ">Palmarés</h5>
@@ -28,7 +27,6 @@
 
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
-import Banner from 'pages/componentes/Uno'
 import Anclas from 'pages/componentes/Anclas'
 import TablaPosiciones from 'pages/componentes/TablaPosiciones'
 import Palmares from 'pages/componentes/Palmares'
@@ -39,7 +37,6 @@ export default {
   name: 'Categorias',
   components: {
     MenuDeporteInterno,
-    Banner,
     Anclas,
     TablaPosiciones,
     Palmares,
@@ -61,7 +58,12 @@ export default {
       subPath: '',
       options: [
         'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-      ]
+      ],
+      campeonatos: [],
+      loadedCampeonatos: false,
+      positions: [],
+      loadedPositions: false,
+      keyPositions: 0
     }
   },
   created () {
@@ -74,8 +76,11 @@ export default {
   methods: {
     getEvents () {
       var _this = this
-      console.log(_this.currentItem)
-      configServices.loadData(this, '/eventos-deportes-calendario/' + this.path + '/json/' + _this.currentItem, {
+      var url = '/eventos-deportes-calendario/' + _this.path + '/json/' + _this.currentItem
+      if (_this.path !== 'hockey') {
+        url = '/eventos/' + _this.path + '/json/'
+      }
+      configServices.loadData(this, url, {
         callBack: (data) => {
           const n = 3
           _this.allEvents = data
@@ -101,10 +106,18 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+      configServices.loadData(this, '/campeonatos/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.reglamentos = data
-          _this.loadedReglamentos = true
+          data.map((item, key) => {
+            var tournament = {
+              id: item.nid,
+              label: item.title
+            }
+
+            _this.campeonatos.push(tournament)
+          })
+
+          _this.loadedCampeonatos = true
           _this.$q.loading.hide()
         }
       })
@@ -160,6 +173,19 @@ export default {
         .map(_ => newEvents.splice(0, n))
 
       _this.key = _this.key + 1
+    },
+    getPositions (tournament) {
+      var _this = this
+      configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.positions = data
+
+          _this.loadedPositions = true
+          _this.keyPositions = _this.keyPositions + 1
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

@@ -134,6 +134,8 @@ export default {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
 
+    localStorage.setItem('sport', this.path)
+
     this.getInfo()
     this.getNotices()
     this.getMultimediaHome()
@@ -172,7 +174,7 @@ export default {
     },
     getNotices () {
       var _this = this
-      configServices.loadData(this, '/noticias/hockey/json', {
+      configServices.loadData(this, '/noticias/' + _this.path + '/json', {
         callBack: (data) => {
           _this.notices = data
           _this.loadedNotices = true

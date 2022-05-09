@@ -1,7 +1,7 @@
 <template>
     <div class="wrp_table_clasificacion">
         <div class="wrp_busca_mes w_100 centrar">
-            <q-select outlined label="Seleccione el Torneo"  />
+            <q-select outlined label="Seleccione el Torneo" v-model="tournament" :options="tournaments" @input="obtainPositions(tournament)"/>
         </div>
         <div class="wrp_table_clasificacion">
             <table>
@@ -12,33 +12,12 @@
                     <th>Perdidos</th>
                     <th>Empatados</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>4</td>
-                    <td>4</td>
-                    <td>4</td>
+                <tr v-for="(item, key) in itemsPositions" :key="key">
+                    <td>{{ item.field_posicion }}</td>
+                    <td>{{ item.field_equipo }}</td>
+                    <td>{{ item.field_ganados }}</td>
+                    <td>{{ item.field_perdidos }}</td>
+                    <td>{{ item.field_empatados }}</td>
                 </tr>
             </table>
         </div>
@@ -48,6 +27,18 @@
 <script>
 
 export default {
-  name: 'TablaPosiciones'
+  name: 'TablaClasificacion',
+  props: {
+    items: Array,
+    obtainPositions: Function,
+    positions: Array
+  },
+  data () {
+    return {
+      tournaments: this.items,
+      tournament: '',
+      itemsPositions: this.positions
+    }
+  }
 }
 </script>

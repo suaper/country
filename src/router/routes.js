@@ -498,14 +498,28 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/multimedia',
+    path: '/deportes/rugby/multimedia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Multimedia.vue') }
     ]
   },
   {
-    path: '/deportes/contacto',
+    path: '/deportes/hockey/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/hockey/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
+    ]
+  },
+  {
+    path: '/deportes/rugby/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Contacto.vue') }
@@ -527,6 +541,13 @@ const routes = [
   },
   {
     path: '/deportes/rugby/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
+    path: '/deportes/hockey/noticias',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Noticias.vue') }

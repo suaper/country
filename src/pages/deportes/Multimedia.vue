@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_fitness">
-    <MenuDeporteInterno />
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/multimedia'"/>
     <div class="q-pt-xl all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Multimedia</div>
@@ -153,10 +153,13 @@ export default {
       slidersContentImages: [],
       slidersContentVideos: [],
       images: [],
-      videos: []
+      videos: [],
+      path: ''
     }
   },
-  mounted () {
+  created () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
     this.getMultimedia()
   },
   methods: {
@@ -169,7 +172,7 @@ export default {
     },
     getMultimedia () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/cultura/json', {
+      configServices.loadData(this, '/multimedia-secciones/' + this.path + '/json', {
         callBack: (data) => {
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {
@@ -187,7 +190,7 @@ export default {
           _this.slidersContentVideos = new Array(Math.ceil(_this.videos.length / n))
             .fill()
             .map(_ => _this.videos.splice(0, n))
-          console.log(_this.slidersContentVideos)
+          console.log(_this.slidersContentImages)
           _this.getOptions()
           _this.$q.loading.hide()
         }

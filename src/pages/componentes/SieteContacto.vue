@@ -1,6 +1,5 @@
  <template>
     <div class="form_fitness">
-        <h6 class="title_text">Contacto</h6>
         <q-form
             @submit="onSubmit"
             @reset="onReset"

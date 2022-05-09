@@ -26,10 +26,9 @@
                         control-color="primary"
                         padding
                         arrows
-                        height="400px"
                         class="galeria_noticias"
                         >
-                        <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in notices" :key="key">
+                        <q-carousel-slide :name="key" class="column" v-for="(item, key) in notices" :key="key">
                             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(itemNotice, keyNotice) in item" :key="keyNotice">
                                     <div class="item_galeria">
@@ -97,7 +96,7 @@ export default {
         var _this = this
         configServices.loadData(this, '/noticias/' + filter + '/json', {
           callBack: (data) => {
-            const n = 3
+            const n = 8
             _this.notices = new Array(Math.ceil(data.length / n))
               .fill()
               .map(_ => data.splice(0, n))
@@ -114,7 +113,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias-todas/json', {
         callBack: (data) => {
-          const n = 3
+          const n = 8
           data.map((item, key) => {
             var filter = {
               title: item.field_mostra_en_
