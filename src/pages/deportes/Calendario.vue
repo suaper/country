@@ -5,9 +5,9 @@
 
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
-            <div class="center text-center q-my-lg titulos">Calendario</div>
+            <div class="center text-center q-pt-md q-my-lg titulos">Calendario</div>
             <Anclas />
-            <h3 class="text-center">aca va el componente CincoProximos</h3>
+            <Fechas />
         </div>
     </div>
 
@@ -32,6 +32,7 @@ import Banner from 'pages/componentes/Uno'
 import Anclas from 'pages/componentes/Anclas'
 import TablaClasificacion from 'pages/componentes/TableClasificacion'
 import Palmares from 'pages/componentes/Palmares'
+import Fechas from 'pages/componentes/CincoProximos'
 
 export default {
   name: 'Categorias',
@@ -40,7 +41,8 @@ export default {
     Banner,
     Anclas,
     TablaClasificacion,
-    Palmares
+    Palmares,
+    Fechas
   },
   data () {
     return {

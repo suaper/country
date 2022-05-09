@@ -3639,3 +3639,22 @@ ul.text_horarios{
         }
     }
 }
+
+.wrp_busca_mes label .q-field__control{
+    color: #d47c06;
+    background: #fff;
+}
+.staff{
+    &.deportestaff{
+        width: 100%;
+        >.flex{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            table{
+                margin: 15px;
+            }
+        }
+    }
+
+}

@@ -1,17 +1,22 @@
 <template>
     <div class="wrp_gallery_beneficios">
-        <q-carousel
-        v-model="slidecontent"
-        transition-prev="slide-right"
-        transition-next="slide-left"
-        swipeable
-        animated
-        control-color="primary"
-        padding
-        arrows
-        height="300px"
-        class="galeria_beneficios"
-        >
+      <div class="w_1200 centrar">
+        <div class="wrp_busca_mes w_500 centrar">
+            <q-select outlined label="Seleccione el mes"/>
+        </div>
+      </div>
+      <q-carousel
+      v-model="slidecontent"
+      transition-prev="slide-right"
+      transition-next="slide-left"
+      swipeable
+      animated
+      control-color="primary"
+      padding
+      arrows
+      height="300px"
+      class="galeria_beneficios"
+      >
         <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in events" :key="key">
             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                 <div class="treintaydos_general" v-for="(event, eventKey) in item" :key="eventKey">

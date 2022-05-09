@@ -5,8 +5,11 @@
       <q-btn :disable="getDisable('/deportes/nosotros')" @click="goItem('/deportes/nosotros')" outline color="submenu" label="Nosotros" />
       <q-btn :disable="getDisable('/deportes/categorias')" @click="goItem('/deportes/categorias')" outline color="submenu" label="Categorias" />
       <q-btn :disable="getDisable('/deportes/calendario')" @click="goItem('/deportes/calendario')" outline color="submenu" label="Calendario" />
+      <q-btn :disable="getDisable('/deportes/rugby/noticias')" @click="goItem('/deportes/rugby/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/multimedia')" @click="goItem('/deportes/multimedia')" outline color="submenu" label="Multimedia" />
       <q-btn :disable="getDisable('/deportes/contacto')" @click="goItem('/deportes/contacto')" outline color="submenu" label="Contacto" />
+      <q-btn :disable="getDisable('/deportes/rugby/calendario')" @click="goItem('/deportes/rugby/calendario')" outline color="submenu" label="Calendario" />
+      <q-btn :disable="getDisable('/deportes/rugby/staff')" @click="goItem('/deportes/rugby/staff')" outline color="submenu" label="Staff" />
     </q-btn-group>
 </template>
 
