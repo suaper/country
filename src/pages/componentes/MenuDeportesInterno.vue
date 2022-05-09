@@ -10,6 +10,11 @@
       <q-btn :disable="getDisable('/deportes/contacto')" @click="goItem('/deportes/contacto')" outline color="submenu" label="Contacto" />
       <q-btn :disable="getDisable('/deportes/rugby/calendario')" @click="goItem('/deportes/rugby/calendario')" outline color="submenu" label="Calendario" />
       <q-btn :disable="getDisable('/deportes/rugby/staff')" @click="goItem('/deportes/rugby/staff')" outline color="submenu" label="Staff" />
+      <q-btn :disable="getDisable('/deportes/natacion/master')" @click="goItem('/deportes/natacion/master')" outline color="submenu" label="Natación Master" />
+      <q-btn :disable="getDisable('/deportes/natacion/triatlon')" @click="goItem('/deportes/natacion/triatlon')" outline color="submenu" label="Triatlon" />
+      <q-btn :disable="getDisable('/deportes/natacion/escuela-natacion')" @click="goItem('/deportes/natacion/escuela-natacion')" outline color="submenu" label="Escuela Natacion" />
+      <q-btn :disable="getDisable('/deportes/natacion/natacion-bebes')" @click="goItem('/deportes/natacion/natacion-bebes')" outline color="submenu" label="Natación para Bebés" />
+      <q-btn :disable="getDisable('/deportes/natacion/actividades')" @click="goItem('/deportes/natacion/actividades')" outline color="submenu" label="Actividades" />
     </q-btn-group>
 </template>
 

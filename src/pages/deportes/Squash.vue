@@ -2,9 +2,12 @@
   <q-page class="flex flex-center view_quienes_somos">
     <MenuDeporteInterno />
     <Banner />
+    <div class="q-pb-md all_width bg_white">
+        <Patrocinadores :images="images" v-if="loadedImages" />
+    </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
-            <div class="center text-center q-my-lg titulos">Natación</div>
+            <div class="center text-center q-my-lg titulos">Squash</div>
             <DescDeporte />
         </div>
     </div>
@@ -13,6 +16,10 @@
             <h4 class="subtitle q-my-md">Noticias</h4>
             <Noticias />
         </div>
+    </div>
+    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
+        <h5 class="text-white">Tienda oficial</h5>
+          <q-btn outline click="pop_form_socio = true" class="btn_bg_beige" label="Ver Libros Disponibles" icon-right="arrow_right_alt"/>
     </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
