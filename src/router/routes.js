@@ -477,14 +477,14 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/nosotros',
+    path: '/deportes/hockey/nosotros',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Nosotros.vue') }
     ]
   },
   {
-    path: '/deportes/categorias',
+    path: '/deportes/hockey/categoria',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Categorias.vue') }

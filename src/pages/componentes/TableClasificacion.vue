@@ -9,26 +9,27 @@
                 <th>Horarios</th>
                 <th>Profesor/a</th>
             </tr>
-            <tr>
-                <td>Sub 6</td>
-                <td>Martes y Jueves / 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
-            </tr>
-            <tr>
-                <td>Sub 6</td>
-                <td>Martes y Jueves / 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
-            </tr>
-            <tr>
-                <td>Sub 6</td>
-                <td>Martes y Jueves / 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
-            </tr>
-            <tr>
-                <td>Sub 6</td>
-                <td>Martes y Jueves / 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
+            <tr v-for="(item, key) in info[0].subServices" :key="key">
+                <td>{{ item.training }}</td>
+                <td>{{ item.date }}</td>
+                <td>{{ item.teacher }}</td>
             </tr>
         </table>
     </div>
 </template>
+
+<script>
+
+export default {
+  name: 'TablaClasificacion',
+  props: {
+    items: Array
+  },
+  data () {
+    return {
+      month: '',
+      info: this.items
+    }
+  }
+}
+</script>

@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
+    <MenuDeporteInterno currentItem="/deportes/hockey" />
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-pb-md all_width bg_white">
         <Patrocinadores :images="images" v-if="loadedImages" />
