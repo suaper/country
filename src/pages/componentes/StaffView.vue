@@ -1,45 +1,17 @@
  <template>
     <div class="staff deportestaff">
         <div class="flex">
-            <table class="datos_staff_contacto">
-                <tr>
-                    <td>
-                        <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-05/staff-enrique.png" />
-                    </td>
-                    <td>
-                        <p><strong>Enrique</strong></p>
-                        <p><strong> Entrenador</strong></p>
-                        <p>pwcc@pwcc.com</p>
-                        <p>3101930283</p>
-                    </td>
-                </tr>
-            </table>
-            <table class="datos_staff_contacto">
-                <tr>
-                    <td>
-                        <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-05/staff-enrique.png" />
-                    </td>
-                    <td>
-                        <p><strong>Enrique</strong></p>
-                        <p><strong> Entrenador</strong></p>
-                        <p>pwcc@pwcc.com</p>
-                        <p>3101930283</p>
-                    </td>
-                </tr>
-            </table>
-            <table class="datos_staff_contacto">
-                <tr>
-                    <td>
-                        <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-05/staff-enrique.png" />
-                    </td>
-                    <td>
-                        <p><strong>Enrique</strong></p>
-                        <p><strong> Entrenador</strong></p>
-                        <p>pwcc@pwcc.com</p>
-                        <p>3101930283</p>
-                    </td>
-                </tr>
-            </table>
+            <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
+              <tr>
+                  <td>
+                      <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
+                  </td>
+                  <td>
+                      <p><strong>{{ personal.field_nombre_y_apellidos }}</strong></p>
+                      <p><strong> {{ personal.field_cargo_staff }} </strong></p>
+                  </td>
+              </tr>
+          </table>
         </div>
     </div>
 </template>
@@ -47,11 +19,18 @@
 <script>
 
 export default {
-  name: 'OchoStaff',
+  name: 'StaffView',
+  props: {
+    info: Array
+  },
   data () {
     return {
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://pwccdev.mkbk.digital/',
+      personal: this.info
     }
+  },
+  mounted () {
+    console.log(this.personal)
   }
 }
 </script>

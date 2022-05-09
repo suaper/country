@@ -68,7 +68,7 @@
                 <ul class="list_valores_deportes">
                     <li v-for="(item, key) in valores" :key="key">
                         <img :src="urlSite + item.field_imagen_valor" alt="img_golf">
-                        <span class="nro" v-ht>{{ item.field_titulo_valor }}</span>
+                        <span class="nro">{{ item.field_titulo_valor }}</span>
                         <p class="desc" v-html="item.field_descripcion_valor"></p>
                     </li>
                 </ul>

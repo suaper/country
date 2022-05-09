@@ -245,7 +245,7 @@ export default {
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, '/eventos/hockey/json', {
+      configServices.loadData(this, '/eventos/' + this.path + '/json', {
         callBack: (data) => {
           const n = 3
           _this.events = new Array(Math.ceil(data.length / n))

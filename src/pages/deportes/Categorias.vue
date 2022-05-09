@@ -6,7 +6,7 @@
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
             <div class="center text-center q-my-lg titulos">Categorías</div>
-            <Anclas :goAnchor="goToAnchor"/>
+            <Anclas :goAnchor="goToAnchor" :path="subPath"/>
         </div>
     </div>
     <div class="q-py-xl all_width bg_amarillo" id="damas">

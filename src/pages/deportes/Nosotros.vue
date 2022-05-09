@@ -13,7 +13,7 @@
         <div class="centrar w_1100 fila_separador ">
             <div class="w_45">
                 <h5 class="style_title">Comité</h5>
-                <Comite :content="comite" v-if="loadedComite"/>
+                <Comite :content="comite" :path="path" v-if="loadedComite"/>
             </div>
             <div class="w_45">
                 <h5 class="style_title">Declaración Espíritu Amarillo</h5>

@@ -1,8 +1,5 @@
 <template>
     <div class="wrp_table_clasificacion">
-        <div class="wrp_busca_mes w_100 centrar">
-            <q-select outlined label="Seleccione el mes" v-model="month"  />
-        </div>
         <table>
             <tr>
                 <th>Entrenamiento</th>
@@ -27,7 +24,6 @@ export default {
   },
   data () {
     return {
-      month: '',
       info: this.items
     }
   }

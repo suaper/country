@@ -4,7 +4,7 @@
       <q-btn :disable="getDisable('/deportes/hockey')" @click="goItem('/deportes/hockey')" outline color="submenu" label="Hockey" />
       <q-btn :disable="getDisable('/deportes/hockey/nosotros')" @click="goItem('/deportes/hockey/nosotros')" outline color="submenu" label="Nosotros" />
       <q-btn :disable="getDisable('/deportes/hockey/categoria')" @click="goItem('/deportes/hockey/categoria')" outline color="submenu" label="Categorias" />
-      <q-btn :disable="getDisable('/deportes/calendario')" @click="goItem('/deportes/calendario')" outline color="submenu" label="Calendario" />
+      <q-btn :disable="getDisable('/deportes/hockey/calendario')" @click="goItem('/deportes/hockey/calendario')" outline color="submenu" label="Calendario" />
       <q-btn :disable="getDisable('/deportes/rugby/noticias')" @click="goItem('/deportes/rugby/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/multimedia')" @click="goItem('/deportes/multimedia')" outline color="submenu" label="Multimedia" />
       <q-btn :disable="getDisable('/deportes/contacto')" @click="goItem('/deportes/contacto')" outline color="submenu" label="Contacto" />

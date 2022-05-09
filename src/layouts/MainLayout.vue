@@ -17,7 +17,7 @@
         <q-route-tab to="/eventos" label="Eventos" />
         <q-route-tab to="/special-days" label="Special Days" />
         <q-route-tab to="/cultura" label="Cultura" />
-        <q-route-tab to="/Deportes" label="Deportes" />
+        <q-route-tab to="/deportes" label="Deportes" />
         <q-route-tab to="/spa" label="Spa & Wellness" />
         <q-route-tab to="/gastronomia" label="Gastronomía" />
         <q-route-tab to="/kids" label="Kids" />
