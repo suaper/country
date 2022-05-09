@@ -1,12 +1,12 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
+   <MenuDeporteInterno :currentItem="'/deportes/' + path + '/historia'"/>
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Historia</div>
-            <DescDeporte />
-            <ListaReglamentos />
+            <DescDeporte :content="content" v-if="loadedContent" />
+            <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>
         </div>
     </div>
   </q-page>
@@ -54,7 +54,6 @@ export default {
     this.subPath = currentPath[3]
 
     this.getInfo()
-    this.getCategories()
     this.$q.loading.hide()
   },
   methods: {
@@ -65,7 +64,7 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
@@ -73,50 +72,19 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
-          _this.reglamentos = data
-          _this.loadedReglamentos = true
-        }
-      })
-    },
-    getCategories () {
-      var _this = this
-      configServices.loadData(this, '/categorias/' + _this.path + '-' + _this.subPath + '/deportes', {
-        callBack: (data) => {
-          data.map((item, key) => {
-            var service = {
-              title: item.title,
-              body: item.body,
-              subServices: [
-                {
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                }
-              ]
-            }
-            const isFound = _this.categories.find((element, index) => {
-              if (element.title === item.title) {
-                _this.categories.splice(index, 1)
-                return element
-              }
-            })
-
-            if (isFound && typeof isFound !== 'undefined') {
-              isFound.subServices.push({
-                training: item.field_entranamiento,
-                date: item.field_horarios,
-                teacher: item.field_profesor_a
-              })
-
-              _this.categories.push(isFound)
-            } else {
-              _this.categories.push(service)
-            }
-          })
+          _this.content = data[0]
 
           _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.reglamentos = data
+          _this.loadedReglamentos = true
         }
       })
     }

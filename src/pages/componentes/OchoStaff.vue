@@ -1,6 +1,7 @@
  <template>
     <div class="staff deportestaff">
-      <h4 class="subtitle text-left">Staff</h4>
+      <h4 class="subtitle text-left" v-if="name === ''">Staff</h4>
+      <h4 class="subtitle text-left" v-if="name !== ''">{{ name }}</h4>
         <div class="flex">
             <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
                 <tr>
@@ -24,10 +25,12 @@
 export default {
   name: 'OchoStaff',
   props: {
-    info: Array
+    info: Array,
+    title: String
   },
   data () {
     return {
+      name: this.title,
       personal: this.info,
       urlSite: 'https://pwccdev.mkbk.digital/'
     }

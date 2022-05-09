@@ -1,32 +1,31 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno />
+   <MenuDeporteInterno currentItem="/deportes/squash/escuelas" />
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-py-xl all_width bg_gris">
         <div class="centrar w_1100 sin_separador ">
-        <div class="center text-center q-my-lg titulos">Historia</div>
+            <div class="center text-center q-my-lg titulos">Escuela</div>
             <div class="w_55">
-                <TablaClasificacion :items="menCategories" v-if="loadedContent"/>
+                <TablaClasificacion :items="categories" v-if="loadedServices"/>
             </div>
             <div class="w_35">
-                <SoloTexto/>
+                <SoloTexto :content="categories" v-if="loadedServices"/>
             </div>
         </div>
     </div>
     <div class="q-py-xl all_width bg_amarillo">
         <div class="centrar w_1100">
-            <h5 class="style_title q-my-lg" >Profesores</h5>
-            <Staff />
+            <Staff :info="personal" v-if="loadedPersonal" title="Profesores"/>
         </div>
     </div>
     <div class="q-py-xl all_width bg_gris">
         <div class="centrar w_1100 sin_separador ">
-        <div class="center text-center q-my-lg titulos">Ranking</div>
+            <div class="center text-center q-my-lg titulos">Ranking</div>
             <div class="w_55">
-                <TablaClasificacion :items="menCategories" v-if="loadedContent"/>
+                <TablaPosiciones :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
             </div>
             <div class="w_35">
-                <ListaReglamentos />
+                <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>
             </div>
         </div>
     </div>
@@ -36,6 +35,9 @@
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
+import SoloTexto from 'pages/componentes/SoloTexto'
+import TablaClasificacion from 'pages/componentes/TableClasificacion'
+import TablaPosiciones from 'pages/componentes/TablaPosiciones'
 import Staff from 'pages/componentes/OchoStaff'
 import ListaReglamentos from 'pages/componentes/ListaReglamentos'
 import configServices from '../../services/config'
@@ -44,7 +46,10 @@ export default {
   name: 'Escuela',
   components: {
     MenuDeporteInterno,
+    TablaClasificacion,
+    TablaPosiciones,
     Banner,
+    SoloTexto,
     Staff,
     ListaReglamentos
   },
@@ -56,17 +61,26 @@ export default {
       path: '',
       subPath: '',
       info: {},
+      personal: {
+        field_imagen_perfil: ''
+      },
+      loadedPersonal: false,
       loadedInfo: false,
       content: {},
       loadedContent: false,
       comite: {},
-      loadedComite: false,
+      loadedServices: false,
       espiritu: {},
       loadedEspiritu: false,
       categories: [],
       menCategories: [],
       reglamentos: {},
-      loadedReglamentos: false
+      loadedReglamentos: false,
+      campeonatos: [],
+      loadedCampeonatos: false,
+      positions: [],
+      loadedPositions: false,
+      keyPositions: 0
     }
   },
   mounted () {
@@ -86,7 +100,7 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
@@ -94,16 +108,52 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.path + '-' + _this.subPath + '/json', {
+      configServices.loadData(this, '/personal-staff/' + _this.subPath + '-' + _this.path, {
+        callBack: (data) => {
+          _this.personal = data
+          _this.loadedPersonal = true
+        }
+      })
+
+      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
           _this.reglamentos = data
           _this.loadedReglamentos = true
         }
       })
+
+      configServices.loadData(this, '/campeonatos/' + _this.path + '/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var tournament = {
+              id: item.nid,
+              label: item.title
+            }
+
+            _this.campeonatos.push(tournament)
+          })
+
+          _this.loadedCampeonatos = true
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    getPositions (tournament) {
+      var _this = this
+      configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.positions = data
+
+          _this.loadedPositions = true
+          _this.keyPositions = _this.keyPositions + 1
+          _this.$q.loading.hide()
+        }
+      })
     },
     getCategories () {
       var _this = this
-      configServices.loadData(this, '/categorias/' + _this.path + '-' + _this.subPath + '/deportes', {
+      configServices.loadData(this, '/categorias/' + _this.subPath + '-' + _this.path + '/deportes', {
         callBack: (data) => {
           data.map((item, key) => {
             var service = {
@@ -137,7 +187,7 @@ export default {
             }
           })
 
-          _this.loadedContent = true
+          _this.loadedServices = true
         }
       })
     }

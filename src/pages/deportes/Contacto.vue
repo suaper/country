@@ -13,16 +13,6 @@
               </div>
           </div>
       </div>
-      <div class="q-py-xl all_width bg_amarillo">
-          <div class="centrar w_1100 sin_separador ">
-              <div class="w_60">
-                  <Imagen />
-              </div>
-              <div class="w_30">
-                  <Horario />
-              </div>
-          </div>
-      </div>
     </q-page>
 </template>
 
@@ -30,8 +20,6 @@
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import FormContacto from 'pages/componentes/SieteContacto'
 import Staff from 'pages/componentes/OchoStaff'
-import Imagen from 'pages/componentes/ImagenBoton'
-import Horario from 'pages/componentes/HorariosBtnDescargar'
 import configServices from '../../services/config'
 
 export default {
@@ -39,8 +27,6 @@ export default {
   components: {
     MenuDeporteInterno,
     Staff,
-    Imagen,
-    Horario,
     FormContacto
   },
   data () {

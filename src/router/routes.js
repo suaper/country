@@ -652,6 +652,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/rugby/historia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Historia.vue') }
+    ]
+  },
+  {
     path: '/deportes/squash/historia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -659,7 +666,7 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/squash/escuela',
+    path: '/deportes/squash/escuelas',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Escuela.vue') }
