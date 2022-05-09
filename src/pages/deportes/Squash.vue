@@ -17,29 +17,42 @@
             <Noticias />
         </div>
     </div>
-    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
-        <h5 class="text-white">Tienda oficial</h5>
-          <q-btn outline click="pop_form_socio = true" class="btn_bg_beige" label="Ver Libros Disponibles" icon-right="arrow_right_alt"/>
-    </div>
+
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <Multimedia />
         </div>
     </div>
 
-    <div class="q-py-none all_width bg_gris wrp_club">
+    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
+        <h5 class="text-white fuente_normal font_40"><span class="fuente_titulo font_50" style="color:#E8C28F;">  Squash  /   </span> Tienda  <strong>oficial</strong></h5>
+          <q-btn outline class="btn_bg_beige" label="Comprar" icon-right="arrow_right_alt"/>
+    </div>
+
+    <div class="q-py-none all_width bg_amarillo wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
-        <div class="q-py-md centrar text-center w_1200">
+        <div class="q-py-xl centrar text-center w_1200">
           <div class="row_2 fitnes_last">
             <div class="w_55">
+                <h5 class="style_title q-my-lg text-left" >Contacto</h5>
                 <Contacto />
+                <Staff />
             </div>
             <div class="w_35">
-                <Staff />
+                instagram
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="q-py-xl all_width bg_gris" id="reglamentos">
+        <div class="centrar w_1100">
+            <h5 class="style_title q-my-lg" >Reglamentos</h5>
+            <ListaReglamentos/>
+        </div>
+    </div>
+    <div class="q-pb-md all_width bg_white">
+        <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
   </q-page>
 </template>
@@ -52,6 +65,7 @@ import Noticias from 'pages/componentes/TresNoticias'
 import Multimedia from 'pages/componentes/Multimedia'
 import Contacto from 'pages/componentes/SieteContacto'
 import Staff from 'pages/componentes/OchoStaff'
+import ListaReglamentos from 'pages/componentes/Listareglamentos'
 import configServices from '../../services/config'
 
 export default {
@@ -63,7 +77,8 @@ export default {
     Noticias,
     Multimedia,
     Contacto,
-    Staff
+    Staff,
+    ListaReglamentos
   },
   data () {
     return {
@@ -99,6 +114,10 @@ export default {
     }
   },
   created () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
+
+    localStorage.setItem('sport', this.path)
     this.getInfo()
     this.getMultimediaHome()
     this.getEvents()

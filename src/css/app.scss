@@ -66,6 +66,18 @@ body{
     letter-spacing: -1.08px;
     color: #1F2660;
 }
+.fuente_titulo{
+    font-family: $font-title;
+}
+.fuente_normal{
+    font-family: $font-text !important;
+}
+.font_40{
+    font-size: 40px !important;
+}
+.font_50{
+    font-size: 50px !important;
+}
 .w_800{
     width: 800px;
 }

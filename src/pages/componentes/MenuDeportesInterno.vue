@@ -25,6 +25,14 @@
       <q-btn :disable="getDisable('/deportes/natacion/noticias')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/natacion/multimedia')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/multimedia')" outline color="submenu" label="Multimedia" />
       <q-btn :disable="getDisable('/deportes/natacion/contacto')" v-show="path === 'natacion'" @click="goItem('/deportes/natacion/contacto')" outline color="submenu" label="Contacto" />
+       <!-- Squash -->
+       <q-btn :disable="getDisable('/deportes/squash')" v-show="path === 'squash'" @click="goItem('/deportes/squash')" outline color="submenu" label="Squash" />
+       <q-btn :disable="getDisable('/deportes/squash/historia')" v-show="path === 'squash'" @click="goItem('/deportes/squash/historia')" outline color="submenu" label="Historia" />
+       <q-btn :disable="getDisable('/deportes/squash/escuela')" v-show="path === 'squash'" @click="goItem('/deportes/squash/escuela')" outline color="submenu" label="Escuela" />
+       <q-btn :disable="getDisable('/deportes/squash/torneos')" v-show="path === 'squash'" @click="goItem('/deportes/squash/torneos')" outline color="submenu" label="Torneos" />
+       <q-btn :disable="getDisable('/deportes/squash/noticias')" v-show="path === 'squash'" @click="goItem('/deportes/squash/noticias')" outline color="submenu" label="Noticias" />
+       <q-btn :disable="getDisable('/deportes/squash/multimedia')" v-show="path === 'squash'" @click="goItem('/deportes/squash/multimedia')" outline color="submenu" label="Multimedia" />
+       <q-btn :disable="getDisable('/deportes/squash/contacto')" v-show="path === 'squash'" @click="goItem('/deportes/squash/contacto')" outline color="submenu" label="Contacto" />
     </q-btn-group>
 </template>
 
