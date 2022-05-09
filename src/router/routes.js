@@ -532,6 +532,13 @@ const routes = [
       { path: '', component: () => import('pages/deportes/Noticias.vue') }
     ]
   },
+  {
+    path: '/deportes/natacion',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Natacion.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
