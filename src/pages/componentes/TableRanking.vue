@@ -8,53 +8,11 @@
                     <th>Nombre</th>
                     <th>Puntaje</th>
                 </tr>
-                <tr>
-                    <td>1 </td>
-                    <td><span class="material-icons-outlined upp"></span></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td><span class="material-icons-outlined down">double_arrow</span></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td><span class="material-icons-outlined down">double_arrow</span></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td><span class="material-icons-outlined down">double_arrow</span></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
-                </tr>
-               <tr>
-                    <td>1 </td>
-                    <td></td>
-                    <td>cO´RYAN CRISTOBAL</td>
-                    <td>180</td>
+                <tr v-for="(item, key) in info[0].subServices" :key="key">
+                    <td>{{ item.field_ranking }}</td>
+                    <td><span :class="(item.field_sube_baja === 'Sube') ? 'material-icons-outlined upp' : 'material-icons-outlined down'"></span>{{ item.field_cambio }}</td>
+                    <td>{{ item.field_nombre_y_apellidos }}</td>
+                    <td>{{ item.field_puntaje }}</td>
                 </tr>
             </table>
         </div>
@@ -64,6 +22,20 @@
 <script>
 
 export default {
-  name: 'TablaRanking'
+  name: 'TableRanking',
+  props: {
+    path: String,
+    items: Array
+  },
+  data () {
+    return {
+      subPath: this.path,
+      month: '',
+      info: this.items
+    }
+  },
+  created () {
+    console.log(this.info)
+  }
 }
 </script>

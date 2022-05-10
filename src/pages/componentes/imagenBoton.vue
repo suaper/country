@@ -13,6 +13,10 @@
       </a>
     </div>
 
+    <div class="only-image" v-if="sport === 'paddle'">
+      <img :src="urlSite + info[0].image" />
+    </div>
+
     <q-dialog v-model="comite" persistent>
       <q-card>
         <q-card-section class="row items-center">
@@ -47,6 +51,9 @@ export default {
       comite: false,
       sport: this.path
     }
+  },
+  created () {
+    console.log(this.info)
   }
 }
 </script>

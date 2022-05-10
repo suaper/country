@@ -1,10 +1,10 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/rugby" />
+    <MenuDeporteInterno currentItem="/deportes/paddle/ranking" />
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Ranking</div>
-            <Anclas />
+            <Anclas :items="filterCategories" :path="path" :goAnchor="filterRankingByCategorie"/>
         </div>
     </div>
 
@@ -14,31 +14,20 @@
           <div class="row_2 fitnes_last">
             <div class="w_50">
                 <div class="wrp_busca_mes w_100 centrar select">
-                    <q-select outlined class="q-mb-md" label="Seleccione la Temporada" />
+                    <q-select outlined class="q-mb-md" v-model="temporada" label="Seleccione la Temporada" :options="filterTemporadas" @input="filterRankingByTemporada(temporada)" />
                 </div>
-                 <Imagen />
+                 <Imagen :key="key" :path="path" :content="filterItems" v-if="loadedRanking"/>
             </div>
             <div class="w_50">
                 <div class="wrp_busca_mes w_100 centrar select">
-                    <q-select outlined class="q-mb-xl" label="Seleccione el Torneo" />
+                    <q-select outlined class="q-mb-xl" v-model="tournament" label="Seleccione el Torneo" :options="filtersTournaments" @input="filterRankingByTournament(tournament)" />
                 </div>
-                <TableRanking/>
+                <TableRanking :key="key" :items="filterItems" v-if="loadedRanking"/>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <q-dialog v-model="video" persistent>
-      <q-card>
-        <q-card-section class="row items-center">
-          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="Cerrar" color="primary" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
   </q-page>
 </template>
 
@@ -87,7 +76,7 @@ export default {
       personal: {
         field_imagen_perfil: ''
       },
-      events: [],
+      ranking: [],
       dtevento: false,
       event: {},
       images: {},
@@ -101,9 +90,16 @@ export default {
       player: {},
       loadedPlayer: false,
       loadedEvents: false,
-      loadedPersonal: false,
+      loadedRanking: false,
       bannerDeportes: [],
-      loadedBannerDeportes: false
+      loadedBannerDeportes: false,
+      filtersTournaments: [],
+      filterTemporadas: [],
+      filterCategories: [],
+      temporada: '',
+      tournament: '',
+      key: 0,
+      filterItems: []
     }
   },
   created () {
@@ -112,174 +108,162 @@ export default {
 
     localStorage.setItem('sport', this.path)
 
-    this.getInfo()
-    this.getNotices()
-    this.getMultimediaHome()
-    this.getEvents()
+    this.getRanking()
   },
   methods: {
-    onReset () {
-
-    },
-    onSubmit () {
+    filterRankingByCategorie (e, category) {
+      e.preventDefault()
       var _this = this
-      var data = {
-        type: 'sendEmailReserva',
-        service: 'Charlas Culturales',
-        email: this.email,
-        name: this.name,
-        lastname: '',
-        phone: this.telefono,
-        rut: this.rut
-      }
-      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
-        callBack: (data) => {
-          if (data.status) {
-            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
-          } else {
-            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
-          }
+      var items = JSON.stringify(this.ranking)
+      items = JSON.parse(items)
 
-          this.email = ''
-          this.name = ''
-          this.telefono = ''
-          this.rut = ''
-          this.pop_reservar_spa = false
+      items.map((item, key) => {
+        if (item.category === category) {
+          _this.filterItems.push(item)
         }
       })
+
+      this.sortItems()
+      this.key = this.key + 1
+      this.loadedRanking = true
     },
-    getNotices () {
+    sortItems () {
+      this.filterItems[0].subServices.sort(function (a, b) {
+        return parseInt(a.field_ranking) - parseInt(b.field_ranking)
+      })
+    },
+    filterRankingByTournament (tournament) {
       var _this = this
-      configServices.loadData(this, '/noticias/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.notices = data
-          _this.loadedNotices = true
+      var items = JSON.stringify(this.ranking)
+      items = JSON.parse(items)
+
+      items.map((item, key) => {
+        if (item.tournament === tournament.label) {
+          _this.filterItems.push(item)
         }
       })
-    },
-    openDetalleEvento (event) {
-      this.event = event
-      this.dtevento = true
-    },
-    getDate (dateInput) {
-      var date = new Date(dateInput)
-      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
-    },
-    getHour (dateInput) {
-      var date = new Date(dateInput)
-      var dateAmPm = this.formatAMPM(date)
 
-      var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
-      var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
+      this.sortItems()
 
-      return hours + ':' + minutes + ' ' + dateAmPm
+      this.key = this.key + 1
+      this.loadedRanking = true
     },
-    formatAMPM (date) {
-      var hours = date.getHours()
-      var ampm = hours >= 12 ? 'pm' : 'am'
-      return ampm
-    },
-    getInfo () {
+    filterRankingByTemporada (temporada) {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.info = data[0]
-          _this.slide = data[0].field_slider_sport[0].target_uuid
-          _this.loadedInfo = true
-        }
-      })
+      var items = JSON.stringify(this.ranking)
+      items = JSON.parse(items)
 
-      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.images = data[0]
-          _this.loadedImages = true
+      items.map((item, key) => {
+        if (item.temporada === temporada.label) {
+          _this.filterItems.push(item)
         }
       })
+      this.sortItems()
 
-      configServices.loadData(this, '/video-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.content = data[0]
-          _this.loadedContent = true
-        }
-      })
-
-      configServices.loadData(this, '/jugador-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.player = data[0]
-          _this.loadedPlayer = true
-        }
-      })
-
-      configServices.loadData(this, '/personal-staff/' + _this.path, {
-        callBack: (data) => {
-          _this.personal = data
-          _this.loadedPersonal = true
-        }
-      })
-
-      configServices.loadData(this, '/node/723?_format=json', {
-        callBack: (data) => {
-          _this.image = data
-          _this.loadedImage = true
-        }
-      })
-
-      configServices.loadData(this, 'banner-torneo-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.bannerDeportes = data
-          _this.loadedBannerDeportes = true
-        }
-      })
+      this.key = this.key + 1
+      this.loadedRanking = true
     },
-    getEvents () {
+    getRanking () {
       var _this = this
-      configServices.loadData(this, '/eventos/' + this.path + '/json', {
+      configServices.loadData(this, '/ranking-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          const n = 3
-          _this.events = new Array(Math.ceil(data.length / n))
-            .fill()
-            .map(_ => data.splice(0, n))
-          _this.loadedEvents = true
-        }
-      })
-    },
-    getMultimediaHome () {
-      var _this = this
-      configServices.loadData(this, '/multimedia-secciones/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.multimediaHome = []
-
-          const videos = []
-          const images = []
-          for (const item in data) {
-            if (data[item].field_tipo_de_multimedia === 'Video') {
-              videos.push(data[item])
-            } else {
-              images.push(data[item])
+          data.map((item, key) => {
+            if (item.field_campeonato !== '') {
+              var filter = {
+                label: item.field_campeonato
+              }
+              const isFound = _this.filtersTournaments.find((element, index) => {
+                if (element.label === item.field_campeonato) {
+                  _this.filtersTournaments.splice(index, 1)
+                  return element
+                }
+              })
+              if (typeof isFound !== 'undefined') {
+                _this.filtersTournaments.push(filter)
+              } else {
+                _this.filtersTournaments.push(filter)
+              }
             }
-          }
+          })
 
-          _this.multimediaHome.push(images[0])
-          _this.multimediaHome.push(images[1])
-          _this.multimediaHome.push(videos[0])
-          _this.multimediaHome.push(videos[1])
-          _this.multimediaHome.push(videos[2])
+          data.map((item, key) => {
+            var filter = {
+              label: item.field_seleccione_la_temporada
+            }
+            const isFound = _this.filterTemporadas.find((element, index) => {
+              if (element.label === item.field_seleccione_la_temporada) {
+                _this.filterTemporadas.splice(index, 1)
+                return element
+              }
+            })
+
+            if (typeof isFound !== 'undefined') {
+              _this.filterTemporadas.push(filter)
+            } else {
+              _this.filterTemporadas.push(filter)
+            }
+          })
+
+          data.map((item, key) => {
+            var filter = {
+              title: item.field_categoria_ranking
+            }
+            const isFound = _this.filterCategories.find((element, index) => {
+              if (element.title === item.field_categoria_ranking) {
+                _this.filterCategories.splice(index, 1)
+                return element
+              }
+            })
+
+            if (typeof isFound !== 'undefined') {
+              _this.filterCategories.push(filter)
+            } else {
+              _this.filterCategories.push(filter)
+            }
+          })
+
+          data.map((item, key) => {
+            var service = {
+              title: item.title,
+              image: item.field_imagen_ranking,
+              tournament: item.field_campeonato,
+              temporada: item.field_seleccione_la_temporada,
+              category: item.field_categoria_ranking,
+              subServices: [
+                {
+                  field_cambio: item.field_cambio,
+                  field_nombre_y_apellidos: item.field_nombre_y_apellidos,
+                  field_sube_baja: item.field_sube_baja,
+                  field_puntaje: item.field_puntaje,
+                  field_ranking: item.field_ranking
+                }
+              ]
+            }
+            const isFound = _this.ranking.find((element, index) => {
+              if (element.title === item.title) {
+                _this.ranking.splice(index, 1)
+                return element
+              }
+            })
+
+            if (isFound && typeof isFound !== 'undefined') {
+              isFound.subServices.push({
+                field_cambio: item.field_cambio,
+                field_nombre_y_apellidos: item.field_nombre_y_apellidos,
+                field_sube_baja: item.field_sube_baja,
+                field_puntaje: item.field_puntaje,
+                field_ranking: item.field_ranking
+              })
+
+              _this.ranking.push(isFound)
+            } else {
+              _this.ranking.push(service)
+            }
+          })
+
           _this.$q.loading.hide()
         }
       })
-    },
-    openItem (e, multimedia) {
-      e.preventDefault()
-      if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        localStorage.setItem('multimediaId', multimedia.nid)
-        this.$router.push('/detalle-multimedia')
-      } else {
-        var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[1]
-        this.video = true
-      }
     }
   }
 }

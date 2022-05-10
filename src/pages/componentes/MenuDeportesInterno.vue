@@ -1,6 +1,6 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
-    <q-btn :disable="getDisable('/deportes')" @click="goItem('/deportes')" outline color="submenu" label="Deportes" />
+      <q-btn :disable="getDisable('/deportes')" @click="goItem('/deportes')" outline color="submenu" label="Deportes" />
       <q-btn :disable="getDisable('/deportes/hockey')" v-show="path === 'hockey'" @click="goItem('/deportes/hockey')" outline color="submenu" label="Hockey" />
       <q-btn :disable="getDisable('/deportes/hockey/nosotros')" v-show="path === 'hockey'" @click="goItem('/deportes/hockey/nosotros')" outline color="submenu" label="Nosotros" />
       <q-btn :disable="getDisable('/deportes/hockey/categoria')" v-show="path === 'hockey'" @click="goItem('/deportes/hockey/categoria')" outline color="submenu" label="Categorias" />

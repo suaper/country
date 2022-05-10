@@ -5,7 +5,7 @@
           <li><a href="#" @click="goAnchor($event, '#varones')">Varones</a></li>
           <li><a href="#" v-show="subPath !== 'calendario'" @click="goAnchor($event, '#reglamentos')">Reglamentos</a></li>
       </ul>
-      <ul class="wrp_actions_center_peluqueria" v-if="path === 'rugby'">
+      <ul class="wrp_actions_center_peluqueria" v-if="path === 'rugby' || path === 'paddle'">
           <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
     </div>
