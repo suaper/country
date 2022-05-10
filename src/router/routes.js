@@ -708,6 +708,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/paddle/ranking',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Ranking.vue') }
+    ]
+  },
+  {
     path: '/deportes/paddle/noticias',
     component: () => import('layouts/MainLayout.vue'),
     children: [

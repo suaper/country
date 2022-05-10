@@ -37,6 +37,7 @@
        <!-- Paddle -->
        <q-btn :disable="getDisable('/deportes/paddle')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle')" outline color="submenu" label="paddle" />
        <q-btn :disable="getDisable('/deportes/paddle/calendario')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/calendario')" outline color="submenu" label="Calendario" />
+       <q-btn :disable="getDisable('/deportes/paddle/ranking')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/ranking')" outline color="submenu" label="Ranking" />
        <q-btn :disable="getDisable('/deportes/paddle/noticias')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/noticias')" outline color="submenu" label="Noticias" />
        <q-btn :disable="getDisable('/deportes/paddle/multimedia')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/multimedia')" outline color="submenu" label="Multimedia" />
        <q-btn :disable="getDisable('/deportes/paddle/contacto')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/contacto')" outline color="submenu" label="Contacto" />
