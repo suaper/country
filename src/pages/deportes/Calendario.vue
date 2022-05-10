@@ -22,6 +22,9 @@
             </div>
         </div>
     </div>
+    <div class="q-pb-md all_width bg_white">
+        <Patrocinadores :images="images" v-if="loadedImages" />
+    </div>
   </q-page>
 </template>
 

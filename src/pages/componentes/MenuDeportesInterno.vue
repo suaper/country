@@ -68,6 +68,12 @@
         <q-btn :disable="getDisable('/deportes/tennis')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis')" outline color="submenu" label="Tennis" />
         <q-btn :disable="getDisable('/deportes/tennis/equipo')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/equipo')" outline color="submenu" label="Equipo" />
         <q-btn :disable="getDisable('/deportes/tennis/categorias')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/categorias')" outline color="submenu" label="Categorías" />
+        <q-btn :disable="getDisable('/deportes/tennis/ranking')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/ranking')" outline color="submenu" label="Ranking" />
+        <q-btn :disable="getDisable('/deportes/tennis/calendario')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/calendario')" outline color="submenu" label="Calendario" />
+        <q-btn :disable="getDisable('/deportes/tennis/reservar-cancha')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/reservar-cancha')" outline color="submenu" label="Reservar Cancha" />
+        <q-btn :disable="getDisable('/deportes/tennis/noticias')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/noticias')" outline color="submenu" label="Noticias" />
+       <q-btn :disable="getDisable('/deportes/tennis/multimedia')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/multimedia')" outline color="submenu" label="Multimedia" />
+       <q-btn :disable="getDisable('/deportes/tennis/contacto')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/contacto')" outline color="submenu" label="Contacto" />
     </q-btn-group>
 </template>
 
