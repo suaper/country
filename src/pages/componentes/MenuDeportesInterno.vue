@@ -41,6 +41,10 @@
        <q-btn :disable="getDisable('/deportes/paddle/noticias')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/noticias')" outline color="submenu" label="Noticias" />
        <q-btn :disable="getDisable('/deportes/paddle/multimedia')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/multimedia')" outline color="submenu" label="Multimedia" />
        <q-btn :disable="getDisable('/deportes/paddle/contacto')" v-show="path === 'paddle'" @click="goItem('/deportes/paddle/contacto')" outline color="submenu" label="Contacto" />
+       <!-- Tennis -->
+        <q-btn :disable="getDisable('/deportes/tennis')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis')" outline color="submenu" label="Tennis" />
+        <q-btn :disable="getDisable('/deportes/tennis/equipo')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/equipo')" outline color="submenu" label="Equipo" />
+        <q-btn :disable="getDisable('/deportes/tennis/categorias')" v-show="path === 'tennis'" @click="goItem('/deportes/tennis/categorias')" outline color="submenu" label="Categorías" />
     </q-btn-group>
 </template>
 
