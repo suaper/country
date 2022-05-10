@@ -742,6 +742,27 @@ const routes = [
       { path: '', component: () => import('pages/deportes/Paddle.vue') }
     ]
   },
+  {
+    path: '/deportes/tennis',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Tennis.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/equipo',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Equipo.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/categorias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/CategoriasTennis.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
