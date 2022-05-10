@@ -40,7 +40,7 @@
                                 <img :src="urlSite + subItem.field_portada_deporte" alt="img_golf">
                                 <div class="info_bottom">
                                     <h6 class="title">{{ subItem.title }}</h6>
-                                    <a href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
+                                    <a href="#" @click="goToSport($event, subItem.title)">Ir a <span class="material-icons">arrow_right_alt</span></a>
                                 </div>
                             </li>
                         </ul>
@@ -235,6 +235,15 @@ export default {
     this.getMultimediaHome()
   },
   methods: {
+    goToSport (e, title) {
+      e.preventDefault()
+      title = title.replace('á', 'a')
+      title = title.replace('é', 'e')
+      title = title.replace('í', 'i')
+      title = title.replace('ó', 'o')
+      title = title.replace('ú', 'u')
+      this.$router.push('/deportes/' + title.toLowerCase())
+    },
     onReset () {
 
     },
