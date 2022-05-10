@@ -6,6 +6,7 @@
       <q-btn :disable="getDisable('/deportes/natacion')" @click="goItem('/deportes/natacion')" outline color="submenu" label="Natacion" />
       <q-btn :disable="getDisable('/deportes/squash')" @click="goItem('/deportes/squash')" outline color="submenu" label="Squash" />
       <q-btn :disable="getDisable('/deportes/paddle')" @click="goItem('/deportes/paddle')" outline color="submenu" label="paddle" />
+      <q-btn :disable="getDisable('/deportes/tennis')" @click="goItem('/deportes/tennis')" outline color="submenu" label="Tennis" />
     </q-btn-group>
 </template>
 
