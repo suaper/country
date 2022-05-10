@@ -48,7 +48,7 @@ export default {
       loadedReglamentos: false
     }
   },
-  mounted () {
+  created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
     this.subPath = currentPath[3]

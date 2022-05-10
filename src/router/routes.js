@@ -498,6 +498,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/futbol/calendario',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Calendario.vue') }
+    ]
+  },
+  {
     path: '/deportes/natacion/multimedia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -516,6 +523,20 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/futbol/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/futbol/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
     ]
   },
   {
@@ -555,6 +576,13 @@ const routes = [
   },
   {
     path: '/deportes/rugby/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
+    path: '/deportes/futbol/noticias',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Noticias.vue') }
@@ -631,6 +659,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/futbol/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
     path: '/deportes/natacion/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -666,6 +701,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/golf/historia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Historia.vue') }
+    ]
+  },
+  {
     path: '/deportes/squash/escuelas',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -687,6 +729,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/golf/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
     path: '/deportes/squash/multimedia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -694,7 +743,21 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/golf/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
     path: '/deportes/squash/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
+    ]
+  },
+  {
+    path: '/deportes/golf/contacto',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Contacto.vue') }

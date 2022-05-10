@@ -1,6 +1,29 @@
 <template>
     <q-btn-group outline rounded class="sub_menu open">
       <q-btn :disable="getDisable('/deportes')" @click="goItem('/deportes')" outline color="submenu" label="Deportes" />
+      <!-- Golf -->
+      <q-btn :disable="getDisable('/deportes/golf')" v-show="path === 'golf'" @click="goItem('/deportes/golf')" outline color="submenu" label="Golf" />
+      <q-btn :disable="getDisable('/deportes/golf/equipo')" v-show="path === 'golf'" @click="goItem('/deportes/golf/equipo')" outline color="submenu" label="Equipo" />
+      <q-btn :disable="getDisable('/deportes/golf/historia')" v-show="path === 'golf'" @click="goItem('/deportes/golf/historia')" outline color="submenu" label="Historia" />
+      <q-btn :disable="getDisable('/deportes/golf/campeones')" v-show="path === 'golf'" @click="goItem('/deportes/golf/campeones')" outline color="submenu" label="Campeones" />
+      <q-btn :disable="getDisable('/deportes/golf/cancha')" v-show="path === 'golf'" @click="goItem('/deportes/golf/cancha')" outline color="submenu" label="Cancha" />
+      <q-btn :disable="getDisable('/deportes/golf/casilla')" v-show="path === 'golf'" @click="goItem('/deportes/golf/casilla')" outline color="submenu" label="Casilla" />
+      <q-btn :disable="getDisable('/deportes/golf/calendario')" v-show="path === 'golf'" @click="goItem('/deportes/golf/calendario')" outline color="submenu" label="Campeonatos" />
+      <q-btn :disable="getDisable('/deportes/golf/escuela')" v-show="path === 'golf'" @click="goItem('/deportes/golf/escuela')" outline color="submenu" label="Escuela" />
+      <q-btn :disable="getDisable('/deportes/golf/noticias')" v-show="path === 'golf'" @click="goItem('/deportes/golf/noticias')" outline color="submenu" label="Noticias" />
+      <q-btn :disable="getDisable('/deportes/golf/multimedia')" v-show="path === 'golf'" @click="goItem('/deportes/golf/multimedia')" outline color="submenu" label="Multimedia" />
+      <q-btn :disable="getDisable('/deportes/golf/contacto')" v-show="path === 'golf'" @click="goItem('/deportes/golf/contacto')" outline color="submenu" label="Contacto" />
+      <!-- Futbol -->
+      <q-btn :disable="getDisable('/deportes/futbol')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol')" outline color="submenu" label="Fútbol" />
+      <q-btn :disable="getDisable('/deportes/futbol/equipo')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/equipo')" outline color="submenu" label="Equipo" />
+      <q-btn :disable="getDisable('/deportes/futbol/escuela')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/escuela')" outline color="submenu" label="Escuela" />
+      <q-btn :disable="getDisable('/deportes/futbol/liga')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/liga')" outline color="submenu" label="Liga PWCC" />
+      <q-btn :disable="getDisable('/deportes/futbol/rama')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/rama')" outline color="submenu" label="Rama" />
+      <q-btn :disable="getDisable('/deportes/futbol/calendario')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/calendario')" outline color="submenu" label="Calendario" />
+      <q-btn :disable="getDisable('/deportes/futbol/noticias')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/noticias')" outline color="submenu" label="Noticias" />
+      <q-btn :disable="getDisable('/deportes/futbol/multimedia')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/multimedia')" outline color="submenu" label="Multimedia" />
+      <q-btn :disable="getDisable('/deportes/futbol/contacto')" v-show="path === 'futbol'" @click="goItem('/deportes/futbol/contacto')" outline color="submenu" label="Contacto" />
+      <!-- Hockey -->
       <q-btn :disable="getDisable('/deportes/hockey')" v-show="path === 'hockey'" @click="goItem('/deportes/hockey')" outline color="submenu" label="Hockey" />
       <q-btn :disable="getDisable('/deportes/hockey/nosotros')" v-show="path === 'hockey'" @click="goItem('/deportes/hockey/nosotros')" outline color="submenu" label="Nosotros" />
       <q-btn :disable="getDisable('/deportes/hockey/categoria')" v-show="path === 'hockey'" @click="goItem('/deportes/hockey/categoria')" outline color="submenu" label="Categorias" />

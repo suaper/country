@@ -73,7 +73,7 @@ import Staff from 'pages/componentes/OchoStaff'
 import configServices from '../../services/config'
 
 export default {
-  name: 'Charlasculturales',
+  name: 'Hockey',
   components: {
     MenuDeporteInterno,
     Banner,

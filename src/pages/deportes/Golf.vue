@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menucultura currentItem="/cultura/charlas-culturales"/>
+    <MenuDeporteInterno currentItem="/deportes/golf" />
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -206,13 +206,13 @@
 </template>
 
 <script>
-import Menucultura from 'pages/submenus/Menucultura'
+import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import configServices from '../../services/config'
 
 export default {
   name: 'Charlasculturales',
   components: {
-    Menucultura
+    MenuDeporteInterno
   },
   data () {
     return {
@@ -248,9 +248,16 @@ export default {
     }
   },
   created () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
+
+    localStorage.setItem('sport', this.path)
+
     this.getInfo()
     this.getMultimediaHome()
     this.getEvents()
+
+    this.$q.loading.hide()
   },
   methods: {
     onReset () {
