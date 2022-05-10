@@ -3,59 +3,49 @@
     <MenuDeporteInterno currentItem="/deportes/rugby" />
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar q-pt-md w_1200">
-            <div class="center text-center q-my-lg titulos">Ranking</div>
-            <Anclas />
+            <div class="center text-center q-my-lg titulos">Tennis</div>
+            <div class="centrar q-pt-md w_900">
+                <Video />
+                <BtnReservar />
+            </div>
         </div>
     </div>
 
-    <div class="q-py-none all_width bg_gris wrp_club">
+    <div class="q-py-none all_width bg_amarillo wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
         <div class="q-py-md centrar text-center w_1200">
           <div class="row_2 fitnes_last">
-            <div class="w_50">
-                <div class="wrp_busca_mes w_100 centrar select">
-                    <q-select outlined class="q-mb-md" label="Seleccione la Temporada" />
-                </div>
-                 <Imagen />
+          <h4 class="subtitle">Reglamento</h4>
+            <div class="w_40">
+                 <Reglamento />
             </div>
-            <div class="w_50">
-                <div class="wrp_busca_mes w_100 centrar select">
-                    <q-select outlined class="q-mb-xl" label="Seleccione el Torneo" />
-                </div>
-                <TableRanking/>
+            <div class="w_55">
+                <ListaNumeros/>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <q-dialog v-model="video" persistent>
-      <q-card>
-        <q-card-section class="row items-center">
-          <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </q-card-section>
 
-        <q-card-actions align="right">
-          <q-btn flat label="Cerrar" color="primary" v-close-popup />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
-import Anclas from 'pages/componentes/Anclas'
-import Imagen from 'pages/componentes/ImagenBoton'
-import TableRanking from 'pages/componentes/TableRanking'
+import Video from 'pages/componentes/Video'
+import BtnReservar from 'pages/componentes/BtnReservar'
+import Reglamento from 'pages/componentes/ListaReglamentos'
+import ListaNumeros from 'pages/componentes/ListaNumeros'
 import configServices from '../../services/config'
 
 export default {
   name: 'Rugby',
   components: {
     MenuDeporteInterno,
-    Anclas,
-    Imagen,
-    TableRanking
+    Video,
+    BtnReservar,
+    ListaNumeros,
+    Reglamento
   },
   data () {
     return {

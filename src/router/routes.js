@@ -763,6 +763,48 @@ const routes = [
       { path: '', component: () => import('pages/deportes/CategoriasTennis.vue') }
     ]
   },
+  {
+    path: '/deportes/tennis/ranking',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Ranking.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/calendario',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Calendario.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/reservar-cancha',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/ReservarCancha.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/noticias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Noticias.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Multimedia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/tennis/contacto',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Contacto.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
