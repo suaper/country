@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/staff'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/equipo'"/>
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar q-py-md w_1100">
             <div class="center text-center q-pt-md q-my-md titulos">Equipo</div>
@@ -85,6 +85,8 @@ export default {
               _this.filters.push(filter)
             }
           })
+
+          console.log(_this.filters)
 
           _this.personal = data
           _this.loadedPersonal = true

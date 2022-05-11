@@ -15,6 +15,9 @@ export default {
     return {
       patrocinadores: this.images
     }
+  },
+  created () {
+    console.log(this.patrocinadores)
   }
 }
 </script>

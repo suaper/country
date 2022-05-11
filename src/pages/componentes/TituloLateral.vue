@@ -3,11 +3,9 @@
         <table>
             <tr>
                 <td>
-                    <h4 class="subtitle q-my-md">Iniciación</h4>
+                    <h4 class="subtitle q-my-md">{{ info[0].title[0].value }}</h4>
                 </td>
-                <td class="texto_normal q-pl-md">
-                    Este nivel está orientado a niños y niñas entre 5 y 8 años, buscando desarrollar las cualidades motrices, la técnica y táctica, necesarias para el adecuado desarrollo en este deporte.
-                </td>
+                <td class="texto_normal q-pl-md" v-html="info[0].body[0].value"></td>
             </tr>
         </table>
     </div>
@@ -16,6 +14,14 @@
 <script>
 
 export default {
-  name: 'TituloLateral'
+  name: 'TituloLateral',
+  props: {
+    items: Array
+  },
+  data () {
+    return {
+      info: this.items
+    }
+  }
 }
 </script>

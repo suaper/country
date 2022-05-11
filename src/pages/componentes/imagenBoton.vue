@@ -13,8 +13,16 @@
       </a>
     </div>
 
-    <div class="only-image" v-if="sport === 'paddle'">
+    <div class="only-image" v-if="sport === 'paddle' || sport === 'tennis'">
       <img :src="urlSite + info[0].image" />
+    </div>
+
+    <div class="only-image" v-if="sport === 'categorias-tennis'">
+      <img :src="urlSite + info[0].field_imagen_inscripcion" />
+    </div>
+
+     <div class="only-image" v-if="sport === 'futbol'">
+      <img :src="urlSite + info[0].field_imagen_tabla" />
     </div>
 
     <q-dialog v-model="comite" persistent>
@@ -53,7 +61,7 @@ export default {
     }
   },
   created () {
-    console.log(this.info)
+    console.log(this.info[0])
   }
 }
 </script>

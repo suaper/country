@@ -1,6 +1,7 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/staff'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/staff'" v-if="path !== 'futbol'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/equipo'" v-if="path === 'futbol'"/>
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar q-py-md w_1100">
             <div class="center text-center q-pt-md q-my-md titulos">Staff</div>
@@ -68,6 +69,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/personal-staff-deportes/' + _this.path, {
         callBack: (data) => {
+          console.log(data)
           data.map((item, key) => {
             var filter = {
               title: item.field_categoria_cargo

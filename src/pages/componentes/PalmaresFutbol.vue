@@ -1,32 +1,11 @@
 <template>
     <ul class="list_palmaresFutbol q-py-md">
-        <li>
+        <li v-for="(item, key) in sliderItems" :key="key">
             <div class="box_download q-ma-none m_left_20 flex bg_white">
-                <img src="../../assets/MiClub/i-medalla.svg">
+                <img :src="urlSite + item.field_imagen_palmares">
                 <div class="text border_left">
-                    <span class="bold">Nombre del Equipo</span>
-                    <span>Torneo</span>
-                    <span> Fecha MM / AAAA</span>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="box_download q-ma-none m_left_20 flex bg_white">
-                <img src="../../assets/MiClub/i-medalla.svg">
-                <div class="text border_left">
-                    <span class="bold">Nombre del Equipo</span>
-                    <span>Torneo</span>
-                    <span> Fecha MM / AAAA</span>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="box_download q-ma-none m_left_20 flex bg_white">
-                <img src="../../assets/MiClub/i-medalla.svg">
-                <div class="text border_left">
-                    <span class="bold">Nombre del Equipo</span>
-                    <span>Torneo</span>
-                    <span> Fecha MM / AAAA</span>
+                    <span class="bold">{{ item.field_nombre_palmar }}</span>
+                    <span> Fecha {{ item.field_fecha_palmares }}</span>
                 </div>
             </div>
         </li>
@@ -36,6 +15,18 @@
 <script>
 
 export default {
-  name: 'PalmaresFutbol'
+  name: 'PalmaresFutbol',
+  props: {
+    items: Array
+  },
+  data () {
+    return {
+      sliders: true,
+      slide: 1,
+      slidecontent: 0,
+      sliderItems: this.items,
+      urlSite: 'https://pwccdev.mkbk.digital/'
+    }
+  }
 }
 </script>

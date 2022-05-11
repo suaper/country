@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/hockey/categoria"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/categorias'"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
 
     <div class="q-pb-md all_width bg_gris">
@@ -10,43 +10,41 @@
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione una categoría:</span>
-                  <q-select outlined class="q-mb-md" label="Escuela" />
+                  <q-select outlined class="q-mb-md" label="Escuela" v-model="escuela" :options="escuelas" @input="getItemsByEscuela(escuela)"/>
                 </div>
-                <Imagen />
             </div>
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione un nivel:</span>
-                  <q-select outlined class="q-mb-xl" label="Iniciación" />
+                  <q-select outlined class="q-mb-xl" label="Iniciación" v-model="nivel" :options="niveles" @input="getItemsByNivel(nivel)" />
                 </div>
-                <TableRanking/>
             </div>
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo">
+    <div class="q-py-xl all_width bg_amarillo" v-if="loadedIniciacion">
         <div class="centrar w_1100 fila_separador ">
-            <TituloLateral/>
+            <TituloLateral :items="iniciacion" :key="keyIniciacion" v-if="loadedIniciacion"/>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_gris">
+    <div class="q-py-xl all_width bg_gris" v-if="loadedProfesores">
         <div class="centrar w_1100 ">
             <div class="all_width">
                 <h5 class="style_title q-my-lg" >Profesores</h5>
-                <Profesores />
+                <Profesores :items="profesores" :key="keyProfesores" v-if="loadedProfesores"/>
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo" >
+    <div class="q-py-xl all_width bg_amarillo" v-if="loadedHorarios">
         <div class="centrar w_1100">
 
           <div class="row_2 centrar flex">
               <div class="w_35 q-mx-md">
               <h5 class="style_title q-my-lg" >Horarios e Inscripción</h5>
-                  <TablaHorarios />
+                  <TablaHorarios :items="horarios" :key="keyHorarios" v-if="loadedHorarios" :path="path"/>
               </div>
               <div class="w_65 q-mx-md">
-                  <Imagen/>
+                  <Imagen :content="horarios" :key="keyHorarios" v-if="loadedHorarios" :path="subPath + '-' + path"/>
               </div>
           </div>
         </div>
@@ -60,6 +58,8 @@ import Banner from 'pages/componentes/Uno'
 import TituloLateral from 'pages/componentes/TituloLateral'
 import Profesores from 'pages/componentes/Profesores'
 import TablaHorarios from 'pages/componentes/TablaHorarios'
+import Imagen from 'pages/componentes/ImagenBoton'
+
 import configServices from '../../services/config'
 
 export default {
@@ -69,7 +69,8 @@ export default {
     Banner,
     TituloLateral,
     Profesores,
-    TablaHorarios
+    TablaHorarios,
+    Imagen
   },
   data () {
     return {
@@ -89,24 +90,31 @@ export default {
       womanCategories: [],
       menCategories: [],
       reglamentos: {},
-      loadedReglamentos: false
+      loadedReglamentos: false,
+      escuelas: [],
+      niveles: [],
+      escuela: '',
+      nivel: '',
+      keyIniciacion: 0,
+      keyProfesores: 0,
+      keyHorarios: 0,
+      iniciacion: [],
+      profesores: [],
+      horarios: [],
+      loadedIniciacion: false,
+      loadedProfesores: false,
+      loadedHorarios: false
     }
   },
-  mounted () {
+  created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
     this.subPath = currentPath[3]
 
     this.getInfo()
-    this.getCategories()
     this.$q.loading.hide()
   },
   methods: {
-    goToAnchor (e, item) {
-      e.preventDefault()
-      const el = document.querySelector(item)
-      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
@@ -117,74 +125,89 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+      configServices.loadData(this, '/niveles-tennis/json', {
         callBack: (data) => {
-          _this.reglamentos = data
-          _this.loadedReglamentos = true
+          data.map((item, key) => {
+            var level = {
+              id: item.tid,
+              label: item.name
+            }
+
+            _this.niveles.push(level)
+          })
+        }
+      })
+
+      configServices.loadData(this, '/escuelas-tennis/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var level = {
+              id: item.tid,
+              label: item.name
+            }
+
+            _this.escuelas.push(level)
+          })
         }
       })
     },
-    getCategories () {
+    getItemsByEscuela (escuela) {
       var _this = this
-      configServices.loadData(this, '/categorias/' + _this.subPath + '-' + _this.path + '/deportes', {
+      configServices.loadData(this, '/intro-categorias-deportes-escuelas/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
         callBack: (data) => {
-          data.map((item, key) => {
-            var service = {
-              title: item.title,
-              body: item.body,
-              subServices: [
-                {
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                }
-              ]
-            }
-            if (item.title === 'Damas') {
-              const isFound = _this.womanCategories.find((element, index) => {
-                if (element.title === item.title) {
-                  _this.womanCategories.splice(index, 1)
-                  return element
-                }
-              })
-
-              if (isFound && typeof isFound !== 'undefined') {
-                isFound.subServices.push({
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                })
-
-                _this.womanCategories.push(isFound)
-              } else {
-                _this.womanCategories.push(service)
-              }
-            }
-            if (item.title === 'Varones') {
-              const isFound = _this.menCategories.find((element, index) => {
-                if (element.title === item.title) {
-                  _this.menCategories.splice(index, 1)
-                  return element
-                }
-              })
-
-              if (isFound && typeof isFound !== 'undefined') {
-                isFound.subServices.push({
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                })
-
-                _this.menCategories.push(isFound)
-              } else {
-                _this.menCategories.push(service)
-              }
-            }
-          })
-
-          _this.loadedContent = true
+          _this.iniciacion = data
+          _this.keyIniciacion = _this.keyIniciacion + 1
+          _this.loadedIniciacion = true
         }
       })
+
+      configServices.loadData(this, '/profesores-deportes-escuelas/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+        callBack: (data) => {
+          _this.profesores = data
+          _this.keyProfesores = _this.keyProfesores + 1
+          _this.loadedProfesores = true
+        }
+      })
+
+      configServices.loadData(this, '/horarios-inscripciones-escuelas/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+        callBack: (data) => {
+          console.log(data)
+
+          _this.horarios = data
+          _this.keyHorarios = _this.keyHorarios + 1
+          _this.loadedHorarios = true
+        }
+      })
+
+      this.$q.loading.hide()
+    },
+    getItemsByNivel (escuela) {
+      var _this = this
+      configServices.loadData(this, '/intro-categorias-deportes-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+        callBack: (data) => {
+          _this.iniciacion = data
+          _this.keyIniciacion = _this.keyIniciacion + 1
+          _this.loadedIniciacion = true
+        }
+      })
+
+      configServices.loadData(this, '/profesores-deportes-nivel/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+        callBack: (data) => {
+          _this.profesores = data
+          _this.keyProfesores = _this.keyProfesores + 1
+          _this.loadedProfesores = true
+        }
+      })
+
+      configServices.loadData(this, '/horarios-inscripciones-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+        callBack: (data) => {
+          _this.horarios = data
+          _this.keyHorarios = _this.keyHorarios + 1
+          _this.loadedHorarios = true
+        }
+      })
+
+      this.$q.loading.hide()
     }
   }
 }

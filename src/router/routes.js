@@ -890,7 +890,7 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/futbol/liga',
+    path: '/deportes/futbol/liga-pwcc',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/Liga.vue') }

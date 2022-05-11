@@ -6,59 +6,13 @@
   <div class="wrp_gallery_multimedia">
     <q-carousel v-model="slidecontent" transition-prev="slide-right" transition-next="slide-left" swipeable animated
       control-color="primary" padding arrows height="250px" class="galeria_multimedia">
-      <q-carousel-slide class="column no-wrap" name="0">
+      <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in sliderItems" :key="key">
         <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-          <div class="multimedia_slider">
+          <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">
             <div class="item_galeria">
-              <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/cultura05.png" />
+              <img :src="urlSite + subItem.field_imagen_goleador" />
               <div class="flex justify-start mini">
-                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/minimedalla.png" /><p class="Posicion">1</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="multimedia_slider">
-            <div class="item_galeria">
-              <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/cultura05.png" />
-              <div class="flex justify-start">
-                <q-icon name="battery_4_bar" /> <p class="Posicion">1</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="multimedia_slider">
-            <div class="item_galeria">
-              <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/cultura05.png" />
-              <div class="flex justify-start">
-                <q-icon name="workspace_premium" /> <p class="Posicion">1</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide class="column no-wrap" name="1">
-        <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-          <div class="multimedia_slider">
-            <div class="item_galeria">
-              <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/cultura05.png" />
-              <div class="flex justify-start">
-                <q-icon name="workspace_premium" /> <p class="Posicion">1</p>
-              </div>
-            </div>
-          </div>
-          <div class="multimedia_slider">
-            <div class="item_galeria">
-              <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/cultura05.png" />
-              <div class="flex justify-start">
-                <q-icon name="workspace_premium" /> <p class="Posicion">1</p>
-              </div>
-            </div>
-          </div>
-          <div class="multimedia_slider">
-            <div class="item_galeria">
-              <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/cultura05.png" />
-              <div class="flex justify-start">
-                <q-icon name="workspace_premium" /> <p class="Posicion">1</p>
+                <img src="https://pwccdev.mkbk.digital/administrador/sites/default/files/2022-04/minimedalla.png" /><p class="Posicion">{{ subItem.field_posicion }}</p>
               </div>
             </div>
           </div>
@@ -66,7 +20,7 @@
       </q-carousel-slide>
     </q-carousel>
     <div class="row justify-center botones">
-      <q-btn-toggle glossy v-model="slidecontent" :options="options" />
+      <q-btn-toggle glossy v-model="slidecontent" :options="[]" />
     </div>
   </div>
 </div>
@@ -76,11 +30,16 @@
 
 export default {
   name: 'Goleadores',
+  props: {
+    items: Array
+  },
   data () {
     return {
       sliders: true,
       slide: 1,
-      slidecontent: 0
+      slidecontent: 0,
+      sliderItems: this.items,
+      urlSite: 'https://pwccdev.mkbk.digital/'
     }
   }
 }

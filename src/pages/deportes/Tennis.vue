@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/rugby" />
+    <MenuDeporteInterno currentItem="/deportes/tennis" />
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-pb-md all_width bg_white">
         <Patrocinadores :images="images" v-if="loadedImages" />
@@ -40,7 +40,7 @@
                 <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
             <div class="w_35">
-                <Imagen :content="image" v-if="loadedImage" :path="path"/>
+                <iframe width="320" height="460" src="https://www.instagram.com/p/CdPEYWhJ1xY/embed" frameborder="0"></iframe>
             </div>
           </div>
         </div>
@@ -69,21 +69,21 @@ import Multimedia from 'pages/componentes/Multimedia'
 import Proximos from 'pages/componentes/CincoProximos'
 import Contacto from 'pages/componentes/SieteContacto'
 import Staff from 'pages/componentes/OchoStaff'
-import Imagen from 'pages/componentes/ImagenBoton'
 import configServices from '../../services/config'
+import DescDeporte from 'pages/componentes/SoloTexto'
 
 export default {
   name: 'Rugby',
   components: {
     MenuDeporteInterno,
+    DescDeporte,
     Banner,
     Patrocinadores,
     Noticias,
     Multimedia,
     Proximos,
     Contacto,
-    Staff,
-    Imagen
+    Staff
   },
   data () {
     return {
@@ -226,13 +226,13 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/video-deportes/' + _this.path + '/json', {
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.path + '/json', {
         callBack: (data) => {
+          console.log(data)
           _this.content = data[0]
           _this.loadedContent = true
         }
       })
-
       configServices.loadData(this, '/jugador-deportes/' + _this.path + '/json', {
         callBack: (data) => {
           _this.player = data[0]

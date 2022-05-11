@@ -5,7 +5,7 @@
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
             <div class="center text-center q-pt-md q-my-lg titulos">Calendario</div>
-            <Anclas :goAnchor="filterItem" :path="subPath" v-if="path === 'hockey'"/>
+            <Anclas :goAnchor="filterItem" :path="path" :subPath="subPath"/>
             <Fechas :info="events" v-if="loadedEvents" :eventsByMonth="getEventsByMonth" :key="key"/>
         </div>
     </div>
@@ -34,12 +34,14 @@ import Anclas from 'pages/componentes/Anclas'
 import TablaPosiciones from 'pages/componentes/TablaPosiciones'
 import Palmares from 'pages/componentes/Palmares'
 import Fechas from 'pages/componentes/CincoProximos'
+import Patrocinadores from 'pages/componentes/Dos'
 import configServices from '../../services/config'
 
 export default {
   name: 'Categorias',
   components: {
     MenuDeporteInterno,
+    Patrocinadores,
     Anclas,
     TablaPosiciones,
     Palmares,
@@ -66,7 +68,10 @@ export default {
       loadedCampeonatos: false,
       positions: [],
       loadedPositions: false,
-      keyPositions: 0
+      keyPositions: 0,
+      images: {},
+      loadedImages: false,
+      selectedItem: false
     }
   },
   created () {
@@ -79,10 +84,19 @@ export default {
   methods: {
     getEvents () {
       var _this = this
+      if (_this.path === 'tennis' && !_this.selectedItem) {
+        _this.currentItem = 'Escuela'
+      }
+
+      if (_this.path === 'futbol' && !_this.selectedItem) {
+        _this.currentItem = 'Rama Femenina'
+      }
+
       var url = '/eventos-deportes-calendario/' + _this.path + '/json/' + _this.currentItem
-      if (_this.path !== 'hockey') {
+      if (_this.path === 'hockey' && _this.subPath !== 'calendario') {
         url = '/eventos/' + _this.path + '/json/'
       }
+
       configServices.loadData(this, url, {
         callBack: (data) => {
           const n = 3
@@ -97,6 +111,7 @@ export default {
 
           _this.loadedEvents = true
           _this.key = _this.key + 1
+          _this.$q.loading.hide()
         }
       })
     },
@@ -106,6 +121,13 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.loadedInfo = true
+        }
+      })
+
+      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.images = data[0]
+          _this.loadedImages = true
         }
       })
 
@@ -148,6 +170,7 @@ export default {
     },
     filterItem (e, item) {
       e.preventDefault()
+      this.selectedItem = true
       this.currentItem = item.replace('#', '')
       this.getEvents()
     },

@@ -1,47 +1,47 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/paddle/ranking" />
+    <MenuDeporteInterno currentItem="/deportes/futbol/liga-pwcc" />
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar q-pt-md w_1200">
             <div class="center text-center q-my-lg titulos">Liga PWCC</div>
-            <Anclas :items="filterCategories" :path="path" :goAnchor="filterRankingByCategorie"/>
+            <Anclas :items="filterCategories" :path="subPath" :goAnchor="filterInformation"/>
 
-            <h5 class="style_title q-my-lg ">Historia</h5>
-            <Historia :content="content" v-if="loadedContent" />
+            <h5 class="style_title q-my-lg " v-if="loadedContent">Historia</h5>
+            <Historia :content="content" v-if="loadedContent" :key="keyContent" />
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo">
+    <div class="q-py-xl all_width bg_amarillo" v-if="loadedTeams">
         <div class="centrar w_1100">
             <h5 class="style_title q-my-lg ">Equipos</h5>
-            <Equipos />
+            <Equipos :items="teams" v-if="loadedTeams" :key="keyTeams"/>
         </div>
     </div>
 
-    <div class="q-py-none all_width bg_gris wrp_club">
+    <div class="q-py-none all_width bg_gris wrp_club" v-if="loadedPositions">
         <div class="row_wrap no-wrap flex justify-start">
             <div class="q-py-md centrar text-center w_1200">
               <h5 class="style_title q-my-lg text-left">Tabla de Posiciones</h5>
                 <div class="row_2 fitnes_last">
                     <div class="w_50">
-                        <Imagen :key="key" :path="path" :content="filterItems" v-if="loadedRanking"/>
+                        <Imagen :key="keyPositions" :path="path" :content="positions" v-if="loadedPositions"/>
                     </div>
                     <div class="w_50">
-                        <TableRankingFutbol />
+                        <TableRankingFutbol :items="positions" :key="keyPositions" v-if="loadedPositions"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo">
+    <div class="q-py-xl all_width bg_amarillo" v-if="loadedGoleadores">
         <div class="centrar w_1100">
             <h5 class="style_title q-my-lg ">Goleadores</h5>
-            <Goleadores />
+            <Goleadores :items="goleadores" :key="keyGoleadores" v-if="loadedGoleadores"/>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo">
+    <div class="q-py-xl all_width bg_gris" v-if="loadedPalmares">
         <div class="centrar w_1100">
             <h5 class="style_title q-my-lg ">Palmarés</h5>
-            <PalmaresFutbol />
+            <PalmaresFutbol :items="palmares" :key="keyPalmares" v-if="loadedPalmares"/>
         </div>
     </div>
   </q-page>
@@ -56,6 +56,7 @@ import Equipos from 'pages/componentes/EquiposFutbol.vue'
 import Goleadores from 'pages/componentes/Goleadores.vue'
 import PalmaresFutbol from 'pages/componentes/PalmaresFutbol.vue'
 import configServices from '../../services/config'
+import Historia from 'pages/componentes/SoloTexto'
 
 export default {
   name: 'Rugby',
@@ -66,7 +67,8 @@ export default {
     Equipos,
     Goleadores,
     PalmaresFutbol,
-    TableRankingFutbol
+    TableRankingFutbol,
+    Historia
   },
   data () {
     return {
@@ -111,47 +113,150 @@ export default {
       path: '',
       player: {},
       loadedPlayer: false,
-      loadedEvents: false,
+      loadedTeams: false,
       loadedRanking: false,
       bannerDeportes: [],
       loadedBannerDeportes: false,
-      filtersTournaments: [],
-      filterTemporadas: [],
       filterCategories: [],
+      filterTemporadas: [],
+      teams: [],
       temporada: '',
       tournament: '',
-      key: 0,
-      filterItems: []
+      keyContent: 0,
+      keyTeams: 0,
+      filterItems: [],
+      subPath: '',
+      intros: [],
+      positions: [],
+      loadedPositions: false,
+      keyPositions: 0,
+      goleadores: [],
+      loadedGoleadores: false,
+      keyGoleadores: 0,
+      palmares: [],
+      loadedPalmares: false,
+      keyPalmares: 0
     }
   },
   created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
-
+    this.subPath = currentPath[3]
     localStorage.setItem('sport', this.path)
 
-    this.getRanking()
+    this.getLeagues()
+    this.getInfo()
   },
   methods: {
-    filterRankingByCategorie (e, category) {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.subPath + '/json', {
+        callBack: (data) => {
+          _this.intros = data
+        }
+      })
+    },
+    getLeagues () {
+      var _this = this
+      configServices.loadData(this, '/categorias-liga/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var filter = {
+              id: item.tid,
+              title: item.name
+            }
+
+            _this.filterCategories.push(filter)
+          })
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    filterInformation (e, category) {
       e.preventDefault()
       var _this = this
-      var items = JSON.stringify(this.ranking)
-      items = JSON.parse(items)
+      var intro = JSON.stringify(this.intros)
+      intro = JSON.parse(intro)
 
-      items.map((item, key) => {
-        if (item.category === category) {
-          _this.filterItems.push(item)
+      intro.map((item, key) => {
+        if (item.field_ligas[0].target_id === parseInt(category.id)) {
+          _this.content = item
+          _this.loadedContent = true
+          _this.keyContent = _this.keyContent + 1
         }
       })
 
-      this.sortItems()
-      this.key = this.key + 1
-      this.loadedRanking = true
+      configServices.loadData(this, '/equipos-futbol/' + category.id + '/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var service = {
+              title: item.title,
+              image: item.field_imagen_equipo_1,
+              subServices: [
+                {
+                  field_cargo_staff: item.field_cargo_staff,
+                  field_nombre_staff: item.field_nombre_staff
+                }
+              ]
+            }
+            const isFound = _this.teams.find((element, index) => {
+              if (element.title === item.title) {
+                _this.teams.splice(index, 1)
+                return element
+              }
+            })
+
+            if (isFound && typeof isFound !== 'undefined') {
+              isFound.subServices.push({
+                field_cargo_staff: item.field_cargo_staff,
+                field_nombre_staff: item.field_nombre_staff
+              })
+
+              _this.teams.push(isFound)
+            } else {
+              _this.teams.push(service)
+            }
+          })
+          _this.loadedTeams = true
+          _this.keyTeams = _this.keyTeams + 1
+        }
+      })
+
+      configServices.loadData(this, '/tabla-posiciones-futbol/' + category.id + '/json', {
+        callBack: (data) => {
+          _this.positions = data
+          _this.sortItems()
+
+          _this.loadedPositions = true
+          _this.keyPositions = _this.keyPositions + 1
+        }
+      })
+
+      configServices.loadData(this, '/goleadores/' + category.id + '/json', {
+        callBack: (data) => {
+          const n = 3
+          _this.goleadores = new Array(Math.ceil(data.length / n))
+            .fill()
+            .map(_ => data.splice(0, n))
+
+          _this.loadedGoleadores = true
+          _this.keyGoleadores = _this.keyGoleadores + 1
+        }
+      })
+      configServices.loadData(this, '/palmares-futbol/' + category.id + '/json', {
+        callBack: (data) => {
+          _this.palmares = data
+
+          _this.loadedPalmares = true
+          _this.keyPalmares = _this.keyPalmares + 1
+        }
+      })
+
+      _this.$q.loading.hide()
     },
     sortItems () {
-      this.filterItems[0].subServices.sort(function (a, b) {
-        return parseInt(a.field_ranking) - parseInt(b.field_ranking)
+      this.positions.sort(function (a, b) {
+        return parseInt(a.field_posicion) - parseInt(b.field_posicion)
       })
     },
     filterRankingByTournament (tournament) {
@@ -186,106 +291,7 @@ export default {
       this.loadedRanking = true
     },
     getRanking () {
-      var _this = this
-      configServices.loadData(this, '/ranking-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          data.map((item, key) => {
-            if (item.field_campeonato !== '') {
-              var filter = {
-                label: item.field_campeonato
-              }
-              const isFound = _this.filtersTournaments.find((element, index) => {
-                if (element.label === item.field_campeonato) {
-                  _this.filtersTournaments.splice(index, 1)
-                  return element
-                }
-              })
-              if (typeof isFound !== 'undefined') {
-                _this.filtersTournaments.push(filter)
-              } else {
-                _this.filtersTournaments.push(filter)
-              }
-            }
-          })
-
-          data.map((item, key) => {
-            var filter = {
-              label: item.field_seleccione_la_temporada
-            }
-            const isFound = _this.filterTemporadas.find((element, index) => {
-              if (element.label === item.field_seleccione_la_temporada) {
-                _this.filterTemporadas.splice(index, 1)
-                return element
-              }
-            })
-
-            if (typeof isFound !== 'undefined') {
-              _this.filterTemporadas.push(filter)
-            } else {
-              _this.filterTemporadas.push(filter)
-            }
-          })
-
-          data.map((item, key) => {
-            var filter = {
-              title: item.field_categoria_ranking
-            }
-            const isFound = _this.filterCategories.find((element, index) => {
-              if (element.title === item.field_categoria_ranking) {
-                _this.filterCategories.splice(index, 1)
-                return element
-              }
-            })
-
-            if (typeof isFound !== 'undefined') {
-              _this.filterCategories.push(filter)
-            } else {
-              _this.filterCategories.push(filter)
-            }
-          })
-
-          data.map((item, key) => {
-            var service = {
-              title: item.title,
-              image: item.field_imagen_ranking,
-              tournament: item.field_campeonato,
-              temporada: item.field_seleccione_la_temporada,
-              category: item.field_categoria_ranking,
-              subServices: [
-                {
-                  field_cambio: item.field_cambio,
-                  field_nombre_y_apellidos: item.field_nombre_y_apellidos,
-                  field_sube_baja: item.field_sube_baja,
-                  field_puntaje: item.field_puntaje,
-                  field_ranking: item.field_ranking
-                }
-              ]
-            }
-            const isFound = _this.ranking.find((element, index) => {
-              if (element.title === item.title) {
-                _this.ranking.splice(index, 1)
-                return element
-              }
-            })
-
-            if (isFound && typeof isFound !== 'undefined') {
-              isFound.subServices.push({
-                field_cambio: item.field_cambio,
-                field_nombre_y_apellidos: item.field_nombre_y_apellidos,
-                field_sube_baja: item.field_sube_baja,
-                field_puntaje: item.field_puntaje,
-                field_ranking: item.field_ranking
-              })
-
-              _this.ranking.push(isFound)
-            } else {
-              _this.ranking.push(service)
-            }
-          })
-
-          _this.$q.loading.hide()
-        }
-      })
+      // ranking
     }
   }
 }

@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/hockey/categoria"/>
+    <MenuDeporteInterno currentItem="/deportes/futbol/escuela"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
 
     <div class="q-pb-md all_width bg_gris">
@@ -9,18 +9,18 @@
 
             <div class="row_2 centrar flex all_width">
                 <div class="w_25 q-mx-md">
-                    <ImagenPublicitaria/>
+                    <ImagenPublicitaria :content="horarios" :path="path" v-if="loadedHorarios"/>
                 </div>
                 <div class="w_70 q-mx-md">
                     <h5 class="style_title q-my-lg" >Horarios e Inscripción</h5>
                     <div class="row_2 centrar flex">
                         <div class="w_45">
                             <h5 class="text_normal">Rama Femenina</h5>
-                            <TablaHorarios />
+                            <TablaHorarios :items="horariosWoman" v-if="loadedHorarios" path="Escuelas - Rama Femenina"/>
                         </div>
                         <div class="w_45">
                             <h5 class="text_normal">Rama Masculina</h5>
-                            <TablaHorarios />
+                            <TablaHorarios :items="horariosMen" v-if="loadedHorarios" path="Escuelas - Rama Masculina"/>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,11 @@ export default {
       womanCategories: [],
       menCategories: [],
       reglamentos: {},
-      loadedReglamentos: false
+      loadedReglamentos: false,
+      horarios: [],
+      loadedHorarios: false,
+      horariosMen: [],
+      horariosWoman: []
     }
   },
   mounted () {
@@ -72,8 +76,6 @@ export default {
     this.subPath = currentPath[3]
 
     this.getInfo()
-    this.getCategories()
-    this.$q.loading.hide()
   },
   methods: {
     goToAnchor (e, item) {
@@ -91,74 +93,23 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+      configServices.loadData(this, '/horarios-inscripciones-escuelas-seccion/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
-          _this.reglamentos = data
-          _this.loadedReglamentos = true
-        }
-      })
-    },
-    getCategories () {
-      var _this = this
-      configServices.loadData(this, '/categorias/' + _this.subPath + '-' + _this.path + '/deportes', {
-        callBack: (data) => {
+          _this.horarios = data
+
           data.map((item, key) => {
-            var service = {
-              title: item.title,
-              body: item.body,
-              subServices: [
-                {
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                }
-              ]
-            }
-            if (item.title === 'Damas') {
-              const isFound = _this.womanCategories.find((element, index) => {
-                if (element.title === item.title) {
-                  _this.womanCategories.splice(index, 1)
-                  return element
-                }
-              })
-
-              if (isFound && typeof isFound !== 'undefined') {
-                isFound.subServices.push({
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                })
-
-                _this.womanCategories.push(isFound)
-              } else {
-                _this.womanCategories.push(service)
-              }
-            }
-            if (item.title === 'Varones') {
-              const isFound = _this.menCategories.find((element, index) => {
-                if (element.title === item.title) {
-                  _this.menCategories.splice(index, 1)
-                  return element
-                }
-              })
-
-              if (isFound && typeof isFound !== 'undefined') {
-                isFound.subServices.push({
-                  training: item.field_entranamiento,
-                  date: item.field_horarios,
-                  teacher: item.field_profesor_a
-                })
-
-                _this.menCategories.push(isFound)
-              } else {
-                _this.menCategories.push(service)
-              }
+            if (item.field_titulo_tabla === 'Rama Masculina') {
+              _this.horariosMen.push(item)
+            } else {
+              _this.horariosWoman.push(item)
             }
           })
 
-          _this.loadedContent = true
+          _this.loadedHorarios = true
         }
       })
+
+      _this.$q.loading.hide()
     }
   }
 }

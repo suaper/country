@@ -1,24 +1,8 @@
 <template>
     <ul class="list_numeros q-py-md">
-        <li>
-            <h6>Reserva de cancha</h6>
-            <p>
-            Tiene que ver el protocolo de solicitud de la cancha de juego, el cual se realiza previo contacto y con una anticipación máxima de 24 horas. También destaca aspectos de período de juego, demanda de cancha, si es socio o amigo de socio, etc.
-            </p>
-        </li>
-
-        <li>
-            <h6>Reserva de cancha</h6>
-            <p>
-            Tiene que ver el protocolo de solicitud de la cancha de juego, el cual se realiza previo contacto y con una anticipación máxima de 24 horas. También destaca aspectos de período de juego, demanda de cancha, si es socio o amigo de socio, etc.
-            </p>
-        </li>
-
-        <li>
-            <h6>Reserva de cancha</h6>
-            <p>
-            Tiene que ver el protocolo de solicitud de la cancha de juego, el cual se realiza previo contacto y con una anticipación máxima de 24 horas. También destaca aspectos de período de juego, demanda de cancha, si es socio o amigo de socio, etc.
-            </p>
+        <li v-for="(item, key) in info" :key="key">
+            <h6>{{ item.field_titulo_campo }}</h6>
+            <p v-html="item.field_descripcion"></p>
         </li>
     </ul>
 </template>
@@ -26,6 +10,15 @@
 <script>
 
 export default {
-  name: 'ListNumeros'
+  name: 'Video',
+  props: {
+    items: Array
+  },
+  data () {
+    return {
+      info: this.items,
+      urlSite: 'https://pwccdev.mkbk.digital/'
+    }
+  }
 }
 </script>

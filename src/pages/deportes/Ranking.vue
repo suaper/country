@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/paddle/ranking" />
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/ranking'"/>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar q-pt-md w_1200">
             <div class="center text-center q-my-lg titulos">Ranking</div>

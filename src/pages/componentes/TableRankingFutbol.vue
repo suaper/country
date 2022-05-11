@@ -10,45 +10,13 @@
                     <th>E</th>
                     <th>p</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-                                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Equipo 01</td>
-                    <td>12</td>
-                    <td>12</td>
-                    <td>3</td>
-                    <td>3</td>
+                <tr v-for="(item, key) in info" :key="key">
+                    <td>{{ item.field_posicion }}</td>
+                    <td>{{ item.field_equipo }}</td>
+                    <td>{{ item.field_pj }}</td>
+                    <td>{{ item.field_g }}</td>
+                    <td>{{ item.field_e }}</td>
+                    <td>{{ item.field_p }}</td>
                 </tr>
             </table>
         </div>
@@ -58,6 +26,14 @@
 <script>
 
 export default {
-  name: 'TableRankingFutbol'
+  name: 'TableRankingFutbol',
+  props: {
+    items: Array
+  },
+  data () {
+    return {
+      info: this.items
+    }
+  }
 }
 </script>
