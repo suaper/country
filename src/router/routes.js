@@ -897,7 +897,7 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/futbol/rama',
+    path: '/deportes/futbol/ramas',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/RamaFutbol.vue') }

@@ -18,7 +18,7 @@
       <q-btn :disable="getDisable('/deportes/futbol/equipo')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/equipo')" outline color="submenu" label="Equipo" />
       <q-btn :disable="getDisable('/deportes/futbol/escuela')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/escuela')" outline color="submenu" label="Escuela" />
       <q-btn :disable="getDisable('/deportes/futbol/liga-pwcc')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/liga-pwcc')" outline color="submenu" label="Liga PWCC" />
-      <q-btn :disable="getDisable('/deportes/futbol/rama')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/rama')" outline color="submenu" label="Rama" />
+      <q-btn :disable="getDisable('/deportes/futbol/ramas')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/ramas')" outline color="submenu" label="Rama" />
       <q-btn :disable="getDisable('/deportes/futbol/calendario')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/calendario')" outline color="submenu" label="Calendario" />
       <q-btn :disable="getDisable('/deportes/futbol/noticias')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/futbol/multimedia')" v-if="path === 'futbol'" @click="goItem('/deportes/futbol/multimedia')" outline color="submenu" label="Multimedia" />
