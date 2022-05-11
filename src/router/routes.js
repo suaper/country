@@ -868,6 +868,34 @@ const routes = [
       { path: '', component: () => import('pages/deportes/Contacto.vue') }
     ]
   },
+  {
+    path: '/deportes/futbol',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Futbol.vue') }
+    ]
+  },
+  {
+    path: '/deportes/futbol/equipo',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Staff.vue') }
+    ]
+  },
+  {
+    path: '/deportes/futbol/escuela',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/EscuelasFutbol.vue') }
+    ]
+  },
+  {
+    path: '/deportes/futbol/liga',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Liga.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

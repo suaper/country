@@ -78,6 +78,12 @@ body{
 .font_50{
     font-size: 50px !important;
 }
+.font_30{
+    font-size: 30px !important;
+}
+.font_20{
+    font-size: 20px !important;
+}
 .w_800{
     width: 800px;
 }
@@ -3495,6 +3501,7 @@ a.etiqueta_video{
 .w_45{
     width: 45%;
 }
+
 .w_35{
     width: 35% !important;
 }
@@ -3506,6 +3513,12 @@ a.etiqueta_video{
 }
 .w_60{
     width: 60%;
+}
+.w_65{
+    width: 65%;
+}
+.w_70{
+    width: 69%;
 }
 .w_100{
     width: 100%;
@@ -3783,4 +3796,73 @@ ul.text_horarios{
 }
 .flex-start .flex-start{
     justify-content: flex-start!important;
+}
+h5.text_normal{
+    font-family: $font-text;
+    font-size: 24px;
+    letter-spacing: 0px;
+    color: #1F2660;
+    opacity: 1;
+    margin: 10px 0;
+}
+.imagen_publicitaria{
+    position: relative;
+    .text_lover{
+        background: #0c0c0b82;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: #fff;
+        padding: 0px 0px 10px 15px;
+        h5{
+            margin: 5px 0;
+        }
+    }
+}
+.wrp_equipos_futbol{
+    background: #fff;
+    padding: 20px;
+    border-radius: 50%;
+    img{
+        border-radius: 0;
+    }
+}
+
+.mini{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img{
+        width: 40px!important;
+        height: 40px!important;
+        margin-right: 15px;
+    }
+    p{
+        font-size: 24px;
+        letter-spacing: 0px;
+        color: #1F2660;
+        opacity: 1;
+    }
+}
+.list_palmaresFutbol{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    li{
+        list-style: none;
+        .box_download {
+            text-align: left;
+            letter-spacing: 0px;
+            max-width: 326px;
+            min-width: 279px;
+            .border_left{
+                border-left: 1px solid #CA9E64;;
+                padding-left: 20px;
+            }
+            img{
+                margin-right: 15px;
+            }
+        }
+    }
 }
