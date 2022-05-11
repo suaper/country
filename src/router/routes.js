@@ -903,6 +903,13 @@ const routes = [
       { path: '', component: () => import('pages/deportes/RamaFutbol.vue') }
     ]
   },
+  {
+    path: '/deportes/escuelas',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Escuelas.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
