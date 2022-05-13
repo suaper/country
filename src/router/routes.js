@@ -904,10 +904,10 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/escuelas',
+    path: '/deportes/Calendario',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/deportes/Escuelas.vue') }
+      { path: '', component: () => import('pages/deportes/CalendarioDeportes.vue') }
     ]
   },
   // Always leave this as last one,
