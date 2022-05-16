@@ -1,6 +1,8 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos view_calendario">
-    <Menucalendario currentItem="/calendario/deportes"/>
+    <Menucalendario currentItem="/calendario/deportes" v-if="path !== 'deportes'"/>
+    <Menudeportes currentItem="/deportes/calendario" v-if="path === 'deportes'"/>
+
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-xl titulos">Calendario Deportes</div>
@@ -98,12 +100,14 @@
 
 <script>
 import Menucalendario from 'pages/submenus/Menucalendario'
+import Menudeportes from 'pages/submenus/Menudeportes'
 import configServices from '../../services/config'
 
 export default {
   name: 'Calendario',
   components: {
-    Menucalendario
+    Menucalendario,
+    Menudeportes
   },
   data () {
     return {
@@ -127,10 +131,13 @@ export default {
       events: [],
       allEvents: [],
       dtevento: false,
-      event: {}
+      event: {},
+      path: ''
     }
   },
   created () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[1]
     this.getInfo()
     this.getEvents()
   },

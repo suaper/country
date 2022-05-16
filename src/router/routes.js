@@ -715,6 +715,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/escuelas',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Escuelas.vue') }
+    ]
+  },
+  {
     path: '/deportes/squash/torneos',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -904,10 +911,10 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/Calendario',
+    path: '/deportes/calendario',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/deportes/CalendarioDeportes.vue') }
+      { path: '', component: () => import('pages/calendario/CalendarioDeportes.vue') }
     ]
   },
   // Always leave this as last one,

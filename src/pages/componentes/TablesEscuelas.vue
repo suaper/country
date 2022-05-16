@@ -3,41 +3,20 @@
         <div class="wrp_table_ranking">
             <table class="bg_white">
                 <tr>
-                    <th>Categoría</th>
-                    <th>Edad</th>
-                    <th>Horarios</th>
-                    <th>Staff</th>
-                    <th>Reseña</th>
+                    <th v-if="permisos.categ">Categoría</th>
+                    <th v-if="permisos.edad">Edad</th>
+                    <th v-if="permisos.horario">Horarios</th>
+                    <th v-if="permisos.staff">Staff</th>
+                    <th v-if="permisos.resena">Reseña</th>
                 </tr>
                 <tr>
                 </tr>
-                <tr>
-                    <td>Sub 6/8 damas</td>
-                    <td>12</td>
-                    <td>Sub 6/8 varones</td>
-                    <td>María Paz García, Eugenia Ruiz, Camila Sobarzo, Sandro Curin</td>
-                    <td>Este nivel estará orientado a niños y niñas entre 8 a 12 años, buscando avanzar en estrategias de juego e ir incorporando otras áreas del deporte. Además de insertarlos en competencias o campeonatos para representar al club.</td>
-                </tr>
-                <tr>
-                    <td>Sub 6/8 damas</td>
-                    <td>12</td>
-                    <td>Sub 6/8 varones</td>
-                    <td>María Paz García, Eugenia Ruiz, Camila Sobarzo, Sandro Curin</td>
-                    <td>Este nivel estará orientado a niños y niñas entre 8 a 12 años, buscando avanzar en estrategias de juego e ir incorporando otras áreas del deporte. Además de insertarlos en competencias o campeonatos para representar al club.</td>
-                </tr>
-                <tr>
-                    <td>Sub 6/8 damas</td>
-                    <td>12</td>
-                    <td>Sub 6/8 varones</td>
-                    <td>María Paz García, Eugenia Ruiz, Camila Sobarzo, Sandro Curin</td>
-                    <td>Este nivel estará orientado a niños y niñas entre 8 a 12 años, buscando avanzar en estrategias de juego e ir incorporando otras áreas del deporte. Además de insertarlos en competencias o campeonatos para representar al club.</td>
-                </tr>
-                <tr>
-                    <td>Sub 6/8 damas</td>
-                    <td>12</td>
-                    <td>Sub 6/8 varones</td>
-                    <td>María Paz García, Eugenia Ruiz, Camila Sobarzo, Sandro Curin</td>
-                    <td>Este nivel estará orientado a niños y niñas entre 8 a 12 años, buscando avanzar en estrategias de juego e ir incorporando otras áreas del deporte. Además de insertarlos en competencias o campeonatos para representar al club.</td>
+                <tr v-for="(item, key) in info" :key="key">
+                    <td v-if="permisos.categ">{{ item.field_categ }}</td>
+                    <td v-if="permisos.edad">{{ item.field_edad }}</td>
+                    <td v-if="permisos.horario" v-html="item.field_horario"></td>
+                    <td v-if="permisos.staff" v-html="item.field_staff_sport"></td>
+                    <td v-if="permisos.resena" v-html="item.field_resena"></td>
                 </tr>
             </table>
         </div>
@@ -47,6 +26,16 @@
 <script>
 
 export default {
-  name: 'TablesEscuelas'
+  name: 'TableEscuelas',
+  props: {
+    items: Array,
+    permissions: Object
+  },
+  data () {
+    return {
+      info: this.items,
+      permisos: this.permissions
+    }
+  }
 }
 </script>

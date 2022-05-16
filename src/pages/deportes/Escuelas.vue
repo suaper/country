@@ -1,53 +1,38 @@
  <template>
     <q-page class="flex flex-center view_quienes_somos">
-        <MenuDeporteInterno :currentItem="'/deportes/' + path + '/staff'"/>
+        <Menudeportes currentItem="/deportes/escuelas"/>
+        <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
         <div class="q-pb-md all_width bg_gris">
             <div class="centrar q-py-md w_1100 escuelas">
                 <div class="center text-center q-pt-md q-my-md titulos">Escuelas</div>
-                <Anclas :items="filters" :path="path" :goAnchor="filterStaff"/>
+                <Anclas :items="filters" :path="path" :goAnchor="goToAnchor"/>
             </div>
         </div>
-        <div class="q-pb-md all_width bg_amarillo">
+        <div class="q-pb-md all_width bg_amarillo" v-for="(item, key) in personal" :key="key" :id="item.title.toLowerCase()">
             <div class="centrar q-py-md w_1100 escuelas">
                 <div class="style_title q-my-lg flex flex-staf align-center">
-                    <h5 class="q-my-none">Golf</h5>
+                    <h5 class="q-my-none">{{ item.title }}</h5>
                     <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
                 </div>
-                <TablesEscuelas />
-            </div>
-        </div>
-        <div class="q-pb-md all_width bg_gris">
-            <div class="centrar q-py-md w_1100 escuelas">
-                <div class="style_title q-my-lg flex flex-staf align-center">
-                    <h5 class="q-my-none">Golf</h5>
-                    <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
-                </div>
-                <TablesEscuelas />
-            </div>
-        </div>
-        <div class="q-pb-md all_width bg_amarillo">
-            <div class="centrar q-py-md w_1100 escuelas">
-                <div class="style_title q-my-lg flex flex-staf align-center">
-                    <h5 class="q-my-none">Golf</h5>
-                    <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
-                </div>
-                <TablesEscuelas />
+                <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
             </div>
         </div>
     </q-page>
 </template>
 
 <script>
-import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
+import Menudeportes from 'pages/submenus/Menudeportes'
 import Anclas from 'pages/componentes/Anclas'
+import Banner from 'pages/componentes/Uno'
 import TablesEscuelas from 'pages/componentes/TablesEscuelas'
 import configServices from '../../services/config'
 
 export default {
   name: 'EscuelasFutbol',
   components: {
-    MenuDeporteInterno,
+    Menudeportes,
     Anclas,
+    Banner,
     TablesEscuelas
   },
   data () {
@@ -57,12 +42,14 @@ export default {
       key: 0,
       info: {},
       slidecontent: 0,
-      notices: [],
+      personal: [],
       filters: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_reservar_spa: false,
-      loadedPersonal: false
+      loadedPersonal: false,
+      loadedInfo: false,
+      subPath: ''
     }
   },
   created () {
@@ -88,16 +75,31 @@ export default {
         })
       }
     },
+    goToAnchor (e, item) {
+      e.preventDefault()
+      const el = document.querySelector('#' + item.toLowerCase())
+      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
     getStaff () {
       var _this = this
-      configServices.loadData(this, '/personal-staff-deportes/' + _this.path, {
+      console.log('/slider-deportes/' + _this.subPath + '/json')
+      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.info = data[0]
+          _this.slide = data[0].field_slider_sport[0].target_uuid
+          _this.loadedInfo = true
+        }
+      })
+
+      configServices.loadData(this, '/escuelas/' + _this.path + '/json', {
         callBack: (data) => {
           data.map((item, key) => {
             var filter = {
-              title: item.field_categoria_cargo
+              title: item.title
             }
             const isFound = _this.filters.find((element, index) => {
-              if (element.title === item.field_categoria_cargo) {
+              if (element.title === item.title) {
                 _this.filters.splice(index, 1)
                 return element
               }
@@ -108,9 +110,79 @@ export default {
             } else {
               _this.filters.push(filter)
             }
+
+            var categ = true
+
+            if (item.field_categ === '') {
+              categ = false
+            }
+
+            var edad = true
+
+            if (item.field_edad === '') {
+              edad = false
+            }
+
+            var horario = true
+
+            if (item.field_horario === '') {
+              horario = false
+            }
+
+            var resena = true
+
+            if (item.field_resena === '') {
+              resena = false
+            }
+
+            var staff = true
+
+            if (item.field_staff === '') {
+              staff = false
+            }
+
+            var service = {
+              title: item.title,
+              permissions: {
+                categ: categ,
+                edad: edad,
+                horario: horario,
+                resena: resena,
+                staff: staff
+              },
+              subServices: [
+                {
+                  field_categ: item.field_categ,
+                  field_edad: item.field_edad,
+                  field_horario: item.field_horario,
+                  field_resena: item.field_resena,
+                  field_staff_sport: item.field_staff_sport
+                }
+              ]
+            }
+
+            const isFounded = _this.personal.find((element, index) => {
+              if (element.title === item.title) {
+                _this.personal.splice(index, 1)
+                return element
+              }
+            })
+
+            if (isFounded && typeof isFounded !== 'undefined') {
+              isFounded.subServices.push({
+                field_categ: item.field_categ,
+                field_edad: item.field_edad,
+                field_horario: item.field_horario,
+                field_resena: item.field_resena,
+                field_staff_sport: item.field_staff_sport
+              })
+
+              _this.personal.push(isFounded)
+            } else {
+              _this.personal.push(service)
+            }
           })
 
-          _this.personal = data
           _this.loadedPersonal = true
           _this.$q.loading.hide()
         }
