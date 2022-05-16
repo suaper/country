@@ -1,192 +1,52 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno currentItem="/deportes/golf" />
-    <div class="q-py-none all_width">
-      <q-carousel
-        animated
-        v-model="slide"
-        arrows
-        class="banner_top"
-        navigation
-        infinite
-        autoplay="autoplay"
-      >
-        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
-      </q-carousel>
+    <MenuDeporteInterno currentItem="/deportes/tennis" />
+    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
+    <div class="q-pb-md all_width bg_white">
+        <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
-    <div class="q-pb-md all_width gris_home">
-        <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Golf</div>
-            <p class="intro text-center" v-html="info.body[0].value"></p>
-        </div>
-    </div>
-
-    <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
+   <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
-        <div class="text-left q-mb-none q-mt-xl titulos">Próximas Charlas</div>
-            <div class="wrp_gallery_beneficios">
-                <q-carousel
-                v-model="slidecontent"
-                transition-prev="slide-right"
-                transition-next="slide-left"
-                swipeable
-                animated
-                control-color="primary"
-                padding
-                arrows
-                height="300px"
-                class="galeria_beneficios"
-                >
-                <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in events" :key="key">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general" v-for="(event, eventKey) in item" :key="eventKey">
-                            <table class="galeri_event">
-                                <tr class="th_top">
-                                    <th class="fecha">{{ getDate(event.field_fecha_evento) }}</th>
-                                    <th class="hora">{{ getHour(event.field_fecha_evento) }}</th>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h5 class="name_event">{{ event.title }}</h5>
-                                        <p class="desc_event" v-html="event.field_detalle_evento"></p>
-                                        <q-btn @click="openDetalleEvento(event)" class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </q-carousel-slide>
-                </q-carousel>
-                <div class="row justify-center botones">
-                    <q-btn-toggle
-                      glossy
-                      v-model="slidecontent"
-                      :options="[]"
-                    />
-                </div>
-            </div>
+          <div class="center text-center q-my-lg titulos">Golf</div>
+          <div class="centrar w_1200">
+              <h4 class="subtitle q-my-md">Noticias</h4>
+              <Noticias :info="notices" v-if="loadedNotices"/>
+          </div>
         </div>
-        <q-dialog v-model="dtevento" >
-            <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c">
-                <q-card-section class="row items-center q-pb-none">
-                    <div class="text-h6">{{ event.title }}</div>
-                    <q-space />
-                    <q-btn icon="close" flat round dense v-close-popup />
-                </q-card-section>
-
-                <q-card-section class="pop_club">
-                    <span class="desc_club strong">Evento {{ event.field_tipo_evento }}</span><br>
-                    <span class="desc_club">{{ getDate(event.field_fecha_evento) }} {{ getHour(event.field_fecha_evento) }}</span>
-                </q-card-section>
-                <q-card-section class="flex flex-start pop_descargar">
-                    <div class="wrp_list_eventos">
-                        <div class="list_desc flex">
-                            <span class="bold">Ubicación</span>
-                            <span>{{ event.field_ubicacion }}</span>
-                        </div>
-                        <div class="list_desc flex">
-                            <span class="bold">Duración</span>
-                            <span>{{ event.field_duracion }}</span>
-                        </div>
-                    </div>
-                </q-card-section>
-            </q-card>
-        </q-dialog>
+    </div>
+    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
+        <div class="centrar w_1200">
+        <h4 class="subtitle q-my-md">Campeonato Actual</h4>
+          <CampeonatoActual />
+        </div>
+    </div>
+    <div class="q-pb-md all_width bg_white">
+        <Patrocinadores :images="images" v-if="loadedImages" />
+    </div>
+    <div class="q-py-none all_width bg_gris wrp_club hazte_socio">
+        <div class="centrar w_1200">
+            <h4 class="subtitle q-my-md">Próximos Campeonatos</h4>
+            <Proximos :info="events" v-if="loadedEvents"/>
+        </div>
     </div>
 
-    <div class="q-py-xl all_width gris_home wrp_club">
-        <div class="row_wrap no-wrap flex justify-start">
-            <h3 class="q-my-none">Multimedia</h3>
-            <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" to="/cultura/multimedia" label="Ver más" />
-      </div>
-
-      <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
-        <div class="q-py-md">
-          <table class="esquma_inferior">
-            <tr>
-              <td class="tg-0pky" rowspan="2">
-                <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[4].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[4].body"></span>
-                  </div></a>
-              </td>
-              <td class="tg-1pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[2].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[2].body"></span>
-                  </div></a></td>
-              <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[1].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[1].body"></span>
-                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
-                  </div></a></td>
-              <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[0].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[0].body"></span>
-                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
-                  </div></a></td>
-            </tr>
-            <tr>
-              <td class="tg-4pky"><a href="#" @click="openItem($event, multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[3].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[3].body"></span>
-                  </div></a></td>
-            </tr>
-          </table>
+    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
+        <div class="centrar w_1200">
+            <Multimedia :path="path"/>
         </div>
-      </div>
     </div>
-    <div class="q-py-none all_width bg_amarillo wrp_club">
+
+    <div class="q-py-none all_width bg_gris wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
         <div class="q-py-md centrar text-center w_1200">
           <div class="row_2 fitnes_last">
-              <div class="form_fitness">
-                  <h6 class="title_text">Contacto</h6>
-                  <q-form
-                      @submit="onSubmit"
-                      @reset="onReset"
-                      class="q-gutter-md"
-                  >
-                      <q-input
-                          outlined
-                          v-model="name"
-                          label="Nombres y Apellidos *"
-                          lazy-rules
-                          :rules="[ val => val && val.length > 0 || 'Please type something']"
-                      />
-                      <q-input
-                          outlined
-                          v-model="telefono"
-                          label="Número de contacto *"
-                      />
-                      <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
-                      <q-input
-                          outlined
-                          v-model="rut"
-                          label="Rut *"
-                      />
-                      <div class="text-left">
-                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
-                      </div>
-                  </q-form>
-              </div>
-              <div class="staff">
-              <h6 class="title_text">Staff</h6>
-                 <div class="flex">
-                    <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
-                        <tr>
-                            <td>
-                                <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
-                            </td>
-                            <td>
-                                <p><strong>{{ personal.field_nombre_staff }}</strong></p>
-                                <p><strong> {{ personal.field_cargo_staff }} </strong></p>
-                                <p>{{ personal.field_correo_staff }}</p>
-                                <p>{{ personal.field_numero_staff }}</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-              </div>
+            <div>
+                <Contacto />
+                <Staff :info="personal" v-if="loadedPersonal"/>
+            </div>
+            <div class="w_35">
+                <iframe width="320" height="460" src="https://www.instagram.com/p/CdPEYWhJ1xY/embed" frameborder="0"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -207,20 +67,38 @@
 
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
+import Banner from 'pages/componentes/Uno'
+import Patrocinadores from 'pages/componentes/Dos'
+import Noticias from 'pages/componentes/TresNoticias'
+import Multimedia from 'pages/componentes/Multimedia'
+import Proximos from 'pages/componentes/CincoProximos'
+import Contacto from 'pages/componentes/SieteContacto'
+import CampeonatoActual from 'pages/componentes/CampeonatoActual'
+import Staff from 'pages/componentes/OchoStaff'
 import configServices from '../../services/config'
 
 export default {
-  name: 'Charlasculturales',
+  name: 'Rugby',
   components: {
-    MenuDeporteInterno
+    MenuDeporteInterno,
+    Banner,
+    Patrocinadores,
+    Noticias,
+    Multimedia,
+    Proximos,
+    Contacto,
+    CampeonatoActual,
+    Staff
   },
   data () {
     return {
       sliders: true,
       video: false,
       currentVideo: '',
-      slide: 1,
+      slide: '1',
       slidecontent: 0,
+      image: [],
+      loadedImage: false,
       info: {
         body: [
           { value: '' }
@@ -244,7 +122,21 @@ export default {
       },
       events: [],
       dtevento: false,
-      event: {}
+      event: {},
+      images: {},
+      loadedInfo: false,
+      loadedImages: false,
+      loadedContent: false,
+      content: {},
+      notices: [],
+      loadedNotices: false,
+      path: '',
+      player: {},
+      loadedPlayer: false,
+      loadedEvents: false,
+      loadedPersonal: false,
+      bannerDeportes: [],
+      loadedBannerDeportes: false
     }
   },
   created () {
@@ -254,10 +146,9 @@ export default {
     localStorage.setItem('sport', this.path)
 
     this.getInfo()
+    this.getNotices()
     this.getMultimediaHome()
     this.getEvents()
-
-    this.$q.loading.hide()
   },
   methods: {
     onReset () {
@@ -290,6 +181,15 @@ export default {
         }
       })
     },
+    getNotices () {
+      var _this = this
+      configServices.loadData(this, '/noticias/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.notices = data
+          _this.loadedNotices = true
+        }
+      })
+    },
     openDetalleEvento (event) {
       this.event = event
       this.dtevento = true
@@ -316,33 +216,71 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/180?_format=json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.info = data
-          _this.slide = data.field_slider_home[0].target_uuid
+          _this.info = data[0]
+          _this.slide = data[0].field_slider_sport[0].target_uuid
+          _this.loadedInfo = true
         }
       })
 
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.images = data[0]
+          _this.loadedImages = true
+        }
+      })
+
+      configServices.loadData(this, '/intro-internas-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.content = data[0]
+          _this.loadedContent = true
+        }
+      })
+      configServices.loadData(this, '/jugador-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.player = data[0]
+          _this.loadedPlayer = true
+        }
+      })
+
+      configServices.loadData(this, '/personal-staff/' + _this.path, {
         callBack: (data) => {
           _this.personal = data
+          _this.loadedPersonal = true
+        }
+      })
+
+      configServices.loadData(this, '/node/723?_format=json', {
+        callBack: (data) => {
+          _this.image = data
+          _this.loadedImage = true
+        }
+      })
+
+      configServices.loadData(this, 'banner-torneo-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.bannerDeportes = data
+          _this.loadedBannerDeportes = true
         }
       })
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, '/eventos/cultura/json', {
+      configServices.loadData(this, '/eventos/' + this.path + '/json', {
         callBack: (data) => {
           const n = 3
           _this.events = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
+          _this.loadedEvents = true
         }
       })
     },
     getMultimediaHome () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones/charlas-culturales/json', {
+      configServices.loadData(this, '/multimedia-secciones/' + _this.path + '/json', {
         callBack: (data) => {
           _this.multimediaHome = []
 
@@ -356,11 +294,11 @@ export default {
             }
           }
 
-          _this.multimediaHome.push(images[1])
           _this.multimediaHome.push(images[0])
+          _this.multimediaHome.push(images[1])
+          _this.multimediaHome.push(videos[0])
           _this.multimediaHome.push(videos[1])
           _this.multimediaHome.push(videos[2])
-          _this.multimediaHome.push(videos[0])
           _this.$q.loading.hide()
         }
       })
