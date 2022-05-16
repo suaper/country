@@ -917,6 +917,27 @@ const routes = [
       { path: '', component: () => import('pages/calendario/CalendarioDeportes.vue') }
     ]
   },
+  {
+    path: '/deportes/golf/equipo',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/EquipoGolf.vue') }
+    ]
+  },
+  {
+    path: '/deportes/golf/historia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Historia.vue') }
+    ]
+  },
+  {
+    path: '/deportes/golf/campeones',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Campeones.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
