@@ -1,30 +1,29 @@
- <template>
+<template>
   <q-page class="flex flex-center view_quienes_somos">
     <MenuDeporteInterno :currentItem="'/deportes/' + path + '/equipo'"/>
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar q-py-md w_1100">
             <div class="center text-center q-pt-md q-my-md titulos">Equipo</div>
-            <Anclas :items="filters" :path="path" :goAnchor="filterStaff"/>
+            <Anclas :items="filters" :path="path" :goAnchor="goToAnchor"/>
         </div>
-        <div class="centrar w_1100 q-pb-xl">
-        <h4 class="subtitle q-my-md">Comité de Golf</h4>
-            <StaffView :info="personal" :key="key" v-if="loadedPersonal" />
-        </div>
-    </div>
-    <div class="q-pb-md all_width bg_amarillo">
-        <div class="centrar q-py-md w_1100">
-        <h4 class="subtitle q-my-md">Comité de Cancha</h4>
-        </div>
-        <div class="centrar w_1200 q-pb-xl">
-            <StaffView :info="personal" :key="key" v-if="loadedPersonal" />
+        <div class="centrar w_1200 q-pb-xl" id="comite-golf">
+            <h4 class="subtitle">Comité de golf</h4>
+            <DescRama :content="personalComiteGolf" v-if="loadedComiteGolf"/>
+            <StaffView :info="personalComiteGolf" v-if="loadedComiteGolf"/>
         </div>
     </div>
-    <div class="q-pb-md all_width bg_amarillo">
-        <div class="centrar q-py-md w_1100">
-        <h4 class="subtitle q-my-md">Profesores</h4>
-        </div>
+    <div class="q-pb-md all_width bg_amarillo" id="comite-cancha">
         <div class="centrar w_1200 q-pb-xl">
-            <StaffView :info="personal" :key="key" v-if="loadedPersonal" />
+            <h4 class="subtitle">Comité de Cancha</h4>
+            <DescRama :content="personalCancha" v-if="loadedComiteCancha"/>
+            <StaffView :info="personalCancha" v-if="loadedComiteCancha"/>
+        </div>
+    </div>
+    <div class="q-pb-md all_width bg_gris" id="profesores">
+        <div class="centrar w_1200 q-pb-xl">
+            <h4 class="subtitle">Profesores</h4>
+            <DescRama :content="personalProfesores" v-if="loadedPersonalProfesores"/>
+            <StaffView :info="personalProfesores" v-if="loadedPersonalProfesores"/>
         </div>
     </div>
   </q-page>
@@ -34,6 +33,7 @@
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Anclas from 'pages/componentes/Anclas'
 import StaffView from 'pages/componentes/StaffView'
+import DescRama from 'pages/componentes/SoloTexto'
 import configServices from '../../services/config'
 
 export default {
@@ -41,7 +41,8 @@ export default {
   components: {
     MenuDeporteInterno,
     Anclas,
-    StaffView
+    StaffView,
+    DescRama
   },
   data () {
     return {
@@ -53,60 +54,55 @@ export default {
       notices: [],
       filters: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
-      multimediaHome: [],
+      personalComiteGolf: [],
       pop_reservar_spa: false,
-      loadedPersonal: false
+      loadedComiteGolf: false,
+      personalCancha: [],
+      loadedComiteCancha: false,
+      personalProfesores: [],
+      loadedPersonalProfesores: false
     }
   },
   created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
+    this.subPath = currentPath[3]
     this.getStaff()
   },
   methods: {
-    filterStaff (e, item) {
+    goToAnchor (e, item) {
       e.preventDefault()
-      if (item === 'all') {
-        this.getStaff()
-      } else {
-        var filter = item.replaceAll(' ', '-').toLowerCase()
-        var _this = this
-        configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/' + filter, {
-          callBack: (data) => {
-            _this.personal = data
-            _this.loadedPersonal = true
-            _this.key = _this.key + 1
-            _this.$q.loading.hide()
-          }
-        })
-      }
+      const el = document.querySelector(item)
+      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     },
     getStaff () {
       var _this = this
-      configServices.loadData(this, '/personal-staff-deportes/' + _this.path, {
+      configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/comite-de-golf', {
         callBack: (data) => {
-          data.map((item, key) => {
-            var filter = {
-              title: item.field_categoria_cargo
-            }
-            const isFound = _this.filters.find((element, index) => {
-              if (element.title === item.field_categoria_cargo) {
-                _this.filters.splice(index, 1)
-                return element
-              }
-            })
+          data[0].body = data[0].field_descripcion_servicio
+          _this.personalComiteGolf = data
+          _this.loadedComiteGolf = true
+          _this.key = _this.key + 1
+          _this.$q.loading.hide()
+        }
+      })
 
-            if (typeof isFound !== 'undefined') {
-              _this.filters.push(filter)
-            } else {
-              _this.filters.push(filter)
-            }
-          })
+      configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/comite-de-cancha', {
+        callBack: (data) => {
+          data[0].body = data[0].field_descripcion_servicio
+          _this.personalCancha = data
+          _this.loadedComiteCancha = true
+          _this.key = _this.key + 1
+          _this.$q.loading.hide()
+        }
+      })
 
-          console.log(_this.filters)
-
-          _this.personal = data
-          _this.loadedPersonal = true
+      configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/profesores', {
+        callBack: (data) => {
+          data[0].body = data[0].field_descripcion_servicio
+          _this.personalProfesores = data
+          _this.loadedPersonalProfesores = true
+          _this.key = _this.key + 1
           _this.$q.loading.hide()
         }
       })

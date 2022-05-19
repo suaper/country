@@ -9,7 +9,7 @@
         <div class="centrar w_1200 q-pb-xl" id="rama-masculina">
             <h4 class="subtitle">Rama Masculina Plantel</h4>
             <DescRama :content="personalMasculino" v-if="loadedPersonalMasculino"/>
-            <StaffView :info="personalFemenino" v-if="loadedPersonalFemenino"/>
+            <StaffView :info="personalMasculino" v-if="loadedPersonalMasculino"/>
         </div>
     </div>
     <div class="q-pb-md all_width bg_amarillo" id="rama-femenina">
