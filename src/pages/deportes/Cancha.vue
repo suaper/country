@@ -1,34 +1,64 @@
  <template>
-    <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/ranking'"/>
-    <div class="q-py-none all_width bg_gris wrp_club campeones">
-    <div class="center text-center q-my-lg titulos">Campeones</div>
-        <div class="no-wrap flex justify-between centrar w_1200">
+  <q-page class="flex flex-center view_quienes_somos">
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/reservar-cancha'"/>
+    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
+   <div class="q-pb-md all_width bg_gris wrp_club hazte_socio cancha">
+        <div class="centrar q-pt-md w_1200">
+            <div class="center text-center q-my-lg titulos">Cancha</div>
             <div class="row_2 fitnes_last">
-                <h4 class="subtitle q-my-xl all_width text-center">Varones</h4>
-                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/masajes.png" alt="">
-                <TableCampeones/>
-            </div>
-            <div class="row_2 fitnes_last">
-                <h4 class="subtitle q-my-xl all_width text-center">Damas</h4>
-                <img src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/masajes.png" alt="">
-                <TableCampeones/>
+                <div class="w_65">
+                    <CanchaGolf/>
+                </div>
+                <div class="w_30">
+                    <listaDescargablesIconos/>
+                </div>
             </div>
         </div>
     </div>
-    </q-page>
+    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio cancha">
+        <div class="centrar q-pt-md w_1200">
+            <IndicesCancha/>
+        </div>
+    </div>
+    <div class="q-py-none all_width bg_gris wrp_club cancha">
+        <div class="row_wrap no-wrap flex justify-start">
+        <div class="q-py-md centrar text-center w_1200">
+        <h4 class="subtitle text-left q-my-md">Reglamento</h4>
+          <div class="row_2 fitnes_last">
+            <div class="w_40">
+                 <Reglamento :content="reglamentos" v-if="loadedReglamentos"/>
+            </div>
+            <div class="w_55">
+                <ListaNumeros :items="listado" v-if="loadedListado"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </q-page>
 </template>
 
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
-import TableCampeones from 'pages/componentes/TableCampeones'
+import Banner from 'pages/componentes/Uno'
+import CanchaGolf from 'pages/componentes/CanchaGolf'
+import listaDescargablesIconos from 'pages/componentes/listaDescargablesIconos'
+import Reglamento from 'pages/componentes/ListaReglamentos'
+import ListaNumeros from 'pages/componentes/ListaNumeros'
+import IndicesCancha from 'pages/componentes/IndicesCancha'
 import configServices from '../../services/config'
 
 export default {
   name: 'Rugby',
   components: {
     MenuDeporteInterno,
-    TableCampeones
+    Banner,
+    CanchaGolf,
+    ListaNumeros,
+    listaDescargablesIconos,
+    Reglamento,
+    IndicesCancha
   },
   data () {
     return {
@@ -60,7 +90,7 @@ export default {
       personal: {
         field_imagen_perfil: ''
       },
-      ranking: [],
+      events: [],
       dtevento: false,
       event: {},
       images: {},
@@ -74,180 +104,58 @@ export default {
       player: {},
       loadedPlayer: false,
       loadedEvents: false,
-      loadedRanking: false,
+      loadedPersonal: false,
       bannerDeportes: [],
       loadedBannerDeportes: false,
-      filtersTournaments: [],
-      filterTemporadas: [],
-      filterCategories: [],
-      temporada: '',
-      tournament: '',
-      key: 0,
-      filterItems: []
+      reglamentos: {},
+      loadedReglamentos: false,
+      listado: {},
+      loadedListado: false
     }
   },
   created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
+    this.subPath = currentPath[3]
 
     localStorage.setItem('sport', this.path)
 
-    this.getRanking()
+    this.getInfo()
   },
   methods: {
-    filterRankingByCategorie (e, category) {
-      e.preventDefault()
+    getInfo () {
       var _this = this
-      var items = JSON.stringify(this.ranking)
-      items = JSON.parse(items)
 
-      items.map((item, key) => {
-        if (item.category === category) {
-          _this.filterItems.push(item)
-        }
-      })
-
-      this.sortItems()
-      this.key = this.key + 1
-      this.loadedRanking = true
-    },
-    sortItems () {
-      this.filterItems[0].subServices.sort(function (a, b) {
-        return parseInt(a.field_ranking) - parseInt(b.field_ranking)
-      })
-    },
-    filterRankingByTournament (tournament) {
-      var _this = this
-      var items = JSON.stringify(this.ranking)
-      items = JSON.parse(items)
-
-      items.map((item, key) => {
-        if (item.tournament === tournament.label) {
-          _this.filterItems.push(item)
-        }
-      })
-
-      this.sortItems()
-
-      this.key = this.key + 1
-      this.loadedRanking = true
-    },
-    filterRankingByTemporada (temporada) {
-      var _this = this
-      var items = JSON.stringify(this.ranking)
-      items = JSON.parse(items)
-
-      items.map((item, key) => {
-        if (item.temporada === temporada.label) {
-          _this.filterItems.push(item)
-        }
-      })
-      this.sortItems()
-
-      this.key = this.key + 1
-      this.loadedRanking = true
-    },
-    getRanking () {
-      var _this = this
-      configServices.loadData(this, '/ranking-deportes/' + _this.path + '/json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
-          data.map((item, key) => {
-            if (item.field_campeonato !== '') {
-              var filter = {
-                label: item.field_campeonato
-              }
-              const isFound = _this.filtersTournaments.find((element, index) => {
-                if (element.label === item.field_campeonato) {
-                  _this.filtersTournaments.splice(index, 1)
-                  return element
-                }
-              })
-              if (typeof isFound !== 'undefined') {
-                _this.filtersTournaments.push(filter)
-              } else {
-                _this.filtersTournaments.push(filter)
-              }
-            }
-          })
-
-          data.map((item, key) => {
-            var filter = {
-              label: item.field_seleccione_la_temporada
-            }
-            const isFound = _this.filterTemporadas.find((element, index) => {
-              if (element.label === item.field_seleccione_la_temporada) {
-                _this.filterTemporadas.splice(index, 1)
-                return element
-              }
-            })
-
-            if (typeof isFound !== 'undefined') {
-              _this.filterTemporadas.push(filter)
-            } else {
-              _this.filterTemporadas.push(filter)
-            }
-          })
-
-          data.map((item, key) => {
-            var filter = {
-              title: item.field_categoria_ranking
-            }
-            const isFound = _this.filterCategories.find((element, index) => {
-              if (element.title === item.field_categoria_ranking) {
-                _this.filterCategories.splice(index, 1)
-                return element
-              }
-            })
-
-            if (typeof isFound !== 'undefined') {
-              _this.filterCategories.push(filter)
-            } else {
-              _this.filterCategories.push(filter)
-            }
-          })
-
-          data.map((item, key) => {
-            var service = {
-              title: item.title,
-              image: item.field_imagen_ranking,
-              tournament: item.field_campeonato,
-              temporada: item.field_seleccione_la_temporada,
-              category: item.field_categoria_ranking,
-              subServices: [
-                {
-                  field_cambio: item.field_cambio,
-                  field_nombre_y_apellidos: item.field_nombre_y_apellidos,
-                  field_sube_baja: item.field_sube_baja,
-                  field_puntaje: item.field_puntaje,
-                  field_ranking: item.field_ranking
-                }
-              ]
-            }
-            const isFound = _this.ranking.find((element, index) => {
-              if (element.title === item.title) {
-                _this.ranking.splice(index, 1)
-                return element
-              }
-            })
-
-            if (isFound && typeof isFound !== 'undefined') {
-              isFound.subServices.push({
-                field_cambio: item.field_cambio,
-                field_nombre_y_apellidos: item.field_nombre_y_apellidos,
-                field_sube_baja: item.field_sube_baja,
-                field_puntaje: item.field_puntaje,
-                field_ranking: item.field_ranking
-              })
-
-              _this.ranking.push(isFound)
-            } else {
-              _this.ranking.push(service)
-            }
-          })
-
-          _this.$q.loading.hide()
+          _this.info = data[0]
+          _this.slide = data[0].field_slider_sport[0].target_uuid
+          _this.loadedInfo = true
         }
       })
+
+      configServices.loadData(this, '/video-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.content = data[0]
+          _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.reglamentos = data
+          _this.loadedReglamentos = true
+        }
+      })
+
+      configServices.loadData(this, '/reglamentos-deportes-listado/' + _this.subPath + '-' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.listado = data
+          _this.loadedListado = true
+        }
+      })
+
+      _this.$q.loading.hide()
     }
   }
 }

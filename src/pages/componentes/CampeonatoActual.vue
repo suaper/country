@@ -2,7 +2,7 @@
     <div class="wrp_table_clasificacion campeonato_golf">
         <h5 class="text_normal">Campeonato Actual</h5>
         <div class="row">
-            <ul>
+            <ul class="fecha_campeonato">
                 <li>
                     icono <span>5</span>
                 </li>
