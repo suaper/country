@@ -1,23 +1,23 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/reservar-cancha'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/cancha'"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio cancha">
         <div class="centrar q-pt-md w_1200">
             <div class="center text-center q-my-lg titulos">Cancha</div>
             <div class="row_2 fitnes_last">
                 <div class="w_65">
-                    <CanchaGolf/>
+                    <CanchaGolf :info="content" v-if="loadedContent"/>
                 </div>
                 <div class="w_30">
-                    <listaDescargablesIconos/>
+                    <listaDescargablesIconos :items="popups" v-if="loadedPopups"/>
                 </div>
             </div>
         </div>
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio cancha">
         <div class="centrar q-pt-md w_1200">
-            <IndicesCancha/>
+            <IndicesCancha :info="ventajas" v-if="loadedVentajas"/>
         </div>
     </div>
     <div class="q-py-none all_width bg_gris wrp_club cancha">
@@ -97,6 +97,10 @@ export default {
       loadedInfo: false,
       loadedImages: false,
       loadedContent: false,
+      loadedVentajas: false,
+      ventajas: [],
+      popups: [],
+      loadedPopups: false,
       content: {},
       notices: [],
       loadedNotices: false,
@@ -134,10 +138,24 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/video-deportes/' + _this.subPath + '-' + _this.path + '/json', {
+      configServices.loadData(this, '/videos-cancha/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
-          _this.content = data[0]
+          _this.content = data
           _this.loadedContent = true
+        }
+      })
+
+      configServices.loadData(this, '/popups-cancha/' + _this.subPath + '-' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.popups = data
+          _this.loadedPopups = true
+        }
+      })
+
+      configServices.loadData(this, '/ventajas-cancha/' + _this.subPath + '-' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.ventajas = data
+          _this.loadedVentajas = true
         }
       })
 

@@ -1,27 +1,39 @@
  <template>
     <q-page class="flex flex-center view_quienes_somos">
-        <Menudeportes currentItem="/deportes/escuelas"/>
-        <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
-        <div class="q-pb-md all_width bg_gris">
-            <div class="centrar q-py-md w_1100 escuelas">
-                <div class="center text-center q-pt-md q-my-md titulos">Escuelas</div>
-                <Anclas :items="filters" :path="path" :goAnchor="goToAnchor"/>
-            </div>
-        </div>
-        <div class="q-pb-md all_width bg_amarillo" v-for="(item, key) in personal" :key="key" :id="item.title.toLowerCase()">
-            <div class="centrar q-py-md w_1100 escuelas">
-                <div class="style_title q-my-lg flex flex-staf align-center">
-                    <h5 class="q-my-none">{{ item.title }}</h5>
-                    <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
-                </div>
-                <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
-            </div>
-        </div>
+      <Menudeportes currentItem="/deportes/escuelas" v-if="path !== 'golf'"/>
+      <MenuDeporteInterno currentItem="/deportes/golf/escuelas" v-if="path === 'golf'" />
+
+      <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
+      <div class="q-pb-md all_width bg_gris">
+          <div class="centrar q-py-md w_1100 escuelas">
+              <div class="center text-center q-pt-md q-my-md titulos">Escuelas</div>
+              <Anclas :items="filters" :path="path" :goAnchor="goToAnchor" v-if="path !== 'golf'"/>
+          </div>
+      </div>
+      <div class="q-pb-md all_width bg_amarillo" v-for="(item, key) in personal" :key="key" :id="item.title.toLowerCase()" v-show="path !== 'golf'">
+          <div class="centrar q-py-md w_1100 escuelas">
+              <div class="style_title q-my-lg flex flex-staf align-center">
+                  <h5 class="q-my-none">{{ item.title }}</h5>
+                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
+              </div>
+              <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
+          </div>
+      </div>
+      <div class="q-pb-md all_width bg_gris" v-for="(item, key) in personal" :key="key" :id="item.title.toLowerCase()" v-show="path === 'golf' && item.title === 'Golf'">
+          <div class="centrar q-py-md w_1100 escuelas">
+              <div class="style_title q-my-lg flex flex-staf align-center">
+                  <h5 class="q-my-none">{{ item.title }}</h5>
+                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
+              </div>
+              <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
+          </div>
+      </div>
     </q-page>
 </template>
 
 <script>
 import Menudeportes from 'pages/submenus/Menudeportes'
+import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Anclas from 'pages/componentes/Anclas'
 import Banner from 'pages/componentes/Uno'
 import TablesEscuelas from 'pages/componentes/TablesEscuelas'
@@ -31,6 +43,7 @@ export default {
   name: 'EscuelasFutbol',
   components: {
     Menudeportes,
+    MenuDeporteInterno,
     Anclas,
     Banner,
     TablesEscuelas
@@ -55,6 +68,8 @@ export default {
   created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
+    this.subPath = currentPath[3]
+
     this.getStaff()
   },
   methods: {
@@ -82,7 +97,6 @@ export default {
     },
     getStaff () {
       var _this = this
-      console.log('/slider-deportes/' + _this.subPath + '/json')
       configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
           console.log(data)

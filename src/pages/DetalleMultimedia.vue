@@ -21,14 +21,16 @@
                 control-color="primary"
                 padding
                 arrows
-                height="250px"
+                height="800px"
                 class="galeria_multimedia"
                 >
                 <q-carousel-slide class="column" :name="key" v-for="(item, key) in info" :key="key">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
+                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter">
                         <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">
                             <div class="item_galeria">
+                              <a href="#" @click="openLightbox($event, key, subKey)">
                                 <img :src="subItem.url" />
+                              </a>
                             </div>
                         </div>
                     </div>
@@ -41,6 +43,7 @@
                         :options="[]"
                     />
                 </div>
+                <LightBox :media="imgs" ref="lightbox" :show-light-box="false" :interfaceHideTime="9999999"></LightBox>
             </div>
         </div>
     </div>
@@ -108,20 +111,31 @@
 
 <script>
 import configServices from '../services/config'
+import LightBox from 'vue-it-bigger'
+import 'vue-it-bigger/dist/vue-it-bigger.min.css' // when using webpack
 
 export default {
   name: 'Detallemultimedia',
+  components: {
+    LightBox
+  },
   data () {
     return {
       sliders: true,
       slidecontent: 0,
       autoplay: true,
       info: [],
-      data: [],
+      data: {
+        title: [
+          { value: '' }
+        ]
+      },
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_cuota: false,
       cuotas: [],
-      id: ''
+      id: '',
+      imgs: [],
+      gallery: false
     }
   },
   created () {
@@ -129,11 +143,30 @@ export default {
     this.getInfo()
   },
   methods: {
+    openLightbox (e, key, index) {
+      e.preventDefault()
+      if (key >= 1) {
+        index = index + 9
+      }
+      this.$refs.lightbox.showImage(index)
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/' + _this.id + '?_format=json', {
         callBack: (data) => {
-          const n = 3
+          var imgs = JSON.stringify(data.field_galeria_)
+          imgs = JSON.parse(imgs)
+
+          imgs.map((item, key) => {
+            var image = {
+              type: 'image', // Can be omitted for image
+              thumb: item.url,
+              src: item.url
+            }
+            _this.imgs.push(image)
+          })
+
+          const n = 9
           _this.data = data
           _this.info = new Array(Math.ceil(data.field_galeria_.length / n))
             .fill()
