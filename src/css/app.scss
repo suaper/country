@@ -3603,6 +3603,7 @@ a.etiqueta_video{
     .box_download{
         margin-left: 0;
         max-width: 300px;
+        flex-wrap: nowrap;
     }
 }
 
@@ -3849,19 +3850,21 @@ h5.text_normal{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    padding-left: 0;
     li{
         list-style: none;
         .box_download {
             text-align: left;
             letter-spacing: 0px;
             max-width: 326px;
-            min-width: 279px;
+            min-width: 300px;
+            padding: 16px 0px;
             .border_left{
                 border-left: 1px solid #CA9E64;;
-                padding-left: 20px;
+                padding-left: 10px;
             }
             img{
-                margin-right: 15px;
+                margin-right: 10px;
             }
         }
     }
@@ -3901,6 +3904,222 @@ h5.text_normal{
                         font-weight: normal;
                         opacity: 1;
                     }
+                }
+            }
+        }
+    }
+}
+.descargables_iconos{
+    flex-direction: column;
+}
+.cancha .fitnes_last{
+    .w_65{
+        width: 65%;
+    }
+    .w_30{
+        width: 30%;
+    }
+    .w_55{
+        width: 55%;
+    }
+    .w_40{
+        width: 40%;
+    }
+    .box_download{
+        justify-content: flex-start;
+        padding: 20px 20px !important;
+    }
+    .descargables_iconos{
+        li{
+            margin-bottom: 20px;
+        }
+    }
+}
+.indicies_canchas {
+    h5{
+        font-size: 44px;
+        font-family: $font-title;
+        font-weight: normal;
+        letter-spacing: -0.88px;
+        color: #1F2660;
+        opacity: 1;
+        margin: 10px;
+        &.text_normal{
+            text-align: left;
+            font-size: 24px;
+            font-weight: normal;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #1F2660;
+            opacity: 1;
+        }
+    }
+    .info{
+        margin-left: 15%;
+        table{
+            margin: 10px;
+            border: 1px solid #1F2660;
+            border-collapse: collapse;
+
+            th{
+                background-color: #fff;
+                padding: 6px 7px;
+                font-size: 21px;
+                font-weight: normal;
+                color: #1F2660;
+            }
+            td{
+                text-align: center;
+                color: #7C7E91;
+                padding: 4px 7px;
+                border-top: 1px solid #1F2660;
+                background: #fff;
+            }
+            &.t_azul{
+                th{
+                    background: #1F2660;
+                    color: #fff;
+                }
+                td{
+                    border-top: 1px solid #1F2660;
+                }
+            }
+            &.t_roja{
+                th{
+                    background: #C70404;
+                    color: #fff;
+                }
+                td{
+                    border-top: 1px solid #C70404;
+                }
+            }
+        }
+    }
+}
+.list_numeros{
+    li{
+        list-style: none;
+        position: relative;
+        padding: 0px 0px 15px 34px;
+        border-left: 1px solid #cca36b;
+        h6{
+            font-size: 24px;
+            font-weight: normal;
+            text-align: left;
+            letter-spacing: 0px;
+            color: #1F2660;
+            margin: 5px 0;
+            opacity: 1;
+        }
+        p{
+            text-align: left;
+        }
+        .contador{
+            position: absolute;
+            top: 0;
+            left: -16px;
+            width: 28px;
+            height: 28px;
+            padding-top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            border: 1px solid #CA9E64;
+            color: #CA9E64;
+        }
+        &:last-child{
+            border-left: none;
+        }
+    }
+}
+.list_info_campeonatos{
+    li{
+        .box_download{
+            min-width: 233px;
+        }
+        &:first-child{
+            .box_download{
+                margin-left: 0;
+            }
+        }
+    }
+}
+.fecha_campeonato{
+    border-radius: 28px;
+    background: #fff;
+    border: 1px solid #ecc38c;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    li{
+        position: relative;
+        padding: 5px 10px;
+        list-style: none;
+        color: #7C7E91;
+        i{
+            font-size: 20px;
+            margin-right: 10px;
+            color: #ecc38c;
+        }
+        &:after{
+            content: "";
+            height: 18px;
+            top:5px;
+            right: 0;
+            border-right: 1px solid #ecc38c;
+            position: absolute;
+        }
+        &:last-child{
+           &:after{
+                display: none;
+           }
+        }
+    }
+}
+.hora_campeonato{
+    border-radius: 28px;
+    background: #fff;
+    border: 1px solid #ecc38c;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 25px;
+    align-items: center;
+    li{
+        position: relative;
+        padding: 0px 10px;
+        list-style: none;
+        color: #7C7E91;
+        i{
+            font-size: 20px;
+            margin-right: 10px;
+            color: #ecc38c;
+        }
+    }
+}
+.leaderboard{
+    table{
+        background: #fff;
+        tr{
+            th{
+                font-size: 24px;
+                letter-spacing: 0px;
+                color: #1F2660;
+                opacity: 1;
+                text-align: center;
+                font-weight: normal;
+                border-bottom: 1px solid #CA9E64;
+            }
+            &:nth-child(2) {
+                background: transparent;
+                td {
+                    background: transparent;
+                    color: #7C7E91;
+                }
+            }
+            td{
+                text-align: center;
+                &:nth-child(2){
+                    text-align: left;
                 }
             }
         }
