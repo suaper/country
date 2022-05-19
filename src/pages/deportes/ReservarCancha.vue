@@ -11,12 +11,11 @@
             </div>
         </div>
     </div>
-
     <div class="q-py-none all_width bg_amarillo wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
         <div class="q-py-md centrar text-center w_1200">
+        <h4 class="subtitle text-left q-my-md">Reglamento</h4>
           <div class="row_2 fitnes_last">
-          <h4 class="subtitle">Reglamento</h4>
             <div class="w_40">
                  <Reglamento :content="reglamentos" v-if="loadedReglamentos"/>
             </div>
