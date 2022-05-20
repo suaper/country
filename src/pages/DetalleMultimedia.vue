@@ -145,6 +145,7 @@ export default {
   methods: {
     openLightbox (e, key, index) {
       e.preventDefault()
+
       if (key >= 1) {
         index = index + 9
       }

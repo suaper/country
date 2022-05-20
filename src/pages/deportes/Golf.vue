@@ -17,7 +17,7 @@
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
         <h4 class="subtitle q-my-md">Campeonato Actual</h4>
-          <CampeonatoActual />
+          <CampeonatoActual :items="currentTournament" :table="rankingDeportes" v-if="loadedCurrentTournament"/>
         </div>
     </div>
     <div class="q-pb-md all_width bg_white">
@@ -136,7 +136,10 @@ export default {
       loadedEvents: false,
       loadedPersonal: false,
       bannerDeportes: [],
-      loadedBannerDeportes: false
+      loadedBannerDeportes: false,
+      currentTournament: [],
+      rankingDeportes: [],
+      loadedCurrentTournament: false
     }
   },
   created () {
@@ -252,10 +255,26 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/node/723?_format=json', {
+      configServices.loadData(this, 'campeonato-actual/' + _this.path + '/json', {
         callBack: (data) => {
-          _this.image = data
-          _this.loadedImage = true
+          var datetime = data[0].field_fecha_campeonato.split(' ')
+          var date = datetime[0].split('-')
+          var formatedDate = {
+            day: date[0],
+            month: date[1],
+            year: date[2],
+            hour: datetime[1]
+          }
+
+          data[0].datetime = formatedDate
+          _this.currentTournament = data[0]
+        }
+      })
+
+      configServices.loadData(this, 'ranking-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          _this.rankingDeportes = data
+          _this.loadedCurrentTournament = true
         }
       })
 

@@ -1,18 +1,18 @@
 <template>
     <div class="wrp_table_clasificacion campeonato_golf">
-        <h5 class="text_normal">Campeonato Actual</h5>
+        <h5 class="text_normal">{{ info.title }}</h5>
         <div class="row">
             <ul class="fecha_campeonato">
                 <li>
-                    icono <span>5</span>
+                    icono <span>{{ info.datetime.day }}</span>
                 </li>
-                <li><span>mes</span></li>
-                <li><span>2021</span></li>
+                <li><span>{{ info.datetime.month }}</span></li>
+                <li><span>{{ info.datetime.year }}</span></li>
             </ul>
             <ul>
                 <li>
                     icono
-                    <span>13:00</span>
+                    <span>{{ info.datetime.hour }}</span>
                 </li>
             </ul>
         </div>
@@ -32,12 +32,12 @@
                             <th>Tot Pts.</th>
                             <th>Eventos</th>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Alan Watts</td>
-                            <td>0.88</td>
-                            <td>38.82</td>
-                            <td>03</td>
+                        <tr v-for="(item, key) in ranking" :key="key">
+                            <td>{{ item.field_ranking }}</td>
+                            <td>{{ item.field_nombre_y_apellidos }}</td>
+                            <td>{{ item.field_prom_pts }}</td>
+                            <td>{{ item.field_tot_pts }}</td>
+                            <td>{{ item.field_eventos }}</td>
                         </tr>
                     </table>
                 </div>
@@ -45,10 +45,10 @@
             <div class="w_50 table_campeonato">
                 <h5 class="text_normal">Jugador Destacado</h5>
                 <div class="jugador_desacado">
-                    <img src="img/club01.png" class="cien">
+                    <img :src="urlSite + info.field_jugador_destacado" class="cien">
                     <div class="wrp_over">
-                        <span class="text-white">Paula Alcaino</span>
-                        <span class="desc_white">Campeona del Club 2021</span>
+                        <span class="text-white">{{ info.field_nombre_jugador_destacado }}</span>
+                        <span class="desc_white">{{ info.field_campeonato_destacado }}</span>
                         <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
                     </div>
                 </div>
@@ -60,6 +60,17 @@
 <script>
 
 export default {
-  name: 'CampeonatoActual'
+  name: 'CampeonatoActual',
+  props: {
+    items: Object,
+    table: Array
+  },
+  data () {
+    return {
+      info: this.items,
+      ranking: this.table,
+      urlSite: 'https://pwccdev.mkbk.digital/'
+    }
+  }
 }
 </script>
