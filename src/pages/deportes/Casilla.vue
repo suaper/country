@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/equipo'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/casilla'"/>
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar q-py-md w_1100">
             <div class="center text-center q-pt-md q-my-md titulos">Casilla</div>
@@ -42,6 +42,8 @@ export default {
   created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
+    this.subPath = currentPath[3]
+
     this.getStaff()
   },
   methods: {
@@ -64,7 +66,7 @@ export default {
     },
     getStaff () {
       var _this = this
-      configServices.loadData(this, '/personal-staff-deportes/' + _this.path, {
+      configServices.loadData(this, '/personal-staff-deportes/' + _this.subPath + '-' + _this.path, {
         callBack: (data) => {
           data.map((item, key) => {
             var filter = {
@@ -83,8 +85,6 @@ export default {
               _this.filters.push(filter)
             }
           })
-
-          console.log(_this.filters)
 
           _this.personal = data
           _this.loadedPersonal = true

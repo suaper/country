@@ -16,6 +16,12 @@
           <li><a href="#" @click="goAnchor($event, '#rama-masculina')">Rama Masculina</a></li>
       </ul>
 
+      <ul class="wrp_actions_center_peluqueria" v-if="path === 'golf'">
+          <li><a href="#" @click="goAnchor($event, '#comite-golf')">Comité de Golf</a></li>
+          <li><a href="#" @click="goAnchor($event, '#comite-cancha')">Comité de Cancha</a></li>
+          <li><a href="#" @click="goAnchor($event, '#profesores')">Profesores</a></li>
+      </ul>
+
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'liga-pwcc'">
           <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item)">{{ item.title }}</a></li>
       </ul>

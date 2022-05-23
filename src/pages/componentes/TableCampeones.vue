@@ -6,23 +6,21 @@
                     <th>Año</th>
                     <th>Nombre</th>
                 </tr>
-                <tr>
-                    <td>1996</td>
-                    <td>Matías Dominguez</td>
-                </tr>
-                <tr>
-                    <td>1996</td>
-                    <td>Matías Dominguez</td>
-                </tr>
-                <tr>
-                    <td>1996</td>
-                    <td>Matías Dominguez</td>
-                </tr>
-                <tr>
-                    <td>1996</td>
-                    <td>Matías Dominguez</td>
+                <tr v-for="(item, key) in info[current - 1]" :key="key">
+                    <td>{{ item.field_ano }}</td>
+                    <td>{{ item.field_nombre_y_apellidos }}</td>
                 </tr>
             </table>
+            <q-pagination
+              v-model="current"
+              :max="max"
+              direction-links
+              boundary-links
+              icon-first="skip_previous"
+              icon-last="skip_next"
+              icon-prev="fast_rewind"
+              icon-next="fast_forward"
+            />
         </div>
     </div>
 </template>
@@ -30,20 +28,20 @@
 <script>
 
 export default {
-  name: 'TableRanking',
+  name: 'TableCampeones',
   props: {
-    path: String,
-    items: Array
+    currentItem: Number,
+    items: Array,
+    itemMax: Number
   },
   data () {
     return {
       subPath: this.path,
       month: '',
-      info: this.items
+      info: this.items,
+      current: 1,
+      max: this.itemMax
     }
-  },
-  created () {
-    console.log(this.info)
   }
 }
 </script>
