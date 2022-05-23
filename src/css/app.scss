@@ -1817,6 +1817,8 @@ h5.style_title{
     }
     &.menos_p{
         max-width: 1200px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
         a{
             padding: 10px 10px;
         }
@@ -1828,6 +1830,8 @@ h5.style_title{
                 border: 1px solid #1F2660;
                 margin: 0px 6px;
                 flex-direction: inherit;
+                width: 110px;
+                margin: 7px 4px;
 
                 a{
                     width: 100%;

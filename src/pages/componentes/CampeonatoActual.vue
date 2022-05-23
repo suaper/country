@@ -4,14 +4,14 @@
         <div class="row">
             <ul class="fecha_campeonato">
                 <li>
-                    icono <span>5</span>
+                     <q-icon name="date_range"></q-icon> <span>5</span>
                 </li>
                 <li><span>mes</span></li>
                 <li><span>2021</span></li>
             </ul>
-            <ul>
+            <ul class="hora_campeonato">
                 <li>
-                    icono
+                    <q-icon name="watch_later"></q-icon>
                     <span>13:00</span>
                 </li>
             </ul>

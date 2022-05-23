@@ -23,50 +23,6 @@
         </div>
     </div>
 
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
-            <div class="row_wrap no-wrap flex justify-start">
-                <h3 class="q-my-none">Multimedia</h3>
-                <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
-            </div>
-            <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
-                <div class="q-py-md">
-                <table class="esquma_inferior">
-                  <tr>
-                    <td class="tg-0pky" rowspan="2">
-                      <a href="#" @click="openItem(multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"></a>
-                    </td>
-                    <td class="tg-1pky"><a href="#" @click="openItem(multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"></a></td>
-                    <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"></a></td>
-                    <td class="tg-3pky" rowspan="2"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"></a></td>
-                  </tr>
-                  <tr>
-                    <td class="tg-4pky"><a href="#" @click="openItem(multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"></a></td>
-                  </tr>
-                </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="q-py-xl all_width gris_home wrp_club">
-        <div class="centrar w_1200 flex justify-between items-center">
-            <h4 class="subtitle sin_margen">Contáctanos</h4>
-            <ul class="contacto_footer">
-                <li class="mail">
-                    <img src="../../assets/HazteSocio/i-correo.svg" />
-                    <span>{{ contactInfo.field_correo_electronico[0].value }}</span>
-                </li>
-                <li class="tel">
-                    <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>{{ contactInfo.field_numero[0].value }}</span>
-                </li>
-                <li class="tel">
-                    <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>{{ contactInfo.field_contacto_2[0].value }}</span>
-                </li>
-            </ul>
-        </div>
-    </div>
     <q-dialog v-model="video" persistent>
       <q-card>
         <q-card-section class="row items-center">
