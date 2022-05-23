@@ -4,24 +4,15 @@
         <div class="row">
             <ul class="fecha_campeonato">
                 <li>
-<<<<<<< HEAD
-                     <q-icon name="date_range"></q-icon> <span>5</span>
-=======
-                    icono <span>{{ info.datetime.day }}</span>
->>>>>>> 502a6c3346503b1dc7c39bc60e5e7a0f37eda170
+                     <q-icon name="date_range"></q-icon> <span>{{ info.datetime.day }}</span>
                 </li>
                 <li><span>{{ info.datetime.month }}</span></li>
                 <li><span>{{ info.datetime.year }}</span></li>
             </ul>
             <ul class="hora_campeonato">
                 <li>
-<<<<<<< HEAD
                     <q-icon name="watch_later"></q-icon>
-                    <span>13:00</span>
-=======
-                    icono
                     <span>{{ info.datetime.hour }}</span>
->>>>>>> 502a6c3346503b1dc7c39bc60e5e7a0f37eda170
                 </li>
             </ul>
         </div>
