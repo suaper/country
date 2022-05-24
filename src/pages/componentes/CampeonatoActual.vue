@@ -16,13 +16,13 @@
                 </li>
             </ul>
         </div>
-        <div class="row flex w_100 justify-betwen">
+        <div class="row flex w_100 justify-between">
             <div class="w_50 table_campeonato">
                 <h5 class="text_normal">Ranking</h5>
                 <div class="marco_table">
-                    <div class="row flex w_100 justify-betwen">
-                        <img alt="img2" src="img/logo-country-club.png" class="q-mt-lg"><div class="btn_right_top"></div>
-                        <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                    <div class="row flex w_100 justify-betwen cabe">
+                        <img alt="img2" src="img/logo-country-club.png" class="q-mt-lg">
+                        <a href="#">Ver más<q-icon name="arrow_right_alt" class="cursor-pointer"></q-icon></a>
                     </div>
                     <table>
                         <tr>
@@ -54,6 +54,23 @@
                 </div>
             </div>
         </div>
+        <ul class="botones_horizontal">
+            <li>
+                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Bases" icon-right="arrow_right_alt"/>
+            </li>
+            <li>
+                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Listado de Inscritos" icon-right="arrow_right_alt"/>
+            </li>
+            <li>
+                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Inscripciones" icon-right="arrow_right_alt"/>
+            </li>
+            <li>
+                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Inscripciones" icon-right="arrow_right_alt"/>
+            </li>
+            <li>
+                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Salidas" icon-right="arrow_right_alt"/>
+            </li>
+        </ul>
     </div>
 </template>
 

@@ -576,7 +576,7 @@ h5.style_title{
     background: #fff;
     .q-btn__content{
         color: #111e51 !important;
-        text-transform: capitalize;
+        text-transform: none;
         &:hover{
             color:#E8C28F;
         }
@@ -1406,6 +1406,11 @@ h5.style_title{
     .pop_club{
         border-bottom: none;
     }
+    .arre{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
     .mt_10{
         margin-top: 10px;
     }
@@ -1426,11 +1431,39 @@ h5.style_title{
         width: 100%;
         label{
             padding-bottom: 0;
-            margin-top: 10px;
+            margin-top: 15px;
             .q-field__control{
                 color: #d47c06;
                 &:before{
                     border: 1px solid #E8C28F;
+                }
+            }
+        }
+        .sesenta{
+            label{
+                width: 100%;
+                .q-field__control{
+                    height: 48px;
+                }
+            }
+        }
+        .q-select--without-chips{
+            .q-field__control{
+                color: #d47c06;
+                padding-right: 0;
+                height: 49px;
+                min-height: 49px;
+                &:before{
+                    border: 1px solid #E8C28F;
+                }
+            }
+            .q-field__append{
+                background: #e8c290;
+                height: 48px;
+                i{
+                    color: #9f5f0a;
+                    font-size: 49px;
+                    margin-left: -9px;
                 }
             }
         }
@@ -3774,6 +3807,23 @@ ul.text_horarios{
         }
     }
 }
+.q-select--without-chips{
+    .q-field__control{
+        color: #d47c06;
+        padding-right: 0;
+        &:before{
+            border: 1px solid #E8C28F;
+        }
+    }
+    .q-field__append{
+        background: #e8c290;
+        i{
+            color: #9f5f0a;
+            font-size: 49px;
+            margin-left: -9px;
+        }
+    }
+}
 .select{
     label{
         padding-bottom: 0;
@@ -4188,7 +4238,7 @@ h5.text_normal{
                 display: block;
             }
             a{
-                font-size: 15px;
+                font-size: 16px;
                 letter-spacing: 0px;
                 color: #1F2660;
                 opacity: 1;
@@ -4196,4 +4246,149 @@ h5.text_normal{
             }
         }
     }
+}
+.table_campeonato{
+    .marco_table{
+        background: #fff;
+        border: 1px solid #ecc38c;
+        table{
+            border: none;
+            tr{
+                th{
+                    padding: 4px 12px;
+                    position: relative;
+                    border-bottom: 1px solid #ecc38c;
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        right: 6px;
+                        top: 4px;
+                        height: 19px;
+                        width: 1px;
+                        background: #ecc38c;
+                    }
+                    &:last-child{
+                        &::after{
+                            display: none;
+                        }
+                    }
+                }
+                td{
+                    padding: 5px 12px;
+                }
+            }
+        }
+    }
+}
+
+.cabe{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    img{
+        margin: 5px;
+    }
+    a{
+        margin: 5px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #1F2660;
+        padding: 10px;
+    }
+}
+
+.jugador_desacado{
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    &:hover{
+        &:after{
+            width: 100%;
+            height: 98%;
+            background: #0c164eba;
+            z-index: 9;
+            left: 0;
+            top: 0;
+            position: absolute;
+            content: "";
+            pointer-events: none;
+        }
+        .wrp_over{
+            display: block;
+        }
+    }
+
+    .wrp_over{
+        width: 100%;
+        position: absolute;
+        z-index: 99999999;
+        bottom: 15px;
+        line-height: 1;
+        display: none;
+        text-align: center;
+        span{
+            display: block;
+            text-align: center;
+            width: 100%;
+            font-size: 26px;
+            color: #fff;
+            p{
+                color: #fff;
+            }
+            &.desc_white{
+                font-size: 15px;
+                margin-top: 10px;
+            }
+        }
+        button.bg_white_home{
+            background: #fff !important;
+            color: #1F2660 !important;
+            margin: 9px auto 0;
+            .q-btn__wrapper {
+                min-height: 1.172em;
+            }
+            .q-btn__content{
+                text-transform: capitalize;
+                color: #1F2660 !important;
+                display: flex;
+                flex-wrap: nowrap;
+                font-size: 14px;
+                span{
+                    color: #1F2660 !important;
+                    font-size: 15px;
+                }
+                .on-right{
+                    margin-left: 3px;
+                }
+            }
+            &:hover{
+                background: #1F2660 !important;
+                .q-btn__content{
+                    color: #fff !important;
+                    span{
+                        color: #fff !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.botones_horizontal{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 0;
+    margin-bottom: 30px;
+    li{
+        margin-right: 15px;
+        list-style: none;
+    }
+}
+.nueva_alineacion{
+    justify-content: flex-start;
 }
