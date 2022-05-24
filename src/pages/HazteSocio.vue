@@ -152,10 +152,10 @@
                     <img src="../assets/HazteSocio/i-phone.svg" />
                     <span>{{ info.field_telefono_1[0].value }}</span>
                 </li>
-                <li class="tel">
+                <!--<li class="tel">
                     <img src="../assets/HazteSocio/i-phone.svg" />
                     <span>{{ info.field_telefono_2[0].value }}</span>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

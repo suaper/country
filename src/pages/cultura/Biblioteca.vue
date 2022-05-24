@@ -29,7 +29,7 @@
     </div>
     <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
         <h5 class="text-white">Buscador de Libros</h5>
-          <q-btn outline click="pop_form_socio = true" class="btn_bg_beige" label="Ver Libros Disponibles" icon-right="arrow_right_alt"/>
+        <!--<q-btn outline click="pop_form_socio = true" class="btn_bg_beige" label="Ver Libros Disponibles" icon-right="arrow_right_alt"/>-->
     </div>
 
     <div class="q-pb-xl all_width bg_amarillo wrp_club hazte_socio">
@@ -324,7 +324,7 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/personal-staff/charlas-culturales', {
+      configServices.loadData(this, '/personal-staff/biblioteca', {
         callBack: (data) => {
           _this.personal = data[0]
         }
