@@ -2009,6 +2009,7 @@ h6.peluqueria{
     border-radius: 10px;
     .galeri_event{
         border: 1px solid #CA9E64;
+        min-height: 220px;
 
         .th_top{
             th{
@@ -2619,7 +2620,7 @@ h6.peluqueria{
 }
 .browse_salones{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
 }
@@ -4391,4 +4392,95 @@ h5.text_normal{
 }
 .nueva_alineacion{
     justify-content: flex-start;
+}
+.relative{
+    position: relative;
+    .volando{
+
+    }
+}
+.resta{
+    position: relative;
+    >button{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 99;
+        .q-icon{
+            color: #fff;
+            border-radius: 50%;
+            background: #1F2660;
+            padding: 2px;
+            justify-content: initial;
+        }
+    }
+    h3{
+        margin: 20px 0px 10px;
+        color: #1F2660;
+        text-align: center;
+        width: 100%;
+    }
+}
+.salones{
+    >button{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 99;
+        .q-icon{
+            color: #fff;
+            border-radius: 50%;
+            background: #1F2660;
+            padding: 2px;
+            justify-content: initial;
+        }
+    }
+    .row{
+        width: 100%;
+        .image{
+            text-align: center;
+        }
+        .title{
+            text-align: center;
+            font-size: 24px;
+            font-family: $font-text;
+            letter-spacing: 0px;
+            color: #1F2660;
+            opacity: 1;
+            h3{
+                font-size: 24px;
+                font-family: $font-text;
+                margin: 10px;
+            }
+        }
+    }
+    table{
+        width: 95%;
+        border-collapse: collapse;
+        margin: 0px auto;
+        tr{
+            td{
+                vertical-align: top;
+                font-size: 15px;
+                letter-spacing: 0px;
+                color: #7C7E91;
+                opacity: 1;
+                padding: 4px;
+                p{
+                    margin: 3px 0;
+                }
+                strong{
+                    margin: 3px 0;
+                    display: inline-block;
+                }
+                &:first-child{
+                    font-weight: bold;
+                    padding-right: 10px;
+                }
+            }
+            &:nth-child(2n-1){
+                background: #F5F4F4;
+            }
+        }
+    }
 }
