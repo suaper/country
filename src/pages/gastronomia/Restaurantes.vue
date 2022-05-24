@@ -55,14 +55,11 @@
     </div>
     <q-dialog v-model="text" persistent>
       <q-card>
-        <q-card-section class="row items-center">
+        <q-card-section class="row items-center resta">
+         <q-btn icon="close volando" flat round dense v-close-popup />
           <h3>{{ currentTitle }}</h3>
           <p v-html="currentText"></p>
         </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="Cerrar" color="primary" v-close-popup />
-        </q-card-actions>
       </q-card>
     </q-dialog>
   </q-page>
@@ -80,6 +77,7 @@ export default {
   data () {
     return {
       text: false,
+      CartaImg: false,
       currentText: '',
       currentTitle: '',
       sliders: true,

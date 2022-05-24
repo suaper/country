@@ -34,7 +34,8 @@
     </div>
     <q-dialog v-model="video" persistent>
       <q-card>
-        <q-card-section class="row items-center">
+        <q-card-section class="row items-center relative salones">
+          <q-btn icon="close volando" flat round dense v-close-popup />
           <div class="row">
             <div class="col-12 image">
               <img :src="urlSite + itemPopup.field_imagen_espacios" alt="">
@@ -63,9 +64,9 @@
           </table>
         </q-card-section>
 
-        <q-card-actions align="right">
+        <!--<q-card-actions align="right">
           <q-btn flat label="Cotiza tu evento" color="primary" v-close-popup />
-        </q-card-actions>
+        </q-card-actions> -->
       </q-card>
     </q-dialog>
   </q-page>
