@@ -28,7 +28,7 @@
             <q-form
               @submit="onSubmit"
               @reset="onReset"
-              class="q-gutter-md"
+              class="q-gutter-md arre"
               >
             <div class="wrp_left sesenta">
                 <q-card-section class="row items-center q-pb-none">
@@ -44,7 +44,7 @@
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Please type something']"
                         />
-                        <q-input outlined v-model="date" mask="date" :rules="['date']">
+                        <q-input outlined v-model="date" mask="date" label="Fecha de Nacimiento" :rules="['date']">
                         <template v-slot:append>
                             <q-icon name="event" class="cursor-pointer">
                             <q-popup-proxy ref="qDateProxy" cover transition-show="scale" transition-hide="scale">
@@ -57,13 +57,7 @@
                             </q-icon>
                         </template>
                         </q-input>
-                        <q-input
-                            outlined
-                            v-model="country"
-                            label="Nacionalidad *"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Please type something']"
-                        />
+
                         <q-input
                             outlined
                             v-model="phone"

@@ -103,7 +103,6 @@ export default {
               }
             })
           })
-          console.log(_this.info)
           _this.loadedInfo = true
           _this.$q.loading.hide()
         }
