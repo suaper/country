@@ -207,7 +207,6 @@ export default {
     },
     getInfo () {
       var _this = this
-      console.log(_this.path)
       configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
         callBack: (data) => {
           _this.info = data[0]

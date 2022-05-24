@@ -130,7 +130,6 @@ export default {
         callBack: (data) => {
           const n = 10
           _this.maxVarones = Math.ceil(data.length / n)
-          console.log(_this.maxVarones)
 
           _this.varonesCampeones = new Array(Math.ceil(data.length / n))
             .fill()

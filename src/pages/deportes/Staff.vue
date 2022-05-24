@@ -69,7 +69,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/personal-staff-deportes/' + _this.path, {
         callBack: (data) => {
-          console.log(data)
           data.map((item, key) => {
             var filter = {
               title: item.field_categoria_cargo

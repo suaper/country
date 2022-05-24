@@ -30,27 +30,24 @@
     </q-page-container>
     <q-footer bordered class="bg-grey-8 text-white">
       <div class="q-py-md all_width bg_azul">
-        <div class="row_wrap no-wrap flex justify-between">
+        <div class="row_wrap no-wrap flex justify-between" v-if="loadedInfo">
           <ul>
             <li>
               <strong>Dirección</strong>
-              <p>Las Arañas 1901, La Reina</p>
-              <p>Santiago de Chile, Chile</p>
+              <p v-html="info.field_info[0].value"></p>
             </li>
             <li>
               <strong>Contáctenos</strong>
-              <p>Teléfono: +56 2 2757 5700</p>
-              <p>Email: info@pwcc.dl</p>
+              <p v-html="info.body[0].value"></p>
             </li>
             <li>
-              <strong>Como llegar</strong>
-              <table>
+              <strong>Cómo llegar</strong>
+              <table  v-if="loadedEnlaces">
                 <tr>
-                  <td>
-                    <img class="q-mx-none" alt="img2" src="../assets/Home/waze-logo-white.png">
-                  </td>
-                  <td>
-                    <img class="q-mx-none" alt="img2" src="../assets/Home/google-maps.png">
+                  <td v-for="(item, key) in enlacesMaps" :key="key">
+                    <a :href="item.field_enlace_map[0].uri" target="_blank">
+                      <img class="q-mx-none" alt="img2" :src="item.field_ima[0].url">
+                    </a>
                   </td>
                 </tr>
               </table>
@@ -59,10 +56,10 @@
               <table>
                 <tr>
                   <td>
-                    <strong>Desarrollado</strong>
+                    <strong>{{ info.field_titulo_desarrollador_[0].value }}</strong>
                   </td>
                   <td>
-                    <img class="q-mx-none" alt="img2" src="../assets/Home/logo-obg.png">
+                    <img class="q-mx-none" alt="img2" :src="info.field_imagen_desarrolll[0].url">
                   </td>
                 </tr>
               </table>
@@ -76,15 +73,42 @@
 </template>
 
 <script>
+import configServices from '../services/config'
 
 export default {
   name: 'MainLayout',
   data () {
     return {
-      leftDrawerOpen: false
+      leftDrawerOpen: false,
+      info: {},
+      loadedInfo: false,
+      enlacesMaps: [],
+      loadedEnlaces: false
     }
   },
+  created () {
+    this.getInfo()
+  },
   methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/81?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.info.field_enlaces_maps.map((item, key) => {
+            configServices.loadData(this, '/entity/paragraph/' + item.target_id + '?_format=json', {
+              callBack: (data) => {
+                _this.enlacesMaps.push(data)
+                _this.loadedEnlaces = true
+              }
+            })
+          })
+          console.log(_this.info)
+          _this.loadedInfo = true
+          _this.$q.loading.hide()
+        }
+      })
+    },
     IrQuienesSomos () {
       this.$router.push('/quienes-somos')
     },

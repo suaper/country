@@ -21,8 +21,12 @@
       <img :src="urlSite + info[0].field_imagen_inscripcion" />
     </div>
 
-     <div class="only-image" v-if="sport === 'futbol'">
+    <div class="only-image" v-if="sport === 'futbol'">
       <img :src="urlSite + info[0].field_imagen_tabla" />
+    </div>
+
+    <div class="only-image" v-if="sport === 'golf'">
+      <img :src="info.field_imagen_tabla[0].url" />
     </div>
 
     <q-dialog v-model="comite" persistent>
@@ -59,9 +63,6 @@ export default {
       comite: false,
       sport: this.path
     }
-  },
-  created () {
-    console.log(this.info[0])
   }
 }
 </script>

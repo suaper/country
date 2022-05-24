@@ -189,7 +189,7 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/224?_format=json', {
+      configServices.loadData(this, '/node/285?_format=json', {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid

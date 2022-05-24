@@ -94,7 +94,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/categorias/' + _this.subPath + '/deportes', {
         callBack: (data) => {
-          console.log(data)
           data.map((item, key) => {
             var service = {
               title: item.title,

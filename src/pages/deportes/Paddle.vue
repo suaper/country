@@ -224,7 +224,6 @@ export default {
 
       configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.images = data[0]
           _this.loadedImages = true
         }

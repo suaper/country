@@ -297,8 +297,6 @@ export default {
           _this.portadas = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
-
-          console.log(_this.portadas)
         }
       })
 

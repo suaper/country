@@ -28,9 +28,6 @@ export default {
       urlSite: 'https://pwccdev.mkbk.digital/',
       personal: this.info
     }
-  },
-  mounted () {
-    console.log(this.personal)
   }
 }
 </script>

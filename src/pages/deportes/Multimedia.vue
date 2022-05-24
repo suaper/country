@@ -190,7 +190,6 @@ export default {
           _this.slidersContentVideos = new Array(Math.ceil(_this.videos.length / n))
             .fill()
             .map(_ => _this.videos.splice(0, n))
-          console.log(_this.slidersContentImages)
           _this.getOptions()
           _this.$q.loading.hide()
         }

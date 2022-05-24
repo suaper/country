@@ -11,7 +11,7 @@
             <div class="q-pb-md all_width wrp_club hazte_socio">
                 <div class="centrar w_1200">
                 <h4 class="subtitle q-my-md">Campeonato Nombre</h4>
-                <CampeonatoActual />
+                <CampeonatoActual :data="info" v-if="loadedInfo"/>
                 </div>
             </div>
         </div>
@@ -23,10 +23,10 @@
           <h4 class="subtitle q-my-md text-left">Leaderboard</h4>
           <div class="row_2 fitnes_last">
             <div class="w_50">
-                <TableLeaderboard />
+                <TableLeaderboard :data="info" v-if="loadedInfo"/>
             </div>
             <div class="w_50">
-                <Imagen />
+                <Imagen :path="path" :content="info" v-if="loadedInfo"/>
             </div>
           </div>
         </div>
@@ -57,6 +57,7 @@
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
+import Imagen from 'pages/componentes/ImagenBoton'
 import Patrocinadores from 'pages/componentes/Dos'
 import Noticias from 'pages/componentes/TresNoticias'
 import Multimedia from 'pages/componentes/Multimedia'
@@ -70,6 +71,7 @@ export default {
     MenuDeporteInterno,
     Banner,
     Patrocinadores,
+    Imagen,
     Noticias,
     Multimedia,
     CampeonatoActual,
@@ -133,39 +135,8 @@ export default {
     this.getInfo()
     this.getNotices()
     this.getMultimediaHome()
-    this.getEvents()
   },
   methods: {
-    onReset () {
-
-    },
-    onSubmit () {
-      var _this = this
-      var data = {
-        type: 'sendEmailReserva',
-        service: 'Charlas Culturales',
-        email: this.email,
-        name: this.name,
-        lastname: '',
-        phone: this.telefono,
-        rut: this.rut
-      }
-      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
-        callBack: (data) => {
-          if (data.status) {
-            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
-          } else {
-            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
-          }
-
-          this.email = ''
-          this.name = ''
-          this.telefono = ''
-          this.rut = ''
-          this.pop_reservar_spa = false
-        }
-      })
-    },
     getNotices () {
       var _this = this
       configServices.loadData(this, '/noticias/' + _this.path + '/json', {
@@ -175,50 +146,21 @@ export default {
         }
       })
     },
-    openDetalleEvento (event) {
-      this.event = event
-      this.dtevento = true
-    },
-    getDate (dateInput) {
-      var date = new Date(dateInput)
-      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
-    },
-    getHour (dateInput) {
-      var date = new Date(dateInput)
-      var dateAmPm = this.formatAMPM(date)
-
-      var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
-      var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
-
-      return hours + ':' + minutes + ' ' + dateAmPm
-    },
-    formatAMPM (date) {
-      var hours = date.getHours()
-      var ampm = hours >= 12 ? 'pm' : 'am'
-      return ampm
-    },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
+      configServices.loadData(this, '/node/681?_format=json', {
         callBack: (data) => {
-          _this.info = data[0]
-          _this.slide = data[0].field_slider_sport[0].target_uuid
-          _this.loadedInfo = true
-        }
-      })
+          _this.info = data
+          _this.images = data
 
-      configServices.loadData(this, '/galeria-deportes/' + _this.path + '/json', {
-        callBack: (data) => {
-          _this.images = data[0]
+          _this.slide = data.field_slider_sport[0].target_uuid
           _this.loadedImages = true
+          _this.loadedInfo = true
         }
       })
 
       configServices.loadData(this, '/intro-internas-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.content = data[0]
           _this.loadedContent = true
         }
@@ -248,18 +190,6 @@ export default {
         callBack: (data) => {
           _this.bannerDeportes = data
           _this.loadedBannerDeportes = true
-        }
-      })
-    },
-    getEvents () {
-      var _this = this
-      configServices.loadData(this, '/eventos/' + this.path + '/json', {
-        callBack: (data) => {
-          const n = 3
-          _this.events = new Array(Math.ceil(data.length / n))
-            .fill()
-            .map(_ => data.splice(0, n))
-          _this.loadedEvents = true
         }
       })
     },

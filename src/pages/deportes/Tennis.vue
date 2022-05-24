@@ -228,7 +228,6 @@ export default {
 
       configServices.loadData(this, '/intro-internas-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.content = data[0]
           _this.loadedContent = true
         }

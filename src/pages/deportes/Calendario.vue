@@ -181,7 +181,6 @@ export default {
     },
     getEventsByMonth (componentMonth) {
       var _this = this
-      console.log(componentMonth)
       var events = JSON.stringify(_this.allEvents)
       var newEvents = []
       events = JSON.parse(events)
@@ -204,7 +203,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.positions = data
 
           _this.loadedPositions = true

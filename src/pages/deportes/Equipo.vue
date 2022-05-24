@@ -86,8 +86,6 @@ export default {
             }
           })
 
-          console.log(_this.filters)
-
           _this.personal = data
           _this.loadedPersonal = true
           _this.$q.loading.hide()

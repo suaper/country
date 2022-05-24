@@ -91,7 +91,6 @@ export default {
     }
   },
   created () {
-    console.log(this.current)
     this.path = localStorage.getItem('sport')
   },
   methods: {

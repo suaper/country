@@ -33,9 +33,6 @@ export default {
       month: '',
       info: this.items
     }
-  },
-  created () {
-    console.log(this.info)
   }
 }
 </script>

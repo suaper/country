@@ -171,8 +171,6 @@ export default {
 
       configServices.loadData(this, '/horarios-inscripciones-escuelas/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
         callBack: (data) => {
-          console.log(data)
-
           _this.horarios = data
           _this.keyHorarios = _this.keyHorarios + 1
           _this.loadedHorarios = true

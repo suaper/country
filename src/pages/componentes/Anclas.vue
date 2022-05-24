@@ -47,9 +47,6 @@ export default {
       month: '',
       info: this.items
     }
-  },
-  mounted () {
-    console.log(this.path)
   }
 }
 </script>

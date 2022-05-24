@@ -64,7 +64,6 @@ export default {
       configServices.loadData(this, '/companias/json', {
         callBack: (data) => {
           _this.info = data
-          console.log(_this.info)
           _this.$q.loading.hide()
         }
       })

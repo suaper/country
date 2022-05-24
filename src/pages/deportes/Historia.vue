@@ -82,7 +82,6 @@ export default {
 
       configServices.loadData(this, '/reglamentos-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.reglamentos = data
           _this.loadedReglamentos = true
         }

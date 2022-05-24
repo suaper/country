@@ -19,7 +19,7 @@
 export default {
   name: 'Uno',
   props: {
-    banner: Object,
+    banner: [Object, Array],
     bannerSlide: String
   },
   data () {

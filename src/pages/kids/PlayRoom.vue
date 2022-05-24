@@ -167,7 +167,6 @@ export default {
 
       configServices.loadData(this, '/personal-staff/playroom', {
         callBack: (data) => {
-          console.log(data)
           _this.personal = data
         }
       })

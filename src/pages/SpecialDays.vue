@@ -132,7 +132,7 @@
             </div>
             <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
                 <div class="q-py-md">
-                <table class="esquma_inferior">
+                <table class="esquma_inferior" v-if="loadedMultimedia">
                   <tr>
                     <td class="tg-0pky" rowspan="2">
                       <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
@@ -229,9 +229,10 @@ export default {
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_consultar: false,
-      slidecontent: 1,
+      slidecontent: 0,
       events: [],
       dtevento: false,
+      loadedMultimedia: false,
       event: {},
       moments: []
     }
@@ -317,6 +318,7 @@ export default {
           _this.multimediaHome.push(videos[1])
           _this.multimediaHome.push(videos[2])
           _this.multimediaHome.push(videos[0])
+          _this.loadedMultimedia = true
           _this.$q.loading.hide()
         }
       })

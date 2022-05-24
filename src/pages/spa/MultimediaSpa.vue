@@ -197,7 +197,6 @@ export default {
     },
     openVideo (e, multimedia) {
       e.preventDefault()
-      console.log(multimedia)
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
         localStorage.setItem('multimediaId', multimedia.nid)
         this.$router.push('/detalle-multimedia')

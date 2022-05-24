@@ -142,7 +142,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.positions = data
 
           _this.loadedPositions = true

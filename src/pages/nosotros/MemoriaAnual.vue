@@ -15,7 +15,7 @@
     </div>
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Memoría Anual</div>
+            <div class="center text-center q-my-lg titulos">Memoria Anual</div>
             <p class="text-center centrar w_800" v-html="info.body[0].value"></p>
         </div>
         <div class="q-py-xl q-my-xl row centrar w_800 flex justify-between q-gutter-md">
