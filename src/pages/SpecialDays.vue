@@ -101,7 +101,6 @@
                   <td>
                       <h6 class="title_text open">{{ item.title }}</h6>
                       <p v-html="item.body"></p>
-                      <q-btn type="a" :to="item.field_reservar" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
                   <td>
                       <img :src="urlSite + item.field_image" />
@@ -117,7 +116,6 @@
                   <td>
                       <h6 class="title_text open">{{ item.title }}</h6>
                       <p v-html="item.body"></p>
-                      <q-btn type="a" :to="item.field_reservar" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
               </tr>
           </table>
