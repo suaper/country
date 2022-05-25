@@ -3310,11 +3310,39 @@ a.etiqueta_video{
 .q-dialog__backdrop {
     background: #ffffffc2;
 }
+
 .flex_escuelas{
     .wrp_img_obras{
         width: 299px;
         height: 393px;
         margin: 20px;
+        border: 1px solid #CA9E64;
+        .q-img{
+            width: 296px;
+            height: 391px;
+            transition: 0.5s;
+        }
+        .absolute-bottom {
+            background: #fffffff0;
+            font-size: 23px;
+            letter-spacing: 0px;
+            color: #1F2660;
+            padding: 6px;
+            .sin_borde {
+                padding: 0;
+                .q-btn__content{
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}
+.flex_obras{
+    justify-content: flex-start !important;
+    .wrp_img_obras{
+        width: 300px;
+        height: 395px;
+        margin: 30px 40px;
         border: 1px solid #CA9E64;
         .q-img{
             width: 296px;
@@ -4480,6 +4508,33 @@ h5.text_normal{
             }
             &:nth-child(2n-1){
                 background: #F5F4F4;
+            }
+        }
+        &.info_obras{
+            tr{
+                td{
+                    vertical-align: top;
+                    font-size: 15px;
+                    letter-spacing: 0px;
+                    color: #7C7E91;
+                    opacity: 1;
+                    padding: 4px;
+                    p{
+                        margin: 3px 0;
+                    }
+                    strong{
+                        margin: 3px 0;
+                        display: inline-block;
+                    }
+                    &:first-child{
+                        font-weight: bold;
+                        padding-right: 10px;
+                        text-align: right;
+                    }
+                }
+                &:nth-child(2n-1){
+                    background: #fff;
+                }
             }
         }
     }
