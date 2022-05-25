@@ -1,76 +1,98 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
     <Menucultura currentItem="/cultura/biblioteca"/>
-    <div class="q-py-none all_width">
-      <q-carousel
-        animated
-        v-model="slide"
-        arrows
-        class="banner_top"
-        navigation
-        infinite
-        autoplay="autoplay"
-      >
-        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
-      </q-carousel>
-    </div>
-    <div class="q-pb-md all_width gris_home">
-        <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Biblioteca</div>
-            <table class="des_biblioteca">
-                <tr>
-                    <td v-html="info.field_horario[0].value"></td>
-                    <td>
-                        <p class="intro text-center" v-html="info.body[0].value"></p>
-                    </td>
-                </tr>
-            </table>
+    <div class="q-pb-md all_width gris_home view_danzas q-my-xl">
+        <div class="setenta  centrar text-center relative">
+            <div class="center text-center q-my-lg titulos">Buscador de Libros</div>
+            <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
     </div>
-    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
-        <h5 class="text-white">Buscador de Libros</h5>
-        <q-btn to="/cultura/buscador-libros" outline  class="btn_bg_beige" label="Ver Libros Disponibles" icon-right="arrow_right_alt"/>
+    <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
+        <div class="row_search">
+            <div class="wrp_search flex">
+                <h5>Buscador de Libros</h5>
+                <q-select
+                filled
+                v-model="model"
+                use-input
+                input-debounce="0"
+                label="Simple filter"
+                :options="options"
+                @filter="filterFn"
+                style="width: 250px"
+                behavior="menu"
+            >
+                <template v-slot:no-option>
+                <q-item>
+                    <q-item-section class="text-grey">
+                    No results
+                    </q-item-section>
+                </q-item>
+                </template>
+            </q-select>
+            </div>
+            <div class="radio">
+                <p>Filtros</p>
+                <div class="q-pa-md vertical">
+                    <q-radio v-model="shape" val="ingles" color="orange" label="Inglés" />
+                    <q-radio v-model="shape" val="espaniol" color="orange"  label="Español" />
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="q-pb-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-        <div class="text-left q-mb-none q-mt-xl titulos">Los más leídos</div>
-            <div class="wrp_gallery_biblioteca q-mt-md">
-                <q-carousel
-                v-model="slideMoreReads"
-                transition-prev="slide-right"
-                transition-next="slide-left"
-                swipeable
-                animated
-                control-color="primary"
-                padding
-                arrows
-                height="320px"
-                class="galeria_beneficios"
-                >
-                <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in booksMoreReads" :key="key">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general" v-for="(book, keyBook) in item" :key="keyBook">
-                            <table class="galeri_event">
-                                <tr>
-                                    <td>
-                                        <img class="img_biblioteca" :src="urlSite + book.field_imagen_libro" />
-                                        <h5 class="name_event">{{ book.title }}</h5>
-                                        <p class="desc_event text-center" v-html="book.body"></p>
-                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail(book)"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </q-carousel-slide>
-                </q-carousel>
-                <div class="row justify-center botones">
-                  <q-btn-toggle
-                      glossy
-                      v-model="slideMoreReads"
-                      :options="[]"
-                  />
+        <div class="text-left q-mb-none q-mt-xl titulos wrp_gallery_biblioteca">Resultados de Búsqueda</div>
+
+            <div class="row fit justify-between items-center q-gutter-xs q-col-gutter wrap wwsearcing">
+                <div class="treintaydos_general search_box">
+                    <table class="galeri_event">
+                        <tr>
+                            <td class="center">
+                                <img class="img_biblioteca" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/libro01.png" />
+                                <h5 class="name_event">Libro 5</h5>
+                                <p class="desc_event text-center">Lorem ipsum dolor sit amet consectetur </p>
+                                <a href="#">Reservar<q-icon name="arrow_right_alt" class="cursor-pointer"></q-icon></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+              <div class="treintaydos_general search_box">
+                    <table class="galeri_event">
+                        <tr>
+                            <td class="center">
+                                <img class="img_biblioteca" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/libro01.png" />
+                                <h5 class="name_event">Libro 5</h5>
+                                <p class="desc_event text-center">Lorem ipsum dolor sit amet consectetur </p>
+                                <a href="#">Reservar<q-icon name="arrow_right_alt" class="cursor-pointer"></q-icon></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+              <div class="treintaydos_general search_box">
+                    <table class="galeri_event">
+                        <tr>
+                            <td class="center">
+                                <img class="img_biblioteca" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/libro01.png" />
+                                <h5 class="name_event">Libro 5</h5>
+                                <p class="desc_event text-center">Lorem ipsum dolor sit amet consectetur </p>
+                                <a href="#">Reservar<q-icon name="arrow_right_alt" class="cursor-pointer"></q-icon></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+              <div class="treintaydos_general search_box">
+                    <table class="galeri_event">
+                        <tr>
+                            <td class="center">
+                                <img class="img_biblioteca" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-03/libro01.png" />
+                                <h5 class="name_event">Libro 5</h5>
+                                <p class="desc_event text-center">Lorem ipsum dolor sit amet consectetur </p>
+                                <a href="#">Reservar<q-icon name="arrow_right_alt" class="cursor-pointer"></q-icon></a>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -164,78 +186,23 @@
     <div class="q-pb-xl all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
         <div class="text-left q-mb-none q-mt-xl titulos">Literatura Infantil</div>
-            <div class="wrp_gallery_biblioteca q-mt-md">
-                <q-carousel
-                v-model="slideChild"
-                transition-prev="slide-right"
-                transition-next="slide-left"
-                swipeable
-                animated
-                control-color="primary"
-                padding
-                arrows
-                height="320px"
-                class="galeria_beneficios"
-                >
-                <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in booksChild" :key="key">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
-                        <div class="treintaydos_general" v-for="(book, keyBook) in item" :key="keyBook">
-                            <table class="galeri_event">
-                                <tr>
-                                    <td>
-                                        <img class="img_biblioteca" :src="urlSite + book.field_imagen_libro" />
-                                        <h5 class="name_event">{{ book.title }}</h5>
-                                        <p class="desc_event text-center" v-html="book.body"></p>
-                                        <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail(book)"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </q-carousel-slide>
-                </q-carousel>
-                <div class="row justify-center botones">
-                    <q-btn-toggle
-                        glossy
-                        v-model="slideChild"
-                        :options="[]"
-                    />
+            <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
+                <div class="treintaydos_general" v-for="(book, keyBook) in item" :key="keyBook">
+                    <table class="galeri_event">
+                        <tr>
+                            <td>
+                                <img class="img_biblioteca" :src="urlSite + book.field_imagen_libro" />
+                                <h5 class="name_event">{{ book.title }}</h5>
+                                <p class="desc_event text-center" v-html="book.body"></p>
+                                <q-btn class="btn_bg_beige centrar  btn_centrar" :label="book.field_tipo_de_libro" @click="openDetail(book)"/>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="q-py-xl all_width gris_home wrp_club wrp_staff_biblioteca">
-        <div class="centrar w_1200 items-center">
-            <h4 class="subtitle sin_margen">Staff</h4>
-            <ul class="contacto_footer w_1200 flex justify-between items-center">
-                <li>
-                    <div class="staff_biblioteca">
-                        <table class="datos_staff_biblioteca">
-                            <tr>
-                                <td>
-                                    <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
-                                </td>
-                                <td>
-                                    <p class="text-center"><strong>{{ personal.field_nombre_staff }}</strong></p>
-                                    <hr class="hr_amarillo noventaycinco">
-                                    <p class="text-center"><strong> {{ personal.field_cargo_staff }} </strong></p>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </li>
-                <li class="mail">
-                    <img src="../../assets/HazteSocio/i-correo.svg" />
-                    <span>{{ personal.field_correo_staff }}</span>
-                </li>
-                <li class="tel">
-                    <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>{{ personal.field_numero_staff }}</span>
-                </li>
-            </ul>
-        </div>
-    </div>
   </q-page>
 </template>
 
@@ -243,7 +210,34 @@
 import Menucultura from 'pages/submenus/Menucultura'
 import configServices from '../../services/config'
 
+const stringOptions = [
+  'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
+]
+
 export default {
+  setup () {
+    const options = stringOptions
+
+    return {
+      model: null,
+      stringOptions,
+      options,
+
+      filterFn (val, update) {
+        if (val === '') {
+          update(() => {
+            options.value = stringOptions
+          })
+          return
+        }
+
+        update(() => {
+          const needle = val.toLowerCase()
+          options.value = stringOptions.filter(v => v.toLowerCase().indexOf(needle) > -1)
+        })
+      }
+    }
+  },
   name: 'Biblioteca',
   components: {
     Menucultura
@@ -255,6 +249,7 @@ export default {
       slideMoreReads: 0,
       currentBook: {},
       slideChild: 0,
+      shape: 'ingles',
       info: {
         body: [
           { value: '' }
@@ -270,12 +265,7 @@ export default {
       booksChild: [],
       personal: [],
       detalle: false,
-      formulario: false,
-      telefono: '',
-      correo: '',
-      name: '',
-      rut: '',
-      apellido: ''
+      formulario: false
     }
   },
   created () {

@@ -337,6 +337,13 @@ const routes = [
     ]
   },
   {
+    path: '/cultura/buscador-libros',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/cultura/BuscadorBiblioteca.vue') }
+    ]
+  },
+  {
     path: '/cultura/noticias',
     component: () => import('layouts/MainLayout.vue'),
     children: [
