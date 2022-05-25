@@ -4539,3 +4539,43 @@ h5.text_normal{
         }
     }
 }
+.row_search{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .wrp_search{
+        width: 80%;
+    }
+}
+.vertical{
+    flex-direction: column;
+    display: flex;
+}
+.wwsearcing{
+    flex-wrap: wrap;
+    margin: 15px 25px;
+}
+.search_box {
+    background: #fff;
+    width: 30%;
+    margin: 15px;
+    table{
+        width: 100%;
+        td{
+            text-align: center;
+            padding: 10px;
+            a{
+                margin: 5px;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #1F2660;
+                padding: 10px;
+                justify-content: center;
+            }
+            h5{
+                text-align: center;
+            }
+        }
+    }
+}
