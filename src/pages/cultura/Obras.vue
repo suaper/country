@@ -8,10 +8,10 @@
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
             <div class="wrp_img_obras" v-for="(item, key) in obras" :key="key">
-                <q-img :src="urlSite + item.field_imagen_elenco">
+                <q-img :src="urlSite + item.field_imagen_elenco[0]">
                     <div class="absolute-bottom text-subtitle1 text-center">
                         {{ item.title }} <br>
-                        <q-btn class="q-ml-lg sin_borde" @click="detalleObras = true" outline color="indigo-10" icon-right="east" label="Ver más" />
+                        <q-btn class="q-ml-lg sin_borde" @click="openObra(item)" outline color="indigo-10" icon-right="east" label="Ver más" />
                     </div>
                 </q-img>
             </div>
@@ -102,29 +102,26 @@
                     navigation
                     infinite
                   >
-                    <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-                    <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-                    <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
-                    <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+                    <q-carousel-slide :name="key" v-for="(item, key) in currentObra.field_imagen_elenco" :key="key" :img-src="urlSite + item.replace(' ', '')" />
                   </q-carousel>
                 </div>
               </div>
               <table class="info_obras">
                 <tr>
                   <td><strong>Coreografía</strong></td>
-                  <td>Cascanueces </td>
+                  <td>{{ currentObra.field_coreograia }}</td>
                 </tr>
                 <tr>
                   <td><strong>Música</strong></td>
-                  <td>Canción </td>
+                  <td>{{ currentObra.field_musica }}</td>
                 </tr>
                 <tr>
                   <td><strong>Duración</strong></td>
-                  <td>55 minutos </td>
+                  <td>{{ currentObra.field_duracion }}</td>
                 </tr>
                 <tr>
                   <td><strong>Elenco</strong></td>
-                  <td>Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido. </td>
+                  <td>{{ currentObra.field_elenco }}</td>
                 </tr>
               </table>
             </q-card-section>
@@ -153,7 +150,7 @@ export default {
   data () {
     return {
       sliders: true,
-      slide: 1,
+      slide: 0,
       video: false,
       detalleObras: false,
       currentVideo: '',
@@ -162,6 +159,7 @@ export default {
           { value: '' }
         ]
       },
+      currentObra: {},
       contactInfo: {
         field_correo_electronico: [
           { value: '' }
@@ -213,6 +211,10 @@ export default {
       var ampm = hours >= 12 ? 'pm' : 'am'
       return ampm
     },
+    openObra (item) {
+      this.currentObra = item
+      this.detalleObras = true
+    },
     getEvents () {
       var _this = this
       configServices.loadData(this, '/eventos/obras/json', {
@@ -237,8 +239,12 @@ export default {
       configServices.loadData(this, '/obras/json', {
         callBack: (data) => {
           for (const item in data) {
+            data[item].field_imagen_elenco.replaceAll(' ', '')
+            data[item].field_imagen_elenco = data[item].field_imagen_elenco.split(',')
             _this.obras.push(data[item])
           }
+          console.log(_this.obras)
+
           _this.$q.loading.hide()
         }
       })
