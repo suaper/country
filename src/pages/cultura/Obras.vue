@@ -6,12 +6,12 @@
             <div class="center text-center q-my-lg titulos">Obras</div>
             <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
-        <div class="q-py-md w_1200 centrar flex_escuelas justify-center">
+        <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
             <div class="wrp_img_obras" v-for="(item, key) in obras" :key="key">
                 <q-img :src="urlSite + item.field_imagen_elenco">
                     <div class="absolute-bottom text-subtitle1 text-center">
                         {{ item.title }} <br>
-                        <q-btn class="q-ml-lg sin_borde" outline color="indigo-10" icon-right="east" label="Ver más" />
+                        <q-btn class="q-ml-lg sin_borde" @click="detalleObras = true" outline color="indigo-10" icon-right="east" label="Ver más" />
                     </div>
                 </q-img>
             </div>
@@ -88,6 +88,52 @@
                 </q-card-section>
             </q-card>
         </q-dialog>
+
+        <q-dialog v-model="detalleObras" persistent>
+          <q-card>
+            <q-card-section class="row items-center relative salones">
+              <q-btn icon="close volando" flat round dense v-close-popup />
+              <div class="row">
+                <div class="q-pa-none w_100">
+                  <q-carousel
+                    animated
+                    v-model="slide"
+                    arrows
+                    navigation
+                    infinite
+                  >
+                    <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
+                    <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+                    <q-carousel-slide :name="3" img-src="https://cdn.quasar.dev/img/parallax2.jpg" />
+                    <q-carousel-slide :name="4" img-src="https://cdn.quasar.dev/img/quasar.jpg" />
+                  </q-carousel>
+                </div>
+              </div>
+              <table class="info_obras">
+                <tr>
+                  <td><strong>Coreografía</strong></td>
+                  <td>Cascanueces </td>
+                </tr>
+                <tr>
+                  <td><strong>Música</strong></td>
+                  <td>Canción </td>
+                </tr>
+                <tr>
+                  <td><strong>Duración</strong></td>
+                  <td>55 minutos </td>
+                </tr>
+                <tr>
+                  <td><strong>Elenco</strong></td>
+                  <td>Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido, Nombre Apellido. </td>
+                </tr>
+              </table>
+            </q-card-section>
+
+            <!--<q-card-actions align="right">
+              <q-btn flat label="Cotiza tu evento" color="primary" v-close-popup />
+            </q-card-actions> -->
+          </q-card>
+        </q-dialog>
     </div>
     <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
       <div class="centrar w_1200">
@@ -109,6 +155,7 @@ export default {
       sliders: true,
       slide: 1,
       video: false,
+      detalleObras: false,
       currentVideo: '',
       info: {
         body: [
