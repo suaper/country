@@ -102,8 +102,8 @@
 
             <q-card-section class="pop_club bg_white libro_icn">
               <span class="desc_club">Reserva de Libro de la Biblioteca</span><br>
-              <span class="desc_club">Nombre del Libro</span><br>
-              <span class="autor bold">Autor</span>
+              <span class="desc_club">{{ currentBook.title }}</span><br>
+              <span class="autor bold">{{ currentBook.field_autor }}</span>
             </q-card-section>
             <q-card-section class="pop_descargar bg_white list_biblioteca">
               <q-form
