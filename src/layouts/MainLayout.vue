@@ -12,7 +12,7 @@
       <q-tabs align="center">
         <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
-        <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
+        <q-route-tab to="/mi-club/pagos" @click="IrMiClub()" label="Mi Club" />
         <q-route-tab to="/hazte-socio" @click="IrHazteSocio()" label="Hazte Socio" />
         <q-route-tab to="/eventos" label="Eventos" />
         <q-route-tab to="/special-days" label="Special Days" />
@@ -112,7 +112,7 @@ export default {
       this.$router.push('/quienes-somos')
     },
     IrMiClub () {
-      this.$router.push('/mi_club')
+      this.$router.push('/mi_club/pagos')
     },
     IrHazteSocio () {
       this.$router.push('/hazte_socio')

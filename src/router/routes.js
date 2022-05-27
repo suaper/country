@@ -64,6 +64,13 @@ const routes = [
     ]
   },
   {
+    path: '/mi-club/pagos',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/miclub/Pagos.vue') }
+    ]
+  },
+  {
     path: '/mi-club/etiquetas',
     component: () => import('layouts/MainLayout.vue'),
     children: [
