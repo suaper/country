@@ -10,27 +10,17 @@
       <q-btn outline :disable="getDisable('/quienes-somos/memoria-anual')" @click="goItem('/quienes-somos/memoria-anual')" color="submenu" label="Memoria Anual" />
     </q-btn-group>
 
-    <div class="buscador_general">
-      <q-btn class="peque" round color="white" icon="search" to="/vista-buscador" />
-      <q-input
-        v-model="search"
-        filled
-        class="escondido"
-        placeholder="Buscar"
-      >
-        <template v-slot:append>
-          <q-icon name="search" />
-        </template>
-      </q-input>
-    </div>
+    <Buscador />
   </div>
 
 </template>
 
 <script>
+import Buscador from './Buscador.vue'
 
 export default {
   name: 'Menusomos',
+  components: { Buscador },
   props: {
     currentItem: String
   },

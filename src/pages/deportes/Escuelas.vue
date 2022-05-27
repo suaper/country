@@ -10,7 +10,7 @@
               <Anclas :items="filters" :path="path" :goAnchor="goToAnchor" v-if="path !== 'golf'"/>
           </div>
       </div>
-      <div class="q-pb-md all_width bg_amarillo" v-for="(item, key) in personal" :key="key" :id="item.title.toLowerCase()" v-show="path !== 'golf'">
+      <div class="q-pb-md all_width bg_amarillo" v-for="(item, key) in personal" :key="'not-golf-'+key" :id="item.title.toLowerCase()" v-show="path !== 'golf'">
           <div class="centrar q-py-md w_1100 escuelas">
               <div class="style_title q-my-lg flex flex-staf align-center">
                   <h5 class="q-my-none">{{ item.title }}</h5>
@@ -19,7 +19,7 @@
               <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
           </div>
       </div>
-      <div class="q-pb-md all_width bg_gris" v-for="(item, key) in personal" :key="key" :id="item.title.toLowerCase()" v-show="path === 'golf' && item.title === 'Golf'">
+      <div class="q-pb-md all_width bg_gris" v-for="(item, key) in personal" :key="'golf-'+key" :id="item.title.toLowerCase()" v-show="path === 'golf' && item.title === 'Golf'">
           <div class="centrar q-py-md w_1100 escuelas">
               <div class="style_title q-my-lg flex flex-staf align-center">
                   <h5 class="q-my-none">{{ item.title }}</h5>

@@ -1,4 +1,5 @@
 <template>
+  <div class="new_wrap">
     <q-btn-group outline rounded class="sub_menu open">
       <q-btn :disable="getDisable('/deportes')" @click="goItem('/deportes')" outline color="submenu" label="Deportes" />
       <!-- Golf -->
@@ -75,9 +76,12 @@
        <q-btn :disable="getDisable('/deportes/tennis/multimedia')" v-if="path === 'tennis'" @click="goItem('/deportes/tennis/multimedia')" outline color="submenu" label="Multimedia" />
        <q-btn :disable="getDisable('/deportes/tennis/contacto')" v-if="path === 'tennis'" @click="goItem('/deportes/tennis/contacto')" outline color="submenu" label="Contacto" />
     </q-btn-group>
+    <Buscador />
+  </div>
 </template>
 
 <script>
+import Buscador from '../submenus/Buscador.vue'
 
 export default {
   name: 'Menudeportesinterno',
@@ -101,6 +105,7 @@ export default {
       if (this.current === route) return true
       return false
     }
-  }
+  },
+  components: { Buscador }
 }
 </script>
