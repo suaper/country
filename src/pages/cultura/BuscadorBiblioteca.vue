@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
     <Menucultura currentItem="/cultura/biblioteca"/>
-    <div class="q-pb-md all_width gris_home view_danzas q-my-xl">
+    <div class="q-pb-md all_width gris_home view_danzas q-mt-xl q-mb-md">
         <div class="setenta  centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Buscador de Libros</div>
             <div class="back"> <q-btn to="/cultura/biblioteca" round color="white" icon="west" />Volver</div>
@@ -15,13 +15,15 @@
                     outlined
                     v-model="filter"
                     lazy-rules
+                    class="bg_ww"
                     :rules="[ val => val && val.length > 3 || 'Debe escribir más de 3 letras']"
                     @input="setFilter()"
                 />
+                 <q-icon name="search"></q-icon>
             </div>
             <div class="radio">
                 <p>Filtros</p>
-                <div class="q-pa-md vertical">
+                <div class="vertical">
                     <q-radio v-model="shape" val="ingles" color="orange" label="Inglés" @input="setFilterLanguage"/>
                     <q-radio v-model="shape" val="español" color="orange"  label="Español" @input="setFilterLanguage"/>
                 </div>

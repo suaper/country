@@ -1,4 +1,5 @@
 <template>
+  <div class="new_wrap">
     <q-btn-group outline rounded class="sub_menu open">
       <q-btn outline :disable="getDisable('/quienes-somos')" color="submenu" label="Quiénes Somos" @click="goItem('/quienes-somos')" />
       <q-btn outline :disable="getDisable('/quienes-somos/historia')"  @click="goItem('/quienes-somos/historia')" color="submenu" label="Historia" />
@@ -8,6 +9,22 @@
       <q-btn outline :disable="getDisable('/quienes-somos/expresidentes')" @click="goItem('/quienes-somos/expresidentes')" color="submenu" label="Ex Presidentes" />
       <q-btn outline :disable="getDisable('/quienes-somos/memoria-anual')" @click="goItem('/quienes-somos/memoria-anual')" color="submenu" label="Memoria Anual" />
     </q-btn-group>
+
+    <div class="buscador_general">
+      <q-btn class="peque" round color="white" icon="search" to="/vista-buscador" />
+      <q-input
+        v-model="search"
+        filled
+        class="escondido"
+        placeholder="Buscar"
+      >
+        <template v-slot:append>
+          <q-icon name="search" />
+        </template>
+      </q-input>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -19,7 +36,8 @@ export default {
   },
   data () {
     return {
-      current: this.currentItem
+      current: this.currentItem,
+      search: ''
     }
   },
   methods: {
