@@ -442,6 +442,13 @@ const routes = [
     ]
   },
   {
+    path: '/detalle-noticia/:title',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/DetalleNoticia.vue') }
+    ]
+  },
+  {
     path: '/detalle-multimedia',
     component: () => import('layouts/MainLayout.vue'),
     children: [

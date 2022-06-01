@@ -32,7 +32,7 @@
                         <td>
                             <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
                             <p v-html="notices[0].body"></p>
-                            <q-btn @click="goNotice(notices[0].nid)" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[0])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>
@@ -196,9 +196,9 @@ export default {
         }
       })
     },
-    goNotice (nid) {
-      localStorage.setItem('noticeId', nid)
-      this.$router.push('/detalle-noticia')
+    goNotice (notice) {
+      localStorage.setItem('noticeId', notice.nid)
+      this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
     },
     openItem (e, multimedia) {
       e.preventDefault()
