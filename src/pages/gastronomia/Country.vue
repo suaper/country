@@ -31,7 +31,7 @@
                                 <div class="info_bottom">
                                     <span class="fecha" >{{ getDate(subItem.created) }}</span>
                                     <p class="desc" v-html="subItem.body"></p>
-                                    <q-btn @click="goNotice(subItem.nid)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
+                                    <q-btn @click="goNotice(subItem)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                 </div>
                             </div>
                         </div>
@@ -75,23 +75,31 @@ export default {
   },
   methods: {
     getDate (dateInput) {
-      var date = new Date(dateInput)
-      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
+      if (typeof dateInput !== 'undefined') {
+        var dateParse = dateInput.replace('T', ' ')
+        dateParse = dateParse.split(' ')
+        var eventDate = dateParse[0].split('-')
+
+        var date = new Date(eventDate[0], eventDate[1], eventDate[2])
+        const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+        return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
+      }
     },
     getHour (dateInput) {
-      var date = new Date(dateInput)
-      var dateAmPm = this.formatAMPM(date)
+      if (typeof dateInput !== 'undefined') {
+        var date = new Date(dateInput)
+        var dateAmPm = this.formatAMPM(date)
 
-      var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
-      var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
+        var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
+        var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
 
-      return hours + ':' + minutes + ' ' + dateAmPm
+        return hours + ':' + minutes + ' ' + dateAmPm
+      }
     },
-    goNotice (nid) {
-      localStorage.setItem('noticeId', nid)
-      this.$router.push('/detalle-noticia')
+    goNotice (notice) {
+      localStorage.setItem('noticeId', notice.nid)
+      this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
     },
     getNotices () {
       var _this = this

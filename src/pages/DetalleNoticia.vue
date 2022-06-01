@@ -5,12 +5,12 @@
         <div class="centrar w_1200">
           <div class="center text-center q-my-lg titulo2 q-mt-2">{{ info.title[0].value }}</div>
         </div>
-        <div class="img_noticia centrar w_1200 text-center"><img :src="info.field_imagen_noticia_2[0].url" alt="#"></div>
+        <div class="img_noticia centrar w_1200 text-center" v-if="info.field_imagen_noticia_2[0].url !== ''"><img :src="info.field_imagen_noticia[0].url" alt="#"></div>
         <div class="centrar w_1200 text_noticias" v-html="info.body[0].value"></div>
         <div class="centrar w_1200 text_noticias">
           <table class="noticias">
             <tr>
-              <td><img :src="info.field_imagen_noticia[0].url" alt="#"></td>
+              <td v-if="info.field_imagen_noticia_2[0].url !== ''"><img :src="info.field_imagen_noticia_2[0].url" alt="#"></td>
               <td v-html="info.field_bloque_2_noticias[0].value"></td>
             </tr>
           </table>

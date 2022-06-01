@@ -29,7 +29,7 @@
                                         <div class="info_bottom">
                                             <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
                                             <p class="desc" v-html="itemNotice.body"></p>
-                                            <q-btn @click="goNotice(itemNotice.nid)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
+                                            <q-btn @click="goNotice(itemNotice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
                                 </div>
@@ -86,9 +86,9 @@ export default {
       var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
       return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
     },
-    goNotice (nid) {
-      localStorage.setItem('noticeId', nid)
-      this.$router.push('/detalle-noticia')
+    goNotice (notice) {
+      localStorage.setItem('noticeId', notice.nid)
+      this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
     },
     getNotices () {
       var _this = this

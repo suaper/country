@@ -23,50 +23,20 @@
   <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
       <div class="centrar w_1200">
           <ul class="list_tipos_eventos">
-              <li>
+              <li v-for="(item, key) in services" :key="key">
                   <div class="wrpleft">
-                    <img src="../../assets/MiClub/i-pdf.svg">
+                    <img :src="urlSite + item.field_icono_servicio_evento">
                   </div>
                   <div class="wrpright">
-                      <strong>Almuerzos y Comidas</strong>
-                      <a href="#" @click="goDetalle()"> Ver mas</a>
-                  </div>
-              </li>
-
-              <li>
-                  <div class="wrpleft">
-                    <img src="../../assets/MiClub/i-pdf.svg">
-                  </div>
-                  <div class="wrpright">
-                      <strong>Almuerzos y Comidas</strong>
-                      <a href="#"> Ver mas</a>
-                  </div>
-              </li>
-
-              <li>
-                  <div class="wrpleft">
-                    <img src="../../assets/MiClub/i-pdf.svg">
-                  </div>
-                  <div class="wrpright">
-                      <strong>Almuerzos y Comidas</strong>
-                      <a href="#"> Ver mas</a>
-                  </div>
-              </li>
-
-              <li>
-                  <div class="wrpleft">
-                    <img src="../../assets/MiClub/i-pdf.svg">
-                  </div>
-                  <div class="wrpright">
-                      <strong>Almuerzos y Comidas</strong>
-                      <a href="#"> Ver mas</a>
+                      <strong>{{ item.title }}</strong>
+                      <a href="#" @click="goDetalle(item)">Ver mas</a>
                   </div>
               </li>
           </ul>
       </div>
     </div>
 
-  <div :class="(key % 2 === 0) ? 'q-py-xl all_width bg_amarillo wrp_club hazte_socio' : 'q-py-xl all_width gris_home wrp_club hazte_socio'" v-for="(item, key) in eventTypes" :key="key">
+  <div :class="(key % 2 === 0) ? 'q-py-xl all_width gris_home wrp_club hazte_socio' : 'q-py-xl all_width bg_amarillo wrp_club hazte_socio'" v-for="(item, key) in eventTypes" :key="key">
         <div class="centrar w_1200">
           <table class="contenido_fitness q-my-md">
               <tr v-show="key % 2 === 0">
@@ -144,10 +114,12 @@ export default {
       },
       pop_consultar: false,
       urlSite: 'https://pwccdev.mkbk.digital/',
-      eventTypes: []
+      eventTypes: [],
+      services: []
     }
   },
   created () {
+    localStorage.setItem('service', '')
     this.getInfo()
   },
   methods: {
@@ -157,6 +129,12 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/servicios-eventos/json', {
+        callBack: (data) => {
+          _this.services = data
         }
       })
 
@@ -172,7 +150,8 @@ export default {
         }
       })
     },
-    goDetalle () {
+    goDetalle (item) {
+      localStorage.setItem('service', JSON.stringify(item))
       this.$router.push('/eventos/detalle-servicio')
     }
   }

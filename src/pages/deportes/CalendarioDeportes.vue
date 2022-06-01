@@ -163,18 +163,27 @@ export default {
       return this.options[date.getUTCMonth()]
     },
     getDate (dateInput) {
-      var date = new Date(dateInput)
-      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-      return day + ' ' + this.options[date.getUTCMonth()] + '/' + date.getFullYear()
+      if (typeof dateInput !== 'undefined') {
+        var dateParse = dateInput.replace('T', ' ')
+        dateParse = dateParse.split(' ')
+        var eventDate = dateParse[0].split('-')
+
+        var date = new Date(eventDate[0], eventDate[1], eventDate[2])
+        const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+        return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
+      }
     },
     getHour (dateInput) {
-      var date = new Date(dateInput)
-      var dateAmPm = this.formatAMPM(date)
+      if (typeof dateInput !== 'undefined') {
+        var date = new Date(dateInput)
+        var dateAmPm = this.formatAMPM(date)
 
-      var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
-      var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
+        var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours()
+        var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes()
 
-      return hours + ':' + minutes + ' ' + dateAmPm
+        return hours + ':' + minutes + ' ' + dateAmPm
+      }
     },
     formatAMPM (date) {
       var hours = date.getHours()

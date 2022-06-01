@@ -9,30 +9,21 @@
     <div class="q-py-md w_1100 centrar flex_escuelas flex_obras justify-center">
         <div class="row detalle_serivcio">
             <div class="left30">
-                <img src="../../assets/MiClub/i-pdf.svg">
-                <h5>Almuerzos y Comidas</h5>
+                <img :src="urlSite + service.field_icono_servicio_evento">
+                <h5>{{ service.title }}</h5>
                 <q-btn outline class="azul q-my-md centrar bg_white_i" @click="goCotizador()" label="Cotiza tu evento" icon-right="arrow_right_alt"/>
             </div>
             <div class="right68">
-                <img src="https://pwccdev.mkbk.digital/administrador/sites/default/files/2022-04/banner-tipos-eventos.png" alt="banner">
+                <img :src="urlSite + service.field_imagen_servicio_evento" alt="banner">
             </div>
         </div>
     </div>
 
     <div class="row jusify-beetwen text_adicional w_1100 centrar q-pa-xl">
-        <div class="left30">
-            <h5>Áreas disponibles</h5>
-            <ul class="icono_amarillo">
-                <li>Sala Directorio</li>
-                <li>Sala Newton </li>
-                <li>CoWork</li>
-            </ul>
-        </div>
+        <div class="left30" v-html="service.field_texto_servicio_evento"></div>
         <div class="w_60 text-left">
             <h5>Descripción</h5>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero sollicitudin, a pretium massa auctor.
-            </p>
+            <p v-html="service.field_descripcion_servicio"></p>
         </div>
     </div>
 
@@ -46,8 +37,12 @@ export default {
 
   data () {
     return {
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://pwccdev.mkbk.digital/',
+      service: []
     }
+  },
+  created () {
+    this.service = JSON.parse(localStorage.getItem('service'))
   },
   methods: {
     goCotizador () {

@@ -30,7 +30,7 @@
                                         <div class="info_bottom">
                                             <span class="fecha">{{ notice.created }}</span>
                                             <p class="desc" v-html="notice.body"></p>
-                                            <q-btn @click="goNotice(notice.nid)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
+                                            <q-btn @click="goNotice(notice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
                                 </div>
@@ -76,9 +76,9 @@ export default {
     this.getNotices()
   },
   methods: {
-    goNotice (nid) {
-      localStorage.setItem('noticeId', nid)
-      this.$router.push('/detalle-noticia')
+    goNotice (notice) {
+      localStorage.setItem('noticeId', notice.nid)
+      this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
     },
     getNotices () {
       var _this = this
