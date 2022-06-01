@@ -29,7 +29,7 @@
                   </div>
                   <div class="wrpright">
                       <strong>Almuerzos y Comidas</strong>
-                      <a href="#"> Ver mas</a>
+                      <a href="#" @click="goDetalle()"> Ver mas</a>
                   </div>
               </li>
 
@@ -171,6 +171,9 @@ export default {
           _this.$q.loading.hide()
         }
       })
+    },
+    goDetalle () {
+      this.$router.push('/eventos/detalle-servicio')
     }
   }
 }

@@ -428,6 +428,20 @@ const routes = [
     ]
   },
   {
+    path: '/eventos/detalle-servicio',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/eventos/DetalleServicio.vue') }
+    ]
+  },
+  {
+    path: '/eventos/cotizador',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/eventos/Cotizador.vue') }
+    ]
+  },
+  {
     path: '/noticias',
     component: () => import('layouts/MainLayout.vue'),
     children: [
