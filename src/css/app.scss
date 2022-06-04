@@ -4803,26 +4803,65 @@ h5.text_normal{
 }
 .view_cotizar{
     .pasos{
-        padding: 20px;
+        padding:35px 20px 20px;
         background: #fff;
         display: flex;
         width: 885px;
         margin: 10px auto;
         align-items: flex-start;
-        justify-content: space-between;
+        justify-content: center;
 
         li{
             list-style: none;
             display: flex;
+            position: relative;
             align-items: center;
+            padding: 40px 16px;
+            border-top: 1px solid #7C7E8F;
+
+            &:before{
+                content: "";
+                position: absolute;
+                top: -17px;
+                left: 21px;
+                width: 28px;
+                height: 28px;
+                padding-top: 3px;
+                background: #fff;
+                border-radius: 50%;
+                border: 1px solid #CA9E64;
+                color: #CA9E64;
+            }
+            &:first-child{
+                padding-left: 0!important;
+                &:before{
+                   left: 0px;
+                }
+            }
+            &:last-child{
+                border-top: none;
+                padding-left: 0px;
+                &:before{
+                    left: 0px;
+                 }
+            }
+            &:nth-child(3){
+                padding-left: 30px;
+                &:after{
+                    content: "";
+                    position: absolute;
+                    top: -12px;
+                    left: 26px !important;
+                }
+            }
             .sub_caja{
                 margin-right: 7px;
                 .caja{
                     font-size: 24px;
                     letter-spacing: 0px;
-                    color: #CA9E64;
+                    color: #7C7E8F;
                     opacity: 1;
-                    border: 1px solid #CA9E64;
+                    border: 1px solid #7C7E8F;
                     padding: 15px;
                 }
             }
@@ -4858,6 +4897,17 @@ h5.text_normal{
                         color: #1F2660;
                     }
                 }
+                &:after{
+                    content: "";
+                    position: absolute;
+                    top: -12px;
+                    left: 5px;
+                    width: 18px;
+                    height: 18px;
+                    padding-top: 3px;
+                    background: #1f2660;
+                    border-radius: 50%;
+                }
             }
         }
     }
@@ -4878,6 +4928,103 @@ h5.text_normal{
                         border: none;
                     }
                 }
+            }
+        }
+    }
+}
+.centrar_botones{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: flex-start;
+
+    .q-btn{
+        margin: 10px;
+        padding: 3px !important;
+    }
+    .btn_bg_beige{
+        color: #fff!important;
+        .q-icon{
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.view_cotizar{
+    .form_cotizar{
+        .q-date{
+            width: 100%;
+            min-width: 350px;
+            border: 1px solid #e8c290;
+        }
+    }
+    .paso3{
+        align-items: flex-start;
+        strong{
+            color: #7C7E91;
+        }
+        .fila_2{
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            label{
+                width: 47%;
+                margin: 16px 0 0 !important;
+            }
+        }
+        label{
+            margin: 16px 0 !important;
+        }
+    }
+    .confirmacion{
+        .wrap{
+            background-color: #fff;
+            border: 1px solid #e8c290;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            padding: 25px;
+
+            h6{
+                text-align: left;
+                font-size: 24px;
+                letter-spacing: 0px;
+                color: #1F2660;
+                margin: 0px 0px 5px;
+            }
+            table{
+                width: 100%;
+                position: relative;
+                tr{
+                    td{
+                        text-align: left;
+                        color: #7C7E91;
+                        padding-left: 20px;
+                        &:first-child{
+                            font-weight: bold;
+                            text-align: right;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+                &:before{
+                    border-left: 1px solid #e8c290;
+                    height: 100%;
+                    width: 1px;
+                    content: "";
+                    left: -50px;
+                    top: 0;
+                    position: absolute;
+                }
+            }
+            .w_30{
+                width: 30%;
+                strong{
+                    color: #1F2660;
+                }
+            }
+            .w_58{
+                width: 52%;
             }
         }
     }
