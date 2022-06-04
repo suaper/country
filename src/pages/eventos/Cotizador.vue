@@ -27,7 +27,7 @@
                     <p class="azul">Fecha y hora</p>
                 </div>
             </li>
-            <li class="normal">
+            <li class="active">
             <div class="sub_caja">
                 <span class="caja">03</span>
             </div>
@@ -67,6 +67,98 @@
                     <q-btn outline class="azul q-my-md centrar bg_white_i" label="Cotiza tu evento" icon-right="arrow_right_alt"/>
                 </div>
             </div>
+            <div class="form_cotizar w_1000 row_2 paso1 paso2">
+                <div class="w_47">
+                <q-date
+                    v-model="date"
+                    minimal
+                />
+                </div>
+                <div class="w_47">
+                    <p><q-icon name="info"></q-icon>La disponibilidad de horas se mostrará al elegir el día del evento.</p>
+                    <div class="wrp_busca_mes w_500 centrar">
+                        <q-select outlined label="Seleccione la hora" v-model="hora" />
+                    </div>
+                </div>
+                <div class="w_100 text_center centrar_botones">
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" icon-right="arrow_right_alt"/>
+                </div>
+            </div>
+
+            <div class="form_cotizar w_1000 row_2 paso1 paso3">
+                <strong class="w_100">Datos personales</strong>
+                <div class="w_47">
+                    <div class="fila_2 flex">
+                        <q-input
+                            outlined
+                            label="Nombres"
+                        />
+                        <q-input
+                            outlined
+                            label="Apellidos"
+                        />
+                    </div>
+                    <q-input
+                        outlined
+                        label="RUT"
+                    />
+                    <q-input
+                        outlined
+                        label="Empresa ( no obligatorio)"
+                    />
+                </div>
+                <div class="w_47">
+                    <q-input
+                        outlined
+                        label="Correo Electrónico"
+                    />
+                    <q-input
+                        outlined
+                        label="(+56 9) Teléfono"
+                    />
+                </div>
+                <div class="w_100 text_center centrar_botones">
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" icon-right="arrow_right_alt"/>
+                </div>
+            </div>
+            <div class="form_cotizar w_1000 row_2 paso1 paso4 confirmacion">
+                <div class="wrap w_80 centrar">
+                    <div class="w_30 separador">
+                        <h6>Matrimonio Salón Terraza </h6>
+                        <strong>A.M. | 1 Abr/2021 60 personas</strong>
+                    </div>
+                    <div class="w_58">
+                        <table class="table_confirmacion">
+                            <tr>
+                                <td>Nombres</td>
+                                <td>Nombre Nombre Apellido Apellido </td>
+                            </tr>
+                            <tr>
+                                <td>RUT</td>
+                                <td>1122334455667</td>
+                            </tr>
+                            <tr>
+                                <td>Empresa</td>
+                                <td>Nombre de la empresa</td>
+                            </tr>
+                            <tr>
+                                <td>Mail</td>
+                                <td>Correo.ejemplo@gmail.com </td>
+                            </tr>
+                            <tr>
+                                <td>Teléfono</td>
+                                <td>+56 9 444444444</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="w_100 text_center centrar_botones">
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                </div>
+            </div>
         </q-form>
     </div>
   </q-page>
@@ -75,6 +167,12 @@
 <script>
 
 export default {
-  name: 'cotizador'
+  name: 'cotizador',
+  setup () {
+    return {
+      date: '2019/02/01',
+      hora: ''
+    }
+  }
 }
 </script>
