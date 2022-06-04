@@ -12,15 +12,15 @@
       <q-tabs align="center">
         <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
-        <q-route-tab to="/mi-club/pagos" @click="IrMiClub()" label="Mi Club" />
+        <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
         <q-route-tab to="/hazte-socio" @click="IrHazteSocio()" label="Hazte Socio" />
+        <q-route-tab to="/gastronomia" label="Gastronomía" />
         <q-route-tab to="/eventos" label="Eventos" />
         <q-route-tab to="/special-days" label="Special Days" />
-        <q-route-tab to="/cultura" label="Cultura" />
         <q-route-tab to="/deportes" label="Deportes" />
-        <q-route-tab to="/spa" label="Spa & Wellness" />
-        <q-route-tab to="/gastronomia" label="Gastronomía" />
         <q-route-tab to="/kids" label="Kids" />
+        <q-route-tab to="/cultura" label="Cultura" />
+        <q-route-tab to="/spa" label="Spa & Wellness" />
         <q-route-tab to="/noticias" label="Noticias" />
         <q-route-tab to="/calendario" label="Calendario" />
       </q-tabs>
@@ -47,6 +47,17 @@
                   <td v-for="(item, key) in enlacesMaps" :key="key">
                     <a :href="item.field_enlace_map[0].uri" target="_blank">
                       <img class="q-mx-none" alt="img2" :src="item.field_ima[0].url">
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            <li>
+              <table>
+                <tr>
+                  <td>
+                    <a href="#">
+                      <img class="q-mx-none" alt="img2" src="https://pwccdev.mkbk.digital/administrador/sites/default/files/2022-05/logo-obg_1.png">
                     </a>
                   </td>
                 </tr>

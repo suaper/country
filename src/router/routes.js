@@ -71,6 +71,20 @@ const routes = [
     ]
   },
   {
+    path: '/mi-club/reglamento',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/miclub/Reglamento.vue') }
+    ]
+  },
+  {
+    path: '/clubes-intercambio',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/MiClubIntercambio.vue') }
+    ]
+  },
+  {
     path: '/mi-club/pagos',
     component: () => import('layouts/MainLayout.vue'),
     children: [

@@ -18,21 +18,6 @@
         </div>
     </div>
 
-    <div class="q-pb-md all_width bg_amarillo cuotas">
-        <div class="centrar w_1200">
-            <div class="left text-left q-my-lg titulos">Reglamento</div>
-            <div class="q-pa-md row items-start q-gutter-md">
-                <div class="box_download flex bg_white">
-                    <img src="../../assets/MiClub/i-pdf.svg">
-                    <div class="text">
-                        <span class="bold">Reglamento del Club</span>
-                        <a :href="info.field_descargar_archivo[0].url" target="_blank"><span>Ver o descargar</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <q-dialog v-model="pop_cuota" >
         <q-card class="pop_cuotas" style="width: 700px; max-width: 80vw;">
             <q-card-section class="row items-center q-pb-none">
