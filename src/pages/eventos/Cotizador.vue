@@ -156,10 +156,28 @@
                 </div>
                 <div class="w_100 text_center centrar_botones">
                     <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt"/>
-                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                    <q-btn  @click="finaliza = true" outline class="azul q-my-md centrar bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                 </div>
             </div>
         </q-form>
+        <q-dialog
+            v-model="finaliza"
+            class="pop_finaliza"
+            >
+            <q-card style="width: 300px">
+                <q-card-section>
+                    <div class="text-center">¡Tu solicitud de reserva se ha enviado con éxito!</div>
+                </q-card-section>
+
+                <q-card-section class="q-pt-none">
+                 <p>Nos contactaremos muy pronto para terminar con el proceso de reserva.</p>
+                </q-card-section>
+
+                <q-card-actions align="center" class="bg-white text-teal">
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="Aceptar" icon-right="arrow_right_alt"/>
+                </q-card-actions>
+            </q-card>
+        </q-dialog>
     </div>
   </q-page>
 </template>
@@ -171,7 +189,8 @@ export default {
   setup () {
     return {
       date: '2019/02/01',
-      hora: ''
+      hora: '',
+      finaliza: false
     }
   }
 }
