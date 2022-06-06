@@ -1,6 +1,19 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
     <Menumiclub currentItem="/mi-club/cuotas-reglamento" />
+    <div class="q-py-none all_width">
+      <q-carousel
+        animated
+        v-model="slide"
+        arrows
+        class="banner_top"
+        navigation
+        infinite
+        autoplay
+      >
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
+      </q-carousel>
+    </div>
     <div class="q-pb-md all_width gris_home etiquetas">
         <br>
         <div class="center text-center q-my-lg titulos q-mt-2">Country Club</div>
@@ -80,6 +93,7 @@ export default {
       configServices.loadData(this, '/node/128?_format=json', {
         callBack: (data) => {
           _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
           _this.$q.loading.hide()
         }
       })

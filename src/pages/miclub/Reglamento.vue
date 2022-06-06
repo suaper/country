@@ -11,20 +11,20 @@
         infinite
         autoplay
       >
-        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
-    <div class="q-pb-md all_width gris_home">
+    <div class="q-pb-md all_width gris_home" v-if="loadedInfo">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Reglamento</div>
-            <p class="intro text-center">Lorem ipsum dolor sit amet. In velit consequatur et nisi blanditiis est maxime Quis. Ut unde consequatur in nisi quaerat qui error necessitatibus et aliquam magni. Ab quia autem aut odit maiores ipsa error ut aliquam nihil.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <div class="q-pa-md row items-start w_1200 centrar q-gutter-md">
             <div class="box_download flex bg_white">
                 <img src="../../assets/MiClub/i-pdf.svg">
                 <div class="text">
-                    <span class="bold">Reglamento del Club</span>
-                    <a href="#" target="_blank"><span>Ver o descargar</span></a>
+                    <span class="bold">{{ info.field_titulo_item[0].value }}</span>
+                    <a :href="info.field_descargar_archivo[0].url" target="_blank"><span>Ver o descargar</span></a>
                 </div>
             </div>
         </div>
@@ -77,6 +77,7 @@ export default {
       civilStatus: null,
       mobile: '',
       date: '',
+      loadedInfo: false,
       country: '',
       phone: '',
       email: '',
@@ -142,10 +143,11 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/1?_format=json', {
+      configServices.loadData(this, '/node/1069?_format=json', {
         callBack: (data) => {
           _this.info = data
-          _this.slide = data.field_banner_seccion[0].target_uuid
+          _this.slide = data.field_slider_home[0].target_uuid
+          _this.loadedInfo = true
         }
       })
     },

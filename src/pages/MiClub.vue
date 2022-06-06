@@ -11,13 +11,13 @@
         infinite
         autoplay
       >
-        <q-carousel-slide v-for="(banner, key) in info.field_banner_seccion" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-pb-xl all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Mi Club</div>
-            <p class="intro text-center">Lorem ipsum dolor sit amet. In velit consequatur et nisi blanditiis est maxime Quis. Ut unde consequatur in nisi quaerat qui error necessitatibus et aliquam magni. Ab quia autem aut odit maiores ipsa error ut aliquam nihil.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
     </div>
   </q-page>
@@ -133,10 +133,10 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/1?_format=json', {
+      configServices.loadData(this, '/node/1068?_format=json', {
         callBack: (data) => {
           _this.info = data
-          _this.slide = data.field_banner_seccion[0].target_uuid
+          _this.slide = data.field_slider_home[0].target_uuid
         }
       })
     },

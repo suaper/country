@@ -87,13 +87,13 @@
                         <div class="label_radio">
                             <p>Selecciona la categoría a la que deseas postularte:</p>
                         </div>
-                        <q-radio name="shape" v-model="shape" val="line" label="Line" />
-                        <q-radio name="shape" v-model="shape" val="rectangle" label="Rectangle" />
-                        <q-radio name="shape" v-model="shape" val="ellipse" label="Ellipse" />
-                        <q-radio name="shape" v-model="shape" val="polygon" label="Polygon" />
-                        <q-radio name="shape" v-model="shape" val="otro" label="Rectangle" />
-                        <q-radio name="shape" v-model="shape" val="otro1" label="Ellipse" />
-                        <q-radio name="shape" v-model="shape" val="otro2" label="Polygon" />
+                        <q-radio name="shape" v-model="shape" val="Hijos de Socios" label="Hijos de Socios" />
+                        <q-radio name="shape" v-model="shape" val="Hijos de Ex Socios" label="Hijos de Ex Socios" />
+                        <q-radio name="shape" v-model="shape" val="Nuevos Socios" label="Nuevos Socios" />
+                        <q-radio name="shape" v-model="shape" val="Extranjeros de Paso" label="Extranjeros de Paso" />
+                        <q-radio name="shape" v-model="shape" val="Senior sin Cargas" label="Senior sin Cargas" />
+                        <q-radio name="shape" v-model="shape" val="Familia de Socios" label="Familia de Socios" />
+                        <q-radio name="shape" v-model="shape" val="Familia de rama deportiva" label="Familia de rama deportiva" />
 
                         <div>
                             <q-btn outline type="submit" class="text_white mt_10 centrar bg_orange" label="Enviar Formulario" icon-right="arrow_right_alt"/>
