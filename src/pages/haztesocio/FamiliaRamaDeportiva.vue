@@ -16,7 +16,7 @@
 
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Familia de Socios</div>
+            <div class="center text-center q-my-lg titulos"> Familia de Rama Deportiva</div>
             <p class="intro text-center" v-html="info[0].body"></p>
         </div>
     </div>
