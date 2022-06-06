@@ -14,7 +14,7 @@
         <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
-    <div class="q-pb-md all_width gris_home">
+    <div class="q-pb-xl all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Spa & Wellness</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
@@ -79,47 +79,6 @@
         </q-card>
     </q-dialog>
 
-    <div class="q-py-xl all_width bg_amarillo wrp_club">
-        <div class="row_wrap no-wrap flex justify-start">
-            <h3 class="q-my-none">Multimedia</h3>
-            <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" to="/spa/multimedia"/>
-      </div>
-
-      <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
-        <div class="q-py-md">
-          <table class="esquma_inferior" v-if="multimediaHome.length">
-            <tr>
-              <td class="tg-0pky" rowspan="2">
-                <a @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[4].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[4].body"></span>
-                  </div></a>
-              </td>
-              <td class="tg-1pky"><a @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[2].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[2].body"></span>
-                  </div></a></td>
-              <td class="tg-2pky" rowspan="2"><a @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[1].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[1].body"></span>
-                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
-                  </div></a></td>
-              <td class="tg-3pky" rowspan="2"><a @click="openItem($event, multimediaHome[0])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[0].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[0].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[0].body"></span>
-                      <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
-                  </div></a></td>
-            </tr>
-            <tr>
-              <td class="tg-4pky"><a @click="openItem($event, multimediaHome[3])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[3].field_portada_multimedia"><div class="wrp_over">
-                      <span class="text-white">{{ multimediaHome[3].title }}</span>
-                      <span class="desc_white" v-html="multimediaHome[3].body"></span>
-                  </div></a></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
     <q-dialog v-model="video" persistent>
       <q-card>
         <q-card-section class="row items-center">

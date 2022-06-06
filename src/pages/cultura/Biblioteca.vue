@@ -34,7 +34,7 @@
 
     <div class="q-pb-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-        <div class="text-left q-mb-none q-mt-xl titulos">Los más leídos</div>
+        <div class="text-left q-mb-none q-mt-xl titulos">Recomendados del Mes</div>
             <div class="wrp_gallery_biblioteca q-mt-md">
                 <q-carousel
                 v-model="slideMoreReads"
