@@ -1,9 +1,9 @@
 <template>
-  <q-page class="flex flex-center view_hijos_socios view_danzas">
+  <q-page class="flex flex-center view_hijos_socios view_danzas compania">
 
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
-            <div class="center text-center q-my-lg titulos">Compañias</div>
+            <div class="center text-center q-my-lg titulos">Compañía</div>
             <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1000 centrar flex_companias justify-center">

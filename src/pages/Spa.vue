@@ -14,7 +14,7 @@
         <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
-    <div class="q-pb-md all_width gris_home">
+    <div class="q-pb-xl all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Spa & Wellness</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
@@ -79,6 +79,7 @@
         </q-card>
     </q-dialog>
 
+<<<<<<< HEAD
     <div class="q-py-xl all_width bg_amarillo wrp_club" v-if="loadedMultimedia">
         <div class="row_wrap no-wrap flex justify-start">
             <h3 class="q-my-none">Multimedia</h3>
@@ -120,6 +121,8 @@
         </div>
       </div>
     </div>
+=======
+>>>>>>> front
     <q-dialog v-model="video" persistent>
       <q-card>
         <q-card-section class="row items-center">

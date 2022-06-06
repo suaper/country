@@ -38,7 +38,7 @@
                 class="galeria_beneficios"
                 >
                 <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in events" :key="key">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
+                    <div class="row fit charlas q-gutter-xs q-col-gutter no-wrap">
                         <div class="treintaydos_general" v-for="(event, eventKey) in item" :key="eventKey">
                             <table class="galeri_event">
                                 <tr class="th_top">
