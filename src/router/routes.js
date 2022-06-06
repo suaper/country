@@ -78,7 +78,7 @@ const routes = [
     ]
   },
   {
-    path: '/clubes-intercambio',
+    path: '/mi-club/clubes-intercambio',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/MiClubIntercambio.vue') }

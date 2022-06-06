@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menumiclub currentItem="/mi-club"/>
+    <Menumiclub currentItem="/mi-club/clubes-intercambio"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated
@@ -15,7 +15,7 @@
       </q-carousel>
     </div>
     <div class="q-pb-md all_width gris_home">
-        <div class="center text-center q-my-lg titulos">Clubes de intercambio</div>
+        <div class="center text-center q-my-lg titulos">Clubes de Intercambio</div>
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club">
         <div class="centrar w_1200">
