@@ -79,7 +79,7 @@
         </q-card>
     </q-dialog>
 
-    <div class="q-py-xl all_width bg_amarillo wrp_club">
+    <div class="q-py-xl all_width bg_amarillo wrp_club" v-if="loadedMultimedia">
         <div class="row_wrap no-wrap flex justify-start">
             <h3 class="q-my-none">Multimedia</h3>
             <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" to="/spa/multimedia"/>
@@ -87,7 +87,7 @@
 
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
-          <table class="esquma_inferior" v-if="multimediaHome.length">
+          <table class="esquma_inferior" v-if="loadedMultimedia">
             <tr>
               <td class="tg-0pky" rowspan="2">
                 <a @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
@@ -161,7 +161,8 @@ export default {
       name: '',
       rut: '',
       video: false,
-      currentVideo: ''
+      currentVideo: '',
+      loadedMultimedia: false
     }
   },
   created () {
@@ -219,6 +220,7 @@ export default {
           _this.multimediaHome.push(videos[1])
           _this.multimediaHome.push(videos[2])
           _this.multimediaHome.push(videos[0])
+          _this.loadedMultimedia = true
           _this.$q.loading.hide()
         }
       })

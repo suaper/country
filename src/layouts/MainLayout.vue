@@ -57,7 +57,7 @@
                 <tr>
                   <td>
                     <a href="#">
-                      <img class="q-mx-none" alt="img2" src="https://pwccdev.mkbk.digital/administrador/sites/default/files/2022-05/logo-obg_1.png">
+                      <img class="q-mx-none" alt="img2" :src="info.field_imagen_pago[0].url">
                     </a>
                   </td>
                 </tr>

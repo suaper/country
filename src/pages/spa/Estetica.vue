@@ -45,7 +45,7 @@
                   <td>
                     <table class="datos_peluqueria" v-for="item in services" :key="item.nid" v-show="item.nid === '271'">
                         <tr>
-                            <th>Peluquería</th>
+                            <th>Tipo</th>
                             <th>Tiempo</th>
                             <th>Precio</th>
                         </tr>
