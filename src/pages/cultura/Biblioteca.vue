@@ -229,10 +229,10 @@
                     <img src="../../assets/HazteSocio/i-correo.svg" />
                     <span>{{ personal.field_correo_staff }}</span>
                 </li>
-                <li class="tel">
+                <!--<li class="tel">
                     <img src="../../assets/HazteSocio/i-phone.svg" />
                     <span>{{ personal.field_numero_staff }}</span>
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>

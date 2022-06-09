@@ -48,7 +48,7 @@
                     </tr>
                     <tr v-for="(item, key) in cuotas" :key="key">
                         <td>{{ item.field_categoria_cuota }}</td>
-                        <td>{{ item.field_cuota }}</td>
+                        <td>{{ addCommas(item.field_cuota) }}</td>
                         <td>{{ item.field_tipo_de_cuota_trimestral }}</td>
                     </tr>
                 </table>
@@ -97,6 +97,11 @@ export default {
           _this.$q.loading.hide()
         }
       })
+    },
+    addCommas (x) {
+      if (typeof x !== 'undefined') {
+        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+      }
     },
     getCuotas () {
       var _this = this

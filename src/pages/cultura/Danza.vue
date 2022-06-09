@@ -231,11 +231,14 @@ export default {
     },
     goItem (e, item) {
       e.preventDefault()
+      console.log(item)
       switch (item) {
         case 'Escuelas':
           this.$router.push('/cultura/escuelas')
           break
         case 'Compañia':
+        case 'Compañias':
+        case 'Compañías':
           this.$router.push('/cultura/compania')
           break
         case 'Obras':

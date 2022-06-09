@@ -18,7 +18,7 @@
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Spa & Wellness</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
-             <q-btn outline  @click="pop_reservar_spa = true" class="azul q-my-md centrar bg_white_i" label="Reserva" icon-right="arrow_right_alt"/>
+             <!--<q-btn outline  @click="pop_reservar_spa = true" class="azul q-my-md centrar bg_white_i" label="Reserva" icon-right="arrow_right_alt"/>-->
         </div>
     </div>
     <q-dialog v-model="pop_reservar_spa" >

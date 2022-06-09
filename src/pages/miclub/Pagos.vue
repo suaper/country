@@ -1,14 +1,14 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
     <Menumiclub currentItem="/mi-club/pagos" />
-    <div class="q-py-xl all_width gris_home etiquetas">
+    <div class="q-py-xl all_width gris_home etiquetas" v-if="loadedInfo">
         <br>
         <div class="center text-center q-my-lg titulos q-mt-2">Pagos</div>
           <div class="cincuenta q-pd-md centrar text-center">
-              <p class="intro text-center">Lorem ipsum dolor sit amet. In velit consequatur et nisi blanditiis est maxime Quis. Ut unde consequatur in nisi quaerat qui error necessitatibus et aliquam magni. Ab quia autem aut odit maiores ipsa error ut aliquam nihil.</p>
+              <p class="intro text-center" v-html="info.field_intro_[0].value"></p>
           </div>
           <div class="text-center q-my-xl">
-              <a :href="info.field_enlace[0].uri" ><img :src="info.field_imagen_pago[0].url"></a>
+              <a target="_blank" :href="info.field_enlace[0].uri" ><img :src="info.field_imagen_pago[0].url"></a>
           </div>
         <div class="centrar w_1200 pagos flex justify-between q-mt-2" v-if="loadedInfo">
 
@@ -49,7 +49,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/node/1060?_format=json', {
         callBack: (data) => {
-          console.log(data)
           _this.info = data
           _this.loadedInfo = true
           _this.$q.loading.hide()

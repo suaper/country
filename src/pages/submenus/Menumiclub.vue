@@ -7,7 +7,7 @@
       <q-btn outline :disable="getDisable('/mi-club/cuotas-reglamento')" @click="goItem('/mi-club/cuotas-reglamento')" color="submenu" label="Cuotas Sociales" />
       <q-btn outline :disable="getDisable('/mi-club/pagos')" @click="goItem('/mi-club/pagos')"  color="submenu" label="Pagos" />
       <q-btn outline :disable="getDisable('/mi-club/beneficios-socios')" @click="goItem('/mi-club/beneficios-socios')"  color="submenu" label="Beneficios" />
-      <q-btn outline :disable="getDisable('/mi-club/clubes-intercambio')" color="submenu" label="Clubes de intercambio" @click="goItem('/mi-club/clubes-intercambio')"/>
+      <q-btn outline :disable="getDisable('/mi-club/clubes-intercambio')" color="submenu" label="Clubes de Intercambio" @click="goItem('/mi-club/clubes-intercambio')"/>
     </q-btn-group>
 
     <Buscador />
