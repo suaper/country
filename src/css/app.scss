@@ -2640,7 +2640,7 @@ h6.peluqueria{
 .browse_salones{
     display: flex;
     justify-content: flex-start;
-    align-items: inherit;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -2683,10 +2683,6 @@ h6.peluqueria{
             &:nth-child(3){
                 display: flex;
                 justify-content: center;
-                flex-wrap: wrap;
-                p{
-                    margin: 0px;
-                }
             }
         }
     }
@@ -5089,50 +5085,5 @@ h5.text_normal{
         font-weight: normal;
         color: #7C7E91;
         opacity: 1;
-    }
-}
-
-.wrp_gallery_beneficios{
-    .charlas{
-        justify-content: flex-start;
-        align-items: inherit;
-        .treintaydos_general{
-            border: 1px solid #CA9E64;
-            .galeri_event{
-                border: none!important;
-            }
-        }
-    }
-}
-.compania{
-    .flex_companias .datos_staff_contacto{
-        width: 31%;
-        td{
-            img{
-                border-radius: 50%;
-            }
-        }
-    }
-}
-.pop_reserva_spa{
-    button{
-        margin-top: -82px;
-        margin-right: -37px;
-        .q-icon{
-            color: #fff;
-            border-radius: 50%;
-            background: #1F2660;
-            padding: 2px;
-        }
-    }
-}
-.deportes_proximos{
-    justify-content: flex-start;
-    align-items: inherit;
-    .treintaydos_general{
-        border: 1px solid #CA9E64;
-        .galeri_event{
-            border: none!important;
-        }
     }
 }
