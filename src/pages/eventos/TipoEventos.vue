@@ -20,7 +20,7 @@
       </div>
   </div>
 
-  <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
+  <!--<div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
       <div class="centrar w_1200">
           <ul class="list_tipos_eventos">
               <li v-for="(item, key) in services" :key="key">
@@ -34,7 +34,7 @@
               </li>
           </ul>
       </div>
-    </div>
+    </div>-->
 
   <div :class="(key % 2 === 0) ? 'q-py-xl all_width gris_home wrp_club hazte_socio' : 'q-py-xl all_width bg_amarillo wrp_club hazte_socio'" v-for="(item, key) in eventTypes" :key="key">
         <div class="centrar w_1200">
@@ -43,40 +43,24 @@
                   <td>
                       <h6 class="title_text">{{ item.title }}</h6>
                       <p v-html="item.body"></p>
-                      <q-btn type="a" :href="item.field_cotiza" target="_blank" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <q-btn type="a"  @click="goCotizador(item)" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
                   <td>
-                    <q-carousel
-                      animated
-                      v-model="item.slide"
-                      arrows
-                      class="banner_top"
-                      infinite
-                    >
-                      <q-carousel-slide :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
+                      <div class="prueba"  :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
                         <img :src="urlSite + image.trim()" />
-                      </q-carousel-slide>
-                    </q-carousel>
+                    </div>
                   </td>
               </tr>
               <tr v-show="key % 2 !== 0">
                   <td>
-                    <q-carousel
-                      animated
-                      v-model="item.slide"
-                      arrows
-                      class="banner_top"
-                      infinite
-                    >
-                      <q-carousel-slide :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
-                        <img :src="urlSite + image.trim()" />
-                      </q-carousel-slide>
-                    </q-carousel>
+                    <div class="prueba" :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
+                      <img :src="urlSite + image.trim()" />
+                    </div>
                   </td>
                   <td>
                       <h6 class="title_text">{{ item.title }}</h6>
                       <p v-html="item.body"></p>
-                      <q-btn type="a" :href="item.field_cotiza" target="_blank" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <q-btn type="a" @click="goCotizador(item)" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
                   </td>
               </tr>
           </table>
@@ -153,6 +137,9 @@ export default {
     goDetalle (item) {
       localStorage.setItem('service', JSON.stringify(item))
       this.$router.push('/eventos/detalle-servicio')
+    },
+    goCotizador () {
+      this.$router.push('/eventos/cotizador')
     }
   }
 }

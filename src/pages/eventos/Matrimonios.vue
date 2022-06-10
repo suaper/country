@@ -26,7 +26,7 @@
                 <td class="w_cuarenta">
                   <h6 class="title_text">Matrimonio</h6>
                   <p v-html="info.field_descripcion_servicio[0].value"></p>
-                  <q-btn outline class="azul q-my-md centrar bg_white_i" label="Cotiza tu evento" icon-right="arrow_right_alt"/>
+                  <q-btn outline @click="goCotizador(item)" class="azul q-my-md centrar bg_white_i" label="Cotiza tu evento" icon-right="arrow_right_alt"/>
                 </td>
                 <td class="w_sesenta">
                   <div class="q-pa-md">
@@ -122,6 +122,9 @@ export default {
     openPopup (item) {
       this.itemPopup = item
       this.video = true
+    },
+    goCotizador () {
+      this.$router.push('/eventos/cotizador')
     },
     getInfo () {
       var _this = this
