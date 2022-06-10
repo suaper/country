@@ -125,7 +125,7 @@ export default {
   methods: {
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/399?_format=json', {
+      configServices.loadData(this, '/node/1071?_format=json', {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_banner_seccion[0].target_uuid

@@ -27,7 +27,7 @@
       <!-- Hockey -->
       <q-btn :disable="getDisable('/deportes/hockey')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey')" outline color="submenu" label="Hockey" />
       <q-btn :disable="getDisable('/deportes/hockey/nosotros')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey/nosotros')" outline color="submenu" label="Nosotros" />
-      <q-btn :disable="getDisable('/deportes/hockey/categoria')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey/categoria')" outline color="submenu" label="Categorias" />
+      <q-btn :disable="getDisable('/deportes/hockey/categoria')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey/categoria')" outline color="submenu" label="Categorías" />
       <q-btn :disable="getDisable('/deportes/hockey/calendario')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey/calendario')" outline color="submenu" label="Calendario" />
       <q-btn :disable="getDisable('/deportes/hockey/noticias')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/hockey/multimedia')" v-if="path === 'hockey'" @click="goItem('/deportes/hockey/multimedia')" outline color="submenu" label="Multimedia" />
