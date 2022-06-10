@@ -24,7 +24,7 @@
                 <li v-for="(item, key) in portadas" :key="key">
                     <img :src="urlSite + item.field_portada_kids" alt="">
                     <h6 class="title">{{ item.title }}</h6>
-                    <a :href="'/#/kids/' + item.title.replaceAll(' ', '-').toLowerCase()">Ir a <span class="material-icons">arrow_right_alt</span></a>
+                    <a @click="goItem($event, item.title)" href="#">Ir a <span class="material-icons">arrow_right_alt</span></a>
                 </li>
             </ul>
         </div>
@@ -227,6 +227,10 @@ export default {
           _this.personal = data
         }
       })
+    },
+    goItem (e, title) {
+      e.preventDefault()
+      this.$router.push('/kids/' + title.replaceAll(' ', '-').toLowerCase())
     },
     getMultimediaHome () {
       var _this = this

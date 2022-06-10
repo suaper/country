@@ -56,7 +56,7 @@
               <table>
                 <tr>
                   <td>
-                    <a href="#">
+                    <a target="_blank" :href="info.field_enlace[0].uri">
                       <img class="q-mx-none" alt="img2" :src="info.field_imagen_pago[0].url">
                     </a>
                   </td>

@@ -48,7 +48,7 @@
                     </tr>
                     <tr v-for="(item, key) in cuotas" :key="key">
                         <td>{{ item.field_categoria_cuota }}</td>
-                        <td>{{ addCommas(item.field_cuota) }}</td>
+                        <td>$ {{ addCommas(item.field_cuota) }}</td>
                         <td>{{ item.field_tipo_de_cuota_trimestral }}</td>
                     </tr>
                 </table>
