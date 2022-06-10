@@ -5099,3 +5099,21 @@ h5.text_normal{
         opacity: 1;
     }
 }
+.q-dialog {
+    .staff.deportestaff{
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    .datos_staff_contacto{
+        tr{
+            td{
+                img{
+                    width: 118px;
+                    height: 118px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

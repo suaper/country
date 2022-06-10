@@ -19,7 +19,7 @@
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club">
         <div class="centrar w_1200">
-            <h4 class="subtitle">Convenios de intercambio con otros Clubes Nacionales</h4>
+            <h4 class="subtitle">Convenios de Intercambio con otros Clubes Nacionales</h4>
             <div class="flex flex-center items-start w_1200">
                 <div class="table_clubes cincuenta">
                     <table>
@@ -62,7 +62,7 @@
 
     <div class="q-pb-md all_width gris_home wrp_club">
         <div class="centrar w_1200">
-            <h4 class="subtitle">Convenios de intercambio con otros Clubes Internacionales</h4>
+            <h4 class="subtitle">Convenios de Intercambio con otros Clubes Internacionales</h4>
             <div class="flex flex-center items-start w_1200">
                 <div class="img_clubes left text-left q-mr-md">
                     <img class="cien" src="../assets/MiClub/club02.png">
