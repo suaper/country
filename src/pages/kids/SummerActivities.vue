@@ -23,7 +23,7 @@
                 <h5 class="txt_norm">Fechas</h5>
                 <ul>
                     <li v-for="(item, key) in dates" :key="key">
-                        <p><strong>{{ getDate(item.field_fecha) }}</strong></p>
+                        <p><strong>{{ item.field_fecha_kids }}</strong></p>
                         <span>{{ item.field_info_fecha }}</span>
                     </li>
                 </ul>

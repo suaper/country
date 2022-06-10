@@ -239,6 +239,7 @@ export default {
         case 'Compañia':
         case 'Compañias':
         case 'Compañías':
+        case 'Compañía':
           this.$router.push('/cultura/compania')
           break
         case 'Obras':

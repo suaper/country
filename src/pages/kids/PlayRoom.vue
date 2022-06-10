@@ -15,7 +15,7 @@
     </div>
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Play Room</div>
+            <div class="center text-center q-my-lg titulos">Playroom</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
     </div>

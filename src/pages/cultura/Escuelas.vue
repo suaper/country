@@ -49,7 +49,7 @@
 
             <q-card-section class="pop_club bg_white libro_icn">
               <span class="autor bold">Reserva de Servicios</span>
-              <span class="autor bold">Nombre del Servicio</span>
+              <span class="autor bold">{{ item.title }}</span>
             </q-card-section>
             <q-card-section class="pop_descargar bg_white list_biblioteca">
               <q-form
