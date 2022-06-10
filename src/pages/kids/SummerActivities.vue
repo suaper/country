@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <q-btn outline @click="pop_consultar = true" class="azul q-my-md centrar bg_white_i" label="Inscribirse" icon-right="arrow_right_alt"/>
+                <!--<q-btn outline @click="pop_consultar = true" class="azul q-my-md centrar bg_white_i" label="Inscribirse" icon-right="arrow_right_alt"/>-->
             </div>
 
             <div class="right cuarentaycinco wrp_table">

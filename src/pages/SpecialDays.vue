@@ -19,7 +19,36 @@
         </div>
     </div>
 
-    <div class="q-py-none all_width bg_amarillo wrp_club hazte_socio">
+    <div :class="(key % 2) === 0 ? 'q-py-xl all_width bg_amarillo wrp_club hazte_socio' : 'q-py-xl all_width bg_amarillo wrp_club hazte_socio'" v-for="(item, key) in moments" :key="key" >
+        <div class="centrar w_1200">
+        <div class="center text-center q-mb-lg titulos" v-show="item.title === 'Happy Hour'">Momentos</div>
+        <hr class="hr_amarillo" v-show="item.title === 'Happy Hour'">
+          <table class="contenido_fitness q-my-md" v-show="item.title === 'Happy Hour'">
+              <tr>
+                  <td>
+                      <h6 class="title_text open">{{ item.title }}</h6>
+                      <p v-html="item.body"></p>
+                  </td>
+                  <td>
+                      <img :src="urlSite + item.field_image" />
+                  </td>
+              </tr>
+          </table>
+
+          <table class="contenido_fitness q-my-md" v-show="item.title !== 'Happy Hour'">
+              <tr>
+                  <td>
+                      <img :src="urlSite + item.field_image" />
+                  </td>
+                  <td>
+                      <h6 class="title_text open">{{ item.title }}</h6>
+                      <p v-html="item.body"></p>
+                  </td>
+              </tr>
+          </table>
+        </div>
+    </div>
+    <div class="q-py-none all_width gris_home wrp_club hazte_socio">
         <div class="centrar w_1200">
         <div class="text-left q-mb-none q-mt-xl titulos">Próximos Eventos</div>
             <div class="wrp_gallery_beneficios">
@@ -92,35 +121,6 @@
         </q-dialog>
     </div>
 
-    <div :class="(key % 2) === 0 ? 'q-py-xl all_width gris_home wrp_club hazte_socio' : 'q-py-xl all_width gris_home wrp_club hazte_socio'" v-for="(item, key) in moments" :key="key" >
-        <div class="centrar w_1200">
-        <div class="center text-center q-mb-lg titulos" v-show="item.title === 'Happy Hour'">Momentos</div>
-        <hr class="hr_amarillo" v-show="item.title === 'Happy Hour'">
-          <table class="contenido_fitness q-my-md" v-show="item.title === 'Happy Hour'">
-              <tr>
-                  <td>
-                      <h6 class="title_text open">{{ item.title }}</h6>
-                      <p v-html="item.body"></p>
-                  </td>
-                  <td>
-                      <img :src="urlSite + item.field_image" />
-                  </td>
-              </tr>
-          </table>
-
-          <table class="contenido_fitness q-my-md" v-show="item.title !== 'Happy Hour'">
-              <tr>
-                  <td>
-                      <img :src="urlSite + item.field_image" />
-                  </td>
-                  <td>
-                      <h6 class="title_text open">{{ item.title }}</h6>
-                      <p v-html="item.body"></p>
-                  </td>
-              </tr>
-          </table>
-        </div>
-    </div>
     <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="row_wrap no-wrap flex justify-start">
