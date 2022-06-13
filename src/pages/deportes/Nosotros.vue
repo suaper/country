@@ -58,9 +58,10 @@ export default {
       loadedEspiritu: false
     }
   },
-  mounted () {
+  created () {
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
+    console.log(this.path)
     this.subPath = currentPath[3]
 
     this.getInfo()

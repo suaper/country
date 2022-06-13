@@ -205,6 +205,10 @@ export default {
 
       _this.key = _this.key + 1
     },
+    getMonth (dateInput) {
+      var date = new Date(dateInput)
+      return this.options[date.getUTCMonth()]
+    },
     getPositions (tournament) {
       var _this = this
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
