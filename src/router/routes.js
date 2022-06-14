@@ -176,6 +176,20 @@ const routes = [
     ]
   },
   {
+    path: '/spa/horarios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/Horarios.vue') }
+    ]
+  },
+  {
+    path: '/spa/actividades',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/spa/Actividades.vue') }
+    ]
+  },
+  {
     path: '/spa/peluqueria',
     component: () => import('layouts/MainLayout.vue'),
     children: [

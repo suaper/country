@@ -6,7 +6,7 @@
             <div class="center text-center q-my-lg titulos">Compañía</div>
             <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
-        <div class="q-py-md w_1000 centrar flex_companias justify-center">
+        <div class="q-py-md w_1000 centrar flex_companias uss justify-center">
             <table class="datos_staff_contacto" v-for="(item, key) in info" :key="key">
                 <tr>
                     <td>

@@ -19,7 +19,7 @@
         <ul class="list_palmaresFutbol q-py-md list_info_campeonatos flex flex-start">
             <li v-for="(item, key) in links" :key="key">
                 <div class="box_download q-ma-none m_left_20 flex bg_white">
-                  <a :href="item.field_enlace_item_torneo[0].uri">
+                  <a class="ajust" :href="item.field_enlace_item_torneo[0].uri">
                     <img :src="item.field_icono_item[0].url">
                     <div class="text">
                         <span class="bold">{{ item.field_titulo_campo[0].value }}</span>
