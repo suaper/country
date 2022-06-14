@@ -1302,8 +1302,13 @@ h5.style_title{
     .treintaydos_general{
         background: #fff;
         width: 32%;
-        padding: 25px 14px 15px;
+        margin: 0 1%;
+        padding: 19px 14px 15px;
         border-radius: 10px;
+        border: 1px solid #CA9E64;
+        .galeri_event{
+            margin: 0px auto;
+        }
         td{
             display: flex;
             flex-direction: column;
@@ -2029,8 +2034,8 @@ h6.peluqueria{
     width: 32%;
     padding: 0px;
     border-radius: 10px;
+    border: 1px solid #CA9E64;
     .galeri_event{
-        border: 1px solid #CA9E64;
         min-height: 220px;
 
         .th_top{
@@ -2566,6 +2571,20 @@ h6.peluqueria{
         align-items: center;
     }
 }
+.uss{
+    .raius{
+        width: 118px;
+        height: 118px;
+        border-radius: 50%;
+    }
+    .datos_staff_contacto{
+        width: 24%;
+
+        td{
+            text-align: center;
+        }
+    }
+}
 .wrp_staff_biblioteca{
     ul{
         padding: 0;
@@ -2634,7 +2653,7 @@ h6.peluqueria{
                 font-weight: 400;
                 letter-spacing: 0px;
                 color: #1F2660;
-                margin: 7px;
+                padding: 10px;
                 text-decoration: none;
             }
         }
@@ -2643,7 +2662,7 @@ h6.peluqueria{
 .browse_salones{
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: inherit;
     flex-wrap: wrap;
 }
 
@@ -2686,6 +2705,10 @@ h6.peluqueria{
             &:nth-child(3){
                 display: flex;
                 justify-content: center;
+                flex-wrap: wrap;
+                p{
+                    margin: 0 0 4px;
+                }
             }
         }
     }
@@ -5115,6 +5138,77 @@ h5.text_normal{
                     border-radius: 50%;
                 }
             }
+        }
+    }
+}
+.table_horarios{
+    table{
+        width: 100%;
+        background: #fff;
+        border: 1px solid #e8c290;
+        border-collapse: collapse;
+
+        th{
+            text-align: left;
+            font-size: 24px;
+            letter-spacing: 0px;
+            color: #1F2660;
+            opacity: 1;
+            padding: 10px;
+            background: #fff;
+            font-weight: normal;
+        }
+        tr{
+            td{
+                background: #FDF9F2;
+                padding: 10px;
+                letter-spacing: 0px;
+                color: #7C7E91;
+                font-size: 14px;
+            }
+            &:nth-child(2n-1){
+                td{
+                    background: #fff;
+                }
+            }
+        }
+    }
+}
+.ajust{
+    display: flex;
+    min-width: 200px;
+}
+.list_descargables{
+    padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: inherit;
+    li{
+        list-style: none;
+        background: #fff;
+        margin: 10px;
+        width: 190px;
+        border-radius: 10px;
+    }
+     a{
+         padding: 20px 20px 10px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         text-decoration: none;
+
+         button{
+            text-transform: capitalize;
+        }
+        .q-btn__wrapper:before{
+            box-shadow: none;
+        }
+        strong{
+            text-align: center;
+            letter-spacing: 0px;
+            color: #1F2660;
+            font-size: 14px;
+            font-weight: bold;
         }
     }
 }

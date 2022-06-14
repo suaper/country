@@ -49,7 +49,7 @@
                 class="galeria_beneficios"
                 >
                 <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in booksMoreReads" :key="key">
-                    <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
+                    <div class="row fit flex-start items-center q-gutter-xs q-col-gutter no-wrap">
                         <div class="treintaydos_general" v-for="(book, keyBook) in item" :key="keyBook">
                             <table class="galeri_event">
                                 <tr>
@@ -161,7 +161,7 @@
             </q-card-section>
         </q-card>
     </q-dialog>
-    <div class="q-pb-xl all_width bg_gris wrp_club hazte_socio">
+    <!--<div class="q-pb-xl all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
         <div class="text-left q-mb-none q-mt-xl titulos">Literatura Infantil</div>
             <div class="wrp_gallery_biblioteca q-mt-md">
@@ -203,7 +203,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div class="q-py-xl all_width gris_home wrp_club wrp_staff_biblioteca">
         <div class="centrar w_1200 items-center">

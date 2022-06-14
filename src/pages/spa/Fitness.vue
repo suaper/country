@@ -22,7 +22,7 @@
             <li v-for="(item, key) in items" :key="key">
                 <img :src="urlSite + item.field_icono_item">
                 <strong>{{ item.field_titulo_item }}</strong>
-                <a :href="item.field_enlace_item_1" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-></span></a>
+                <a @click="goActividades()" target="_blank" icon-right="arrow_right_alt">Ver más  <span>-></span></a>
             </li>
         </ul>
     </div>
@@ -250,6 +250,12 @@ export default {
           _this.$q.loading.hide()
         }
       })
+    },
+    goHorarios () {
+      this.$router.push('/spa/horarios/')
+    },
+    goActividades () {
+      this.$router.push('/spa/actividades/')
     }
   }
 }
