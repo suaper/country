@@ -59,7 +59,7 @@
        <q-btn :disable="getDisable('/deportes/squash/multimedia')" v-if="path === 'squash'" @click="goItem('/deportes/squash/multimedia')" outline color="submenu" label="Multimedia" />
        <q-btn :disable="getDisable('/deportes/squash/contacto')" v-if="path === 'squash'" @click="goItem('/deportes/squash/contacto')" outline color="submenu" label="Contacto" />
        <!-- Paddle -->
-       <q-btn :disable="getDisable('/deportes/paddle')" v-if="path === 'paddle'" @click="goItem('/deportes/paddle')" outline color="submenu" label="paddle" />
+       <q-btn :disable="getDisable('/deportes/paddle')" v-if="path === 'paddle'" @click="goItem('/deportes/paddle')" outline color="submenu" label="Paddle" />
        <q-btn :disable="getDisable('/deportes/paddle/calendario')" v-if="path === 'paddle'" @click="goItem('/deportes/paddle/calendario')" outline color="submenu" label="Calendario" />
        <q-btn :disable="getDisable('/deportes/paddle/ranking')" v-if="path === 'paddle'" @click="goItem('/deportes/paddle/ranking')" outline color="submenu" label="Ranking" />
        <q-btn :disable="getDisable('/deportes/paddle/noticias')" v-if="path === 'paddle'" @click="goItem('/deportes/paddle/noticias')" outline color="submenu" label="Noticias" />

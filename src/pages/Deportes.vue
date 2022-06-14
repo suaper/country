@@ -60,7 +60,7 @@
     </div>
     <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
         <h5 class="text-white text_normal">Visita nuestro Calendario de Eventos</h5>
-          <q-btn outline click="pop_form_socio = true" class="text_beige sin_borde" label="" icon-right="event"/>
+          <q-btn @click="goToCalendar" outline click="pop_form_socio = true" class="text_beige sin_borde" label="" icon-right="event"/>
     </div>
     <div class="q-py-none all_width bg_amarillo wrp_club">
         <div class="q-py-md centrar text-center w_1200">
@@ -246,6 +246,9 @@ export default {
     },
     onReset () {
 
+    },
+    goToCalendar () {
+      this.$router.push('/deportes/calendario')
     },
     onSubmit () {
       var _this = this

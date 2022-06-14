@@ -102,7 +102,7 @@ export default {
         var _this = this
         configServices.loadData(this, '/noticias/' + filter + '/json', {
           callBack: (data) => {
-            const n = 8
+            const n = 3
             _this.notices = new Array(Math.ceil(data.length / n))
               .fill()
               .map(_ => data.splice(0, n))
@@ -120,7 +120,11 @@ export default {
       configServices.loadData(this, '/noticias-todas/json', {
         callBack: (data) => {
           const n = 3
+          var notices = []
           data.map((item, key) => {
+            if (key <= 30) {
+              notices.push(item)
+            }
             var filter = {
               title: item.field_mostra_en_
             }
@@ -138,9 +142,9 @@ export default {
             }
           })
 
-          _this.notices = new Array(Math.ceil(data.length / n))
+          _this.notices = new Array(Math.ceil(notices.length / n))
             .fill()
-            .map(_ => data.splice(0, n))
+            .map(_ => notices.splice(0, n))
 
           _this.$q.loading.hide()
         }

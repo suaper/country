@@ -1,12 +1,13 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/calendario'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/calendario'" v-if="path !== 'squash'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/torneos'" v-if="path === 'squash'"/>
 
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
             <div class="center text-center q-pt-md q-my-lg titulos">Calendario</div>
             <Anclas :goAnchor="filterItem" :path="path" :subPath="subPath"/>
-            <Fechas :info="events" v-if="loadedEvents" :eventsByMonth="getEventsByMonth" :key="key"/>
+            <Fechas :info="events" v-if="loadedEvents" :eventsByMonth="getEventsByMonth" :key="key" :eventMonth="month"/>
         </div>
     </div>
 
@@ -71,7 +72,8 @@ export default {
       keyPositions: 0,
       images: {},
       loadedImages: false,
-      selectedItem: false
+      selectedItem: false,
+      month: ''
     }
   },
   created () {
@@ -204,6 +206,7 @@ export default {
         .map(_ => newEvents.splice(0, n))
 
       _this.key = _this.key + 1
+      _this.month = componentMonth
     },
     getMonth (dateInput) {
       var date = new Date(dateInput)

@@ -2,7 +2,7 @@
     <div class="wrp_gallery_beneficios">
       <div class="w_1200 centrar">
         <div class="wrp_busca_mes w_500 centrar" v-if="showFilter()">
-            <q-select outlined label="Seleccione el mes" v-model="month" :options="options" @input="eventsByMonth(month)" />
+            <q-select outlined label="Seleccione el mes" v-model="month" :options="options" @input="getEventsByMonth(month)" />
         </div>
       </div>
       <q-carousel
@@ -79,7 +79,8 @@ export default {
   name: 'CincoProximos',
   props: {
     info: Array,
-    eventsByMonth: Function
+    eventsByMonth: Function,
+    eventMonth: String
   },
   data () {
     return {
@@ -100,10 +101,18 @@ export default {
       ]
     }
   },
+  created () {
+    if (this.eventMonth !== '') {
+      this.month = this.eventMonth
+    }
+  },
   methods: {
     showFilter () {
       if (typeof this.eventsByMonth !== 'undefined') return true
       return false
+    },
+    getEventsByMonth (month) {
+      this.eventsByMonth(month)
     },
     openDetalleEvento (event) {
       this.event = event

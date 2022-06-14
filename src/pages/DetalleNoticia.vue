@@ -1,16 +1,16 @@
 <template>
   <q-page class="flex justify-between view_quienes_somos">
-    <div class="q-pb-md all_width gris_home etiquetas">
+    <div class="q-pb-md all_width gris_home etiquetas" v-if="loadedInfo">
         <div class="center text-center q-my-lg titulos q-mt-2">Noticias</div>
         <div class="centrar w_1200">
           <div class="center text-center q-my-lg titulo2 q-mt-2">{{ info.title[0].value }}</div>
         </div>
-        <div class="img_noticia centrar w_1200 text-center" v-if="info.field_imagen_noticia.length !== 0"><img :src="info.field_imagen_noticia[0].url" alt="#"></div>
+        <div class="img_noticia centrar w_1200 text-center" v-if="info.field_imagen_noticia.length !== 0"><img style="width: 800px;" :src="info.field_imagen_noticia[0].url" alt="#"></div>
         <div class="centrar w_1200 text_noticias" v-html="info.body[0].value"></div>
         <div class="centrar w_1200 text_noticias">
           <table class="noticias">
             <tr>
-              <td v-if="info.field_imagen_noticia_2.length !== 0"><img :src="info.field_imagen_noticia_2[0].url" alt="#"></td>
+              <td v-if="info.field_imagen_noticia_2.length !== 0"><img :src="info.field_imagen_noticia_2[0].url"></td>
               <td v-html="info.field_bloque_2_noticias[0].value"></td>
             </tr>
           </table>
@@ -55,7 +55,8 @@ export default {
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_cuota: false,
       cuotas: [],
-      id: ''
+      id: '',
+      loadedInfo: false
     }
   },
   created () {
@@ -67,8 +68,8 @@ export default {
       var _this = this
       configServices.loadData(this, '/node/' + _this.id + '?_format=json', {
         callBack: (data) => {
-          console.log(data.field_imagen_noticia_2)
           _this.info = data
+          _this.loadedInfo = true
           _this.$q.loading.hide()
         }
       })

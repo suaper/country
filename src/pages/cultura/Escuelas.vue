@@ -49,7 +49,7 @@
 
             <q-card-section class="pop_club bg_white libro_icn">
               <span class="autor bold">Reserva de Servicios</span>
-              <span class="autor bold">{{ item.title }}</span>
+              <span class="autor bold">{{ currentItem.title }}</span>
             </q-card-section>
             <q-card-section class="pop_descargar bg_white list_biblioteca">
               <q-form
@@ -170,6 +170,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/escuelas/json', {
         callBack: (data) => {
+          console.log(data)
           _this.info = data
           _this.$q.loading.hide()
         }
