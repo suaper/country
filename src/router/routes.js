@@ -981,6 +981,20 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/futbol',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Futbol.vue') }
+    ]
+  },
+  {
+    path: '/deportes/ramas',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/Ramas.vue') }
+    ]
+  },
+  {
     path: '/deportes/calendario',
     component: () => import('layouts/MainLayout.vue'),
     children: [
