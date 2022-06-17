@@ -40,7 +40,7 @@
                 <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
             <div class="w_35">
-                <iframe width="320" height="460" src="https://www.instagram.com/p/CdPEYWhJ1xY/embed" frameborder="0"></iframe>
+                <iframe width="320" height="460" :src="'https://www.instagram.com/p/' + instagram.field_instagram_tennis[0].value + '/embed'" frameborder="0"></iframe>
             </div>
           </div>
         </div>
@@ -131,7 +131,8 @@ export default {
       loadedEvents: false,
       loadedPersonal: false,
       bannerDeportes: [],
-      loadedBannerDeportes: false
+      loadedBannerDeportes: false,
+      instagram: {}
     }
   },
   created () {
@@ -224,6 +225,12 @@ export default {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
           _this.loadedInfo = true
+        }
+      })
+
+      configServices.loadData(this, '/node/1070?_format=json', {
+        callBack: (data) => {
+          _this.instagram = data
         }
       })
 

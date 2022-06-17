@@ -38,7 +38,7 @@
                 <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
             <div>
-                <iframe width="320" height="460" src="https://www.instagram.com/p/CbskERQJwsW/embed" frameborder="0"></iframe>
+                <iframe width="320" height="460" :src="'https://www.instagram.com/p/' + instagram.field_instagram_squash[0].value + '/embed'" frameborder="0"></iframe>
             </div>
           </div>
         </div>
@@ -129,7 +129,8 @@ export default {
       bannerDeportes: [],
       loadedBannerDeportes: false,
       reglamentos: {},
-      loadedReglamentos: false
+      loadedReglamentos: false,
+      instagram: {}
     }
   },
   created () {
@@ -222,6 +223,12 @@ export default {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
           _this.loadedInfo = true
+        }
+      })
+
+      configServices.loadData(this, '/node/1070?_format=json', {
+        callBack: (data) => {
+          _this.instagram = data
         }
       })
 

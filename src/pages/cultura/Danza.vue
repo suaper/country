@@ -138,7 +138,7 @@
                   </q-form>
               </div>
               <div class="staff">
-                <iframe width="320" height="460" src="https://www.instagram.com/p/CcGUHYUOD8y/embed" frameborder="0"></iframe>
+                <iframe width="320" height="460" :src="'https://www.instagram.com/p/' + instagram.field_instagram_danza[0].value + '/embed'" frameborder="0"></iframe>
               </div>
           </div>
         </div>
@@ -196,6 +196,7 @@ export default {
         field_imagen_perfil: ''
       },
       ballet: [],
+      instagram: {},
       notices: [
         {
           title: '',
@@ -231,7 +232,6 @@ export default {
     },
     goItem (e, item) {
       e.preventDefault()
-      console.log(item)
       switch (item) {
         case 'Escuelas':
           this.$router.push('/cultura/escuelas')
@@ -284,6 +284,12 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/node/1070?_format=json', {
+        callBack: (data) => {
+          _this.instagram = data
         }
       })
 
