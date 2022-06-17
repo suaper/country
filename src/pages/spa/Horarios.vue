@@ -6,36 +6,20 @@
             <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
         <ul class="wrp_actions_center_peluqueria">
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Fitness Funcional</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Gimnasia de Mantención</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Personal Trainer</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Pilates</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Training Golf</a>
-            </li>
-            <li>
-                <a href="#" icon-right="arrow_right_alt">Yoga</a>
+            <li v-for="(item, key) in horarios" :key="key">
+                <a href="#" @click="showItem($event, item)" icon-right="arrow_right_alt">{{ item.title }}</a>
             </li>
         </ul>
     </div>
     <div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio" v-if="loadedHorario">
         <div class="centrar w_1000">
-            <h6 class="peluqueria q-mt-none">Spinning</h6>
-            <p>Es una clase donde se debe pedalear sobre una bicicleta estática al ritmo de la música, dirigida por un profesor, quien da las instrucciones de ritmo, velocidades, cargas y movimientos sobre la bicicleta. Desarrolla principalmente la capacidad cardiovascular del individuo y aporta significativamente a la baja de porcentaje de tejido adiposo corporal, dependiendo de los niveles de frecuencia cardiaca en que se trabaje. Se localiza la mayor parte del trabajo en el tren inferior.</p>
-            <p> También conecta tu mente y tu cuerpo, motivado por paseos virtuales acompañados de la mejor música. Una clase que todos pueden seguir.</p>
+            <h6 class="peluqueria q-mt-none">{{ horario.title }}</h6>
+            <p v-html="horario.body"></p>
         </div>
     </div>
-    <div class="q-py-xl all_width gris_home table_horarios">
+    <div class="q-py-xl all_width gris_home table_horarios" v-if="loadedHorario">
         <div class="centrar w_1000">
         <h6 class="peluqueria q-mt-none">Clases y Horarios</h6>
           <table class="blanco">
@@ -45,29 +29,11 @@
                 <th>Horarios</th>
                 <th>Profesor/a</th>
             </tr>
-            <tr>
-                <td>Spinning</td>
-                <td>Presencial</td>
-                <td>Martes y Jueves <br> 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
-            </tr>
-            <tr>
-                <td>Spinning</td>
-                <td>Presencial</td>
-                <td>Martes y Jueves <br> 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
-            </tr>
-            <tr>
-                <td>Spinning</td>
-                <td>Presencial</td>
-                <td>Martes y Jueves <br> 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
-            </tr>
-            <tr>
-                <td>Spinning</td>
-                <td>Presencial</td>
-                <td>Martes y Jueves <br> 7:30 a 8:15</td>
-                <td>Daniela Rojas</td>
+            <tr v-for="(item, key) in horario.subServices" :key="key">
+                <td>{{ item.field_clase }}</td>
+                <td>{{ item.field_tipo }}</td>
+                <td>{{ item.field_horario }}</td>
+                <td>{{ item.field_profesor_a }}</td>
             </tr>
           </table>
         </div>
@@ -76,23 +42,73 @@
 </template>
 
 <script>
+import configServices from '../../services/config'
 
 export default {
   name: 'Horarios',
 
   data () {
     return {
-      sliders: true
+      sliders: true,
+      horarios: [],
+      horario: {},
+      loadedHorario: false
     }
   },
   created () {
     this.getInfo()
   },
   methods: {
-    goToAnchor (e, item) {
+    showItem (e, item) {
       e.preventDefault()
-      const el = document.querySelector(item)
-      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      this.horario = item
+      this.loadedHorario = true
+    },
+    getInfo () {
+      var _this = this
+
+      configServices.loadData(this, '/horarios-clases-profesores/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var service = {
+              title: item.field_nombre_disciplina,
+              body: item.body,
+              subServices: [
+                {
+                  field_clase: item.field_clase,
+                  field_horario: item.field_horario,
+                  field_profesor_a: item.field_profesor_a,
+                  field_tipo: item.field_tipo
+                }
+              ]
+            }
+            const isFound = _this.horarios.find((element, index) => {
+              if (element.title === item.field_nombre_disciplina) {
+                _this.horarios.splice(index, 1)
+                return element
+              }
+            })
+
+            if (isFound && typeof isFound !== 'undefined') {
+              isFound.subServices.push({
+                field_clase: item.field_clase,
+                field_horario: item.field_horario,
+                field_profesor_a: item.field_profesor_a,
+                field_tipo: item.field_tipo
+              })
+
+              _this.horarios.push(isFound)
+            } else {
+              _this.horarios.push(service)
+            }
+          })
+
+          _this.horario = _this.horarios[0]
+          _this.loadedHorario = true
+
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }

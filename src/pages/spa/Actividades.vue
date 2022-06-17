@@ -1,6 +1,5 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos view_calendario">
-    <Menucalendario currentItem="/calendario"/>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-xl titulos">Actividades</div>
@@ -228,7 +227,7 @@ export default {
     },
     getEvents () {
       var _this = this
-      configServices.loadData(this, 'eventos-calendario/' + _this.currentItem + '/json', {
+      configServices.loadData(this, 'eventos-calendario/fitness/json', {
         callBack: (data) => {
           _this.allEvents = data
 
