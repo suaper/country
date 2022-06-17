@@ -341,7 +341,8 @@ h5.style_title{
     width: 100%;
 }
 .row_wrap{
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     margin: 0px auto;
 }
 .gris_home{
@@ -5320,4 +5321,187 @@ h5.text_normal{
         justify-content: space-between;
         align-items: center;
     }
+}
+
+//Estilos para dispositivos moviles
+@media only screen and (max-width: 900px) and ( min-width:0px ) {
+    .first_row_home{
+        &.no-wrap{
+            flex-wrap: wrap;
+        }
+        >div{
+            width: 100%;
+            .hover_iframe{
+                iframe{
+                    width: 100% !important;
+                    max-width: 560px!important;
+                }
+            }
+            .sin_fondo{
+                width: 100%;
+            }
+        }
+    }
+    .first_row_home > div .hover_iframe:hover:before{
+        max-width: 560px;
+        width: 100%;
+    }
+    .text-h6-home{
+        font-size: 40px;
+    }
+    footer{
+        .row_wrap{
+            ul{
+                flex-wrap: wrap;
+                li{
+                    width: 90%;
+                    margin: 10px auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    &:after{
+                        content: "";
+                        height: 1px;
+                        width: 70px;
+                        background: #575656;
+                        right: 0;
+                        top: -5px;
+                        position: absolute;
+                        left: 50%;
+                        margin-left: -35px;
+                    }
+                    table{
+                        width: 50%;
+                        td{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //responsive miltimedia
+    .esquma_inferior{
+        tr{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            td{
+                width: 90% !important;
+            }
+        }
+    }
+    //menu principal
+    header{
+        >.q-tabs{
+            display: none;
+        }
+    }
+    main{
+        >.new_wrap{
+            margin-bottom: -10px;
+            display: block;
+            position: relative;
+            z-index: 9;
+            .new_wrap{
+                margin: 10px auto 0;
+                .buscador_general {
+                    width: 87%;
+                    label{
+                        margin-right: 17px;
+                        width: 85%;
+                    }
+                }
+            }
+        }
+    }
+    .nav_principal{
+        display: none;
+    }
+    .sub_menu{
+        margin: 15px auto 4px;
+        z-index: 99;
+        border-radius: 0;
+        width: 96%;
+        flex-wrap: wrap;
+        display: flex !important;
+        justify-content: center;
+        .q-btn--outline .q-btn__wrapper:before{
+            border:none
+        }
+    }
+    .titulos{
+        font-size: 40px;
+    }
+    .w_1200{
+        max-width: 1200px;
+        width: 100%;
+    }
+    //vista fiteness
+    .contenido_fitness{
+        width: 96%;
+        margin: 10px auto;
+        tr{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            td{
+                img{
+                    max-width: 96%;
+                    margin: 0px auto;
+                }
+            }
+        }
+    }
+    .view_fitness{
+        .table_fitnes{
+            th{
+                line-height: 1;
+            }
+            tr{
+                td{
+                    p{
+                        font-size: 14px;
+                    }
+                    &.align_right{
+                        padding-right: 10px;
+                        width: 36%;
+                    }
+                    &.align_left{
+                        padding-left: 10px;
+                        width: 36%;
+                    }
+                    &.center{
+                        font-size: 16px;
+                        width: 24%;
+                    }
+                }
+            }
+        }
+        .fitnes_last{
+            flex-wrap: wrap;
+            .form_fitness{
+                width: 96%;
+                margin: 10px auto;
+            }
+            .staff{
+                width: 96%;
+                margin: 10px auto;
+                .datos_staff {
+                    margin: 10px auto;
+                }
+                .contacto_footer{
+                    width: 96%;
+                    margin: 10px auto;
+                    align-items: center;
+
+                }
+            }
+        }
+    }
+}
+
+.solomovil{
+    color: blue;
 }

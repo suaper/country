@@ -6,10 +6,10 @@
       <div class="wrap_top center">
         <img class="q-mt-lg" alt="img2" src="../assets/Home/logo-country-club.png">
         <div class="btn_right_top">
-
+          <q-btn class="solomovil" flat @click="drawerRight = !drawerRight" round dense icon="menu" />
         </div>
       </div>
-      <q-tabs align="center">
+      <q-tabs align="center nav_principal">
         <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
         <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
@@ -25,6 +25,22 @@
         <q-route-tab to="/calendario" label="Calendario" />
       </q-tabs>
     </q-header>
+    <q-drawer
+      side="right"
+      v-model="drawerRight"
+      show-if-above
+      bordered
+      :width="200"
+      :breakpoint="500"
+      class="bg-grey-3"
+    >
+      <q-scroll-area class="fit pruenamovil">
+       <q-btn class="solomovil" flat @click="drawerRight = !drawerRight" round dense icon="close" />
+        <div class="q-pa-sm">
+          <div v-for="n in 20" :key="n">Drawer {{ n }} / 50</div>
+        </div>
+      </q-scroll-area>
+    </q-drawer>
    <q-page-container>
       <router-view />
     </q-page-container>
@@ -94,7 +110,8 @@ export default {
       info: {},
       loadedInfo: false,
       enlacesMaps: [],
-      loadedEnlaces: false
+      loadedEnlaces: false,
+      drawerRight: false
     }
   },
   created () {
