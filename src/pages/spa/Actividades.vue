@@ -86,7 +86,7 @@
                     <a href="#">
                       <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/ballet1.png">
                       <strong>Competencias</strong>
-                      <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                      <q-btn class="text_azul centrar bg_white btn_centrar" @click="openPopDescargas ()" label="Ver más" icon-right="arrow_right_alt"/>
                     </a>
                 </li>
                 <li>
@@ -113,6 +113,89 @@
             </ul>
         </div>
       </div>
+  <q-dialog v-model="LstDescarga" persistent>
+    <q-card>
+        <q-card-section class="row items-center relative salones pop_down">
+            <q-btn icon="close volando" flat round dense v-close-popup />
+            <div class="row">
+                <h4>MASTER</h4>
+                <div class="wrp_search_pop">
+                    <div class="buscador_general">
+                    <q-input
+                      v-model="search"
+                      filled
+                      placeholder="Buscar"
+                    >
+                      <template>
+                      </template>
+                    </q-input>
+
+                    <q-btn class="peque" round color="white" icon="search"/>
+                </div>
+              </div>
+            </div>
+            <div class="list_descargables_pop">
+                <ul class="list_reglamentos q-py-md">
+                    <li>
+                        <div class="box_download q-ma-none m_left_20 flex bg_white">
+                            <img src="../../assets/MiClub/i-pdf.svg">
+                            <div class="text">
+                              <a href="#">
+                                <span class="bold">Título del PDF</span>
+                                <span>Breve descripción</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box_download q-ma-none m_left_20 flex bg_white">
+                            <img src="../../assets/MiClub/i-pdf.svg">
+                            <div class="text">
+                              <a href="#">
+                                <span class="bold">Título del PDF</span>
+                                <span>Breve descripción</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box_download q-ma-none m_left_20 flex bg_white">
+                            <img src="../../assets/MiClub/i-pdf.svg">
+                            <div class="text">
+                              <a href="#">
+                                <span class="bold">Título del PDF</span>
+                                <span>Breve descripción</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box_download q-ma-none m_left_20 flex bg_white">
+                            <img src="../../assets/MiClub/i-pdf.svg">
+                            <div class="text">
+                              <a href="#">
+                                <span class="bold">Título del PDF</span>
+                                <span>Breve descripción</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box_download q-ma-none m_left_20 flex bg_white">
+                            <img src="../../assets/MiClub/i-pdf.svg">
+                            <div class="text">
+                              <a href="#">
+                                <span class="bold">Título del PDF</span>
+                                <span>Breve descripción</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </q-card-section>
+    </q-card>
+  </q-dialog>
   </q-page>
 </template>
 
@@ -129,6 +212,7 @@ export default {
       video: false,
       currentVideo: '',
       currentItem: 'Charlas Culturales',
+      LstDescarga: false,
       month: '',
       slide: 1,
       slidecontent: 0,
@@ -157,6 +241,9 @@ export default {
     this.getEvents()
   },
   methods: {
+    openPopDescargas () {
+      this.LstDescarga = true
+    },
     openDetalleEvento (event) {
       this.event = event
       this.dtevento = true

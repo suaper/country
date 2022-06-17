@@ -5503,5 +5503,105 @@ h5.text_normal{
 }
 
 .solomovil{
-    color: blue;
+    color: #1F2660;
+}
+.solomovil_dos{
+    color: #1F2660;
+    float: right;
+}
+.movil_nav{
+    color: #1F2660 ;
+    .q-tabs .q-tabs__content {
+        flex-direction: column;
+        margin-top: 30px;
+        .absolute-bottom {
+            bottom: 5px;
+        }
+        .q-tab{
+            min-height: 40px;
+        }
+        .q-tab__content{
+            text-align: left;
+            width: 100%;
+            display: block;
+        }
+        .q-tab .q-tab__label {
+            font-size: 14px;
+            letter-spacing: 0px;
+            color: #1f2660;
+            text-transform: capitalize;
+        }
+    }
+}
+.transparent{
+    color: transparent;
+}
+.list_descargables_pop{
+    .list_reglamentos{
+        flex-wrap: wrap;
+
+        li{
+            margin: 15px !important;
+        }
+    }
+}
+
+.pop_down{
+    h4{
+        font-family: $font-title;
+        font-weight: 44px;
+        letter-spacing: -0.88px;
+        color: #1F2660;
+        opacity: 1;
+        margin: 10px;
+    }
+}
+.wrp_search_pop{
+    margin-top: 6px;
+    z-index: 9;
+    .buscador_general{
+        margin-left: 12px;
+        z-index: 99;
+        display: flex;
+        label{
+            width: 68%;
+            position: relative;
+            padding: 0;
+            border:  1px solid #CA9E64;
+            background: #fff;
+            margin-right: 10px;
+            .q-field__control {
+                height: 38px;
+                background: #fff;
+                color: #ca9e64;
+                &:before{
+                    border: none;
+                }
+            }
+        }
+        .q-icon{
+            font-size: 27px;
+            color: #ca9e64;
+            position: absolute;
+            right: 15px;
+            top: 7px;
+        }
+        .peque{
+            border: 1px solid #ca9e64;
+            .q-icon{
+                font-size: 27px;
+                color: #ca9e64;
+                position: absolute;
+                right: 7px;
+                top: 7px;
+            }
+        }
+    }
+}
+.cien.all_width{
+    width: 100%!important;
+    justify-content: center;
+    li{
+        margin: 0px 30px;
+    }
 }

@@ -86,8 +86,7 @@
     </div>
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
-            <h4 class="subtitle sin_margen">Staff</h4>
-            <ul class="contacto_footer">
+            <ul class="contacto_footer cien all_width">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
                     <span>{{ personal[0].field_correo_staff }}</span>

@@ -32,12 +32,26 @@
       bordered
       :width="200"
       :breakpoint="500"
-      class="bg-grey-3"
+      class="bg-grey-3 wrp_nav_movil"
     >
       <q-scroll-area class="fit pruenamovil">
-       <q-btn class="solomovil" flat @click="drawerRight = !drawerRight" round dense icon="close" />
-        <div class="q-pa-sm">
-          <div v-for="n in 20" :key="n">Drawer {{ n }} / 50</div>
+       <q-btn class="solomovil_dos" flat @click="drawerRight = !drawerRight" round dense icon="close" />
+        <div class="q-pa-sm movil_nav">
+          <q-tabs align="vertical">
+            <q-route-tab to="/" label="Inicio" />
+            <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
+            <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
+            <q-route-tab to="/hazte-socio" @click="IrHazteSocio()" label="Hazte Socio" />
+            <q-route-tab to="/gastronomia" label="Gastronomía" />
+            <q-route-tab to="/eventos" label="Eventos" />
+            <q-route-tab to="/special-days" label="Special Days" />
+            <q-route-tab to="/deportes" label="Deportes" />
+            <q-route-tab to="/kids" label="Kids" />
+            <q-route-tab to="/cultura" label="Cultura" />
+            <q-route-tab to="/spa" label="Spa & Wellness" />
+            <q-route-tab to="/noticias" label="Noticias" />
+            <q-route-tab to="/calendario" label="Calendario" />
+          </q-tabs>
         </div>
       </q-scroll-area>
     </q-drawer>

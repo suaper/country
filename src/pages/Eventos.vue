@@ -18,7 +18,7 @@
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Eventos</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
-            <q-btn outline type="a" :href="info.field_cotiza[0].uri" target="_blank" class="azul q-my-xl m_y_20 centrar bg_white_i" label="Cotiza tu evento" icon-right="arrow_right_alt"/>
+            <q-btn outline type="a" to="/eventos/cotizador"  class="azul q-my-xl m_y_20 centrar bg_white_i" label="Cotiza tu evento" icon-right="arrow_right_alt"/>
         </div>
     </div>
   </q-page>
