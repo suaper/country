@@ -2,12 +2,12 @@
     <q-page class="flex flex-center view_quienes_somos">
       <MenuDeporteInterno :currentItem="'/deportes/' + path + '/contacto'"/>
       <div class="q-py-xl all_width bg_gris">
-          <div class="centrar w_1100 fila_separador">
+          <div class="centrar w_1200 fila_separador">
               <div class="w_45 q-mt-xl form_100">
                   <h5 class="style_title q-my-lg" >Información general</h5>
                   <FormContacto />
               </div>
-              <div class="w_45 q-mt-xl">
+              <div class="w_45 q-mt-xl fitnes_last">
                   <h5 class="style_title q-my-lg" >Staff</h5>
                   <Staff :info="personal" v-if="loadedPersonal"/>
               </div>

@@ -3,8 +3,10 @@
    <MenuDeporteInterno currentItem="/deportes/squash/escuelas" />
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-py-xl all_width bg_gris">
-        <div class="centrar w_1100 sin_separador ">
+        <div class="centrar w_1100 sin_separador">
             <div class="center text-center q-my-lg titulos">Escuela</div>
+        </div>
+        <div class="centrar w_1100 sin_separador escuela_doble">
             <div class="w_55">
                 <TablaClasificacion :items="categories" v-if="loadedServices"/>
             </div>
@@ -21,10 +23,12 @@
     <div class="q-py-xl all_width bg_gris">
         <div class="centrar w_1100 sin_separador ">
             <div class="center text-center q-my-lg titulos">Ranking</div>
+        </div>
+        <div class="centrar w_1100 sin_separador ">
             <div class="w_55">
                 <TablaPosiciones :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
             </div>
-            <div class="w_35">
+            <div class="w_35 margon_t">
                 <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>
             </div>
         </div>

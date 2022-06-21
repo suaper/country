@@ -16,8 +16,74 @@
         <div class="cincuenta q-pb-xl centrar text-center">
             <div class="center text-center q-my-lg titulos">Kinesiología</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
-             <q-btn outline  @click="pop_reservar_spa = true" class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+             <q-btn outline  @click="openPopForm ()" class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
         </div>
+        <q-dialog v-model="formulario" >
+        <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige pop_escuelas">
+            <q-card-section class="row items-center q-pb-none relative ">
+                <q-btn class="btn_cerrar" icon="close" flat round dense v-close-popup />
+            </q-card-section>
+
+            <q-card-section class="pop_club bg_white libro_icn">
+              <span class="autor bold">Reserva de Servicios</span>
+              <span class="autor bold">Nombre del Servicio</span>
+            </q-card-section>
+            <q-card-section class="pop_descargar bg_white list_biblioteca">
+              <q-form
+                  @submit="onSubmit"
+                  @reset="onReset"
+                  class="q-gutter-md form_biblioteca"
+                  >
+
+                  <div class="row_2">
+                    <q-input
+                        outlined
+                        v-model="name"
+                        label="Nombre *"
+                        lazy-rules
+                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                    />
+                    <q-input
+                        outlined
+                        v-model="apellido"
+                        label="Apellidos *"
+                        lazy-rules
+                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                    />
+                  </div>
+
+                  <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="telefono"
+                        label="Número de contacto *"
+                        lazy-rules
+                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                    />
+                  </div>
+
+                  <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="correo"
+                        label="Correo electrónico*"
+                    />
+                  </div>
+
+                  <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="rut"
+                        label="Rut"
+                    />
+                  </div>
+                  <div class="fila">
+                      <q-btn outline type="submit" class="azul text_white mt_10 bg_white" label="Inscribirse" icon-right="arrow_right_alt"/>
+                  </div>
+              </q-form>
+            </q-card-section>
+        </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -39,7 +105,7 @@ export default {
           { value: '' }
         ]
       },
-      pop_consultar: false
+      formulario: false
     }
   },
   created () {
@@ -47,6 +113,10 @@ export default {
     this.getInfo()
   },
   methods: {
+    openPopForm (item) {
+      this.currentItem = item
+      this.formulario = true
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/278?_format=json', {

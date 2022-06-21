@@ -3,6 +3,7 @@
         <div class="franja_torneos" v-for="(item, key) in info" :key="key">
             <img :src="urlSite + item.field_imagen_torneo" />
             <div class="sobreponer"><p>{{ item.field_nombre_torneo }} <br> {{ item.field_fecha_torneo }}</p></div>
+            <q-icon class="flotaleft" name="east" />
         </div>
     </div>
 </template>

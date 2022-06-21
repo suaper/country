@@ -9,7 +9,7 @@
                         <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
                     </td>
                     <td>
-                        <p><strong>{{ personal.field_nombre_staff }}</strong></p>
+                        <p class="text-center"><strong>{{ personal.field_nombre_staff }}</strong></p>
                         <p><strong> {{ personal.field_cargo_staff }} </strong></p>
                         <p>{{ personal.field_correo_staff }}</p>
                         <p>{{ personal.field_numero_staff }}</p>

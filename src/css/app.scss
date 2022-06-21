@@ -3788,8 +3788,8 @@ ul.text_horarios{
     }
     .sobreponer{
         position: absolute;
-        left: 50px;
-        top: 100px;
+        left: 120px;
+        top: 86px;
         text-align: left;
         font-size: 25px;
         color: #1F2660;
@@ -3797,9 +3797,23 @@ ul.text_horarios{
         p{
             text-align: left;
             font-size: 25px;
-            color: #1F2660;
+            color: #fff;
             opacity: 1;
+            line-height: 1;
         }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+    .flotaleft{
+        position: absolute;
+        left: 20px;
+        top: 86px;
+        text-align: left;
+        font-size: 45px;
+        color: #fff;
+        opacity: 1;
     }
 }
 
@@ -5604,4 +5618,72 @@ h5.text_normal{
     li{
         margin: 0px 30px;
     }
+}
+.q-pagination{
+    margin: 13px auto;
+    text-align: center;
+    justify-content: center;
+    .q-btn{
+        color: #ca9e64 !important;
+        &.disabled{
+            color: #ca9e64 !important;
+        }
+        .q-btn__wrapper{
+            min-height: 20px;
+        }
+    }
+    >.justify-center{
+        button{
+            background: #fff;
+            border-radius: 50%;
+            border: 1px solid #ddbc91;
+            margin: 0px 4px;
+        }
+        .q-btn--active{
+            background: #ddbc91;
+            color: #fff !important;
+        }
+    }
+}
+.hockey_poop{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .deportestaff{
+        .flex{
+            justify-content: flex-start;
+            table{
+                margin: 7px;
+                width: 30%;
+                td{
+                    background: #fff;
+                }
+            }
+        }
+    }
+}
+.block{
+    display: block;
+}
+.escuela_doble{
+    justify-content: space-between;
+    .w_35{
+        h3{
+            margin: 0px 0px 5px;
+            font-family: "Open Sans", sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+        }
+    }
+}
+
+.margon_t{
+    .box_download{
+        margin-top: 40px;
+    }
+}
+.wrp_table_clasificacion .wrp_busca_mes label .q-field__control{
+    height: 55px;
 }

@@ -14,7 +14,7 @@
       control-color="primary"
       padding
       arrows
-      height="300px"
+      height="340px"
       class="galeria_beneficios"
       >
         <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in events" :key="key">
