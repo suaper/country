@@ -156,7 +156,7 @@
               </div>
               <div class="staff">
               <h6 class="title_text">Staff</h6>
-                 <div class="flex">
+                 <div class="flex no-wrap">
                     <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
                         <tr>
                             <td>

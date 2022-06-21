@@ -31,14 +31,15 @@
 
     <q-dialog v-model="comite" persistent>
       <q-card>
-        <q-card-section class="row items-center">
-          <h2>Comité de {{ sport }}</h2>
-          <Staff :info="info"/>
+          <q-card-section class="row items-center relative salones pop_down">
+              <q-btn icon="close volando" flat round dense v-close-popup />
+              <div class="row text-center block">
+                  <h4 class="text-center">Comité de {{ sport }}</h4>
+              </div>
+              <div class="flex hockey_poop">
+                <Staff :info="info"/>
+              </div>
         </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn flat label="Cerrar" color="primary" v-close-popup />
-        </q-card-actions>
       </q-card>
     </q-dialog>
   </div>

@@ -11,10 +11,10 @@
             <DescDeporte :content="content" v-if="loadedContent" />
         </div>
     </div>
-    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
+   <!-- <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
         <h5 class="text-white fuente_normal font_40"><span class="fuente_titulo font_50" style="color:#E8C28F;">  Reserva  </span>  <strong> tu cancha </strong></h5>
           <q-btn outline class="btn_bg_beige" label="Reservar" icon-right="arrow_right_alt"/>
-    </div>
+    </div>-->
 
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200 bg_amarillo">
@@ -24,13 +24,13 @@
     </div>
 
     <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
-        <div class="centrar w_1200 bg_amarillo">
+        <div class="centrar w_1200">
             <h4 class="subtitle q-my-md">Canchas</h4>
             <DescDeporte :content="cancha" v-if="loadedCancha" />
         </div>
     </div>
 
-    <div class="q-py-xl all_width bg_gamarillo" id="reglamentos">
+    <div class="q-py-xl all_width bg_amarillo" id="reglamentos">
         <div class="centrar w_1100">
             <h5 class="style_title q-my-lg" >Reglamentos</h5>
             <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>

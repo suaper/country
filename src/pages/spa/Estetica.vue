@@ -159,6 +159,26 @@
               </tr>
           </table>
         </div>
+        <div class="fitnes_last w_1200 centrar q-pt-xl">
+          <div class="staff">
+              <h6 class="title_text">Staff</h6>
+              <div class="flex">
+                  <table class="datos_staff_contacto">
+                      <tr>
+                          <td>
+                              <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-06/Mabel-Ferna%CC%81ndez.png" />
+                          </td>
+                          <td>
+                              <p><strong>Mabel Fernández</strong></p>
+                              <p><strong> Esteticista Cosmetologa </strong></p>
+                              <p>+56 2 2757 5736</p>
+                              <p>Coreeo@ff.com</p>
+                          </td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+        </div>
     </div>
   </q-page>
 </template>
