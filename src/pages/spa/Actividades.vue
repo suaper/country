@@ -78,37 +78,16 @@
         </q-dialog>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
+    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio" v-if="loadedDescargables">
         <div class="w_1200 centrar">
             <h6 class="peluqueria q-mt-none">Descargables</h6>
             <ul class="list_descargables">
-                <li>
+                <li v-for="(item, key) in descargables" :key="key">
                     <a href="#">
-                      <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/ballet1.png">
-                      <strong>Competencias</strong>
-                      <q-btn class="text_azul centrar bg_white btn_centrar" @click="openPopDescargas ()" label="Ver más" icon-right="arrow_right_alt"/>
+                      <img class="normal" :src="urlSite + item.icon">
+                      <strong>{{ item.title }}</strong>
+                      <q-btn class="text_azul centrar bg_white btn_centrar" @click="openPopDescargas(item)" label="Ver más" icon-right="arrow_right_alt"/>
                     </a>
-                </li>
-                <li>
-                    <a href="#">
-                      <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/ballet1.png">
-                      <strong>Competencias</strong>
-                      <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                      <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/ballet1.png">
-                      <strong>Competencias</strong>
-                      <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                    </a>
-                </li>
-                <li>
-                  <a href="#">
-                      <img class="normal" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-04/ballet1.png">
-                      <strong>Competencias</strong>
-                      <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
-                  </a>
                 </li>
             </ul>
         </div>
@@ -118,7 +97,7 @@
         <q-card-section class="row items-center relative salones pop_down">
             <q-btn icon="close volando" flat round dense v-close-popup />
             <div class="row">
-                <h4>MASTER</h4>
+                <h4>{{ currentDescargable.title }}</h4>
                 <div class="wrp_search_pop">
                     <div class="buscador_general">
                     <q-input
@@ -130,63 +109,19 @@
                       </template>
                     </q-input>
 
-                    <q-btn class="peque" round color="white" icon="search"/>
+                    <q-btn class="peque" round color="white" icon="search" @click="searchDescargable()"/>
                 </div>
               </div>
             </div>
             <div class="list_descargables_pop">
                 <ul class="list_reglamentos q-py-md">
-                    <li>
+                    <li v-for="(item, key) in currentDescargable.subServices" :key="key">
                         <div class="box_download q-ma-none m_left_20 flex bg_white">
                             <img src="../../assets/MiClub/i-pdf.svg">
                             <div class="text">
-                              <a href="#">
-                                <span class="bold">Título del PDF</span>
-                                <span>Breve descripción</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="box_download q-ma-none m_left_20 flex bg_white">
-                            <img src="../../assets/MiClub/i-pdf.svg">
-                            <div class="text">
-                              <a href="#">
-                                <span class="bold">Título del PDF</span>
-                                <span>Breve descripción</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="box_download q-ma-none m_left_20 flex bg_white">
-                            <img src="../../assets/MiClub/i-pdf.svg">
-                            <div class="text">
-                              <a href="#">
-                                <span class="bold">Título del PDF</span>
-                                <span>Breve descripción</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="box_download q-ma-none m_left_20 flex bg_white">
-                            <img src="../../assets/MiClub/i-pdf.svg">
-                            <div class="text">
-                              <a href="#">
-                                <span class="bold">Título del PDF</span>
-                                <span>Breve descripción</span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="box_download q-ma-none m_left_20 flex bg_white">
-                            <img src="../../assets/MiClub/i-pdf.svg">
-                            <div class="text">
-                              <a href="#">
-                                <span class="bold">Título del PDF</span>
-                                <span>Breve descripción</span>
+                              <a :href="urlSite + item.field_archivo_pdf">
+                                <span class="bold">{{ item.field_nombre_item }}</span>
+                                <span v-html="item.field_descripcion_pdf"></span>
                                 </a>
                             </div>
                         </div>
@@ -213,6 +148,7 @@ export default {
       currentVideo: '',
       currentItem: 'Charlas Culturales',
       LstDescarga: false,
+      search: '',
       month: '',
       slide: 1,
       slidecontent: 0,
@@ -229,7 +165,11 @@ export default {
       events: [],
       allEvents: [],
       dtevento: false,
-      event: {}
+      event: {},
+      descargables: [],
+      loadedDescargables: false,
+      currentDescargable: {},
+      lastItem: ''
     }
   },
   created () {
@@ -241,7 +181,34 @@ export default {
     this.getEvents()
   },
   methods: {
-    openPopDescargas () {
+    stripHtml (html) {
+      var tmp = document.createElement('div')
+      tmp.innerHTML = html
+      return tmp.textContent || tmp.innerText || ''
+    },
+    searchDescargable () {
+      var _this = this
+      var newDescargables = []
+
+      this.lastItem = JSON.stringify(this.currentDescargable)
+
+      this.currentDescargable.subServices.map((item, key) => {
+        var description = this.stripHtml(item.field_descripcion_pdf).toLowerCase()
+        if (item.field_nombre_item.toLowerCase().includes(_this.search) || description.includes(_this.search)) {
+          newDescargables.push(item)
+        }
+      })
+      this.currentDescargable.subServices = newDescargables
+    },
+    openPopDescargas (item) {
+      this.search = ''
+      this.currentDescargable = item
+      if (this.lastItem !== '') {
+        var lastItem = JSON.parse(this.lastItem)
+        if (item.title === lastItem.title) {
+          this.currentDescargable = lastItem
+        }
+      }
       this.LstDescarga = true
     },
     openDetalleEvento (event) {
@@ -301,9 +268,43 @@ export default {
     },
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/categorias/cultura/json', {
+      configServices.loadData(this, '/item-descargables-fitness/json', {
         callBack: (data) => {
-          _this.categories = data
+          data.map((item, key) => {
+            var service = {
+              title: item.field_titulo_item,
+              icon: item.field_ico,
+              subServices: [
+                {
+                  field_descripcion_pdf: item.field_descripcion_pdf,
+                  field_nombre_item: item.field_nombre_item,
+                  field_archivo_pdf: item.field_archivo_pdf
+                }
+              ]
+            }
+            const isFound = _this.descargables.find((element, index) => {
+              if (element.title === item.field_titulo_item) {
+                _this.descargables.splice(index, 1)
+                return element
+              }
+            })
+
+            if (isFound && typeof isFound !== 'undefined') {
+              isFound.subServices.push({
+                field_descripcion_pdf: item.field_descripcion_pdf,
+                field_nombre_item: item.field_nombre_item,
+                field_archivo_pdf: item.field_archivo_pdf
+              })
+
+              _this.descargables.push(isFound)
+            } else {
+              _this.descargables.push(service)
+            }
+          })
+
+          _this.loadedDescargables = true
+
+          _this.$q.loading.hide()
         }
       })
     },

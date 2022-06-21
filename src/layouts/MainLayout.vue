@@ -6,10 +6,10 @@
       <div class="wrap_top center">
         <img class="q-mt-lg" alt="img2" src="../assets/Home/logo-country-club.png">
         <div class="btn_right_top">
-          <q-btn class="solomovil" flat @click="drawerRight = !drawerRight" round dense icon="menu" />
+          <q-btn class="solomovil" v-if="!desktop" flat @click="drawerRight = !drawerRight" round dense icon="menu" />
         </div>
       </div>
-      <q-tabs align="center nav_principal">
+      <q-tabs v-if="desktop" class="center nav_principal">
         <q-route-tab to="/" label="Inicio" />
         <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
         <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
@@ -28,6 +28,7 @@
     <q-drawer
       side="right"
       v-model="drawerRight"
+      v-if="!desktop"
       show-if-above
       bordered
       :width="200"
@@ -37,7 +38,7 @@
       <q-scroll-area class="fit pruenamovil">
        <q-btn class="solomovil_dos" flat @click="drawerRight = !drawerRight" round dense icon="close" />
         <div class="q-pa-sm movil_nav">
-          <q-tabs align="vertical">
+          <q-tabs class="vertical">
             <q-route-tab to="/" label="Inicio" />
             <q-route-tab to="/quienes-somos" @click="IrQuienesSomos()" label="Quiénes Somos" />
             <q-route-tab to="/mi-club" @click="IrMiClub()" label="Mi Club" />
@@ -115,6 +116,7 @@
 
 <script>
 import configServices from '../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'MainLayout',
@@ -125,10 +127,15 @@ export default {
       loadedInfo: false,
       enlacesMaps: [],
       loadedEnlaces: false,
-      drawerRight: false
+      drawerRight: false,
+      desktop: false
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.desktop = true
+    }
+
     this.getInfo()
   },
   methods: {
