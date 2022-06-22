@@ -16,7 +16,7 @@
         <div class="cincuenta q-pb-xl centrar text-center">
             <div class="center text-center q-my-lg titulos">Kinesiología</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
-             <q-btn outline  @click="openPopForm ()" class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+             <q-btn outline  @click="openPopForm()" class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
         </div>
         <q-dialog v-model="formulario" >
         <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige pop_escuelas">
@@ -26,7 +26,7 @@
 
             <q-card-section class="pop_club bg_white libro_icn">
               <span class="autor bold">Reserva de Servicios</span>
-              <span class="autor bold">Nombre del Servicio</span>
+              <span class="autor bold">Kinesiología</span>
             </q-card-section>
             <q-card-section class="pop_descargar bg_white list_biblioteca">
               <q-form
@@ -65,7 +65,7 @@
                   <div class="fila">
                     <q-input
                         outlined
-                        v-model="correo"
+                        v-model="email"
                         label="Correo electrónico*"
                     />
                   </div>
@@ -105,7 +105,13 @@ export default {
           { value: '' }
         ]
       },
-      formulario: false
+      formulario: false,
+      currentVideo: '',
+      name: '',
+      email: '',
+      telefono: '',
+      rut: '',
+      apellido: ''
     }
   },
   created () {
@@ -116,6 +122,36 @@ export default {
     openPopForm (item) {
       this.currentItem = item
       this.formulario = true
+    },
+    onReset () {
+
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Kinesiología',
+        email: this.email,
+        name: this.name,
+        lastname: this.apellido,
+        phone: this.telefono,
+        rut: this.rut
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
     },
     getInfo () {
       var _this = this
