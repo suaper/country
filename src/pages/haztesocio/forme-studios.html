@@ -1,0 +1,182 @@
+<div class="colegios">
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Secundarios: Colegios</span>
+            <q-input
+                outlined
+                label="Nombre del Colegio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+
+        <div class="ancho50 item-1">
+            <span class="label_strong">Lugar</span>
+            <q-input
+                outlined
+                label="Dirección del Colegio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Años Cursados</span>
+            <q-input
+                outlined
+                label="Digite los años cursados en este colegio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+
+        <div class="ancho50 item-2">
+            <div class="sin_estilo ancho50">
+                <span class="label_strong">Desde</span>
+                <q-btn icon="event" round color="primary">
+                    <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
+                        <q-date v-model="date">
+                        <div class="row items-center justify-end q-gutter-sm">
+                            <q-btn label="Cancel" color="primary" flat v-close-popup />
+                            <q-btn label="OK" color="primary" flat @click="save" v-close-popup />
+                        </div>
+                        </q-date>
+                    </q-popup-proxy>
+                </q-btn>
+            </div>
+            <div class="sin_estilo ancho50">
+                <span class="label_strong">Hasta</span>
+                <q-btn icon="event" round color="primary">
+                    <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
+                        <q-date v-model="date">
+                        <div class="row items-center justify-end q-gutter-sm">
+                            <q-btn label="Cancel" color="primary" flat v-close-popup />
+                            <q-btn label="OK" color="primary" flat @click="save" v-close-popup />
+                        </div>
+                        </q-date>
+                    </q-popup-proxy>
+                </q-btn>
+            </div>
+        </div>
+    </div>
+    <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Agregar más Colegios" icon-right="add"/>
+</div>
+<hr class="form">
+
+<div class="universidades">
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Universitarios: Universidad</span>
+            <q-input
+                outlined
+                label="Nombre de la universidad"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+
+        <div class="ancho50 item-1">
+            <span class="label_strong">Sede</span>
+            <q-input
+                outlined
+                label="Ciudad"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Carrera</span>
+            <q-input
+                outlined
+                label="Carrera profesional"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+
+        <div class="ancho50 items-1">
+            <span class="label_strong">Título</span>
+            <q-input
+                outlined
+                label="Título que recibió"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Año de titulación</span>
+            <q-input
+                outlined
+                label="Año en que recibió el título"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Agregar más Universidades" icon-right="add"/>
+</div>
+<hr class="form">
+
+
+<div class="post_grado">
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Post-grado / Post-título</span>
+            <q-input
+                outlined
+                label="Nombre de la universidad"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+
+        <div class="ancho50 item-1">
+            <span class="label_strong">Lugar</span>
+            <q-input
+                outlined
+                label="Ciudad"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Carrera</span>
+            <q-input
+                outlined
+                label="Carrera profesional"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+
+        <div class="ancho50 items-1">
+            <span class="label_strong">Título</span>
+            <q-input
+                outlined
+                label="Grado o título que recibió"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+    <div class="row">
+        <div class="ancho50 items-1">
+            <span class="label_strong">Año de titulación</span>
+            <q-input
+                outlined
+                label="Año en que recibió el título"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Agregar más Post-grados" icon-right="add"/>
+</div>

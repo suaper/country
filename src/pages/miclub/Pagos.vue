@@ -3,7 +3,7 @@
     <Menumiclub currentItem="/mi-club/pagos" />
     <div class="q-py-xl all_width gris_home etiquetas" v-if="loadedInfo">
         <br>
-        <div class="center text-center q-my-lg titulos q-mt-2">Pagos</div>
+        <div class="center text-center q-my-lg titulos q-mt-2 subir_movil">Pagos</div>
           <div class="cincuenta q-pd-md centrar text-center">
               <p class="intro text-center" v-html="info.field_intro_[0].value"></p>
           </div>

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center view_hijos_socios view_fitness view_restaurantes">
+  <q-page class="flex flex-center view_hijos_socios view_fitness view_restaurantes restaurante_responsive">
     <Menugastronomia currentItem="/gastronomia/restaurantes"/>
     <div class="q-py-none all_width"></div>
     <div class="q-pb-md all_width gris_home">
