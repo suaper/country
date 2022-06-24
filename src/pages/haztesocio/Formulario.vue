@@ -6,26 +6,31 @@
             <div class="center text-center q-my-lg titulos">Antecedentes del Postulante</div>
             <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
-        <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
-                <div class="row">
+        <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center view_form_cotizar">
+                <div class="roww">
                     <div class="ancho50 items-2">
-                        <span class="label_strong">Nombre Completo</span>
-                        <q-input
-                            outlined
-                            label="Nombre del Postulante"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
-                        <span class="label_strong">Apellido Completo</span>
-                        <q-input
-                            outlined
-                            label="Apellido del Postulante*"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
+                        <div class="sin_estilos">
+                            <span class="label_strong">Nombre Completo</span>
+                            <q-input
+                                outlined
+                                label="Nombre del Postulante"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
+                        <div class="sin_estilos">
+                            <span class="label_strong">Apellido Completo</span>
+                            <q-input
+                                outlined
+                                label="Apellido del Postulante*"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                         </div>
                     </div>
-                    <span class="label_strong">Lugar de Nacimiento</span>
+
                     <div class="ancho50 item-1">
+                        <span class="label_strong">Lugar de Nacimiento</span>
                         <q-input
                         outlined
                         label="Ciudad de nacimiento"
@@ -34,10 +39,10 @@
                     />
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Lugar de Nacimiento</span>
-                        <q-btn icon="event" round color="primary">
+                        <q-btn icon="event" class="alargar" color="primary">
                             <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
                                 <q-date v-model="date">
                                 <div class="row items-center justify-end q-gutter-sm">
@@ -56,7 +61,7 @@
                     />
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 item-2">
                         <span class="label_strong">Dirección particular*</span>
                         <div class="flexline">
@@ -96,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Fono</span>
                         <q-input
@@ -116,7 +121,7 @@
                         />
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">R.U.T. Nº</span>
                         <q-input
@@ -136,7 +141,7 @@
                         />
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Estado Civil</span>
                         <div class="wrp_busca_mes w_500">
@@ -153,42 +158,50 @@
                         />
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-2">
-                        <span class="label_strong">Nombre del Padre</span>
-                        <q-input
-                            outlined
-                            label="Nombre del Padre"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
-                        <span class="label_strong">Apellido del Padre</span>
-                        <q-input
-                            outlined
-                            label="Apellido del Padre"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
+                        <div class="sin_estilos">
+                            <span class="label_strong">Nombre del Padre</span>
+                            <q-input
+                                outlined
+                                label="Nombre del Padre"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
+                        <div class="sin_estilos">
+                            <span class="label_strong">Apellido del Padre</span>
+                            <q-input
+                                outlined
+                                label="Apellido del Padre"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
                     </div>
                     <div class="ancho50 items-2">
-                        <span class="label_strong">Nombre de la Madre</span>
-                        <q-input
-                            outlined
-                            label="Nombre de la Madre"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
-                        <span class="label_strong">Apellido de la Madre</span>
-                        <q-input
-                            outlined
-                            label="Apellido de la Madre"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
+                        <div class="sin_estilos">
+                            <span class="label_strong">Nombre de la Madre</span>
+                            <q-input
+                                outlined
+                                label="Nombre de la Madre"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
+                        <div class="sin_estilos">
+                            <span class="label_strong">Apellido de la Madre</span>
+                            <q-input
+                                outlined
+                                label="Apellido de la Madre"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <q-radio left-label v-model="sociopadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
                     </div>
@@ -197,7 +210,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Empleador</span>
                         <q-input
@@ -217,7 +230,7 @@
                         />
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 item-2">
                         <span class="label_strong">Dirección particular*</span>
                         <div class="flexline">
@@ -257,7 +270,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="roww">
                     <div class="ancho50 items-2">
                         <span class="label_strong">Teléfonos</span>
                         <q-input
@@ -276,12 +289,12 @@
                 </div>
             </div>
         </div>
-        <div class="q-pb-xl all_width bg_amarillo">
-            <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
+        <div class="q-pb-xl all_width bg_amarillo view_form_cotizar">
+            <div class="q-py-md w_1200 centrar">
                 <div class="center text-center q-my-lg titulos">Estudios</div>
                 <div class="colegios">
-                    <div class="row">
-                        <div class="ancho50 items-1">
+                    <div class="roww">
+                        <div class="ancho50">
                             <span class="label_strong">Secundarios: Colegios</span>
                             <q-input
                                 outlined
@@ -291,7 +304,7 @@
                             />
                         </div>
 
-                        <div class="ancho50 item-1">
+                        <div class="ancho50 ">
                             <span class="label_strong">Lugar</span>
                             <q-input
                                 outlined
@@ -302,7 +315,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Años Cursados</span>
                             <q-input
@@ -347,7 +360,7 @@
                 <hr class="form_linea">
 
                 <div class="universidades">
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Universitarios: Universidad</span>
                             <q-input
@@ -369,7 +382,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Carrera</span>
                             <q-input
@@ -390,7 +403,7 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Año de titulación</span>
                             <q-input
@@ -406,7 +419,7 @@
                 <hr class="form_linea">
 
                 <div class="post_grado">
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Post-grado / Post-título</span>
                             <q-input
@@ -428,7 +441,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Carrera</span>
                             <q-input
@@ -449,7 +462,7 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Año de titulación</span>
                             <q-input
@@ -464,7 +477,7 @@
                 </div>
                 <hr class="form_linea">
                 <div class="otros_estudios">
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Otros estudios</span>
                             <q-input
@@ -486,7 +499,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Carrera</span>
                             <q-input
@@ -507,7 +520,7 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Año de titulación</span>
                             <q-input
@@ -524,10 +537,10 @@
         </div>
 
         <div class="q-pb-xl all_width gris_home">
-            <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
+            <div class="q-py-md w_1200 centrar view_form_cotizar justify-center">
                 <div class="center text-center q-my-lg titulos">Historia Ocupacional</div>
                 <div class="ocupaciones">
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Empresa</span>
                             <q-input
@@ -548,11 +561,11 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 item-2">
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Desde</span>
-                                <q-btn icon="event" round color="primary">
+                                <q-btn icon="event" class="alargar" color="primary">
                                     <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
                                         <q-date v-model="date">
                                         <div class="row items-center justify-end q-gutter-sm">
@@ -565,7 +578,7 @@
                             </div>
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Hasta</span>
-                                <q-btn icon="event" round color="primary">
+                                <q-btn icon="event" class="alargar" color="primary">
                                     <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
                                         <q-date v-model="date">
                                         <div class="row items-center justify-end q-gutter-sm">
@@ -587,7 +600,7 @@
 
                 <div class="otros_cargos">
                     <div class="center text-center q-my-lg titulos">Otros cargos o actividades</div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Directorios, Clases, Universidad, etc.</span>
                             <q-input
@@ -598,7 +611,7 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 item-1">
                             <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Agregar más ocupaciones" icon-right="add"/>
                         </div>
@@ -609,7 +622,7 @@
                 <div class="instituciones_deportivas">
                     <div class="center text-center q-my-lg titulos">Instituciones deportivas o sociales</div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Institución</span>
                             <q-input
@@ -630,11 +643,11 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 item-2">
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Desde</span>
-                                <q-btn icon="event" round color="primary">
+                                <q-btn icon="event" class="alargar" color="primary">
                                     <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
                                         <q-date v-model="date">
                                         <div class="row items-center justify-end q-gutter-sm">
@@ -647,7 +660,7 @@
                             </div>
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Hasta</span>
-                                <q-btn icon="event" round color="primary">
+                                <q-btn icon="event" class="alargar" color="primary">
                                     <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
                                         <q-date v-model="date">
                                         <div class="row items-center justify-end q-gutter-sm">
@@ -668,7 +681,7 @@
                 <hr class="form_linea">
                 <div class="otros_cargos">
                     <div class="center text-center q-my-lg titulos">Información adicional</div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Deportes que practica</span>
                             <q-input
@@ -680,7 +693,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Antecedente que usted estime importante que el comité de selección conozca</span>
                             <q-input
@@ -692,7 +705,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Favor señale por qué desea hacerse socio del Prince of Wales Country Club</span>
                             <q-input
@@ -708,7 +721,7 @@
 
                 <div class="otros_cargos">
                     <div class="center text-center q-my-lg titulos">Socios Patrocinadores</div>
-                    <div class="row">
+                    <div class="roww">
                         <div class="ancho50 items-2">
                             <span class="label_strong">Nombre Completo</span>
                             <q-input
@@ -745,7 +758,7 @@
                     </div>
                 </div>
                 <div class="action_next">
-                    <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
+                    <q-btn outline type="submit" @click="irSiguiente()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
                     <span class="nota center">
                         * Cualquier cambio de esta información debe ser avisado al Club, dentro de 60 días.
                     </span>
@@ -766,6 +779,11 @@ export default {
       detalleObras: false,
       pop_consultar: false,
       date: '2019/03/01'
+    }
+  },
+  methods: {
+    irSiguiente () {
+      this.$router.push('eshijo')
     }
   }
 }
