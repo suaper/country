@@ -169,6 +169,27 @@ const routes = [
     ]
   },
   {
+    path: '/hazte-socio/eshijo',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/EsHijo.vue') }
+    ]
+  },
+  {
+    path: '/hazte-socio/esconyugue',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/EsConyugue.vue') }
+    ]
+  },
+  {
+    path: '/hazte-socio/enviarpostulacion',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/EnviarPostulacion.vue') }
+    ]
+  },
+  {
     path: '/spa',
     component: () => import('layouts/MainLayout.vue'),
     children: [
