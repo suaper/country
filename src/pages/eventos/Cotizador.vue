@@ -16,7 +16,6 @@
                     <span class="paso">PASO 1</span>
                     <p class="azul">Información de la Reserva</p>
                 </div>
-
             </li>
             <li :class="(secondStep) ? 'active' : 'normal'">
                 <div class="sub_caja">

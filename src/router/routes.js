@@ -162,6 +162,13 @@ const routes = [
     ]
   },
   {
+    path: '/hazte-socio/formulario',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/Formulario.vue') }
+    ]
+  },
+  {
     path: '/spa',
     component: () => import('layouts/MainLayout.vue'),
     children: [

@@ -24,7 +24,7 @@
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
             <h4 class="subtitle">Requisitos</h4>
-            <p class="intro text-left" v-html="info[0].field_requisitos"></p>
+            <p class="intro text-left colapsa" v-html="info[0].field_requisitos"></p>
         </div>
     </div>
 
@@ -59,11 +59,11 @@
             </q-card-section>
         </q-card>
     </q-dialog>
-    <!--<div class="q-py-md all_width bg_amarillo wrp_club">
+    <div class="q-py-md all_width bg_amarillo wrp_club">
         <div class="q-py-md centrar text-center w_1200">
-            <q-btn outline @click="pop_consultar = true" class="text_white  centrar bg_orange btn_centrar" label="Postule Aquí" icon-right="arrow_right_alt"/>
+            <q-btn outline @click="irFormulario()" class="text_white  centrar bg_orange btn_centrar" label="Postule Aquí" icon-right="arrow_right_alt"/>
         </div>
-    </div>-->
+    </div>
   </q-page>
 </template>
 
@@ -108,6 +108,9 @@ export default {
       if (typeof x !== 'undefined') {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
       }
+    },
+    irFormulario () {
+      this.$router.push('formulario')
     }
   }
 }

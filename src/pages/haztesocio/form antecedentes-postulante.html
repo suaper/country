@@ -1,0 +1,262 @@
+Antecedentes del postulante
+<div class="row">
+    <div class="ancho50 items-2">
+        <span class="label_strong">Nombre Completo</span>
+        <q-input
+            outlined
+            label="Nombre del Postulante"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+        <span class="label_strong">Apellido Completo</span>
+        <q-input
+            outlined
+            label="Apellido del Postulante*"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+    <span class="label_strong">Lugar de Nacimiento</span>
+    <div class="ancho50 item-1">
+        <q-input
+        outlined
+        label="Ciudad de nacimiento"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+    />
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 items-1">
+        <span class="label_strong">Lugar de Nacimiento</span>
+        <q-date
+        v-model="date"
+        minimal
+    />
+    </div>
+    <div class="ancho50 items-1">
+        <span class="label_strong">Foto</span>
+        <q-uploader
+            url="http://localhost:4444/upload"
+            style="max-width: 300px"
+      />
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 item-2">
+        <span class="label_strong">Dirección particular*</span>
+        <div class="flexline">
+            <span class="label_normal">Calle</span>
+            <q-input
+                outlined
+                label="Américo Vespucio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+            <span class="label_normal">Nº</span>
+            <q-input
+                outlined
+                label="###"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+    <div class="ancho50 item-2">
+        <span class="label_strong">Departamento</span>
+        <div class="flexline">
+            <span class="label_normal">No.</span>
+            <q-input
+                outlined
+                label="Américo Vespucio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+            <span class="label_normal">Comuna</span>
+            <q-input
+                outlined
+                label="Nombre de la Comuna"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 items-1">
+        <span class="label_strong">Fono</span>
+        <q-input
+            outlined
+            label="###"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+    <div class="ancho50 items-1">
+        <span class="label_strong">Celular</span>
+        <q-input
+            outlined
+            label="###"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 items-1">
+        <span class="label_strong">R.U.T. Nº</span>
+        <q-input
+            outlined
+            label="###"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+    <div class="ancho50 items-1">
+        <span class="label_strong">Correo Electrónico</span>
+        <q-input
+            outlined
+            label="Correo Electrónico"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 items-1">
+        <span class="label_strong">Estado Civil</span>
+        <div class="wrp_busca_mes w_500">
+            <q-select outlined label="Seleccione" v-model="civil" options="hours"/>
+        </div>
+    </div>
+    <div class="ancho50 items-1">
+        <span class="label_strong">Profesión</span>
+        <q-input
+            outlined
+            label="Profesión"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 items-2">
+        <span class="label_strong">Nombre del Padre</span>
+        <q-input
+            outlined
+            label="Nombre del Padre"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+        <span class="label_strong">Apellido del Padre</span>
+        <q-input
+            outlined
+            label="Apellido del Padre"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+    <div class="ancho50 items-2">
+        <span class="label_strong">Nombre de la Madre</span>
+        <q-input
+            outlined
+            label="Nombre de la Madre"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+        <span class="label_strong">Apellido de la Madre</span>
+        <q-input
+            outlined
+            label="Apellido de la Madre"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+</div>
+
+<div class="row">
+    <div class="ancho50 items-1">
+        <q-radio left-label v-model="sociopadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
+    </div>
+    <div class="ancho50 items-1">
+        <q-radio left-label v-model="sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="ancho50 items-1">
+        <span class="label_strong">Empleador</span>
+        <q-input
+            outlined
+            label="Nombre de la empresa"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+    <div class="ancho50 items-1">
+        <span class="label_strong">Cargo</span>
+        <q-input
+            outlined
+            label="Cargo actual"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 item-2">
+        <span class="label_strong">Dirección particular*</span>
+        <div class="flexline">
+            <span class="label_normal">Calle</span>
+            <q-input
+                outlined
+                label="Américo Vespucio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+            <span class="label_normal">Nº</span>
+            <q-input
+                outlined
+                label="###"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+    <div class="ancho50 item-2">
+        <span class="label_strong">Departamento</span>
+        <div class="flexline">
+            <span class="label_normal">No.</span>
+            <q-input
+                outlined
+                label="Américo Vespucio"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+            <span class="label_normal">Comuna</span>
+            <q-input
+                outlined
+                label="Nombre de la Comuna"
+                lazy-rules
+                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+            />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="ancho50 items-2">
+        <span class="label_strong">Teléfonos</span>
+        <q-input
+            outlined
+            label="###"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+        <q-input
+            outlined
+            label="###"
+            lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+        />
+    </div>
+</div>
