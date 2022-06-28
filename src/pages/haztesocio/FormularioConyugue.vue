@@ -30,35 +30,57 @@
                     </div>
 
                     <div class="ancho50 item-1">
-                        <span class="label_strong">Lugar de Nacimiento</span>
-                        <q-input
-                        outlined
-                        label="Ciudad de nacimiento"
-                        lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                    />
+                        <span class="label_strong">Fecha de matrimonio</span>
+                        <q-input outlined mask="date" :rules="['date']">
+                          <template v-slot:append>
+                            <q-icon name="event" class="cursor-pointer">
+                              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                <q-date>
+                                  <div class="row items-center justify-end">
+                                    <q-btn v-close-popup label="Close" color="primary" flat />
+                                  </div>
+                                </q-date>
+                              </q-popup-proxy>
+                            </q-icon>
+                          </template>
+                        </q-input>
                     </div>
                 </div>
                 <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Lugar de Nacimiento</span>
-                        <q-btn icon="event" class="alargar" color="primary">
-                            <q-popup-proxy @before-show="updateProxy" cover transition-show="scale" transition-hide="scale">
-                                <q-date v-model="date">
-                                <div class="row items-center justify-end q-gutter-sm">
-                                    <q-btn label="Cancel" color="primary" flat v-close-popup />
-                                    <q-btn label="OK" color="primary" flat @click="save" v-close-popup />
-                                </div>
-                                </q-date>
-                            </q-popup-proxy>
-                        </q-btn>
+                        <q-input
+                            outlined
+                            label="Ciudad de nacimiento"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                        />
                     </div>
                     <div class="ancho50 items-1">
+                        <span class="label_strong">Fecha de Nacimiento</span>
+                        <q-input outlined mask="date" :rules="['date']">
+                          <template v-slot:append>
+                            <q-icon name="event" class="cursor-pointer">
+                              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                <q-date>
+                                  <div class="row items-center justify-end">
+                                    <q-btn v-close-popup label="Close" color="primary" flat />
+                                  </div>
+                                </q-date>
+                              </q-popup-proxy>
+                            </q-icon>
+                          </template>
+                        </q-input>
+                    </div>
+                </div>
+                <div class="roww">
+                    <div class="ancho50 items-1">
                         <span class="label_strong">Foto</span>
-                        <q-uploader
-                            url="http://localhost:4444/upload"
-                            style="max-width: 300px"
-                    />
+                        <q-file outlined>
+                          <template v-slot:prepend>
+                            <q-icon name="attach_file" />
+                          </template>
+                        </q-file>
                     </div>
                 </div>
                 <div class="roww">
@@ -103,7 +125,7 @@
                 </div>
                 <div class="roww">
                     <div class="ancho50 items-1">
-                        <span class="label_strong">Fono</span>
+                        <span class="label_strong">R.U.T. Nº</span>
                         <q-input
                             outlined
                             label="###"
@@ -123,10 +145,39 @@
                 </div>
                 <div class="roww">
                     <div class="ancho50 items-1">
-                        <span class="label_strong">R.U.T. Nº</span>
+                        <div class="sin_estilos">
+                            <span class="label_strong">Nombres y Apellidos Padre</span>
+                            <q-input
+                                outlined
+                                label="Nombres y Apellidos Padre"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
+                    </div>
+                    <div class="ancho50 items-1">
+                        <div class="sin_estilos">
+                            <span class="label_strong">Nombres y Apellidos Madre</span>
+                            <q-input
+                                outlined
+                                label="Nombres y Apellidos Madre"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="roww">
+                    <div class="ancho50 items-1">
+                        <q-radio left-label v-model="sociopadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
+                    </div>
+                </div>
+                <div class="roww">
+                    <div class="ancho50 items-1">
+                        <span class="label_strong">Profesión</span>
                         <q-input
                             outlined
-                            label="###"
+                            label="Profesión"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
                         />
@@ -143,96 +194,27 @@
                 </div>
                 <div class="roww">
                     <div class="ancho50 items-1">
-                        <span class="label_strong">Estado Civil</span>
-                        <div class="wrp_busca_mes w_500">
-                            <q-select outlined label="Seleccione" v-model="civil" options="hours"/>
-                        </div>
-                    </div>
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Profesión</span>
-                        <q-input
-                            outlined
-                            label="Profesión"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
-                    </div>
-                </div>
-                <div class="roww">
-                    <div class="ancho50 items-2">
                         <div class="sin_estilos">
-                            <span class="label_strong">Nombre del Padre</span>
+                            <span class="label_strong">Empleador</span>
                             <q-input
                                 outlined
-                                label="Nombre del Padre"
-                                lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                            />
-                        </div>
-                        <div class="sin_estilos">
-                            <span class="label_strong">Apellido del Padre</span>
-                            <q-input
-                                outlined
-                                label="Apellido del Padre"
-                                lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                                label="Empleador"
                             />
                         </div>
                     </div>
-                    <div class="ancho50 items-2">
+                    <div class="ancho50 items-1">
                         <div class="sin_estilos">
-                            <span class="label_strong">Nombre de la Madre</span>
+                            <span class="label_strong">Cargo</span>
                             <q-input
                                 outlined
-                                label="Nombre de la Madre"
-                                lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
+                                label="Cargo"
                             />
                         </div>
-                        <div class="sin_estilos">
-                            <span class="label_strong">Apellido de la Madre</span>
-                            <q-input
-                                outlined
-                                label="Apellido de la Madre"
-                                lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="roww">
-                    <div class="ancho50 items-1">
-                        <q-radio left-label v-model="sociopadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
-                    </div>
-                    <div class="ancho50 items-1">
-                        <q-radio left-label v-model="sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
-                    </div>
-                </div>
-
-                <div class="roww">
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Empleador</span>
-                        <q-input
-                            outlined
-                            label="Nombre de la empresa"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
-                    </div>
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Cargo</span>
-                        <q-input
-                            outlined
-                            label="Cargo actual"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                        />
                     </div>
                 </div>
                 <div class="roww">
                     <div class="ancho50 item-1">
-                        <span class="label_strong">Dirección particular*</span>
+                        <span class="label_strong">Dirección</span>
                         <div class="flexline">
                             <span class="label_normal">Calle</span>
                             <q-input
@@ -294,7 +276,7 @@
         </div>
         <div class="q-pb-xl all_width bg_amarillo view_form_cotizar">
             <div class="q-py-md w_1200 centrar">
-                <div class="center text-center q-my-lg titulos">Estudios</div>
+                <div class="center text-left q-my-lg titulos">Estudios</div>
                 <div class="colegios">
                     <div class="roww">
                         <div class="ancho50">
@@ -541,7 +523,7 @@
 
         <div class="q-pb-xl all_width gris_home">
             <div class="q-py-md w_1200 centrar view_form_cotizar justify-center">
-                <div class="center text-center q-my-lg titulos">Historia Ocupacional</div>
+                <div class="center text-left q-my-lg titulos">Historia Ocupacional</div>
                 <div class="ocupaciones">
                     <div class="roww">
                         <div class="ancho50 items-1">
@@ -602,7 +584,7 @@
                 <hr class="form_linea">
 
                 <div class="otros_cargos">
-                    <div class="center text-center q-my-lg titulos">Otros cargos o actividades</div>
+                    <div class="center text-left q-my-lg titulos">Otros cargos o actividades</div>
                     <div class="roww">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Directorios, Clases, Universidad, etc.</span>
@@ -623,7 +605,7 @@
                 <hr class="form_linea">
 
                 <div class="instituciones_deportivas">
-                    <div class="center text-center q-my-lg titulos">Instituciones deportivas o sociales</div>
+                    <div class="center text-left q-my-lg titulos">Instituciones deportivas o sociales</div>
 
                     <div class="roww">
                         <div class="ancho50 items-1">
@@ -683,7 +665,7 @@
                 </div>
                 <hr class="form_linea">
                 <div class="otros_cargos">
-                    <div class="center text-center q-my-lg titulos">Información adicional</div>
+                    <div class="center text-left q-my-lg titulos">Información adicional</div>
                     <div class="roww">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Deportes que practica</span>
@@ -695,25 +677,12 @@
                             />
                         </div>
                     </div>
-
                     <div class="roww">
                         <div class="ancho100 items-1">
-                            <span class="label_strong">Antecedente que usted estime importante que el comité de selección conozca</span>
+                            <span class="label_strong">Otros Intereses</span>
                             <q-input
                                 outlined
-                                label="Antecedente que usted estime importante que el comité de selección conozca"
-                                lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                            />
-                        </div>
-                    </div>
-
-                    <div class="roww">
-                        <div class="ancho100 items-1">
-                            <span class="label_strong">Favor señale por qué desea hacerse socio del Prince of Wales Country Club</span>
-                            <q-input
-                                outlined
-                                label="Favor señale por qué desea hacerse socio del Prince of Wales Country Club"
+                                label="Otros Intereses"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
                             />
@@ -737,7 +706,7 @@
 <script>
 
 export default {
-  name: 'Formulario',
+  name: 'Formularioconyugue',
   data () {
     return {
       video: false,

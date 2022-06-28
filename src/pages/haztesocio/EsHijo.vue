@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="action_next">
-                <q-btn outline type="submit" @click="irSiguiente()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
+                <q-btn outline type="submit" @click="irFormularioHijo()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
             </div>
         </q-form>
         </div>
@@ -34,8 +34,8 @@ export default {
     }
   },
   methods: {
-    irSiguiente () {
-      this.$router.push('esconyugue')
+    irFormularioHijo () {
+      this.$router.push('FormularioHijo')
     }
   }
 }

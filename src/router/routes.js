@@ -183,6 +183,20 @@ const routes = [
     ]
   },
   {
+    path: '/hazte-socio/formularioconyugue',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/FormularioConyugue.vue') }
+    ]
+  },
+  {
+    path: '/hazte-socio/formulariohijo',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/haztesocio/FormularioHijo.vue') }
+    ]
+  },
+  {
     path: '/hazte-socio/enviarpostulacion',
     component: () => import('layouts/MainLayout.vue'),
     children: [
