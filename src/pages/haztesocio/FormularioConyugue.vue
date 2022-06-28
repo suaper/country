@@ -3,7 +3,7 @@
     <q-form>
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
-            <div class="center text-center q-my-lg titulos">Antecedentes del Postulante</div>
+            <div class="center text-center q-my-lg titulos">Antecedentes del Conyugue</div>
             <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center view_form_cotizar">
@@ -722,52 +722,6 @@
                 </div>
                 <hr class="form_linea">
 
-                <div class="otros_cargos">
-                    <div class="center text-center q-my-lg titulos">Socios Patrocinadores</div>
-                    <div class="roww">
-                        <div class="ancho50 items-2">
-                            <div class="sin_estilos">
-                                <span class="label_strong">Nombre Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Nombre del Postulante"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                                />
-                            </div>
-                            <div class="sin_estilos">
-                                <span class="label_strong">Apellido Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Apellido del Postulante*"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="ancho50 items-2">
-                            <div class="sin_estilos">
-                                <span class="label_strong">Nombre Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Nombre del Postulante"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                                />
-                            </div>
-                            <div class="sin_estilos">
-                                <span class="label_strong">Apellido Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Apellido del Postulante*"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="action_next">
                     <q-btn outline type="submit" @click="irSiguiente()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
                     <span class="nota center">

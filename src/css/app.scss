@@ -5508,13 +5508,23 @@ h5.text_normal{
 .wrp_table_clasificacion .wrp_busca_mes label .q-field__control{
     height: 55px;
 }
-
+hr.form_linea{
+    height: 1px;
+    overflow: visible;
+    color: #e8c290;
+    background: #e8c290;
+    margin: 20px 0;
+}
+.items-1{
+    width: 100%;
+}
 .view_form_cotizar{
     .roww{
         width: 100%;
         display: flex;
         justify-content: space-between;
         margin-top: 15px;
+        margin-bottom: 18px;
     }
     .ancho50{
         width: 48%;
@@ -5560,6 +5570,18 @@ h5.text_normal{
     .is_hijo{
         .q-form{
             margin: 10px auto;
+        }
+    }
+    .action_next{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        .q-btn{
+            margin: 20px auto;
+        }
+        .nota{
+            color: #7C7E91;
         }
     }
 }
