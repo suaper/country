@@ -54,7 +54,7 @@
 <script>
 import Menugastronomia from 'pages/submenus/Menugastronomia'
 import configServices from '../../services/config'
-
+import { Platform } from 'quasar'
 export default {
   name: 'Country',
   components: {
@@ -67,10 +67,14 @@ export default {
       notices: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_consultar: false,
-      slidecontent: 1
+      slidecontent: 1,
+      numberNotices: 1
     }
   },
   mounted () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 5
+    }
     this.getNotices()
   },
   methods: {
@@ -105,7 +109,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias/country-al-dia/json', {
         callBack: (data) => {
-          const n = 5
+          const n = this.numberNotices
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))

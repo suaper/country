@@ -37,6 +37,7 @@ import Palmares from 'pages/componentes/Palmares'
 import Fechas from 'pages/componentes/CincoProximos'
 import Patrocinadores from 'pages/componentes/Dos'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Categorias',
@@ -73,10 +74,15 @@ export default {
       images: {},
       loadedImages: false,
       selectedItem: false,
-      month: ''
+      month: '',
+      numberNotices: 1
+
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
     this.subPath = currentPath[3]
@@ -101,7 +107,7 @@ export default {
 
       configServices.loadData(this, url, {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           _this.allEvents = data
 
           var newData = JSON.stringify(data)
@@ -200,7 +206,7 @@ export default {
         }
       })
 
-      var n = 3
+      var n = this.numberNotices
       _this.events = new Array(Math.ceil(newEvents.length / n))
         .fill()
         .map(_ => newEvents.splice(0, n))

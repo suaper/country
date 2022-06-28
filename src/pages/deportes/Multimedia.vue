@@ -131,6 +131,7 @@
 <script>
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Multimediadeporte',
@@ -154,10 +155,14 @@ export default {
       slidersContentVideos: [],
       images: [],
       videos: [],
-      path: ''
+      path: '',
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
     this.getMultimedia()
@@ -182,7 +187,7 @@ export default {
             }
           })
 
-          const n = 3
+          const n = this.numberNotices
           _this.slidersContentImages = new Array(Math.ceil(_this.images.length / n))
             .fill()
             .map(_ => _this.images.splice(0, n))

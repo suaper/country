@@ -55,6 +55,7 @@
 
 import configServices from '../../services/config'
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Noticias',
@@ -71,10 +72,14 @@ export default {
       filters: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
-      pop_reservar_spa: false
+      pop_reservar_spa: false,
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
     this.getNotices()
@@ -94,7 +99,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias/' + _this.path + '/json', {
         callBack: (data) => {
-          const n = 8
+          const n = this.numberNotices
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))

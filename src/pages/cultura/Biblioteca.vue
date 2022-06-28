@@ -242,6 +242,7 @@
 <script>
 import Menucultura from 'pages/submenus/Menucultura'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Biblioteca',
@@ -275,10 +276,14 @@ export default {
       correo: '',
       name: '',
       rut: '',
-      apellido: ''
+      apellido: '',
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     this.getInfo()
     this.getMultimediaHome()
     this.getBooksMoreReads()
@@ -356,7 +361,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/libros/50/json', {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           _this.booksMoreReads = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
@@ -367,7 +372,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/libros/49/json', {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           _this.booksChild = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))

@@ -76,6 +76,7 @@ import Contacto from 'pages/componentes/SieteContacto'
 import CampeonatoActual from 'pages/componentes/CampeonatoActual'
 import Staff from 'pages/componentes/OchoStaff'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Rugby',
@@ -140,10 +141,15 @@ export default {
       currentTournament: [],
       rankingDeportes: [],
       loadedCurrentTournament: false,
-      instagram: {}
+      instagram: {},
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
+
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
 
@@ -303,7 +309,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/eventos/' + this.path + '/json', {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           _this.events = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))

@@ -131,6 +131,7 @@
 <script>
 import Menugastronomia from 'pages/submenus/Menugastronomia'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Multimediagastronomia',
@@ -153,10 +154,14 @@ export default {
       video: false,
       currentVideo: '',
       images: [],
-      videos: []
+      videos: [],
+      numberNotices: 1
     }
   },
   mounted () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     this.getMultimedia()
   },
   methods: {
@@ -171,7 +176,7 @@ export default {
               _this.images.push(item)
             }
           })
-          const n = 3
+          const n = this.numberNotices
           _this.slidersContentImages = new Array(Math.ceil(_this.images.length / n))
             .fill()
             .map(_ => _this.images.splice(0, n))

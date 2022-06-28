@@ -61,6 +61,7 @@
 <script>
 
 import configServices from '../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Noticias',
@@ -74,10 +75,14 @@ export default {
       filters: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
-      pop_reservar_spa: false
+      pop_reservar_spa: false,
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     this.getNotices()
   },
   methods: {
@@ -102,7 +107,7 @@ export default {
         var _this = this
         configServices.loadData(this, '/noticias/' + filter + '/json', {
           callBack: (data) => {
-            const n = 3
+            const n = this.numberNotices
             _this.notices = new Array(Math.ceil(data.length / n))
               .fill()
               .map(_ => data.splice(0, n))
@@ -119,7 +124,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias-todas/json', {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           var notices = []
           data.map((item, key) => {
             if (key <= 30) {

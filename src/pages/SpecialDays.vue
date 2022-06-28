@@ -198,6 +198,7 @@
 
 <script>
 import configServices from '../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Specialday',
@@ -231,10 +232,15 @@ export default {
       dtevento: false,
       loadedMultimedia: false,
       event: {},
-      moments: []
+      moments: [],
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
+
     this.getInfo()
     this.getMultimediaHome()
     this.getEvents()
@@ -276,7 +282,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/eventos/special-days/json', {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           _this.events = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
