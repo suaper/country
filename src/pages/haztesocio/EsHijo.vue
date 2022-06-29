@@ -35,7 +35,11 @@ export default {
   },
   methods: {
     irFormularioHijo () {
-      this.$router.push('FormularioHijo')
+      if (this.eshijos === 'si') {
+        this.$router.push('/hazte-socio/formulariohijo')
+      } else {
+        this.$router.push('/hazte-socio/enviarpostulacion')
+      }
     }
   }
 }

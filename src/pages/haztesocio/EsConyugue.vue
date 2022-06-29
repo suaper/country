@@ -3,7 +3,7 @@
     <div class="q-pb-xl all_width gris_home view_form_cotizar">
         <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Conyugue</div>
-            <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
+            <div class="back"> <q-btn to="/hazte-socio/formulario" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_500 centrar flex_escuelas flex_obras justify-center view_form_cotizar is_hijo">
         <q-form>
@@ -35,7 +35,12 @@ export default {
   },
   methods: {
     irFormularioConyugue () {
-      this.$router.push('formularioconyugue')
+      console.log(this.eshijos)
+      if (this.eshijos === 'no') {
+        this.$router.push('/hazte-socio/eshijo')
+      } else {
+        this.$router.push('/hazte-socio/formularioconyugue')
+      }
     }
   }
 }

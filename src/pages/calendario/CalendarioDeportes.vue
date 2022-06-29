@@ -102,6 +102,7 @@
 import Menucalendario from 'pages/submenus/Menucalendario'
 import Menudeportes from 'pages/submenus/Menudeportes'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Calendario',
@@ -132,10 +133,14 @@ export default {
       allEvents: [],
       dtevento: false,
       event: {},
-      path: ''
+      path: '',
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[1]
     this.getInfo()
@@ -160,7 +165,7 @@ export default {
         }
       })
 
-      var n = 3
+      var n = this.numberNotices
       _this.events = new Array(Math.ceil(newEvents.length / n))
         .fill()
         .map(_ => newEvents.splice(0, n))
@@ -219,7 +224,7 @@ export default {
           var newData = JSON.stringify(data)
           newData = JSON.parse(newData)
 
-          const n = 3
+          const n = this.numberNotices
           _this.events = new Array(Math.ceil(newData.length / n))
             .fill()
             .map(_ => newData.splice(0, n))

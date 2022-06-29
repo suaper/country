@@ -1,10 +1,10 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_danzas">
-    <q-form>
+    <q-form @onSubmit="irSiguiente()">
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Antecedentes del Postulante</div>
-            <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
+            <div class="back"> <q-btn onclick="history.back()" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center view_form_cotizar">
                 <div class="roww">
@@ -866,7 +866,7 @@
                     </div>
                 </div>
                 <div class="action_next">
-                    <q-btn outline @click="irSiguiente()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
+                    <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
                     <span class="nota center">
                         * Cualquier cambio de esta información debe ser avisado al Club, dentro de 60 días.
                     </span>
@@ -955,7 +955,7 @@ export default {
       this.data.ocupaciones = this.ocupaciones
       this.data.deportivas = this.deportivas
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
-      this.$router.push('eshijo')
+      this.$router.push('/hazte-socio/esconyugue')
     },
     addColegio () {
       this.colegios.push(this.colegio)

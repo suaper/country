@@ -55,6 +55,7 @@
 <script>
 import Menucultura from 'pages/submenus/Menucultura'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Noticiascultura',
@@ -69,10 +70,14 @@ export default {
       slidecontent: 1,
       urlSite: 'https://pwccdev.mkbk.digital/',
       notices: [],
-      pop_reservar_spa: false
+      pop_reservar_spa: false,
+      numberNotices: 1
     }
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     this.getNotices()
   },
   methods: {
@@ -84,7 +89,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias/cultura/json', {
         callBack: (data) => {
-          const n = 3
+          const n = this.numberNotices
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))

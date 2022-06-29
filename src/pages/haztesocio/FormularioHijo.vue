@@ -4,7 +4,7 @@
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Hijos (Hasta 25 años)</div>
-            <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
+            <div class="back"> <q-btn to="/es" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center view_form_cotizar">
                 <div class="roww">
@@ -318,7 +318,7 @@ export default {
   },
   methods: {
     irSiguiente () {
-      this.$router.push('enviarpostulacion')
+      this.$router.push('hazte-socio/enviarpostulacion')
     }
   }
 }
