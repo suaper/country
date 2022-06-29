@@ -3,7 +3,7 @@
     <MenuDeporteInterno currentItem="/deportes/futbol/escuela"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
 
-    <div class="q-pb-md all_width bg_gris">
+    <div class="q-pb-md all_width bg_gris ece_fut">
         <div class="centrar w_1100">
             <div class="center text-center q-my-lg titulos">Escuelas</div>
 

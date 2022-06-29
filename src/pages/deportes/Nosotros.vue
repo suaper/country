@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="q-py-xl all_width bg_amarillo">
-        <div class="centrar w_1100 fila_separador ">
+        <div class="centrar w_1100 fila_separador us_movil">
             <div class="w_45">
                 <h5 class="style_title">Comité</h5>
                 <Comite :content="comite" :path="path" v-if="loadedComite"/>

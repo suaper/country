@@ -6,7 +6,7 @@
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar w_1100">
             <div class="center text-center q-my-lg titulos">Categorías</div>
-        <div class="row_2 centrar flex-center">
+        <div class="row_2 centrar flex-center cat_mov">
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione una categoría:</span>
@@ -22,12 +22,12 @@
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo" v-if="loadedIniciacion">
+    <div class="q-py-xl all_width bg_amarillo collapsa_mo" v-if="loadedIniciacion">
         <div class="centrar w_1100 fila_separador ">
             <TituloLateral :items="iniciacion" :key="keyIniciacion" v-if="loadedIniciacion"/>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_gris" v-if="loadedProfesores">
+    <div class="q-py-xl all_width bg_gris collapsa_mo" v-if="loadedProfesores">
         <div class="centrar w_1100 ">
             <div class="all_width">
                 <h5 class="style_title q-my-lg" >Profesores</h5>
@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo" v-if="loadedHorarios">
+    <div class="q-py-xl all_width bg_amarillo collapsa_an" v-if="loadedHorarios">
         <div class="centrar w_1100">
 
           <div class="row_2 centrar flex">

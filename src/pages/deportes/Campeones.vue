@@ -4,7 +4,7 @@
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
     <div class="q-py-none all_width bg_gris wrp_club campeones">
     <div class="center text-center q-my-lg titulos">Campeones</div>
-        <div class="no-wrap flex justify-between centrar w_1200">
+        <div class="no-wrap flex justify-between centrar w_1200 champs_movil">
             <div class="row_2 fitnes_last" v-if="loadedVarones">
                 <h4 class="subtitle q-my-xl all_width text-center">Varones</h4>
                 <img :src="urlSite + varonesCampeones[0][0].field_imagen_campeon" alt="">
