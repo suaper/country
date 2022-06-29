@@ -1,5 +1,5 @@
  <template>
-    <div class="staff deportestaff">
+    <div class="staff deportestaff dep_mvil">
         <div class="flex">
             <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
               <tr>

@@ -14,11 +14,11 @@
       </q-carousel>
     </div>
     <div class="q-pb-xl all_width gris_home">
-        <div class="setenta q-pd-md q-mb-xl centrar text-center ma_to_30 ma_bo_30">
+        <div class="setenta cien_movil q-pd-md q-mb-xl centrar text-center ma_to_30 ma_bo_30">
             <div class="center text-center q-my-lg titulos">Motor Skills</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
 
-            <div class="right sesenta q-mb-xl centrar wrp_table ma_to_50">
+            <div class="right sesenta cien_movil q-mb-xl centrar wrp_table ma_to_50">
                 <table class="bg_white">
                     <tr>
                         <th class="treinta f_400">Categoría</th>

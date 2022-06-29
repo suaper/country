@@ -6087,6 +6087,251 @@ hr.form_linea{
             }
         }
     }
+    .wrp_gallery_video{
+        .galeria_video{
+            height: 700px !important;
+            table{
+                tr{
+                    display: flex;
+                    flex-direction: column;
+                    td{
+                        width: 100% !important;
+                        height: 235px !important;
+                    }
+                }
+            }
+        }
+    }
+    .indicies_canchas{
+        .info{
+            margin-left: 0;
+        }
+    }
+    .list_numeros{
+        padding-left: 10px;
+    }
+    .filters{
+        .wrp_actions_center_peluqueria{
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            li a {
+                padding: 10px 11px;
+            }
+        }
+    }
+    .staff.deportestaff > .flex {
+        justify-content: flex-start;
+    }
+    .champs_movil{
+        flex-wrap:wrap;
+        .row_2.fitnes_last{
+            width: 100%;
+            img{
+                margin: 10px auto;
+            }
+        }
+    }
+    .dep_mvil{
+        .flex{
+            table.datos_staff_contacto{
+                margin: 9px;
+                width: 45%;
+            }
+        }
+    }
+    .list_palmaresFutbol{
+        justify-content: center;
+        li{
+            margin: 10px auto;
+            .box_download{
+                margin-left: 0;
+            }
+        }
+    }
+    .only-image{
+        img{
+            max-width: 96%;
+            margin: 10px auto;
+        }
+    }
+    .escuelas{
+        >.wrp_table_ranking{
+            width: 370px;
+            margin: 10px auto;
+            overflow-x: scroll;
+            tr{
+                th{
+                    font-size: 17px;
+                }
+            }
+        }
+    }
+    .desc_hockey{
+        li{
+            flex-wrap: wrap;
+            .w_80 {
+                width: 96%;
+            }
+            .w_20{
+                width: 96%;
+            }
+        }
+    }
+    .contenido_html{
+        tr{
+            display: flex;
+            flex-direction: column;
+            td{
+                img{
+                    max-width: 96%;
+                    margin: 10px auto;
+                }
+            }
+        }
+    }
+    .fitnes_last .form_fitness:after {
+        display: none;
+    }
+    .patrocinadores {
+        align-items: flex-start;
+        margin: 0;
+        flex-wrap: wrap;
+    }
+    .us_movil{
+        flex-wrap: wrap;
+        .w_45{
+            width: 100%;
+        }
+    }
+    #damas, #varones, #reglamentos{
+        .w_1100{
+            flex-wrap: wrap;
+            .w_55{
+                width: 100%;
+            }
+            .w_35{
+                width: 100% !important;
+            }
+        }
+    }
+    .calendario_mo{
+        .fila_separador{
+            flex-wrap: wrap;
+            .w_55{
+                width: 100%;
+            }
+            .w_35{
+                width: 100% !important;
+            }
+        }
+        .wrp_table_clasificacion{
+            >.wrp_table_clasificacion{
+                width: 380px;
+                margin: 10px auto;
+                overflow-x: scroll;
+            }
+        }
+    }
+    .wrap_botones_co{
+        .wrp_actions_center_spa{
+            flex-wrap: wrap;
+            justify-content: center;
+            li{
+                width: 41%;
+            }
+        }
+    }
+    .list_reglamentos{
+        flex-wrap: wrap;
+        justify-content: center;
+        li{
+            margin: 10px 0 0 0px;
+        }
+    }
+    .cat_mov{
+        flex-wrap: wrap;
+        width: 96%;
+        margin: 10px auto;
+        .w_35{
+            width: 100% !important;
+            margin: 10px 0;
+        }
+    }
+    .collapsa_mo{
+        table{
+            margin: 10px auto;
+            tr{
+                display: flex;
+                flex-direction: column;
+                td{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .collapsa_an{
+        .w_35{
+            width: 100% !important;
+        }
+        .w_65{
+            width: 100%;
+        }
+    }
+    .mo_mo{
+        .filters{
+            .wrp_actions_center_peluqueria{
+                justify-content: center;
+                &:nth-child(2){
+                    border-top: 1px solid;
+                    padding-top: 10px;
+                }
+            }
+        }
+    }
+    .centrar_anclas{
+        .wrp_actions_center_peluqueria{
+            justify-content: center;
+        }
+    }
+    .ece_fut{
+        .row_2{
+            .w_25{
+                width: 100%;
+            }
+            img{
+                width: 100%;
+            }
+            .w_70{
+                width: 100%;
+            }
+        }
+    }
+    .pop_descargar{
+        .form_biblioteca{
+            .row_2 {
+                flex-wrap: wrap;
+                label {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .cien_movil{
+        width: 96%;
+        margin: 10px auto;
+    }
+    .view_danza .wrp_actions_center_spa li {
+        padding: 7px;
+        margin: 5px;
+        width: 190px;
+        height: 142px;
+    }
+    .view_danzas .back {
+        position: absolute;
+        left: -43px;
+        top: 0;
+    }
+
 }
 
 .solomovil{

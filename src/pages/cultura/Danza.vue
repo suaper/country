@@ -19,7 +19,7 @@
             <div class="center text-center q-my-lg titulos">Danza</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
-        <div class="setenta centrar">
+        <div class="setenta cien_movil centrar">
             <ul class="wrp_actions_center_spa">
                <li v-for="(item, key) in ballet" :key="key"><img :src="urlSite + item.field_icono_item"><strong>{{ item.field_titulo_item_1 }}</strong><a href="#" @click="goItem($event, item.field_titulo_item_1)" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
             </ul>
