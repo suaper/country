@@ -31,18 +31,35 @@
                          </div>
                     </div>
 
-                    <div class="ancho50 item-1">
-                        <span class="label_strong">Lugar de Nacimiento</span>
-                        <q-input
-                        outlined
-                        label="Ciudad de nacimiento"
-                        lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                        v-model="data.lugar_nacimiento"
-                    />
-                    </div>
+                    <div class="ancho50 items-1">
+                    <span class="label_strong">Fecha de Matrimomio</span>
+                      <q-input outlined v-model="data.matrimonio_fecha" mask="date" :rules="['date']">
+                        <template v-slot:append>
+                          <q-icon name="event" class="cursor-pointer">
+                            <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                              <q-date v-model="data.matrimonio_fecha">
+                                <div class="row items-center justify-end">
+                                  <q-btn v-close-popup label="Close" color="primary" flat />
+                                </div>
+                              </q-date>
+                            </q-popup-proxy>
+                          </q-icon>
+                        </template>
+                      </q-input>
+                  </div>
                 </div>
+
                 <div class="roww">
+                  <div class="ancho50 item-1">
+                      <span class="label_strong">Lugar de Nacimiento</span>
+                      <q-input
+                      outlined
+                      label="Ciudad de nacimiento"
+                      lazy-rules
+                      :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                      v-model="data.lugar_nacimiento"
+                  />
+                  </div>
                     <div class="ancho50 items-1">
                       <span class="label_strong">Fecha de Nacimiento</span>
                         <q-input outlined v-model="data.cumpple" mask="date" :rules="['date']">
@@ -59,6 +76,8 @@
                           </template>
                         </q-input>
                     </div>
+                </div>
+                <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Foto</span>
                         <q-file outlined v-model="data.foto">
@@ -117,30 +136,6 @@
                 </div>
                 <div class="roww">
                     <div class="ancho50 items-1">
-                        <span class="label_strong">Fono</span>
-                        <q-input
-                            outlined
-                            label="###"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.telefono"
-
-                        />
-                    </div>
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Celular</span>
-                        <q-input
-                            outlined
-                            label="###"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.celular"
-
-                        />
-                    </div>
-                </div>
-                <div class="roww">
-                    <div class="ancho50 items-1">
                         <span class="label_strong">R.U.T. Nº</span>
                         <q-input
                             outlined
@@ -152,32 +147,13 @@
                         />
                     </div>
                     <div class="ancho50 items-1">
-                        <span class="label_strong">Correo Electrónico</span>
+                        <span class="label_strong">Celular</span>
                         <q-input
                             outlined
-                            label="Correo Electrónico"
+                            label="###"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.email"
-
-                        />
-                    </div>
-                </div>
-                <div class="roww">
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Estado Civil</span>
-                        <div class="wrp_busca_mes w_500">
-                            <q-select outlined label="Seleccione" v-model="data.estado_civil" :options="['Soltero', 'Casado', 'Viudo', 'Union Libre', 'Viudo (a)', 'Separado']"/>
-                        </div>
-                    </div>
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Profesión</span>
-                        <q-input
-                            outlined
-                            label="Profesión"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.profesion"
+                            v-model="data.celular"
 
                         />
                     </div>
@@ -240,6 +216,30 @@
                         <q-radio left-label v-model="data.sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
                     </div>
                 </div>
+                <div class="roww">
+                    <div class="ancho50 items-1">
+                        <span class="label_strong">Profesión</span>
+                        <q-input
+                            outlined
+                            label="Profesión"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                            v-model="data.profesion"
+
+                        />
+                    </div>
+                    <div class="ancho50 items-1">
+                        <span class="label_strong">Correo Electrónico</span>
+                        <q-input
+                            outlined
+                            label="Correo Electrónico"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                            v-model="data.email"
+
+                        />
+                    </div>
+                </div>
 
                 <div class="roww">
                     <div class="ancho50 items-1">
@@ -265,7 +265,7 @@
                 </div>
                 <div class="roww">
                     <div class="ancho50 item-1">
-                        <span class="label_strong">Dirección particular*</span>
+                        <span class="label_strong">Dirección*</span>
                         <div class="flexline">
                             <span class="label_normal">Calle</span>
                             <q-input
@@ -787,10 +787,10 @@
 
                     <div class="roww">
                         <div class="ancho100 items-1">
-                            <span class="label_strong">Antecedente que usted estime importante que el comité de selección conozca</span>
+                            <span class="label_strong">Otros intereses</span>
                             <q-input
                                 outlined
-                                label="Antecedente que usted estime importante que el comité de selección conozca"
+                                label="Otros intereses"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.antecedentes"
@@ -798,73 +798,8 @@
                             />
                         </div>
                     </div>
-
-                    <div class="roww">
-                        <div class="ancho100 items-1">
-                            <span class="label_strong">Favor señale por qué desea hacerse socio del Prince of Wales Country Club</span>
-                            <q-input
-                                outlined
-                                label="Favor señale por qué desea hacerse socio del Prince of Wales Country Club"
-                                lazy-rules
-                                v-model="data.deseo"
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            />
-                        </div>
-                    </div>
                 </div>
                 <hr class="form_linea">
-
-                <div class="otros_cargos">
-                    <div class="center text-center q-my-lg titulos">Socios Patrocinadores</div>
-                    <div class="roww">
-                        <div class="ancho50 items-2">
-                            <div class="sin_estilos">
-                                <span class="label_strong">Nombre Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Nombre del Postulante"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                    v-model="data.socio[0].nombre"
-
-                                />
-                            </div>
-                            <div class="sin_estilos">
-                                <span class="label_strong">Apellido Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Apellido del Postulante*"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                    v-model="data.socio[0].apellido"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="ancho50 items-2">
-                            <div class="sin_estilos">
-                                <span class="label_strong">Nombre Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Nombre del Postulante"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                    v-model="data.socio[1].nombre"
-                                />
-                            </div>
-                            <div class="sin_estilos">
-                                <span class="label_strong">Apellido Completo</span>
-                                <q-input
-                                    outlined
-                                    label="Apellido del Postulante*"
-                                    lazy-rules
-                                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                    v-model="data.socio[1].apellido"
-                                />
-                             </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="action_next">
                     <q-btn outline @click="irSiguiente()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
                     <span class="nota center">
@@ -930,7 +865,6 @@ export default {
     var data = localStorage.getItem('dataSocioForm')
     this.data = JSON.parse(data)
     this.data.conyugue = {}
-    console.log(this.data)
     this.addColegio()
     this.addUniversidad()
     this.addPostgrado()
@@ -940,7 +874,6 @@ export default {
   },
   methods: {
     irSiguiente () {
-      console.log(this.colegios)
       this.data.conyugue.colegios = this.colegios
       this.data.conyugue.universidades = this.universidades
       this.data.conyugue.postgrados = this.postgrados

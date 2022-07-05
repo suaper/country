@@ -313,12 +313,62 @@ export default {
       video: false,
       detalleObras: false,
       pop_consultar: false,
-      date: '2019/03/01'
+      date: '2019/03/01',
+      colegio: {
+        nombre: '',
+        direccion: '',
+        years: '',
+        desde: '',
+        hasta: ''
+      },
+      colegios: [],
+      itemUniversitario: {
+        nombre: '',
+        ciudad: '',
+        carrera: '',
+        titulo: '',
+        year: ''
+      },
+      universidades: [],
+      postgrados: [],
+      otrosEstudios: []
     }
+  },
+  created () {
+    var data = localStorage.getItem('dataSocioForm')
+    this.data = JSON.parse(data)
+    this.data.hijos = []
+    this.addColegio()
+    this.addUniversidad()
+    this.addPostgrado()
+    this.addOtrosEstudios()
+    this.addOcupacion()
+    this.addDeportiva()
   },
   methods: {
     irSiguiente () {
       this.$router.push('hazte-socio/enviarpostulacion')
+    },
+    addColegio () {
+      this.colegios.push(this.colegio)
+    },
+    addPostgrado () {
+      this.postgrados.push(this.itemUniversitario)
+    },
+    addOtrosEstudios () {
+      this.otrosEstudios.push(this.itemUniversitario)
+    },
+    addOcupacion () {
+      this.ocupaciones.push(this.ocupacion)
+    },
+    addDeportiva () {
+      this.deportivas.push(this.deportiva)
+    },
+    addOtrasActividades () {
+      this.otrasActividades.push({ nombre: '' })
+    },
+    addUniversidad () {
+      this.universidades.push(this.itemUniversitario)
     }
   }
 }

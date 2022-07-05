@@ -202,7 +202,7 @@ export default {
       pop_form_socio: false,
       shape: 'false',
       options_civil: [
-        'Solter@', 'Casad@', 'Viud@', 'Unión libre'
+        'Soltero/a', 'Soltero/a'
       ],
       civilStatus: null,
       mobile: '',
@@ -250,7 +250,7 @@ export default {
       configServices.consumerStandar(this, 'pwcc-rest/post', data, {
         callBack: (data) => {
           if (data.status) {
-            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos.')
           } else {
             _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
           }

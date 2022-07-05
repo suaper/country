@@ -65,9 +65,9 @@ export default {
   data () {
     return {
       sliders: true,
-      slide: 1,
+      slide: 0,
       info: {},
-      slidecontent: 1,
+      slidecontent: 0,
       urlSite: 'https://pwccdev.mkbk.digital/',
       notices: [],
       pop_reservar_spa: false,

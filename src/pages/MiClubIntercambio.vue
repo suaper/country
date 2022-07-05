@@ -40,7 +40,7 @@
                     </table>
                 </div>
                 <div class="img_clubes">
-                <img class="cien" src="../assets/MiClub/club01.png">
+                <img class="cien" :src="imageOne">
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
             <h4 class="subtitle">Convenios de Intercambio con otros Clubes Internacionales</h4>
             <div class="flex flex-center items-start w_1200">
                 <div class="img_clubes left text-left q-mr-md">
-                    <img class="cien" src="../assets/MiClub/club02.png">
+                    <img class="cien" :src="imageTwo">
                 </div>
                 <div class="table_clubes sesenta">
                     <table>
@@ -167,7 +167,9 @@ export default {
       medium: false,
       medium2: false,
       itemMedium: {},
-      itemTwoMedium: {}
+      itemTwoMedium: {},
+      imageOne: '',
+      imageTwo: ''
     }
   },
   created () {
@@ -183,6 +185,19 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_banner_seccion[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/node/1103?_format=json', {
+        callBack: (data) => {
+          console.log(data)
+          _this.imageOne = data.field_imagen_blqoue_club[0].url
+        }
+      })
+
+      configServices.loadData(this, '/node/1104?_format=json', {
+        callBack: (data) => {
+          _this.imageTwo = data.field_imagen_blqoue_club[0].url
         }
       })
     },

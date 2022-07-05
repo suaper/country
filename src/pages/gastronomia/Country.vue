@@ -73,7 +73,7 @@ export default {
   },
   mounted () {
     if (Platform.is.desktop) {
-      this.numberNotices = 5
+      this.numberNotices = 3
     }
     this.getNotices()
   },

@@ -285,7 +285,6 @@ export default {
       this.numberNotices = 3
     }
     this.getInfo()
-    this.getMultimediaHome()
     this.getBooksMoreReads()
     this.getBooksChild()
   },

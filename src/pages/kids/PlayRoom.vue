@@ -89,11 +89,11 @@
             <ul class="contacto_footer cien all_width">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
-                    <span>{{ personal[0].field_correo_staff }}</span>
+                    <span>{{ info.field_co[0].value }}</span>
                 </li>
                 <li class="tel">
                     <img src="../../assets/HazteSocio/i-phone.svg" />
-                    <span>{{ personal[0].field_numero_staff }}</span>
+                    <span>{{ info.field_telefono_1[0].value }}</span>
                 </li>
             </ul>
         </div>

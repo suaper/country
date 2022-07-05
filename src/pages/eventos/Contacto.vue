@@ -7,7 +7,7 @@
         <div class="q-py-md centrar text-center w_1200">
           <div class="row_2 fitnes_last">
               <div class="form_fitness sin_borde">
-                  <p class="text-left">Diligencie este formulario para recibir más información:</p>
+                  <p class="text-left" v-html="info.body[0].value"></p>
                   <q-form
                       @submit="onSubmit"
                       @reset="onReset"

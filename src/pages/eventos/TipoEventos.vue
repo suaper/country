@@ -43,7 +43,7 @@
                   <td>
                       <h6 class="title_text">{{ item.title }}</h6>
                       <p v-html="item.body"></p>
-                      <q-btn type="a"  @click="goCotizador(item)" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <q-btn type="a"  @click="goCotizador(item)" outline class="azul q-my-md centrar bg_white_i" label="Cotiza aquí" icon-right="arrow_right_alt"/>
                   </td>
                   <td>
                       <div class="prueba"  :name="keyImage" v-for="(image, keyImage) in item.field_galeria_tipos_eventos" :key="keyImage">
@@ -60,7 +60,7 @@
                   <td>
                       <h6 class="title_text">{{ item.title }}</h6>
                       <p v-html="item.body"></p>
-                      <q-btn type="a" @click="goCotizador(item)" outline class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+                      <q-btn type="a" @click="goCotizador(item)" outline class="azul q-my-md centrar bg_white_i" label="Cotiza aquí" icon-right="arrow_right_alt"/>
                   </td>
               </tr>
           </table>
