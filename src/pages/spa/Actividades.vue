@@ -1,8 +1,9 @@
 <template>
-  <q-page class="flex flex-center view_quienes_somos view_calendario">
+  <q-page class="flex flex-center view_quienes_somos view_calendario view_danzas">
     <div class="q-pb-md all_width gris_home">
-        <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-xl titulos">Actividades</div>
+        <div class="setenta q-pd-md centrar text-center relative">
+            <div class="center text-center q-my-lg titulos">Actividades</div>
+            <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
 
         <div class="q-py-none all_width gris_home wrp_club hazte_socio">
