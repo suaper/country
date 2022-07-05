@@ -6400,3 +6400,24 @@ hr.form_linea{
     color: #1F2660;
     float: right;
 }
+
+.text-normal{
+    h3{
+        font-family: $font-text;
+        font-size: 24px;
+        strong{
+            font-weight: normal;
+        }
+    }
+    table{
+        &:first-child{
+            tr{
+                td{
+                    &:last-child{
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}

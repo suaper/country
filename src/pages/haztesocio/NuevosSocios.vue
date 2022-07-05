@@ -23,8 +23,8 @@
 
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-            <h4 class="subtitle">Requisitos</h4>
-            <p class="intro text-left colapsa" v-html="info[0].field_requisitos"></p>
+            <h4 class="subtitle q-my-md">Requisitos</h4>
+            <p class="intro text-left colapsa text-normal" v-html="info[0].field_requisitos"></p>
         </div>
     </div>
 
