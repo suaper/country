@@ -274,6 +274,7 @@ export default {
       }
     },
     onSubmit () {
+      console.log(this.fourthStep)
       if (this.fourthStep) {
         var _this = this
         var data = {
