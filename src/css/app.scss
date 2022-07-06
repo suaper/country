@@ -6391,6 +6391,27 @@ hr.form_linea{
     .view_calendario .wrp_actions_calendario{
         flex-wrap: wrap;
     }
+    .view_hijos_socios{
+        .view_form_cotizar{
+            .roww{
+                flex-wrap: wrap;
+                .ancho50 {
+                    width: 100%;
+                    margin-bottom: 12px;
+                }
+            }
+            .items-2 {
+                flex-wrap: wrap;
+                .sin_estilos{
+                    width: 100%;
+                    margin-bottom: 12px;
+                }
+            }
+            .ancho50{
+                width: 100%;
+            }
+        }
+    }
 }
 
 .solomovil{
@@ -6432,4 +6453,14 @@ hr.form_linea{
         }
     }
 }
-
+.view_cotizar{
+    .text_adicional{
+        strong.w_100{
+            color: #7C7E91;
+            font-size: 14px;
+        }
+        .q-form{
+            width: 100%;
+        }
+    }
+}
