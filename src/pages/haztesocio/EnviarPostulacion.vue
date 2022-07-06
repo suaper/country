@@ -6,21 +6,23 @@
             <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1100 centrar flex_escuelas flex_obras justify-center view_form_cotizar is_hijo">
-        <q-form>
+        <q-form
+        @onSubmit="irSiguiente">
             <div class="roww">
                 <div class="ancho50 items-1">
                     <span class="label_strong">Firma de autorización</span>
-                    <q-uploader
-                        url="http://localhost:4444/upload"
-                        style="max-width: 300px"
-                    />
+                    <q-file outlined v-model="data.firmafoto">
+                      <template v-slot:prepend>
+                        <q-icon name="attach_file" />
+                      </template>
+                    </q-file>
                 </div>
                 <div class="ancho50 items-1">
                     <q-checkbox v-model="terminos" label="Acepto términos y Condiciones y tratamiento de datos." />
                 </div>
             </div>
             <div class="action_next">
-                <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Enviar" icon-right="add"/>
+                <q-btn outline @click="irSiguiente" class="azul centrar mt_10 bg_white_home" label="Enviar" icon-right="add"/>
             </div>
         </q-form>
         </div>
@@ -31,16 +33,22 @@
 <script>
 
 export default {
-  name: 'esConyugue',
+  name: 'enviarPostulacion',
   data () {
     return {
       eshijos: '',
-      terminos: false
+      terminos: false,
+      data: {}
     }
+  },
+  created () {
+    var data = localStorage.getItem('dataSocioForm')
+    this.data = JSON.parse(data)
   },
   methods: {
     irSiguiente () {
-      this.$router.push('enviarpostulacion')
+      console.log(this.data)
+      return ''
     }
   }
 }

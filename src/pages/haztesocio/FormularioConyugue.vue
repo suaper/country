@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_danzas">
-    <q-form>
+    <q-form @onSubmit="irSiguiente()">
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Antecedentes del Conyugue</div>
@@ -333,7 +333,7 @@
         <div class="q-pb-xl all_width bg_amarillo view_form_cotizar">
             <div class="q-py-md w_1200 centrar">
                 <div class="center text-center q-my-lg titulos">Estudios</div>
-                <div class="colegios" v-for="(item, key) in colegios" :key="key">
+                <div class="colegios" v-for="(item, key) in colegios" :key="key + '-cole'">
                     <div class="roww">
                         <div class="ancho50">
                             <span class="label_strong">Secundarios: Colegios</span>
@@ -409,7 +409,7 @@
                 </div>
                 <q-btn outline class="azul centrar mt_10 bg_white_home" label="Agregar más Colegios" icon-right="add" @click="addColegio()"/>
 
-                <div class="universidades" v-for="(item, key) in universidades" :key="key">
+                <div class="universidades" v-for="(item, key) in universidades" :key="key + '-univ'">
                     <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Universitarios: Universidad</span>
@@ -473,7 +473,7 @@
                 </div>
                 <q-btn outline class="azul centrar mt_10 bg_white_home" label="Agregar más Universidades" icon-right="add" @click="addUniversidad()"/>
 
-                <div class="post_grado" v-for="(item, key) in postgrados" :key="key">
+                <div class="post_grado" v-for="(item, key) in postgrados" :key="key + '-post'">
                     <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Post-grado / Post-título</span>
@@ -539,7 +539,7 @@
                 <hr class="form_linea">
                 </div>
                     <q-btn outline @click="addPostgrado()" class="azul centrar mt_10 bg_white_home" label="Agregar más Post-grados" icon-right="add"/>
-                <div class="otros_estudios" v-for="(item, key) in otrosEstudios" :key="key">
+                <div class="otros_estudios" v-for="(item, key) in otrosEstudios" :key="key + '-otros'">
                     <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Otros estudios</span>
@@ -612,7 +612,7 @@
         <div class="q-pb-xl all_width gris_home">
             <div class="q-py-md w_1200 centrar view_form_cotizar justify-center">
                 <div class="center text-center q-my-lg titulos">Historia Ocupacional</div>
-                <div class="ocupaciones" v-for="(item, key) in ocupaciones" :key="key">
+                <div class="ocupaciones" v-for="(item, key) in ocupaciones" :key="key + '-ocup'">
                     <div class="roww">
                         <div class="ancho50 items-1">
                             <span class="label_strong">Empresa</span>
@@ -681,7 +681,7 @@
 
                 <div class="otros_cargos">
                     <div class="center text-center q-my-lg titulos">Otros cargos o actividades</div>
-                    <div class="roww" v-for="(item, key) in otrasActividades" :key="key">
+                    <div class="roww" v-for="(item, key) in otrasActividades" :key="key + '-otrasac'">
                         <div class="ancho100 items-1">
                             <span class="label_strong">Directorios, Clases, Universidad, etc.</span>
                             <q-input
@@ -703,7 +703,7 @@
 
                 <div class="instituciones_deportivas">
                     <div class="center text-center q-my-lg titulos">Instituciones deportivas o sociales</div>
-                    <div class="deportivas" v-for="(item, key) in deportivas" :key="key">
+                    <div class="deportivas" v-for="(item, key) in deportivas" :key="key + '-deport'">
                       <div class="roww">
                           <div class="ancho50 items-1">
                               <span class="label_strong">Institución</span>
