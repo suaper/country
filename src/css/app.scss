@@ -6464,3 +6464,30 @@ hr.form_linea{
         }
     }
 }
+.swal2-container{
+    .swal2-popup{
+        border: 1px solid #CA9E64;
+        .swal2-close{
+            color: #fff;
+            border-radius: 50%;
+            background: #1F2660;
+            padding: 2px;
+            width: 27px;
+            height: 28px;
+            margin-top: 0px;
+        }
+        .swal2-title{
+            color: #7C7E91;
+            font-size: 15px;
+            font-family: "Open Sans", sans-serif;
+            line-height: 2.3;
+            width: 70%;
+            margin: 30px auto 10px;
+        }
+        .swal2-confirm{
+            background: #CA9E64;
+            color: #fff;
+            padding: 10px 25px;
+        }
+    }
+}
