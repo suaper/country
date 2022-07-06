@@ -6421,3 +6421,15 @@ hr.form_linea{
         }
     }
 }
+.list_descargables{
+    a{
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover{
+            transform: scale(1.05); /* Igual que: scaleX(0.7) scaleY(0.7) */
+            background-color: #fcf8f8;
+            margin-top: 7px;
+        }
+    }
+}
+
