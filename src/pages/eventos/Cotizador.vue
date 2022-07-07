@@ -3,7 +3,7 @@
     <div class="q-pb-md all_width gris_home view_danzas q-mt-xl q-mb-none">
         <div class="setenta  centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Cotizar</div>
-            <div class="back"> <q-btn to="/eventos/tipo-eventos" round color="white" icon="west" />Volver</div>
+            <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
     </div>
     <div class="q-py-md w_1100 centrar justify-center">
