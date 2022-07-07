@@ -84,7 +84,7 @@
             <h6 class="peluqueria q-mt-none">Descargables</h6>
             <ul class="list_descargables">
                 <li v-for="(item, key) in descargables" :key="key">
-                    <a href="#">
+                    <a href="#"  @click="openPopDescargas(item)">
                       <img class="normal" :src="urlSite + item.icon">
                       <strong>{{ item.title }}</strong>
                       <q-btn class="text_azul centrar bg_white btn_centrar" @click="openPopDescargas(item)" label="Ver más" icon-right="arrow_right_alt"/>

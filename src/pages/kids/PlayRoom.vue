@@ -86,6 +86,7 @@
     </div>
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
+          <h3 class="q-my-none">Contáctanos</h3>
             <ul class="contacto_footer cien all_width">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
