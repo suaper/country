@@ -19,9 +19,11 @@
             <div class="center text-center q-my-lg titulos">Danza</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
-        <div class="setenta cien_movil centrar">
+        <div class="setenta cien_movil centrar" v-if="loadedBallet">
             <ul class="wrp_actions_center_spa">
-               <li v-for="(item, key) in ballet" :key="key"><img :src="urlSite + item.field_icono_item"><strong>{{ item.field_titulo_item_1 }}</strong><a href="#" @click="goItem($event, item.field_titulo_item_1)" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+               <li><img :src="urlSite + ballet[0].field_icono_item"><strong>{{ ballet[0].field_titulo_item_1 }}</strong><a href="#" @click="goItem($event, 'Escuelas')" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+               <li><img :src="urlSite + ballet[1].field_icono_item"><strong>{{ ballet[1].field_titulo_item_1 }}</strong><a href="#" @click="goItem($event, 'Compañia')" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
+               <li><img :src="urlSite + ballet[2].field_icono_item"><strong>{{ ballet[2].field_titulo_item_1 }}</strong><a href="#" @click="goItem($event, 'Obras')" icon-right="arrow_right_alt">Ver más  <span>-&gt;</span></a></li>
             </ul>
         </div>
     </div>
@@ -137,7 +139,7 @@
                       </div>
                   </q-form>
               </div>
-              <div class="staff">
+              <div class="staff" v-if="loadedInstagram">
                 <iframe width="320" height="460" :src="'https://www.instagram.com/p/' + instagram.field_instagram_danza[0].value + '/embed'" frameborder="0"></iframe>
               </div>
           </div>
@@ -197,6 +199,8 @@ export default {
       },
       ballet: [],
       instagram: {},
+      loadedBallet: false,
+      loadedInstagram: false,
       notices: [
         {
           title: '',
@@ -232,6 +236,7 @@ export default {
     },
     goItem (e, item) {
       e.preventDefault()
+      console.log(item)
       switch (item) {
         case 'Escuelas':
           this.$router.push('/cultura/escuelas')
@@ -290,12 +295,14 @@ export default {
       configServices.loadData(this, '/node/1070?_format=json', {
         callBack: (data) => {
           _this.instagram = data
+          _this.loadedInstagram = true
         }
       })
 
       configServices.loadData(this, '/items-ballet/json', {
         callBack: (data) => {
           _this.ballet = data
+          _this.loadedBallet = true
         }
       })
 

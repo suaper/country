@@ -59,11 +59,11 @@
             </q-card-section>
         </q-card>
     </q-dialog>
-    <!--<div class="q-py-md all_width bg_amarillo wrp_club">
+    <div class="q-py-md all_width bg_amarillo wrp_club">
         <div class="q-py-md centrar text-center w_1200">
-            <q-btn outline @click="pop_consultar = true" class="text_white  centrar bg_orange btn_centrar" label="Postule Aquí" icon-right="arrow_right_alt"/>
+            <q-btn outline @click="irFormulario('extranjeros-paso')" class="text_white  centrar bg_orange btn_centrar" label="Postule Aquí" icon-right="arrow_right_alt"/>
         </div>
-    </div>-->
+    </div>
   </q-page>
 </template>
 
@@ -108,6 +108,10 @@ export default {
       if (typeof x !== 'undefined') {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
       }
+    },
+    irFormulario (item) {
+      localStorage.setItem('haztesocio', item)
+      this.$router.push('formulario')
     }
   }
 }

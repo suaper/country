@@ -61,7 +61,7 @@
                     </div>
                     <div class="ancho50 items-1">
                         <span class="label_strong">Foto</span>
-                        <q-file outlined v-model="data.foto">
+                        <q-file outlined v-model="data.foto" @input="uploadPhoto()">
                           <template v-slot:prepend>
                             <q-icon name="attach_file" />
                           </template>
@@ -814,7 +814,7 @@
                 </div>
                 <hr class="form_linea">
 
-                <div class="otros_cargos">
+                <div class="otros_cargos" v-if="provide !== 'hijo-socio' && provide !== 'extranjeros-paso'">
                     <div class="center text-center q-my-lg titulos">Socios Patrocinadores</div>
                     <div class="roww">
                         <div class="ancho50 items-2">
@@ -935,7 +935,8 @@ export default {
             apellido: ''
           }
         ]
-      }
+      },
+      provide: ''
     }
   },
   created () {
@@ -945,6 +946,9 @@ export default {
     this.addOtrosEstudios()
     this.addOcupacion()
     this.addDeportiva()
+
+    var provide = localStorage.getItem('haztesocio')
+    this.provide = provide
   },
   methods: {
     irSiguiente () {
@@ -977,6 +981,22 @@ export default {
     },
     addUniversidad () {
       this.universidades.push(this.itemUniversitario)
+    },
+    uploadPhoto () {
+      var _this = this
+      var reader = new FileReader()
+
+      reader.readAsText(this.data.foto)
+
+      reader.onload = function () {
+        var base64result = reader.result.split(',')[1]
+        _this.data.foto_encoded = base64result
+        console.log(_this.data.foto_encoded)
+      }
+
+      reader.onerror = function () {
+        console.log(reader.error)
+      }
     }
   }
 }

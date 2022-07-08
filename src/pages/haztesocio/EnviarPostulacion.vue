@@ -11,7 +11,7 @@
             <div class="roww">
                 <div class="ancho50 items-1">
                     <span class="label_strong">Firma de autorización</span>
-                    <q-file outlined v-model="data.firmafoto">
+                    <q-file outlined v-model="data.firmafoto" @input="uploadPhoto()">
                       <template v-slot:prepend>
                         <q-icon name="attach_file" />
                       </template>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import configServices from '../../services/config'
 
 export default {
   name: 'enviarPostulacion',
@@ -48,7 +49,39 @@ export default {
   methods: {
     irSiguiente () {
       console.log(this.data)
-      return ''
+      var _this = this
+      var data = {
+        type: 'saveSocioForm',
+        data: this.data
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('¡Tu postulación para ser Socio se ha enviado con Exito! <br>Nos contactaremos muy pronto contigo.')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          localStorage.setItem('dataSocioForm', {})
+          _this.$router.push('hazte-socio')
+        }
+      })
+    },
+    uploadPhoto () {
+      var _this = this
+      var reader = new FileReader()
+
+      reader.readAsText(this.data.foto)
+
+      reader.onload = function () {
+        var base64result = reader.result.split(',')[1]
+        _this.data.postulacion_foto = base64result
+        console.log(_this.data.postulacion_foto)
+      }
+
+      reader.onerror = function () {
+        console.log(reader.error)
+      }
     }
   }
 }

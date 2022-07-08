@@ -76,7 +76,7 @@
             <div class="roww">
               <div class="ancho50 items-1">
                 <span class="label_strong">Foto</span>
-                <q-file outlined v-model="hijos[hijoKey].foto">
+                <q-file outlined v-model="hijos[hijoKey].foto" @input="uploadPhoto(hijoKey)">
                   <template v-slot:prepend>
                     <q-icon name="attach_file" />
                   </template>
@@ -385,6 +385,22 @@ export default {
     },
     addUniversidad (key) {
       this.hijos[key].universidades.push(this.itemUniversitario)
+    },
+    uploadPhoto (key) {
+      var _this = this
+      var reader = new FileReader()
+
+      reader.readAsText(this.hijos[key].foto)
+
+      reader.onload = function () {
+        var base64result = reader.result.split(',')[1]
+        _this.data.foto_encoded = base64result
+        console.log(_this.hijos[key].foto_encoded)
+      }
+
+      reader.onerror = function () {
+        console.log(reader.error)
+      }
     }
   }
 }

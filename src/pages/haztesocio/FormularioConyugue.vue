@@ -80,7 +80,7 @@
                 <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Foto</span>
-                        <q-file outlined v-model="data.foto">
+                        <q-file outlined v-model="data.foto" @input="uploadPhoto()">
                           <template v-slot:prepend>
                             <q-icon name="attach_file" />
                           </template>
@@ -858,7 +858,8 @@ export default {
         desde: '',
         hasta: ''
       },
-      deportivas: []
+      deportivas: [],
+      provide: ''
     }
   },
   created () {
@@ -871,6 +872,9 @@ export default {
     this.addOtrosEstudios()
     this.addOcupacion()
     this.addDeportiva()
+
+    var provide = localStorage.getItem('haztesocio')
+    this.provide = provide
   },
   methods: {
     irSiguiente () {
@@ -881,7 +885,11 @@ export default {
       this.data.conyugue.ocupaciones = this.ocupaciones
       this.data.conyugue.deportivas = this.deportivas
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
-      this.$router.push('/hazte-socio/eshijo')
+      if (this.provide !== 'senior-sin-cargas') {
+        this.$router.push('/hazte-socio/eshijo')
+      } else {
+        this.$router.push('/hazte-socio/enviarpostulacion')
+      }
     },
     addColegio () {
       this.colegios.push(this.colegio)
@@ -903,6 +911,22 @@ export default {
     },
     addUniversidad () {
       this.universidades.push(this.itemUniversitario)
+    },
+    uploadPhoto () {
+      var _this = this
+      var reader = new FileReader()
+
+      reader.readAsText(this.data.foto)
+
+      reader.onload = function () {
+        var base64result = reader.result.split(',')[1]
+        _this.data.foto_conyugue = base64result
+        console.log(_this.data.foto_conyugue)
+      }
+
+      reader.onerror = function () {
+        console.log(reader.error)
+      }
     }
   }
 }
