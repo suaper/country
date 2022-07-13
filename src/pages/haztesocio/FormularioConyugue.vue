@@ -16,7 +16,7 @@
                                 label="Nombre del Postulante"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.nombre"
+                                v-model="data.conyugue.nombre"
                             />
                         </div>
                         <div class="sin_estilos">
@@ -26,18 +26,18 @@
                                 label="Apellido del Postulante*"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.apellido"
+                                v-model="data.conyugue.apellido"
                             />
                          </div>
                     </div>
 
                     <div class="ancho50 items-1">
                     <span class="label_strong">Fecha de Matrimomio</span>
-                      <q-input outlined v-model="data.matrimonio_fecha" mask="date" :rules="['date']">
+                      <q-input outlined v-model="data.conyugue.matrimonio_fecha" mask="date" :rules="['date']">
                         <template v-slot:append>
                           <q-icon name="event" class="cursor-pointer">
                             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                              <q-date v-model="data.matrimonio_fecha">
+                              <q-date v-model="data.conyugue.matrimonio_fecha">
                                 <div class="row items-center justify-end">
                                   <q-btn v-close-popup label="Close" color="primary" flat />
                                 </div>
@@ -57,16 +57,16 @@
                       label="Ciudad de nacimiento"
                       lazy-rules
                       :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                      v-model="data.lugar_nacimiento"
+                      v-model="data.conyugue.lugar_nacimiento"
                   />
                   </div>
                     <div class="ancho50 items-1">
                       <span class="label_strong">Fecha de Nacimiento</span>
-                        <q-input outlined v-model="data.cumpple" mask="date" :rules="['date']">
+                        <q-input outlined v-model="data.conyugue.cumpple" mask="date" :rules="['date']">
                           <template v-slot:append>
                             <q-icon name="event" class="cursor-pointer">
                               <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                                <q-date v-model="data.cumpple">
+                                <q-date v-model="data.conyugue.cumpple">
                                   <div class="row items-center justify-end">
                                     <q-btn v-close-popup label="Close" color="primary" flat />
                                   </div>
@@ -80,7 +80,7 @@
                 <div class="roww">
                     <div class="ancho50 items-1">
                         <span class="label_strong">Foto</span>
-                        <q-file outlined v-model="data.foto" @input="uploadPhoto()">
+                        <q-file outlined v-model="foto" @input="uploadPhoto()" accept="image/*" @rejected="onRejected">
                           <template v-slot:prepend>
                             <q-icon name="attach_file" />
                           </template>
@@ -97,7 +97,7 @@
                                 label="Américo Vespucio"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.calle"
+                                v-model="data.conyugue.calle"
                             />
                             <span class="label_normal">Nº</span>
                             <q-input
@@ -105,7 +105,7 @@
                                 label="###"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.calle_numero"
+                                v-model="data.conyugue.calle_numero"
 
                             />
                         </div>
@@ -119,7 +119,7 @@
                                 label="Américo Vespucio"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.departamento"
+                                v-model="data.conyugue.departamento"
 
                             />
                             <span class="label_normal">Comuna</span>
@@ -128,7 +128,7 @@
                                 label="Nombre de la Comuna"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.comuna"
+                                v-model="data.conyugue.comuna"
 
                             />
                         </div>
@@ -142,7 +142,7 @@
                             label="###"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.rut"
+                            v-model="data.conyugue.rut"
 
                         />
                     </div>
@@ -153,7 +153,7 @@
                             label="###"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.celular"
+                            v-model="data.conyugue.celular"
 
                         />
                     </div>
@@ -167,7 +167,7 @@
                                 label="Nombre del Padre"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.nombre_padre"
+                                v-model="data.conyugue.nombre_padre"
 
                             />
                         </div>
@@ -178,7 +178,7 @@
                                 label="Apellido del Padre"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.apellido_padre"
+                                v-model="data.conyugue.apellido_padre"
 
                             />
                         </div>
@@ -191,7 +191,7 @@
                                 label="Nombre de la Madre"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.nombre_madre"
+                                v-model="data.conyugue.nombre_madre"
 
                             />
                         </div>
@@ -202,7 +202,7 @@
                                 label="Apellido de la Madre"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.apellido_madre"
+                                v-model="data.conyugue.apellido_madre"
                             />
                         </div>
                     </div>
@@ -210,10 +210,10 @@
 
                 <div class="roww">
                     <div class="ancho50 items-1">
-                        <q-radio left-label v-model="data.sociopadre"  color="orange-4" val="si" label="Es socio P.W.C.C" />
+                        <q-radio left-label v-model="data.conyugue.sociopadre"  color="orange-4" val="si" label="Es socio P.W.C.C" />
                     </div>
                     <div class="ancho50 items-1">
-                        <q-radio left-label v-model="data.sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
+                        <q-radio left-label v-model="data.conyugue.sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
                     </div>
                 </div>
                 <div class="roww">
@@ -224,7 +224,7 @@
                             label="Profesión"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.profesion"
+                            v-model="data.conyugue.profesion"
 
                         />
                     </div>
@@ -235,7 +235,7 @@
                             label="Correo Electrónico"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.email"
+                            v-model="data.conyugue.email"
 
                         />
                     </div>
@@ -249,7 +249,7 @@
                             label="Nombre de la empresa"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.empresa"
+                            v-model="data.conyugue.empresa"
                         />
                     </div>
                     <div class="ancho50 items-1">
@@ -259,7 +259,7 @@
                             label="Cargo actual"
                             lazy-rules
                             :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.cargo"
+                            v-model="data.conyugue.cargo"
                         />
                     </div>
                 </div>
@@ -273,7 +273,7 @@
                                 label="Américo Vespucio"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.direccion_empresa"
+                                v-model="data.conyugue.direccion_empresa"
                             />
                             <span class="label_normal">Nº</span>
                             <q-input
@@ -281,7 +281,7 @@
                                 label="###"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.direccion_no_empresa"
+                                v-model="data.conyugue.direccion_no_empresa"
                             />
                         </div>
                     </div>
@@ -294,7 +294,7 @@
                                 label="Américo Vespucio"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.departamento_empresa"
+                                v-model="data.conyugue.departamento_empresa"
                             />
                             <span class="label_normal">Comuna</span>
                             <q-input
@@ -302,7 +302,7 @@
                                 label="Nombre de la Comuna"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.comuna_empresa"
+                                v-model="data.conyugue.comuna_empresa"
                             />
                         </div>
                     </div>
@@ -316,14 +316,14 @@
                                 label="###"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.telefono_empresa_1"
+                                v-model="data.conyugue.telefono_empresa_1"
                             />
                             <q-input
                                 outlined
                                 label="###"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.telefono_empresa_2"
+                                v-model="data.conyugue.telefono_empresa_2"
                             />
                         </div>
                     </div>
@@ -813,6 +813,7 @@
 </template>
 
 <script>
+import configServices from '../../services/config'
 
 export default {
   name: 'Formulario',
@@ -859,13 +860,15 @@ export default {
         hasta: ''
       },
       deportivas: [],
-      provide: ''
+      provide: '',
+      foto: []
     }
   },
   created () {
     var data = localStorage.getItem('dataSocioForm')
     this.data = JSON.parse(data)
     this.data.conyugue = {}
+    this.data.conyugue.foto = []
     this.addColegio()
     this.addUniversidad()
     this.addPostgrado()
@@ -915,18 +918,34 @@ export default {
     uploadPhoto () {
       var _this = this
       var reader = new FileReader()
-
-      reader.readAsText(this.data.foto)
+      reader.readAsDataURL(this.foto)
 
       reader.onload = function () {
         var base64result = reader.result.split(',')[1]
-        _this.data.foto_conyugue = base64result
-        console.log(_this.data.foto_conyugue)
+        var data = {
+          type: 'saveImage',
+          data: base64result,
+          mime: _this.foto.type,
+          name: _this.foto.name
+        }
+        configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
+          callBack: (data) => {
+            if (data.status === 200) {
+              _this.data.conyugue.foto_encoded = data.url
+            }
+          }
+        })
       }
 
       reader.onerror = function () {
         console.log(reader.error)
       }
+    },
+    onRejected (rejectedEntries) {
+      this.$q.notify({
+        type: 'negative',
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+      })
     }
   }
 }

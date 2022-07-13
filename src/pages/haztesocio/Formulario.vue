@@ -61,7 +61,7 @@
                     </div>
                     <div class="ancho50 items-1">
                         <span class="label_strong">Foto</span>
-                        <q-file outlined v-model="data.foto" @input="uploadPhoto()">
+                        <q-file outlined v-model="data.foto" @input="uploadPhoto()" accept="image/*" @rejected="onRejected">
                           <template v-slot:prepend>
                             <q-icon name="attach_file" />
                           </template>
@@ -878,6 +878,7 @@
 </template>
 
 <script>
+import configServices from '../../services/config'
 
 export default {
   name: 'Formulario',
@@ -985,18 +986,34 @@ export default {
     uploadPhoto () {
       var _this = this
       var reader = new FileReader()
-
-      reader.readAsText(this.data.foto)
+      reader.readAsDataURL(this.data.foto)
 
       reader.onload = function () {
         var base64result = reader.result.split(',')[1]
-        _this.data.foto_encoded = base64result
-        console.log(_this.data.foto_encoded)
+        var data = {
+          type: 'saveImage',
+          data: base64result,
+          mime: _this.data.foto.type,
+          name: _this.data.foto.name
+        }
+        configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
+          callBack: (data) => {
+            if (data.status === 200) {
+              _this.data.foto_encoded = data.url
+            }
+          }
+        })
       }
 
       reader.onerror = function () {
         console.log(reader.error)
       }
+    },
+    onRejected (rejectedEntries) {
+      this.$q.notify({
+        type: 'negative',
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+      })
     }
   }
 }

@@ -11,7 +11,7 @@
             <div class="roww">
                 <div class="ancho50 items-1">
                     <span class="label_strong">Firma de autorización</span>
-                    <q-file outlined v-model="data.firmafoto" @input="uploadPhoto()">
+                    <q-file outlined v-model="data.firmafoto" @input="uploadPhoto()" accept="image/*" @rejected="onRejected">
                       <template v-slot:prepend>
                         <q-icon name="attach_file" />
                       </template>
@@ -48,7 +48,6 @@ export default {
   },
   methods: {
     irSiguiente () {
-      console.log(this.data)
       var _this = this
       var data = {
         type: 'saveSocioForm',
@@ -70,18 +69,34 @@ export default {
     uploadPhoto () {
       var _this = this
       var reader = new FileReader()
-
-      reader.readAsText(this.data.foto)
+      reader.readAsDataURL(this.data.firmafoto)
 
       reader.onload = function () {
         var base64result = reader.result.split(',')[1]
-        _this.data.postulacion_foto = base64result
-        console.log(_this.data.postulacion_foto)
+        var data = {
+          type: 'saveImage',
+          data: base64result,
+          mime: _this.data.firmafoto.type,
+          name: _this.data.firmafoto.name
+        }
+        configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
+          callBack: (data) => {
+            if (data.status === 200) {
+              _this.data.postulacion_foto = data.url
+            }
+          }
+        })
       }
 
       reader.onerror = function () {
         console.log(reader.error)
       }
+    },
+    onRejected (rejectedEntries) {
+      this.$q.notify({
+        type: 'negative',
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+      })
     }
   }
 }
