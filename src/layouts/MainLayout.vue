@@ -101,7 +101,7 @@
                     <strong>{{ info.field_titulo_desarrollador_[0].value }}</strong>
                   </td>
                   <td>
-                    <img class="q-mx-none" alt="img2" :src="info.field_imagen_desarrolll[0].url">
+                    <a href="http://www.obg.cl/" target="_blank"><img class="q-mx-none" alt="img2" :src="info.field_imagen_desarrolll[0].url"></a>
                   </td>
                 </tr>
               </table>

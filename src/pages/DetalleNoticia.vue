@@ -2,6 +2,8 @@
   <q-page class="flex justify-between view_quienes_somos">
     <div class="q-pb-md all_width gris_home etiquetas" v-if="loadedInfo">
         <div class="center text-center q-my-lg titulos q-mt-2">Noticias</div>
+        <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
+
         <div class="centrar w_1200">
           <div class="center text-center q-my-lg titulo2 q-mt-2">{{ info.title[0].value }}</div>
         </div>

@@ -67,7 +67,7 @@ export default {
       notices: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_consultar: false,
-      slidecontent: 1,
+      slidecontent: 0,
       numberNotices: 1
     }
   },

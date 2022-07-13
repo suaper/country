@@ -1,6 +1,6 @@
 # Country Club
 
-aplicacion para jardines y colegios
+aplicacion para Country Club
 
 ## Install the dependencies
 ```bash

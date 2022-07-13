@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
+    <!--<div class="q-py-xl all_width gris_home wrp_club hazte_socio">
         <div class="centrar w_1200">
           <table class="contenido_fitness">
               <tr>
@@ -116,8 +116,8 @@
               </tr>
           </table>
         </div>
-    </div>
-    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio wrp_noticias">
+    </div>-->
+    <div class="q-pb-md all_width gris_home wrp_club hazte_socio wrp_noticias">
         <div class="centrar w_1200">
             <h4 class="subtitle">Noticias</h4>
             <div class="row flex justify-center  items-start">
@@ -129,7 +129,7 @@
                         <td>
                             <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
                             <p v-html="notices[0].body"></p>
-                            <q-btn @click="goNotice(notices[2])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[0])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>

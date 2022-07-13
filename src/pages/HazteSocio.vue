@@ -202,7 +202,7 @@ export default {
       pop_form_socio: false,
       shape: 'false',
       options_civil: [
-        'Soltero/a', 'Soltero/a'
+        'Soltero/a', 'Casado/a'
       ],
       civilStatus: null,
       mobile: '',

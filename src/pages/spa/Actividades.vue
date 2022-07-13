@@ -84,10 +84,10 @@
             <h6 class="peluqueria q-mt-none">Descargables</h6>
             <ul class="list_descargables">
                 <li v-for="(item, key) in descargables" :key="key">
-                    <a href="#"  @click="openPopDescargas(item)">
+                    <a href="#"  @click="openPopDescargas($event, item)">
                       <img class="normal" :src="urlSite + item.icon">
                       <strong>{{ item.title }}</strong>
-                      <q-btn class="text_azul centrar bg_white btn_centrar" @click="openPopDescargas(item)" label="Ver más" icon-right="arrow_right_alt"/>
+                      <q-btn class="text_azul centrar bg_white btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
                     </a>
                 </li>
             </ul>
@@ -201,7 +201,8 @@ export default {
       })
       this.currentDescargable.subServices = newDescargables
     },
-    openPopDescargas (item) {
+    openPopDescargas (e, item) {
+      e.preventDefault()
       this.search = ''
       this.currentDescargable = item
       if (this.lastItem !== '') {

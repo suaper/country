@@ -219,12 +219,15 @@ export default {
       })
     },
     openMediumPopup (item) {
-      this.itemMedium = item
-      this.medium = true
+      return window.open(item.field_web_club)
+      // this.itemMedium = item
+      // this.medium = true
     },
     openMediumTwoPopup (item) {
-      this.itemTwoMedium = item
-      this.medium2 = true
+      return window.open(item.field_web_club)
+
+      // this.itemTwoMedium = item
+      // this.medium2 = true
     }
   }
 }

@@ -375,6 +375,7 @@ export default {
           _this.booksChild = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
+          _this.$q.loading.hide()
         }
       })
     },
