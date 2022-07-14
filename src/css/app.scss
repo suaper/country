@@ -2160,9 +2160,10 @@ h6.peluqueria{
         width: 300px;
         .item_galeria{
             position: relative;
+            overflow: hidden;
             img{
-                width: 300px;
                 height: 380px;
+                margin-left: -50%;
             }
             .info_bottom{
                 background: #1F2660E6 ;
@@ -6497,5 +6498,10 @@ hr.form_linea{
             justify-content: flex-start !important;
         }
     }
-
+}
+.grande .wrp_gallery_country .country_slider{
+    width: 300px;
+    img{
+        width: 100%;
+    }
 }

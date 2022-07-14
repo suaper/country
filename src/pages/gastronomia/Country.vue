@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
+    <div class="q-py-xl all_width gris_home wrp_club hazte_socio grande">
         <div class="centrar q-pb-xl  w_1200">
             <div class="wrp_gallery_country">
                 <q-carousel
