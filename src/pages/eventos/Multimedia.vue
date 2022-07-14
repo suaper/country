@@ -32,7 +32,7 @@
                                 <img :src="urlSite + subItem.field_portada_multimedia" />
                                 <div class="info_bottom">
                                     <p class="desc">{{ subItem.title }}</p>
-                                    <q-btn class="text_white centrar btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
+                                    <q-btn @click="openItem(subItem)" class="text_white centrar btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
                                 </div>
                             </div>
                         </div>
@@ -191,6 +191,9 @@ export default {
       configServices.loadData(this, '/multimedia-secciones/eventos/json', {
         callBack: (data) => {
           data.map((item, key) => {
+            console.log(item.title)
+
+            console.log(item.field_tipo_de_multimedia)
             if (item.field_tipo_de_multimedia === 'Video') {
               _this.videos.push(item)
             } else {
