@@ -234,10 +234,10 @@
 
                 <div class="roww">
                     <div class="ancho50 items-1">
-                        <q-radio left-label v-model="data.sociopadre"  color="orange-4" val="si" label="Es socio P.W.C.C" />
+                        <q-checkbox left-label v-model="data.sociopadre"  color="orange-4" val="si" label="Es socio P.W.C.C" />
                     </div>
                     <div class="ancho50 items-1">
-                        <q-radio left-label v-model="data.sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
+                        <q-checkbox left-label v-model="data.sociomadre" color="orange-4" val="si" label="Es socio P.W.C.C" />
                     </div>
                 </div>
 
@@ -962,26 +962,36 @@ export default {
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
       this.$router.push('/hazte-socio/esconyugue')
     },
+    convertToJson (item) {
+      var jsonItem = JSON.stringify(item)
+      return JSON.parse(jsonItem)
+    },
     addColegio () {
-      this.colegios.push(this.colegio)
+      var item = this.convertToJson(this.colegio)
+      this.colegios.push(item)
     },
     addPostgrado () {
-      this.postgrados.push(this.itemUniversitario)
+      var item = this.convertToJson(this.itemUniversitario)
+      this.postgrados.push(item)
     },
     addOtrosEstudios () {
-      this.otrosEstudios.push(this.itemUniversitario)
+      var item = this.convertToJson(this.itemUniversitario)
+      this.otrosEstudios.push(item)
     },
     addOcupacion () {
-      this.ocupaciones.push(this.ocupacion)
+      var item = this.convertToJson(this.ocupacion)
+      this.ocupaciones.push(item)
     },
     addDeportiva () {
-      this.deportivas.push(this.deportiva)
+      var item = this.convertToJson(this.deportiva)
+      this.deportivas.push(item)
     },
     addOtrasActividades () {
       this.otrasActividades.push({ nombre: '' })
     },
     addUniversidad () {
-      this.universidades.push(this.itemUniversitario)
+      var item = this.convertToJson(this.itemUniversitario)
+      this.universidades.push(item)
     },
     uploadPhoto () {
       var _this = this

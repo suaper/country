@@ -284,7 +284,7 @@ export default {
         configServices.consumerStandar(this, 'pwcc-rest/post', data, {
           callBack: (data) => {
             if (data.status) {
-              _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+              _this.$swal('Hemos registrado tu solicitud')
             } else {
               _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
             }

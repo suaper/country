@@ -366,26 +366,20 @@ export default {
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
       this.$router.push('hazte-socio/enviarpostulacion')
     },
-    addColegio (key) {
-      this.hijos[key].colegios.push(this.colegio)
+    convertToJson (item) {
+      var jsonItem = JSON.stringify(item)
+      return JSON.parse(jsonItem)
     },
-    addPostgrado () {
-      this.postgrados.push(this.itemUniversitario)
+    addColegio (key) {
+      var item = this.convertToJson(this.colegio)
+      this.hijos[key].colegios.push(item)
     },
     addOtrosEstudios (key) {
       this.hijos[key].otrosEstudios.push({ nombre: '' })
     },
-    addOcupacion () {
-      this.ocupaciones.push(this.ocupacion)
-    },
-    addDeportiva () {
-      this.deportivas.push(this.deportiva)
-    },
-    addOtrasActividades () {
-      this.otrasActividades.push({ nombre: '' })
-    },
     addUniversidad (key) {
-      this.hijos[key].universidades.push(this.itemUniversitario)
+      var item = this.convertToJson(this.itemUniversitario)
+      this.hijos[key].universidades.push(item)
     },
     uploadPhoto (key) {
       var _this = this

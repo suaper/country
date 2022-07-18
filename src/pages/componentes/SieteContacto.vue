@@ -24,6 +24,11 @@
                 v-model="category"
                 label="Seleccione la categoría *"
             />
+            <q-input
+              outlined
+              v-model="mensaje"
+              label="Mensaje *"
+            />
             <div class="text-left">
                 <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
             </div>
@@ -43,7 +48,8 @@ export default {
       email: '',
       telefono: '',
       category: '',
-      path: ''
+      path: '',
+      mensaje: ''
     }
   },
   created () {
@@ -63,7 +69,8 @@ export default {
         name: this.name,
         lastname: '',
         phone: this.telefono,
-        message: this.category
+        category: this.category,
+        message: this.mensaje
       }
       configServices.consumerStandar(this, 'pwcc-rest/post', data, {
         callBack: (data) => {
