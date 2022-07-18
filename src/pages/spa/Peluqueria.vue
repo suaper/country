@@ -87,7 +87,7 @@
                   <table class="datos_staff_contacto">
                       <tr>
                           <td>
-                              <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-06/Mabel-Ferna%CC%81ndez.png" />
+                              <img class="raius" src="https://pwccdev.mkbk.digital/administrador/sites/default/files/2022-06/Mabel-Ferna%CC%81ndez.png" />
                           </td>
                           <td>
                               <p><strong>Mabel Fernández</strong></p>

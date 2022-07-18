@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="q-pb-md all_width bg_white">
-        <Patrocinadores :images="images" v-if="loadedImages" />
+      <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
   </q-page>
 </template>
@@ -101,12 +101,14 @@ export default {
       }
 
       var url = '/eventos-deportes-calendario/' + _this.path + '/json/' + _this.currentItem
-      if (_this.path === 'hockey' && _this.subPath !== 'calendario') {
+      if ((_this.path === 'hockey' || _this.path === 'squash') && (_this.subPath !== 'calendario' || _this.subPath !== 'torneos')) {
         url = '/eventos/' + _this.path + '/json/'
       }
 
+      console.log(url)
       configServices.loadData(this, url, {
         callBack: (data) => {
+          console.log(data)
           const n = this.numberNotices
           _this.allEvents = data
 

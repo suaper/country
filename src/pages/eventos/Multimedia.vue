@@ -65,7 +65,7 @@
                 height="470px"
                 class="galeria_video"
                 >
-                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in slidersContentImages" :key="key">
+                <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in slidersContentVideos" :key="key">
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <table class="item_cien">
                             <tr>

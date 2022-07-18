@@ -138,14 +138,14 @@
                         <td>
                             <h5 class="titulo_noticias">{{ notices[1].title }}</h5>
                             <p v-html="notices[1].body"></p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[1])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <h5 class="titulo_noticias">{{ notices[2].title }}</h5>
                             <p v-html="notices[2].body"></p>
-                            <q-btn outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
+                            <q-btn @click="goNotice(notices[2])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
                         </td>
                     </tr>
                 </table>
