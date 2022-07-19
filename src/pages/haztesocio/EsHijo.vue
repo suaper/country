@@ -6,7 +6,7 @@
             <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_500 centrar flex_escuelas flex_obras justify-center view_form_cotizar is_hijo">
-        <q-form>
+        <q-form @submit="irFormularioHijo()">
             <div class="roww">
                 <div class="flexline">
                     <strong>Tiene Hijos</strong>
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="action_next">
-                <q-btn outline type="submit" @click="irFormularioHijo()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
+                <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
             </div>
         </q-form>
         </div>

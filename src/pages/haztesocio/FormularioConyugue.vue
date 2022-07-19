@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_danzas">
-    <q-form @onSubmit="irSiguiente()">
+    <q-form @submit="irSiguiente()">
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Antecedentes del Conyugue</div>

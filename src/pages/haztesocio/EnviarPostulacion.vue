@@ -7,7 +7,7 @@
         </div>
         <div class="q-py-md w_1100 centrar flex_escuelas flex_obras justify-center view_form_cotizar is_hijo">
         <q-form
-        @onSubmit="irSiguiente">
+        @submit="irSiguiente">
             <div class="roww">
                 <div class="ancho50 items-1">
                     <span class="label_strong">Firma de autorización</span>

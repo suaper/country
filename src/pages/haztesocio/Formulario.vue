@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_danzas">
-    <q-form @onSubmit="irSiguiente()">
+    <q-form @submit="irSiguiente()">
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Antecedentes del Postulante</div>
@@ -167,7 +167,7 @@
                     <div class="ancho50 items-1">
                         <span class="label_strong">Estado Civil</span>
                         <div class="wrp_busca_mes w_500">
-                            <q-select outlined label="Seleccione" v-model="data.estado_civil" :options="['Soltero', 'Casado', 'Viudo', 'Union Libre', 'Viudo (a)', 'Separado']"/>
+                            <q-select outlined label="Seleccione" v-model="data.estado_civil" :options="['Soltero (a)', 'Casado (a)']"/>
                         </div>
                     </div>
                     <div class="ancho50 items-1">
@@ -960,6 +960,7 @@ export default {
       this.data.ocupaciones = this.ocupaciones
       this.data.deportivas = this.deportivas
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
+      console.log('hola mundo')
       this.$router.push('/hazte-socio/esconyugue')
     },
     convertToJson (item) {
