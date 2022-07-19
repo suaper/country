@@ -187,7 +187,7 @@
 
             <q-card-section class="pop_club bg_white libro_icn">
               <span class="autor bold">Reserva de Servicios</span>
-              <span class="autor bold">Nombre del Servicio</span>
+              <span class="autor bold">Summer Activities</span>
             </q-card-section>
             <q-card-section class="pop_descargar bg_white list_biblioteca">
               <q-form
@@ -239,6 +239,13 @@
                     />
                   </div>
                   <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="mensaje"
+                        label="Mensaje"
+                    />
+                  </div>
+                  <div class="fila">
                       <q-btn outline type="submit" class="azul text_white mt_10 bg_white" label="Inscribirse" icon-right="arrow_right_alt"/>
                   </div>
               </q-form>
@@ -269,6 +276,7 @@ export default {
       correo: '',
       telefono: '',
       rut: '',
+      mensaje: '',
       apellido: '',
       groups: [],
       notices: [
@@ -338,6 +346,37 @@ export default {
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
       this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
+    },
+    onReset () {
+
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Summer Activities',
+        email: this.correo,
+        name: this.name,
+        lastname: this.apellido,
+        phone: this.telefono,
+        rut: this.rut,
+        message: this.mensaje
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.formulario = false
+        }
+      })
     },
     getDate (dateInput) {
       var date = new Date(dateInput)

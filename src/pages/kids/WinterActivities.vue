@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="q-py-xl all_width gris_home wrp_club hazte_socio">
+    <!--<div class="q-py-xl all_width gris_home wrp_club hazte_socio">
         <div class="centrar w_1200">
           <table class="contenido_fitness">
               <tr>
@@ -116,8 +116,8 @@
               </tr>
           </table>
         </div>
-    </div>
-    <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio wrp_noticias">
+    </div>-->
+    <div class="q-pb-md all_width gris_home wrp_club hazte_socio wrp_noticias">
         <div class="centrar w_1200">
             <h4 class="subtitle">Noticias</h4>
             <div class="row flex justify-center  items-start">
@@ -152,7 +152,7 @@
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width gris_home wrp_club">
+    <div class="q-py-xl all_width bg_amarillo wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
             <h4 class="subtitle sin_margen">Contáctanos</h4>
             <ul class="contacto_footer">
@@ -239,6 +239,13 @@
                     />
                   </div>
                   <div class="fila">
+                    <q-input
+                        outlined
+                        v-model="mensaje"
+                        label="Mensaje"
+                    />
+                  </div>
+                  <div class="fila">
                       <q-btn outline type="submit" class="azul text_white mt_10 bg_white" label="Inscribirse" icon-right="arrow_right_alt"/>
                   </div>
               </q-form>
@@ -270,6 +277,7 @@ export default {
       telefono: '',
       rut: '',
       apellido: '',
+      mensaje: '',
       groups: [],
       notices: [
         {
@@ -346,6 +354,37 @@ export default {
       configServices.loadData(this, '/noticias/winter-activities/json', {
         callBack: (data) => {
           _this.notices = data
+        }
+      })
+    },
+    onReset () {
+
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Summer Activities',
+        email: this.correo,
+        name: this.name,
+        lastname: this.apellido,
+        phone: this.telefono,
+        rut: this.rut,
+        message: this.mensaje
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.formulario = false
         }
       })
     },

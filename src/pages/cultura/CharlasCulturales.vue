@@ -164,6 +164,11 @@
                           v-model="rut"
                           label="Rut *"
                       />
+                      <q-input
+                          outlined
+                          v-model="mensaje"
+                          label="Mensaje *"
+                      />
                       <div class="text-left">
                           <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
@@ -239,6 +244,7 @@ export default {
       name: '',
       email: '',
       telefono: '',
+      mensaje: '',
       rut: '',
       personal: {
         field_imagen_perfil: ''
@@ -270,7 +276,8 @@ export default {
         name: this.name,
         lastname: '',
         phone: this.telefono,
-        rut: this.rut
+        rut: this.rut,
+        message: this.mensaje
       }
       configServices.consumerStandar(this, 'pwcc-rest/post', data, {
         callBack: (data) => {

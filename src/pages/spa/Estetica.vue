@@ -163,16 +163,16 @@
           <div class="staff">
               <h6 class="title_text">Staff</h6>
               <div class="flex">
-                  <table class="datos_staff_contacto">
+                  <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key">
                       <tr>
                           <td>
-                              <img class="raius" src="https://pwccdev.mkbk.digital//administrador/sites/default/files/2022-06/Mabel-Ferna%CC%81ndez.png" />
+                              <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
                           </td>
                           <td>
-                              <p><strong>Mabel Fernández</strong></p>
-                              <p><strong> Esteticista Cosmetologa </strong></p>
-                              <p>+56 2 2757 5736</p>
-                              <p>Coreeo@ff.com</p>
+                              <p><strong>{{ personal.field_nombre_staff }}</strong></p>
+                              <p><strong> {{ personal.field_cargo_staff }} </strong></p>
+                              <p>{{ personal.field_correo_staff }}</p>
+                              <p>{{ personal.field_numero_staff }}</p>
                           </td>
                       </tr>
                   </table>
@@ -208,7 +208,8 @@ export default {
       imageDepilacion: '',
       imageCosmeto: '',
       imageManicure: '',
-      imagePedicure: ''
+      imagePedicure: '',
+      personal: []
     }
   },
   created () {
@@ -234,7 +235,11 @@ export default {
           _this.$q.loading.hide()
         }
       })
-
+      configServices.loadData(this, '/personal-staff/centro-de-estetica', {
+        callBack: (data) => {
+          _this.personal = data
+        }
+      })
       configServices.loadData(this, 'servicios-estetica/json', {
         callBack: (data) => {
           data.map((item, key) => {

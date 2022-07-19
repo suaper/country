@@ -48,7 +48,7 @@
     </div>
 
     <div class="row jusify-beetwen text_adicional w_1000 centrar q-py-xl">
-        <q-form>
+        <q-form @submit="onSubmit">
             <div class="form_cotizar w_1000 row_2 paso1" v-if="firstStep">
                 <strong class="w_100">Información de la reserva</strong>
                 <div class="w_47">
@@ -65,7 +65,7 @@
                     <q-select outlined label="Seleccione el Salón" v-model="reserva.salon" :options="salones" :rules="[val => !!val || 'Campo requerido']"/>
                 </div>
                 <div class="w_100 text_left">
-                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" @click="nextStep()" icon-right="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" @click="nextStep($event)" type="a" href="#" icon-right="arrow_right_alt"/>
                 </div>
             </div>
             <div class="form_cotizar w_1000 row_2 paso1 paso2" v-if="secondStep">
@@ -82,8 +82,8 @@
                     </div>
                 </div>
                 <div class="w_100 text_center centrar_botones">
-                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt" @click="previousStep()"/>
-                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" @click="nextStep()" icon-right="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt" @click="previousStep($event)" type="a" href="#" />
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" @click="nextStep($event)" type="a" href="#" icon-right="arrow_right_alt"/>
                 </div>
             </div>
 
@@ -131,8 +131,8 @@
                     />
                 </div>
                 <div class="w_100 text_center centrar_botones">
-                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt" @click="previousStep()"/>
-                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" @click="nextStep()" icon-right="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt" @click="previousStep($event)" type="a" href="#" />
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Continuar" @click="nextStep($event)" type="a" href="#" icon-right="arrow_right_alt"/>
                 </div>
             </div>
             <div class="form_cotizar w_1000 row_2 paso1 paso4 confirmacion" v-if="fourthStep">
@@ -167,8 +167,8 @@
                     </div>
                 </div>
                 <div class="w_100 text_center centrar_botones">
-                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt" @click="previousStep()"/>
-                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Finalizar" @click="onSubmit()" type="submit" icon-right="arrow_right_alt"/>
+                    <q-btn outline class="azul q-my-md centrar btn_bg_beige" label="volver" icon="arrow_right_alt" @click="previousStep($event)" type="a" href="#" />
+                    <q-btn outline class="azul q-my-md centrar bg_white_i" label="Finalizar" type="submit" icon-right="arrow_right_alt"/>
                 </div>
             </div>
         </q-form>
@@ -237,7 +237,8 @@ export default {
     this.getServices()
   },
   methods: {
-    previousStep () {
+    previousStep (e) {
+      e.preventDefault()
       if (this.secondStep) {
         this.secondStep = false
         this.firstStep = true
@@ -249,24 +250,37 @@ export default {
         this.thirdStep = true
       }
     },
-    nextStep () {
+    nextStep (e) {
+      e.preventDefault()
       if (this.firstStep) {
         if (typeof this.reserva.service === 'undefined' || typeof this.reserva.salon === 'undefined' || typeof this.reserva.person === 'undefined') {
-          return this.$swal('Diligencie todo el formulario por favor')
+          return this.$swal('Complete todos los campos requeridos.')
+        }
+
+        if (this.reserva.service === '' || this.reserva.salon === '' || this.reserva.person === '') {
+          return this.$swal('Complete todos los campos requeridos.')
         }
 
         this.firstStep = false
         this.secondStep = true
       } else if (this.secondStep) {
         if (typeof this.reserva.date === 'undefined' || typeof this.reserva.hour === 'undefined') {
-          return this.$swal('Diligencie todo el formulario por favor')
+          return this.$swal('Complete todos los campos requeridos.')
+        }
+
+        if (this.reserva.date === '' || this.reserva.hour === '') {
+          return this.$swal('Complete todos los campos requeridos.')
         }
 
         this.secondStep = false
         this.thirdStep = true
       } else if (this.thirdStep) {
         if (typeof this.reserva.nombres === 'undefined' || typeof this.reserva.apellidos === 'undefined' || typeof this.reserva.rut === 'undefined' || typeof this.reserva.email === 'undefined' || typeof this.reserva.telefono === 'undefined') {
-          return this.$swal('Diligencie todo el formulario por favor')
+          return this.$swal('Complete todos los campos requeridos.')
+        }
+
+        if (this.reserva.nombres === '' || this.reserva.apellidos === '' || this.reserva.rut === '' || this.reserva.email === '' || this.reserva.telefono === '') {
+          return this.$swal('Complete todos los campos requeridos.')
         }
 
         this.thirdStep = false
@@ -274,7 +288,6 @@ export default {
       }
     },
     onSubmit () {
-      console.log(this.fourthStep)
       if (this.fourthStep) {
         var _this = this
         var data = {
@@ -284,7 +297,9 @@ export default {
         configServices.consumerStandar(this, 'pwcc-rest/post', data, {
           callBack: (data) => {
             if (data.status) {
-              _this.$swal('Hemos registrado tu solicitud')
+              _this.$swal('Hemos registrado tu solicitud').then(() => {
+                _this.$router.push('/eventos')
+              })
             } else {
               _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
             }

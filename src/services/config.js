@@ -15,6 +15,7 @@ const configService = {
       headers: { Authorization: basicAuth }
     })
       .then((response) => {
+        console.log(response)
         if (typeof response.data !== 'object') {
           componente.$q.notify({
             color: 'red-4',

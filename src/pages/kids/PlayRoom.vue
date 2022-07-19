@@ -34,8 +34,6 @@
                                 <p><strong> {{ personal.field_cargo_staff }} </strong></p>
                                 <p>{{ personal.field_correo_staff }}</p>
                                 <p>{{ personal.field_numero_staff }}</p>
-                                <br>
-                                <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
                             </td>
                         </tr>
                     </table>
