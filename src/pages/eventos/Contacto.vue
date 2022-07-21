@@ -104,7 +104,7 @@ export default {
       var _this = this
       var data = {
         type: 'sendEmailReserva',
-        service: 'Spa & Wellness',
+        service: 'Eventos',
         email: this.email,
         name: this.name,
         lastname: '',

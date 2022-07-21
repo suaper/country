@@ -364,7 +364,7 @@ export default {
       var _this = this
       var data = {
         type: 'sendEmailReserva',
-        service: 'Summer Activities',
+        service: 'Winter Activities',
         email: this.correo,
         name: this.name,
         lastname: this.apellido,
