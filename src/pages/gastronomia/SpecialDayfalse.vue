@@ -153,7 +153,6 @@
           <table class="contenido_fitness q-my-md">
               <tr>
                   <td>
-                  <td>
                       <h6 class="title_text">Happy Hour</h6>
                       <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque  massa pulvinar est loborti ante accumsan.</p>
                       <p class="q-mt-md"><strong>Martes a sábado:</strong>10:00 a 23:00</p>
@@ -176,7 +175,6 @@
                   <td>
                       <img src="../../assets/HazteSocio/socio02.png" />
                   </td>
-                  <td>
                   <td>
                       <h6 class="title_text">Sunset</h6>
                       <p>Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque  massa pulvinar est loborti ante accumsan.</p>
@@ -277,7 +275,7 @@ export default {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
     }

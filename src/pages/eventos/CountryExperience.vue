@@ -16,7 +16,7 @@
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Experience</div>
-            <p class="intro text-center" v-html="info.body[0].value">Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero, a pretium massa auctor.</p>
+            <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <div class="w_1100 q-my-xl q-py-xl flex centrar justify-between row_1_experience">
             <iframe v-for="(item, key) in info.field_video_youtube" :key="key" width="400" height="300" :src="'https://www.youtube.com/embed/' + item.video_id" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -96,7 +96,7 @@ export default {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
     }

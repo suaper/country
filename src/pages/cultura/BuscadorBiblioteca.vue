@@ -265,7 +265,7 @@ export default {
         this.$router.push('/multimedia/' + multimedia.field_multimedia_enlace)
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
-        this.currentVideo = currentVideo[0]
+        this.currentVideo = currentVideo[1]
         this.video = true
       }
     }
