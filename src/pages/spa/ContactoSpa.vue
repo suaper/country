@@ -7,7 +7,38 @@
           <div class="row_2 fitnes_last">
               <div class="form_fitness">
                   <h6 class="title_text">Contacto</h6>
-                  <p class="text-left">Nulla eget posuere nisl. Fusce tincidunt massa pulvinar est lobortis, at pellentesque ante accumsan. Aenean condimentum neque a libero, a pretium massa auctor.</p>
+                  <q-form
+                      @submit="onSubmit"
+                      @reset="onReset"
+                      class="q-gutter-md"
+                  >
+                      <q-input
+                          outlined
+                          v-model="name"
+                          label="Nombres y Apellidos *"
+                          lazy-rules
+                          :rules="[ val => val && val.length > 0 || 'Please type something']"
+                      />
+                      <q-input
+                          outlined
+                          v-model="telefono"
+                          label="Número de contacto *"
+                      />
+                      <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
+                      <q-input
+                          outlined
+                          v-model="rut"
+                          label="Rut *"
+                      />
+                      <q-input
+                          outlined
+                          v-model="mensaje"
+                          label="Mensaje *"
+                      />
+                      <div class="text-left">
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                      </div>
+                  </q-form>
               </div>
               <div class="staff">
               <h6 class="title_text">Staff</h6>

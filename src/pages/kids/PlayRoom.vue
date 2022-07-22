@@ -84,8 +84,44 @@
     </div>
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
-          <h3 class="q-my-none">Contáctanos</h3>
-            <ul class="contacto_footer cien all_width">
+        <div class="row_2 fitnes_last align_center">
+          <div class="form_fitness">
+            <h6 class="title_text">Contáctanos</h6>
+            <q-form
+                @submit="onSubmit"
+                @reset="onReset"
+                class="q-gutter-md"
+            >
+                <q-input
+                    outlined
+                    v-model="name"
+                    label="Nombres y Apellidos *"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Please type something']"
+                />
+                <q-input
+                    outlined
+                    v-model="telefono"
+                    label="Número de contacto *"
+                />
+                <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
+                <q-input
+                    outlined
+                    v-model="rut"
+                    label="Rut *"
+                />
+                <q-input
+                    outlined
+                    v-model="mensaje"
+                    label="Mensaje *"
+                />
+                <div class="text-left">
+                    <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                </div>
+            </q-form>
+          </div>
+          <div>
+            <ul class="contacto_footer cien all_width diferent">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
                     <span>{{ info.field_co[0].value }}</span>
@@ -95,7 +131,9 @@
                     <span>{{ info.field_telefono_1[0].value }}</span>
                 </li>
             </ul>
+          </div>
         </div>
+      </div>
     </div>
   </q-page>
 </template>

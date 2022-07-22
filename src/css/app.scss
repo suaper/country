@@ -6505,3 +6505,20 @@ hr.form_linea{
         width: 100%;
     }
 }
+
+.diferent{
+    display: flex;
+    flex-direction: inherit !important;
+}
+.align_center{
+    align-items: center;
+    width: 100%;
+}
+.view_hijos_socios{
+    .bg_amarillo{
+        .bg_orange{
+            background: #b66f10 !important;
+            font-weight: bold;
+        }
+    }
+}

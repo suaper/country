@@ -21,7 +21,7 @@
 
     <div :class="(key % 2) === 0 ? 'q-py-xl all_width bg_amarillo wrp_club hazte_socio' : 'q-py-xl all_width bg_amarillo wrp_club hazte_socio'" v-for="(item, key) in moments" :key="key" >
         <div class="centrar w_1200">
-        <div class="center text-center q-mb-lg titulos" v-show="(key % 2) === 0">Momentos</div>
+        <div class="center text-center q-mb-lg titulos" v-show="(key % 2) === 0"></div>
         <hr class="hr_amarillo" v-show="(key % 2) === 0">
           <table class="contenido_fitness q-my-md" v-show="(key % 2) === 0">
               <tr>

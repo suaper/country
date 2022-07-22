@@ -64,22 +64,61 @@
     </div>
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
-            <h4 class="subtitle sin_margen">Contáctanos</h4>
-            <ul class="contacto_footer">
-                <li class="mail">
-                    <img src="../assets/HazteSocio/i-correo.svg" />
-                    <span>{{ contactInfo.field_correo_electronico[0].value }}</span>
-                </li>
-                <li class="tel">
-                    <img src="../assets/HazteSocio/i-phone.svg" />
-                    <span>{{ contactInfo.field_numero[0].value }}</span>
-                </li>
-                <!--<li class="tel">
-                    <img src="../assets/HazteSocio/i-phone.svg" />
-                    <span>{{ contactInfo.field_contacto_2[0].value }}</span>
-                </li>-->
-            </ul>
+          <div class="row_2 fitnes_last align_center">
+            <div class="form_fitness">
+              <h6 class="title_text">Contáctanos</h6>
+              <q-form
+                  @submit="onSubmit"
+                  @reset="onReset"
+                  class="q-gutter-md"
+              >
+                  <q-input
+                      outlined
+                      v-model="name"
+                      label="Nombres y Apellidos *"
+                      lazy-rules
+                      :rules="[ val => val && val.length > 0 || 'Please type something']"
+                  />
+                  <q-input
+                      outlined
+                      v-model="telefono"
+                      label="Número de contacto *"
+                  />
+                  <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
+                  <q-input
+                      outlined
+                      v-model="rut"
+                      label="Rut *"
+                  />
+                  <q-input
+                      outlined
+                      v-model="mensaje"
+                      label="Mensaje *"
+                  />
+                  <div class="text-left">
+                      <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                  </div>
+              </q-form>
+            </div>
+
+            <div>
+              <ul class="contacto_footer diferent">
+                  <li class="mail">
+                      <img src="../assets/HazteSocio/i-correo.svg" />
+                      <span>{{ contactInfo.field_correo_electronico[0].value }}</span>
+                  </li>
+                  <li class="tel">
+                      <img src="../assets/HazteSocio/i-phone.svg" />
+                      <span>{{ contactInfo.field_numero[0].value }}</span>
+                  </li>
+                  <!--<li class="tel">
+                      <img src="../assets/HazteSocio/i-phone.svg" />
+                      <span>{{ contactInfo.field_contacto_2[0].value }}</span>
+                  </li>-->
+              </ul>
+            </div>
         </div>
+      </div>
     </div>
     <q-dialog v-model="video" persistent>
       <q-card>
