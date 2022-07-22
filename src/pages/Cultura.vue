@@ -170,7 +170,12 @@ export default {
       },
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
-      pop_reservar_spa: false
+      pop_reservar_spa: false,
+      name: '',
+      telefono: '',
+      email: '',
+      rut: '',
+      mensaje: ''
     }
   },
   created () {
@@ -216,6 +221,37 @@ export default {
           _this.$q.loading.hide()
         }
       })
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Cultura',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut,
+        message: this.mensaje
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    onReset () {
+
     },
     openItem (e, multimedia) {
       e.preventDefault()

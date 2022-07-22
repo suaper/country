@@ -84,7 +84,8 @@ export default {
       urlSite: 'https://pwccdev.mkbk.digital/',
       name: '',
       rut: '',
-      personal: []
+      personal: [],
+      mensaje: ''
     }
   },
   mounted () {

@@ -174,7 +174,7 @@
                       v-model="telefono"
                       label="Número de contacto *"
                   />
-                  <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
+                  <q-input outlined v-model="correo" type="Correo electrónico" label="Correo electrónico *" />
                   <q-input
                       outlined
                       v-model="rut"
@@ -418,7 +418,7 @@ export default {
             _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
           }
 
-          this.email = ''
+          this.correo = ''
           this.name = ''
           this.telefono = ''
           this.rut = ''

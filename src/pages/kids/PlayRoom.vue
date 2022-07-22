@@ -160,7 +160,12 @@ export default {
       contactInfo: [],
       secondPersonal: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
-      multimediaHome: []
+      multimediaHome: [],
+      name: '',
+      telefono: '',
+      email: '',
+      rut: '',
+      mensaje: ''
     }
   },
 
@@ -206,6 +211,37 @@ export default {
           _this.personal = data
         }
       })
+    },
+    onSubmit () {
+      var _this = this
+      var data = {
+        type: 'sendEmailReserva',
+        service: 'Playroom',
+        email: this.email,
+        name: this.name,
+        lastname: '',
+        phone: this.telefono,
+        rut: this.rut,
+        message: this.mensaje
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          if (data.status) {
+            _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
+          } else {
+            _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
+          }
+
+          this.email = ''
+          this.name = ''
+          this.telefono = ''
+          this.rut = ''
+          this.pop_reservar_spa = false
+        }
+      })
+    },
+    onReset () {
+
     },
     openItem (e, multimedia) {
       e.preventDefault()
