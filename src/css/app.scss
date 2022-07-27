@@ -2320,6 +2320,18 @@ h6.peluqueria{
         width: 100%;
         td{
             position: relative;
+            &:before{
+                content: "";
+                background: url("../assets/Home/i-play.svg") center center no-repeat;
+                width: 61px;
+                height: 61px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -30px;
+                margin-top: -30px;
+                transition: 0.3s;
+            }
         }
         .first{
             width: 60%;
@@ -6521,4 +6533,7 @@ hr.form_linea{
             font-weight: bold;
         }
     }
+}
+.line_he{
+    line-height: 1.3;
 }

@@ -16,7 +16,7 @@
     </div>
     <div class="q-pb-md all_width gris_home etiquetas">
         <br>
-        <div class="center text-center q-my-lg titulos q-mt-2">Country Club</div>
+        <div class="center text-center q-my-lg titulos q-mt-2">Cuotas Sociales</div>
         <div class="centrar w_1200">
         <div class="left text-left q-my-lg titulos">Cuota Trimestral</div>
         <p class="intro" v-html="info.field_cuota_trimestral[0].value" />

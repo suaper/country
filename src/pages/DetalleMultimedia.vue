@@ -1,15 +1,17 @@
 <template>
-  <q-page class="flex flex-center view_hijos_socios view_fitness">
+  <q-page class="flex flex-center view_hijos_socios view_fitness view_danzas">
     <div class="q-pt-xl all_width gris_home">
-        <div class="cincuenta q-pd-md centrar text-center">
+
+        <div class="setenta q-pd-md centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Multimedia</div>
+            <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
     </div>
 
     <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar q-pb-xl w_1200">
-            <div class="cincuenta q-pd-md centrar text-center">
-              <div class="center text-center titulos">{{ data.title[0].value }}</div>
+            <div class="sesenta q-pd-md centrar text-center">
+              <div class="center text-center titulos line_he">{{ data.title[0].value }}</div>
             </div>
             <div class="wrp_gallery_multimedia">
                 <q-carousel
