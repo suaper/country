@@ -92,14 +92,14 @@ const routes = [
     ]
   },
   {
-    path: '/mi-club/etiquetas',
+    path: '/mi-club/normas-de-convivencia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/miclub/Etiquetas.vue') }
     ]
   },
   {
-    path: '/mi-club/cuotas-reglamento',
+    path: '/mi-club/cuotas-sociales',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/miclub/CuotasReglamento.vue') }
@@ -295,7 +295,7 @@ const routes = [
     ]
   },
   {
-    path: '/gastronomia/country',
+    path: '/gastronomia/country-al-dia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/gastronomia/Country.vue') }
