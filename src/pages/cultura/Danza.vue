@@ -67,7 +67,7 @@
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
             <h3 class="q-my-none">Multimedia</h3>
-            <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
+            <q-btn @click="goToPage()" class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
       </div>
 
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
@@ -121,7 +121,7 @@
                           v-model="name"
                           label="Nombres y Apellidos *"
                           lazy-rules
-                          :rules="[ val => val && val.length > 0 || 'Please type something']"
+                          :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                       />
                       <q-input
                           outlined
@@ -131,7 +131,7 @@
                       <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" />
                       <q-input
                           outlined
-                          v-model="telefono"
+                          v-model="rut"
                           label="Rut *"
                       />
                       <q-input
@@ -140,7 +140,7 @@
                           label="Mensaje *"
                       />
                       <div class="text-left">
-                          <q-btn outline @click="pop_form_socio = true" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
+                          <q-btn outline type="submit" class="azul q-my-md bg_white_i" label="Enviar" icon-right="arrow_right_alt"/>
                       </div>
                   </q-form>
               </div>
@@ -318,6 +318,9 @@ export default {
           _this.personal = data
         }
       })
+    },
+    goToPage () {
+      this.$router.push('/cultura/multimedia')
     },
     getNotices () {
       var _this = this

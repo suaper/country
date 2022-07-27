@@ -42,7 +42,7 @@
                             v-model="name"
                             label="Nombre completo *"
                             lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+                            :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                         />
                         <q-input outlined v-model="date" mask="date" label="Fecha de Nacimiento" :rules="['date']">
                         <template v-slot:append>

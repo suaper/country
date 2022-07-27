@@ -118,14 +118,14 @@
                         v-model="name"
                         label="Nombre *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                     />
                     <q-input
                         outlined
                         v-model="apellido"
                         label="Apellidos *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                     />
                   </div>
 
@@ -135,7 +135,7 @@
                         v-model="telefono"
                         label="Número de contacto *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                     />
                   </div>
 

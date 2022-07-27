@@ -174,7 +174,7 @@ export default {
     },
     getMultimedia () {
       var _this = this
-      configServices.loadData(this, '/multimedia-cultura/cultura,charlas-culturales/json', {
+      configServices.loadData(this, '/multimedia-cultura/cultura,charlas-culturales,danza-y-ballet/json', {
         callBack: (data) => {
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {

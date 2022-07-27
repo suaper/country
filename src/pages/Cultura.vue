@@ -77,7 +77,7 @@
                       v-model="name"
                       label="Nombres y Apellidos *"
                       lazy-rules
-                      :rules="[ val => val && val.length > 0 || 'Please type something']"
+                      :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                   />
                   <q-input
                       outlined

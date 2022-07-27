@@ -45,30 +45,30 @@
                                 v-model="name"
                                 label="Nombres *"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Please type something']"
+                                :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                             />
                             <q-input
                                 outlined
                                 v-model="apellido"
                                 label="Apellidos *"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Please type something']"
+                                :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                             />
                         </div>
                         <q-input
                             outlined
                             v-model="telefono"
                             label="Número de contacto *"
-                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+                            :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                         />
 
-                        <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" :rules="[ val => val && val.length > 0 || 'Please type something']"/>
+                        <q-input outlined v-model="email" type="Correo electrónico" label="Correo electrónico *" :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"/>
 
                         <q-input
                             outlined
                             v-model="rut"
                             label="Rut *"
-                            :rules="[ val => val && val.length > 0 || 'Please type something']"
+                            :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                         />
                         <div>
                             <q-btn outline type="submit" class="text_white mt_10 centrar bg_orange" label="Reservar" icon-right="arrow_right_alt"/>

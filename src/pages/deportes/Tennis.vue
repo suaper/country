@@ -39,7 +39,7 @@
                 <Contacto />
                 <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
-            <div class="w_35">
+            <div class="w_35" v-if="loadedInstagram">
                 <iframe width="320" height="460" :src="'https://www.instagram.com/p/' + instagram.field_instagram_tennis[0].value + '/embed'" frameborder="0"></iframe>
             </div>
           </div>
@@ -122,6 +122,7 @@ export default {
       loadedInfo: false,
       loadedImages: false,
       loadedContent: false,
+      loadedInstagram: false,
       content: {},
       notices: [],
       loadedNotices: false,
@@ -231,6 +232,7 @@ export default {
       configServices.loadData(this, '/node/1070?_format=json', {
         callBack: (data) => {
           _this.instagram = data
+          _this.loadedInstagram = true
         }
       })
 

@@ -30,7 +30,7 @@
                                 <img :src="urlSite + subItem.field_imagen_noticia_1" width="190" height="380"/>
                                 <div class="info_bottom">
                                     <span class="fecha" >{{ getDate(subItem.created) }}</span>
-                                    <p class="desc" v-html="subItem.body"></p>
+                                    <p class="desc" v-html="subItem.body + '...'"></p>
                                     <q-btn @click="goNotice(subItem)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                 </div>
                             </div>

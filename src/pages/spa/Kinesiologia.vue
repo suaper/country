@@ -16,7 +16,7 @@
         <div class="cincuenta q-pb-xl centrar text-center">
             <div class="center text-center q-my-lg titulos">Kinesiología</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
-             <q-btn outline  @click="openPopForm()" class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
+             <q-btn outline type="a" :href="info.field_enlace[0].uri" target="_blank" class="azul q-my-md centrar bg_white_i" label="Reserva aquí" icon-right="arrow_right_alt"/>
         </div>
         <q-dialog v-model="formulario" >
         <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige pop_escuelas">
@@ -41,14 +41,14 @@
                         v-model="name"
                         label="Nombre *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                     />
                     <q-input
                         outlined
                         v-model="apellido"
                         label="Apellidos *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                     />
                   </div>
 
@@ -58,7 +58,7 @@
                         v-model="telefono"
                         label="Número de contacto *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Please type something']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                     />
                   </div>
 

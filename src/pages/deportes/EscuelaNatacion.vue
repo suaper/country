@@ -64,7 +64,13 @@ export default {
     goToAnchor (e, item) {
       e.preventDefault()
       const el = document.querySelector(item)
-      el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      var top = el.offsetTop
+      window.scrollTo({
+        top: top,
+        left: 0,
+        behavior: 'smooth'
+      })
+      // el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     },
     getInfo () {
       var _this = this

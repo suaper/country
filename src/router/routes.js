@@ -239,7 +239,7 @@ const routes = [
     ]
   },
   {
-    path: '/spa/estetica',
+    path: '/spa/centro-de-estetica',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/spa/Estetica.vue') }
