@@ -3,7 +3,7 @@
 
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
-            <div class="center text-center q-my-lg titulos">Escuelas</div>
+            <div class="center text-center q-my-lg titulos">Escuelas y Rama</div>
             <div class="back"> <q-btn to="/cultura/danza" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas justify-center">

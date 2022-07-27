@@ -393,21 +393,21 @@ const routes = [
     ]
   },
   {
-    path: '/cultura/escuelas',
+    path: '/cultura/danza/escuelas-y-rama',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/cultura/Escuelas.vue') }
     ]
   },
   {
-    path: '/cultura/compania',
+    path: '/cultura/danza/staff-y-compania',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/cultura/Compania.vue') }
     ]
   },
   {
-    path: '/cultura/obras',
+    path: '/cultura/danza/obras',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/cultura/Obras.vue') }

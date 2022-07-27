@@ -245,16 +245,16 @@ export default {
       console.log(item)
       switch (item) {
         case 'Escuelas':
-          this.$router.push('/cultura/escuelas')
+          this.$router.push('/cultura/danza/escuelas-y-rama')
           break
         case 'Compañia':
         case 'Compañias':
         case 'Compañías':
         case 'Compañía':
-          this.$router.push('/cultura/compania')
+          this.$router.push('/cultura/danza/staff-y-compania')
           break
         case 'Obras':
-          this.$router.push('/cultura/obras')
+          this.$router.push('/cultura/danza/obras')
           break
       }
     },
