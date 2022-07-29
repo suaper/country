@@ -35,7 +35,7 @@
                                         <img :src="urlSite + itemNotice.field_imagen_noticia" />
                                         <div class="info_bottom">
                                             <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
-                                            <p class="desc" v-html="itemNotice.body"></p>
+                                            <p class="desc" v-html="itemNotice.title"></p>
                                             <q-btn @click="goNotice(itemNotice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -124,6 +124,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias-todas/json', {
         callBack: (data) => {
+          console.log(data)
           const n = this.numberNotices
           var notices = []
           data.map((item, key) => {

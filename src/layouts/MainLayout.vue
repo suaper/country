@@ -60,6 +60,19 @@
       <router-view />
     </q-page-container>
     <q-footer bordered class="bg-grey-8 text-white">
+      <div class="fixed_redes">
+        <ul>
+          <li>
+            <a href=""> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-boton-subir.svg"></a>
+          </li>
+          <li>
+            <a href=""> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-facebook.svg"></a>
+          </li>
+          <li>
+            <a href=""> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-instagram.svg"></a>
+          </li>
+        </ul>
+      </div>
       <div class="q-py-md all_width bg_azul">
         <div class="row_wrap no-wrap flex justify-between" v-if="loadedInfo">
           <ul>
