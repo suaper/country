@@ -971,7 +971,7 @@ export default {
         configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
           callBack: (data) => {
             if (data.status === 200) {
-              _this.data.conyugue.foto_encoded = data.url
+              _this.data.foto_encoded = data.url
             }
           }
         })
