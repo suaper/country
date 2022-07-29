@@ -248,7 +248,6 @@
                             outlined
                             label="Nombre de la empresa"
                             lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                             v-model="data.empresa"
                         />
                     </div>
@@ -258,7 +257,6 @@
                             outlined
                             label="Cargo actual"
                             lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                             v-model="data.cargo"
                         />
                     </div>
@@ -272,7 +270,6 @@
                                 outlined
                                 label="Américo Vespucio"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.direccion_empresa"
                             />
                             <span class="label_normal">Nº</span>
@@ -280,7 +277,6 @@
                                 outlined
                                 label="###"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.direccion_no_empresa"
                             />
                         </div>
@@ -293,7 +289,6 @@
                                 outlined
                                 label="Américo Vespucio"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.departamento_empresa"
                             />
                             <span class="label_normal">Comuna</span>
@@ -301,7 +296,6 @@
                                 outlined
                                 label="Nombre de la Comuna"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.comuna_empresa"
                             />
                         </div>
@@ -315,14 +309,12 @@
                                 outlined
                                 label="###"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.telefono_empresa_1"
                             />
                             <q-input
                                 outlined
                                 label="###"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.telefono_empresa_2"
                             />
                         </div>
@@ -359,8 +351,32 @@
                     </div>
 
                     <div class="roww">
+                        <div class="ancho50">
+                            <span class="label_strong">Ciudad</span>
+                            <q-input
+                                outlined
+                                label="Nombre del Colegio"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                v-model="colegios[key].ciudad"
+                            />
+                        </div>
+
+                        <div class="ancho50 ">
+                            <span class="label_strong">Pais</span>
+                            <q-input
+                                outlined
+                                label="Dirección del Colegio"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                v-model="colegios[key].pais"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="roww">
                         <div class="ancho50 items-1">
-                            <span class="label_strong">Años Cursados</span>
+                            <span class="label_strong">Años de Egreso</span>
                             <q-input
                                 outlined
                                 label="Digite los años cursados en este colegio"
@@ -370,7 +386,7 @@
                             />
                         </div>
 
-                        <div class="ancho50 item-2">
+                        <!--<div class="ancho50 item-2">
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Desde</span>
                                 <q-input outlined v-model="colegios[key].desde" mask="date" :rules="['date']">
@@ -403,7 +419,7 @@
                                   </template>
                                 </q-input>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 <hr class="form_linea">
                 </div>
@@ -688,7 +704,6 @@
                                 outlined
                                 label="Directorios, Clases, Universidad, etc."
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="otrasActividades[key].nombre"
                             />
                         </div>
@@ -711,7 +726,6 @@
                                   outlined
                                   label="Nombre de la Institución"
                                   lazy-rules
-                                  :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                   v-model="deportivas[key].nombre"
                               />
                           </div>
@@ -721,7 +735,6 @@
                                   outlined
                                   label="Cargo Directivo"
                                   lazy-rules
-                                  :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                   v-model="deportivas[key].cargo"
 
                               />

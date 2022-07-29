@@ -112,15 +112,13 @@
               <div class="form_fitness">
                   <h6 class="title_text">Contacto</h6>
                   <q-form
-                      @submit="onSubmit"
-                      @reset="onReset"
+                      @submit.prevent="onSubmit"
                       class="q-gutter-md"
                   >
                       <q-input
                           outlined
                           v-model="name"
                           label="Nombres y Apellidos *"
-                          lazy-rules
                           :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
                       />
                       <q-input
@@ -276,19 +274,21 @@ export default {
       }
       configServices.consumerStandar(this, 'pwcc-rest/post', data, {
         callBack: (data) => {
+          _this.resetForm()
           if (data.status) {
             _this.$swal('Hemos registrado su solicitud pronto nos contactaremos')
           } else {
             _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
           }
-
-          this.email = ''
-          this.name = ''
-          this.telefono = ''
-          this.rut = ''
-          this.pop_reservar_spa = false
         }
       })
+    },
+    resetForm () {
+      this.name = ' '
+      this.email = ''
+      this.telefono = ''
+      this.rut = ''
+      this.mensaje = ''
     },
     getInfo () {
       var _this = this
