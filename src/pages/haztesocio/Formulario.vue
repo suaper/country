@@ -376,7 +376,7 @@
 
                     <div class="roww">
                         <div class="ancho50 items-1">
-                            <span class="label_strong">Años de Egreso</span>
+                            <span class="label_strong">Año de Egreso</span>
                             <q-input
                                 outlined
                                 label="Digite los años cursados en este colegio"
@@ -563,7 +563,6 @@
                                 outlined
                                 label="Nombre de la Institución"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="otrosEstudios[key].nombre"
                             />
                         </div>
@@ -574,7 +573,6 @@
                                 outlined
                                 label="Ciudad"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="otrosEstudios[key].ciudad"
 
                             />
@@ -588,7 +586,6 @@
                                 outlined
                                 label="Carrera profesional"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="otrosEstudios[key].carrera"
 
                             />
@@ -600,7 +597,6 @@
                                 outlined
                                 label="Título que recibió"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="otrosEstudios[key].titulo"
 
                             />
@@ -613,7 +609,6 @@
                                 outlined
                                 label="Año en que recibió el título"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="otrosEstudios[key].year"
 
                             />
@@ -973,7 +968,6 @@ export default {
       this.data.ocupaciones = this.ocupaciones
       this.data.deportivas = this.deportivas
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
-      console.log('hola mundo')
       this.$router.push('/hazte-socio/esconyugue')
     },
     convertToJson (item) {
