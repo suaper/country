@@ -26,7 +26,7 @@
                             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(notice, noticeKey) in item" :key="noticeKey">
                                     <div class="item_galeria">
-                                        <img :src="urlSite + notice.field_imagen_noticia" />
+                                        <img :src="urlSite + notice.field_imagen_noticia_3" />
                                         <div class="info_bottom">
                                             <span class="fecha">{{ notice.created }}</span>
                                             <p class="desc" v-html="notice.body"></p>
@@ -89,6 +89,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias/cultura/json', {
         callBack: (data) => {
+          console.log(data)
           const n = this.numberNotices
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()

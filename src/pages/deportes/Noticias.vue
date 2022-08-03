@@ -25,7 +25,7 @@
                             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(itemNotice, keyNotice) in item" :key="keyNotice">
                                     <div class="item_galeria">
-                                        <img :src="urlSite + itemNotice.field_imagen_noticia" />
+                                        <img :src="urlSite + itemNotice.field_imagen_noticia_3" />
                                         <div class="info_bottom">
                                             <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
                                             <p class="desc" v-html="itemNotice.body"></p>
