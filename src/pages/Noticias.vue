@@ -17,7 +17,7 @@
                 <div class="centrar q-pb-xl  w_1200">
                     <div class="wrp_gallery_noticias">
                         <q-carousel
-                        v-model="slidecontent"
+                        v-model="slidenotice"
                         transition-prev="slide-right"
                         transition-next="slide-left"
                         swipeable
@@ -49,6 +49,19 @@
                                 v-model="slidecontent"
                                 :options="[]"
                             />
+                            <q-pagination
+                              class="nuevo_paginador"
+                              v-model="slidecontent"
+                              :max="max"
+                              :max-pages="5"
+                              direction-links
+                              boundary-links
+                              :ellipses="false"
+                              icon-first="skip_previous"
+                              icon-last="skip_next"
+                              icon-prev="fast_rewind"
+                              icon-next="fast_forward"
+                            />
                         </div>
                     </div>
                 </div>
@@ -70,14 +83,19 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      slidecontent: 0,
+      slidecontent: 1,
       notices: [],
       filters: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       multimediaHome: [],
       pop_reservar_spa: false,
-      numberNotices: 1
+      numberNotices: 1,
+      slidenotice: 0,
+      max: 0
     }
+  },
+  updated () {
+    this.slidenotice = this.slidecontent - 1
   },
   created () {
     if (Platform.is.desktop) {
@@ -110,6 +128,9 @@ export default {
             _this.notices = new Array(Math.ceil(data.length / n))
               .fill()
               .map(_ => data.splice(0, n))
+
+            _this.max = _this.notices.length
+
             _this.$q.loading.hide()
           }
         })
@@ -150,6 +171,8 @@ export default {
           _this.notices = new Array(Math.ceil(notices.length / n))
             .fill()
             .map(_ => notices.splice(0, n))
+
+          _this.max = _this.notices.length
 
           _this.$q.loading.hide()
         }

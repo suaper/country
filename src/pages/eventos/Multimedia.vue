@@ -29,7 +29,7 @@
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">
                             <div class="item_galeria">
-                                <img :src="urlSite + subItem.field_portada_multimedia" />
+                                <img :src="urlSite + subItem.field_galeria__1" />
                                 <div class="info_bottom">
                                     <p class="desc">{{ subItem.title }}</p>
                                     <q-btn @click="openItem(subItem)" class="text_white centrar btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
