@@ -103,9 +103,8 @@ export default {
       if (item === 'all') {
         this.getNotices()
       } else {
-        var filter = item.title.replaceAll(' ', '-').toLowerCase()
         var _this = this
-        configServices.loadData(this, '/noticias/' + filter + '/json', {
+        configServices.loadData(this, '/noticias-categorias/' + item.id + '/json', {
           callBack: (data) => {
             const n = this.numberNotices
             _this.notices = new Array(Math.ceil(data.length / n))
@@ -124,7 +123,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias-todas/json', {
         callBack: (data) => {
-          console.log(data)
           const n = this.numberNotices
           var notices = []
           data.map((item, key) => {
@@ -132,10 +130,11 @@ export default {
               notices.push(item)
             }
             var filter = {
-              title: item.field_mostra_en_
+              title: item.field_categoria_noticia,
+              id: item.field_categoria_noticia_1
             }
             const isFound = _this.filters.find((element, index) => {
-              if (element.title === item.field_mostra_en_) {
+              if (element.title === item.field_categoria_noticia) {
                 _this.filters.splice(index, 1)
                 return element
               }

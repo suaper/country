@@ -729,7 +729,7 @@
                                   outlined
                                   label="Nombre de la Institución"
                                   lazy-rules
-                                  :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                  v-model="deportivas[key].nombre"
                               />
                           </div>
                           <div class="ancho50 item-1">
@@ -738,7 +738,7 @@
                                   outlined
                                   label="Cargo Directivo"
                                   lazy-rules
-                                  :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                  v-model="deportivas[key].cargo"
 
                               />
                           </div>

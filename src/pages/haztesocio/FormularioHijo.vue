@@ -364,7 +364,7 @@ export default {
     irSiguiente () {
       this.data.hijos = this.hijos
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
-      this.$router.push('hazte-socio/enviarpostulacion')
+      this.$router.push('/hazte-socio/enviarpostulacion')
     },
     convertToJson (item) {
       var jsonItem = JSON.stringify(item)

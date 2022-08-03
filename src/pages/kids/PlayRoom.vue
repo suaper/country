@@ -47,7 +47,7 @@
             <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
       </div>
 
-      <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
+      <!--<div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
@@ -80,7 +80,7 @@
             </tr>
           </table>
         </div>
-      </div>
+      </div>-->
     </div>
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
@@ -171,7 +171,7 @@ export default {
 
   created () {
     this.getInfo()
-    this.getMultimediaHome()
+    // this.getMultimediaHome()
   },
   methods: {
     getMultimediaHome () {
@@ -209,6 +209,7 @@ export default {
       configServices.loadData(this, '/personal-staff/playroom', {
         callBack: (data) => {
           _this.personal = data
+          _this.$q.loading.hide()
         }
       })
     },
