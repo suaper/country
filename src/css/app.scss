@@ -2185,12 +2185,14 @@ h6.peluqueria{
     }
     .q-carousel__control.q-carousel__navigation{
         bottom: -12px;
+        display: none;
         .text-primary{
             color: #1f2660 !important;
         }
     }
     .noticia_slider{
         width: 300px;
+        margin: 0px 10px;
         .item_galeria{
             position: relative;
             overflow: hidden;
@@ -6565,4 +6567,12 @@ hr.form_linea{
 }
 .line_he{
     line-height: 1.3;
+}
+.justify-around{
+    justify-content: space-around;
+}
+.nuevo_paginador{
+    .bg-primary{
+        background: #fff!important;
+    }
 }

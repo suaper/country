@@ -29,7 +29,7 @@
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">
                             <div class="item_galeria">
-                                <img :src="urlSite + subItem.field_portada_multimedia" />
+                                <img :src="urlSite + subItem.field_galeria__1" />
                                 <div class="info_bottom">
                                     <p class="desc">{{ subItem.title }}</p>
                                     <q-btn @click="openItem(subItem)" class="text_white centrar btn_centrar" label="Ver más" icon-right="arrow_right_alt"/>
@@ -71,7 +71,7 @@
                             <tr>
                                 <td class="first" rowspan="0">
                                     <a href="#" @click="openVideo($event, item[0])">
-                                      <img :src="urlSite + item[0].field_portada_multimedia" />
+                                      <img :src="urlSite + item[0].field_portada_multimedia_1" />
                                       <div class="info_bottom text-center">
                                           <p class="desc">{{ item[0].title }}</p>
                                           <span v-html="item[0].body"></span>
@@ -80,7 +80,7 @@
                                 </td>
                                 <td class="othet">
                                     <a href="#" @click="openVideo($event, item[1])">
-                                    <img :src="(typeof item[1] !== 'undefined') ? urlSite + item[1].field_portada_multimedia : urlSite + item[0].field_portada_multimedia" />
+                                    <img :src="(typeof item[1] !== 'undefined') ? urlSite + item[1].field_portada_multimedia_1 : urlSite + item[0].field_galeria__1" />
                                     <div class="info_bottom text-center">
                                         <p class="desc">{{ (typeof item[1] !== 'undefined') ? item[1].title : item[0].title }}</p>
                                         <span v-html="(typeof item[1] !== 'undefined') ? item[1].body : item[0].body"></span>
@@ -91,7 +91,7 @@
                             <tr>
                                 <td class="othet">
                                     <a href="#" @click="openVideo($event, item[2])">
-                                    <img :src="(typeof item[2] !== 'undefined') ? urlSite + item[2].field_portada_multimedia : urlSite + item[0].field_portada_multimedia" />
+                                    <img :src="(typeof item[2] !== 'undefined') ? urlSite + item[2].field_portada_multimedia_1 : urlSite + item[0].field_galeria__1" />
                                     <div class="info_bottom text-center">
                                         <p class="desc">{{ (typeof item[2] !== 'undefined') ? item[2].title : item[0].title }}</p>
                                         <span v-html="(typeof item[2] !== 'undefined') ? item[2].body : item[0].body"></span>
@@ -169,6 +169,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/multimedia-secciones/gastronomia/json', {
         callBack: (data) => {
+          console.log(data)
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {
               _this.videos.push(item)

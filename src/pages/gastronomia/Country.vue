@@ -11,7 +11,7 @@
         <div class="centrar q-pb-xl  w_1200">
             <div class="wrp_gallery_country">
                 <q-carousel
-                v-model="slidecontent"
+                v-model="slidenotice"
                 transition-prev="slide-right"
                 transition-next="slide-left"
                 swipeable
@@ -30,7 +30,7 @@
                                 <img :src="urlSite + subItem.field_imagen_noticia_1" width="190" height="380"/>
                                 <div class="info_bottom">
                                     <span class="fecha" >{{ getDate(subItem.created) }}</span>
-                                    <p class="desc" v-html="subItem.body + '...'"></p>
+                                    <p class="desc" v-html="subItem.title"></p>
                                     <q-btn @click="goNotice(subItem)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                 </div>
                             </div>
@@ -43,6 +43,19 @@
                         glossy
                         v-model="slidecontent"
                         :options="[]"
+                    />
+                    <q-pagination
+                      v-model="slidecontent"
+                      class="nuevo_paginador"
+                      :max="max"
+                      :max-pages="5"
+                      direction-links
+                      boundary-links
+                      :ellipses="false"
+                      icon-first="skip_previous"
+                      icon-last="skip_next"
+                      icon-prev="fast_rewind"
+                      icon-next="fast_forward"
                     />
                 </div>
             </div>
@@ -67,11 +80,16 @@ export default {
       notices: [],
       urlSite: 'https://pwccdev.mkbk.digital/',
       pop_consultar: false,
-      slidecontent: 0,
-      numberNotices: 1
+      slidecontent: 1,
+      numberNotices: 1,
+      slidenotice: 0,
+      max: 0
     }
   },
-  mounted () {
+  updated () {
+    this.slidenotice = this.slidecontent - 1
+  },
+  created () {
     if (Platform.is.desktop) {
       this.numberNotices = 3
     }
@@ -114,6 +132,9 @@ export default {
             .fill()
             .map(_ => data.splice(0, n))
 
+          _this.$q.loading.hide()
+
+          _this.max = _this.notices.length
           _this.$q.loading.hide()
         }
       })

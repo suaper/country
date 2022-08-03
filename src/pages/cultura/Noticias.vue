@@ -10,7 +10,7 @@
                 <div class="centrar q-pb-xl  w_1200">
                     <div class="wrp_gallery_noticias">
                         <q-carousel
-                        v-model="slidecontent"
+                        v-model="slidenotice"
                         transition-prev="slide-right"
                         transition-next="slide-left"
                         swipeable
@@ -23,13 +23,13 @@
                         class="galeria_noticias"
                         >
                         <q-carousel-slide :name="key" class="column no-wrap" v-for="(item, key) in notices" :key="key">
-                            <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
+                            <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(notice, noticeKey) in item" :key="noticeKey">
                                     <div class="item_galeria">
                                         <img :src="urlSite + notice.field_imagen_noticia_3" />
                                         <div class="info_bottom">
                                             <span class="fecha">{{ notice.created }}</span>
-                                            <p class="desc" v-html="notice.body"></p>
+                                            <p class="desc" v-html="notice.title"></p>
                                             <q-btn @click="goNotice(notice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -42,6 +42,19 @@
                                 glossy
                                 v-model="slidecontent"
                                 :options="[]"
+                            />
+                            <q-pagination
+                              v-model="slidecontent"
+                              class="nuevo_paginador"
+                              :max="max"
+                              :max-pages="5"
+                              direction-links
+                              boundary-links
+                              :ellipses="false"
+                              icon-first="skip_previous"
+                              icon-last="skip_next"
+                              icon-prev="fast_rewind"
+                              icon-next="fast_forward"
                             />
                         </div>
                     </div>
@@ -67,12 +80,17 @@ export default {
       sliders: true,
       slide: 0,
       info: {},
-      slidecontent: 0,
+      slidecontent: 1,
       urlSite: 'https://pwccdev.mkbk.digital/',
       notices: [],
       pop_reservar_spa: false,
-      numberNotices: 1
+      numberNotices: 1,
+      slidenotice: 0,
+      max: 0
     }
+  },
+  updated () {
+    this.slidenotice = this.slidecontent - 1
   },
   created () {
     if (Platform.is.desktop) {
@@ -94,6 +112,9 @@ export default {
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
+
+          _this.max = _this.notices.length
+
           _this.$q.loading.hide()
         }
       })
