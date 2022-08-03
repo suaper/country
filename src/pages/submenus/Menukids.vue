@@ -7,6 +7,7 @@
       <q-btn outline :disable="getDisable('/kids/play-room')" @click="goItem('/kids/play-room')" color="submenu" label="Playroom" />
       <q-btn outline :disable="getDisable('/kids/motor-skills')" @click="goItem('/kids/motor-skills')" color="submenu" label="Motor Skills" />
       <q-btn outline :disable="getDisable('/kids/sport-kids')" @click="goItem('/kids/sport-kids')" color="submenu" label="Sport Kids" />
+      <q-btn outline :disable="getDisable('/kids/multimedia')" @click="goItem('/kids/multimedia')" color="submenu" label="Multimedia" />
     </q-btn-group>
     <Buscador />
 

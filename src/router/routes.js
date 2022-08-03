@@ -8,6 +8,13 @@ const routes = [
     ]
   },
   {
+    path: '/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/Multimedia.vue') }
+    ]
+  },
+  {
     path: '/quienes-somos',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -295,6 +302,13 @@ const routes = [
     ]
   },
   {
+    path: '/special-days/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/special-days/Multimedia.vue') }
+    ]
+  },
+  {
     path: '/gastronomia/country-al-dia',
     component: () => import('layouts/MainLayout.vue'),
     children: [
@@ -369,6 +383,13 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/kids/SportKids.vue') }
+    ]
+  },
+  {
+    path: '/kids/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/kids/Multimedia.vue') }
     ]
   },
   {
