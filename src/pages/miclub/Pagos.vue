@@ -21,6 +21,11 @@
               <h5 class="titulo_noticias">{{ info.field_titulo_bloque_1[0].value }}</h5>
               <div class="q-pa-md row items-start q-gutter-md no-flex" v-html="info.field_body_2[0].value"></div>
           </div>
+
+          <div class="caja_blanca wrp_right w_47 q-mt-xl">
+              <h5 class="titulo_noticias">{{ info.field_titulo_bloque_3[0].value }}</h5>
+              <div class="q-pa-md row items-start q-gutter-md no-flex" v-html="info.field_body_bloque_3[0].value"></div>
+          </div>
         </div>
     </div>
   </q-page>
