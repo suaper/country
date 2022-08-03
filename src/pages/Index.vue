@@ -35,7 +35,7 @@
     <div class="q-py-md all_width bg_beige">
       <div class="row_wrap no-wrap q-py-md flex justify-start">
         <h3 class="q-my-none title_multimedia">Multimedia</h3>
-        <q-btn class="q-ml-lg bg_white_i h_44 ver_mas_multimedia" outline color="indigo-10"  icon-right="east" label="Ver más" />
+        <q-btn class="q-ml-lg bg_white_i h_44 ver_mas_multimedia" outline color="indigo-10" to="/multimedia"   icon-right="east" label="Ver más" />
       </div>
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
