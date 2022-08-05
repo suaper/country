@@ -62,7 +62,7 @@ export default {
           }
 
           localStorage.setItem('dataSocioForm', {})
-          _this.$router.push('hazte-socio')
+          _this.$router.push('/hazte-socio')
         }
       })
     },
