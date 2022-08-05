@@ -63,13 +63,13 @@
       <div class="fixed_redes">
         <ul>
           <li>
-            <a href=""> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-boton-subir.svg"></a>
+            <a  href="#"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-boton-subir.svg"></a>
           </li>
           <li>
-            <a href=""> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-facebook.svg"></a>
+            <a target="_blank" href="https://www.facebook.com/pages/PWCC-Prince-of-Wales-Country-Club/185321531516457"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-facebook.svg"></a>
           </li>
           <li>
-            <a href=""> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-instagram.svg"></a>
+            <a target="_blank" href="https://www.instagram.com/countryclubchile/"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-instagram.svg"></a>
           </li>
         </ul>
       </div>
