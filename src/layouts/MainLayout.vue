@@ -1,6 +1,6 @@
 
 <template>
-  <q-layout view="hHh lpr fff" class="home">
+  <q-layout view="hHh lpr fff" class="home" id="home">
 
     <q-header class="bg-white text-white" height-hint="98">
       <div class="wrap_top center">
@@ -63,7 +63,7 @@
       <div class="fixed_redes">
         <ul>
           <li>
-            <a  href="#"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-boton-subir.svg"></a>
+            <a @click="goToAnchor($event, '#home')" href="#"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-boton-subir.svg"></a>
           </li>
           <li>
             <a target="_blank" href="https://www.facebook.com/pages/PWCC-Prince-of-Wales-Country-Club/185321531516457"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-facebook.svg"></a>
@@ -152,6 +152,17 @@ export default {
     this.getInfo()
   },
   methods: {
+    goToAnchor (e, item) {
+      e.preventDefault()
+      const el = document.querySelector(item)
+      var top = el.offsetTop
+      window.scrollTo({
+        top: top,
+        left: 0,
+        behavior: 'smooth'
+      })
+      // el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/81?_format=json', {
