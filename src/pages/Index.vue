@@ -1,5 +1,8 @@
 <template>
   <q-page class="flex flex-center">
+    <div class="buscador_home">
+      <Buscador />
+    </div>
     <div class="q-py-xs all_width">
       <q-carousel
         animated
@@ -88,9 +91,11 @@
 
 <script>
 import configServices from '../services/config'
+import Buscador from 'pages/submenus/Buscador.vue'
 
 export default {
   name: 'PageIndex',
+  components: { Buscador },
   data () {
     return {
       sliders: true,
