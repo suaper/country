@@ -25,14 +25,13 @@
                         animated
                         control-color="primary"
                         padding
-                        arrows
                         class="galeria_noticias"
                         >
                         <q-carousel-slide :name="key" class="column" v-for="(item, key) in notices" :key="key">
                             <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(itemNotice, keyNotice) in item" :key="keyNotice">
                                     <div class="item_galeria">
-                                        <img :src="urlSite + itemNotice.field_imagen_noticia" />
+                                        <img :src="urlSite + itemNotice.field_portada_noticia" />
                                         <div class="info_bottom">
                                             <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
                                             <p class="desc" v-html="itemNotice.title"></p>

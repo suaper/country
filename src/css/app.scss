@@ -2149,6 +2149,10 @@ h6.peluqueria{
                 width: 100%;
                 color: #fff;
                 padding: 15px 20px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                min-height: 137px;
 
                 .desc{
                     color: #fff;
@@ -2167,6 +2171,7 @@ h6.peluqueria{
                 button{
                     margin: 5px 0 5px;
                     text-transform: initial;
+                    width: 130px;
                 }
                 .fecha{
                     font-size: 12px;
@@ -2191,7 +2196,7 @@ h6.peluqueria{
         }
     }
     .noticia_slider{
-        width: 300px;
+        width: 330px;
         margin: 0px 10px;
         .item_galeria{
             position: relative;
@@ -2201,9 +2206,13 @@ h6.peluqueria{
                 position: absolute;
                 bottom: 0;
                 left: 0;
+                min-height: 134px;
                 width: 100%;
                 color: #fff;
                 padding: 15px 20px;
+                flex-direction: column;
+                justify-content: space-between;
+                display: flex;
 
                 .desc{
                     color: #fff;
@@ -2217,6 +2226,7 @@ h6.peluqueria{
                 button{
                     margin: 5px 0 5px;
                     text-transform: initial;
+                    width: 130px;
                 }
                 .fecha{
                     font-size: 12px;
@@ -6543,7 +6553,7 @@ hr.form_linea{
     }
 }
 .grande .wrp_gallery_country .country_slider{
-    width: 300px;
+    width: 330px;
     img{
         width: 100%;
     }

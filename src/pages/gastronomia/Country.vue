@@ -8,7 +8,7 @@
     </div>
 
     <div class="q-py-xl all_width gris_home wrp_club hazte_socio grande">
-        <div class="centrar q-pb-xl  w_1200">
+        <div class="centrar q-pb-xl  w_1100">
             <div class="wrp_gallery_country">
                 <q-carousel
                 v-model="slidenotice"
@@ -19,7 +19,6 @@
                 animated
                 control-color="primary"
                 padding
-                arrows
                 height="383px"
                 class="galeria_country"
                 >
@@ -27,7 +26,7 @@
                     <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                         <div class="country_slider" v-for="(subItem, subKey) in item" :key="subKey">
                             <div class="item_galeria">
-                                <img :src="urlSite + subItem.field_imagen_noticia_1" width="190" height="380"/>
+                                <img :src="urlSite + subItem.field_portada_noticia" />
                                 <div class="info_bottom">
                                     <span class="fecha" >{{ getDate(subItem.created) }}</span>
                                     <p class="desc" v-html="subItem.title"></p>
