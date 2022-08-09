@@ -18,7 +18,6 @@
                         animated
                         control-color="primary"
                         padding
-                        arrows
                         height="400px"
                         class="galeria_noticias"
                         >
@@ -26,7 +25,7 @@
                             <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(notice, noticeKey) in item" :key="noticeKey">
                                     <div class="item_galeria">
-                                        <img :src="urlSite + notice.field_imagen_noticia_3" />
+                                        <img :src="urlSite + notice.field_portada_noticia" />
                                         <div class="info_bottom">
                                             <span class="fecha">{{ notice.created }}</span>
                                             <p class="desc" v-html="notice.title"></p>
