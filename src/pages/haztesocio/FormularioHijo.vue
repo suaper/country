@@ -294,7 +294,7 @@
         <div class="q-py-md w_1200 centrar view_form_cotizar justify-center">
           <div class="action_next">
             <q-btn outline @click="addChild" class="azul centrar mt_10 bg_white_home" label="Añadir Hijo" icon-right="add"/>
-            <q-btn outline type="submit" @click="irSiguiente()"  class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
+            <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="Continuar" icon-right="add"/>
             <span class="nota center">
               * Cualquier cambio de esta información debe ser avisado al Club, dentro de 60 días.
             </span>
@@ -355,9 +355,22 @@ export default {
   methods: {
     addChild () {
       var hijo = {
-        colegios: [],
-        universidades: [],
-        otrosEstudios: []
+        colegios: [{
+          nombre: '',
+          direccion: '',
+          years: '',
+          desde: '',
+          hasta: '',
+          current: ''
+        }],
+        universidades: [{
+          nombre: '',
+          ciudad: '',
+          carrera: '',
+          titulo: '',
+          year: ''
+        }],
+        otrosEstudios: [{ nombre: '' }]
       }
       this.hijos.push(hijo)
     },

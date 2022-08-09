@@ -739,7 +739,7 @@
                           <div class="ancho50 item-2">
                               <div class="sin_estilo ancho50">
                                   <span class="label_strong">Desde</span>
-                                  <q-input outlined v-model="deportivas[key].desde" mask="date" :rules="['date']">
+                                  <q-input outlined v-model="deportivas[key].desde" mask="date">
                                     <template v-slot:append>
                                       <q-icon name="event" class="cursor-pointer">
                                         <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -755,7 +755,7 @@
                               </div>
                               <div class="sin_estilo ancho50">
                                   <span class="label_strong">Hasta</span>
-                                  <q-input outlined v-model="deportivas[key].hasta" mask="date" :rules="['date']">
+                                  <q-input outlined v-model="deportivas[key].hasta" mask="date">
                                     <template v-slot:append>
                                       <q-icon name="event" class="cursor-pointer">
                                         <q-popup-proxy cover transition-show="scale" transition-hide="scale">
