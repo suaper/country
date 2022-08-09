@@ -966,6 +966,7 @@ export default {
       this.data.postgrados = this.postgrados
       this.data.otrosEstudios = this.otrosEstudios
       this.data.ocupaciones = this.ocupaciones
+      this.data.otrasActividades = this.otrasActividades
       this.data.deportivas = this.deportivas
       localStorage.setItem('dataSocioForm', JSON.stringify(this.data))
       this.$router.push('/hazte-socio/esconyugue')
