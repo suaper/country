@@ -365,7 +365,7 @@ const routes = [
     ]
   },
   {
-    path: '/kids/play-room',
+    path: '/kids/playroom',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/kids/PlayRoom.vue') }
