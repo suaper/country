@@ -41,13 +41,13 @@
             </div>
       </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo wrp_club">
+     <!--<div class="q-py-xl all_width bg_amarillo wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
             <h3 class="q-my-none">Multimedia</h3>
             <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
       </div>
 
-      <!--<div class="row_wrap no-wrap flex justify-between fsecond_row_home">
+     <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
           <table class="esquma_inferior" v-if="multimediaHome.length">
             <tr>
@@ -80,8 +80,8 @@
             </tr>
           </table>
         </div>
-      </div>-->
-    </div>
+      </div>
+    </div>-->
     <div class="q-py-xl all_width gris_home wrp_club">
         <div class="centrar w_1200 flex justify-between items-center">
         <div class="row_2 fitnes_last align_center">
@@ -120,7 +120,7 @@
                 </div>
             </q-form>
           </div>
-          <div>
+          <div v-if="loadedInfo">
             <ul class="contacto_footer cien all_width diferent">
                 <li class="mail">
                     <img src="../../assets/HazteSocio/i-correo.svg" />
@@ -165,7 +165,8 @@ export default {
       telefono: '',
       email: '',
       rut: '',
-      mensaje: ''
+      mensaje: '',
+      loadedInfo: false
     }
   },
 
@@ -203,6 +204,7 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
+          _this.loadedInfo = true
         }
       })
 
