@@ -433,7 +433,6 @@
                                 outlined
                                 label="Nombre de la universidad"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="universidades[key].nombre"
                             />
                         </div>
@@ -444,7 +443,6 @@
                                 outlined
                                 label="Ciudad"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="universidades[key].ciudad"
                             />
                         </div>
@@ -457,7 +455,6 @@
                                 outlined
                                 label="Carrera profesional"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="universidades[key].carrera"
                             />
                         </div>
@@ -468,7 +465,6 @@
                                 outlined
                                 label="Título que recibió"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="universidades[key].titulo"
                             />
                         </div>
@@ -480,7 +476,6 @@
                                 outlined
                                 label="Año en que recibió el título"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="universidades[key].year"
                             />
                         </div>
@@ -497,7 +492,6 @@
                                 outlined
                                 label="Nombre de la universidad"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="postgrados[key].nombre"
                             />
                         </div>
@@ -508,7 +502,6 @@
                                 outlined
                                 label="Ciudad"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="postgrados[key].ciudad"
 
                             />
@@ -522,7 +515,6 @@
                                 outlined
                                 label="Carrera profesional"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="postgrados[key].carrera"
 
                             />
@@ -534,7 +526,6 @@
                                 outlined
                                 label="Grado o título que recibió"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="postgrados[key].titulo"
 
                             />
@@ -547,7 +538,6 @@
                                 outlined
                                 label="Año en que recibió el título"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="postgrados[key].year"
                             />
                         </div>
@@ -631,7 +621,6 @@
                                 outlined
                                 label="Nombre de la Empresa"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="ocupaciones[key].nombre"
                             />
                         </div>
@@ -642,7 +631,6 @@
                                 outlined
                                 label="Cargo desempeñado"
                                 lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="ocupaciones[key].cargo"
                             />
                         </div>
@@ -651,7 +639,7 @@
                         <div class="ancho50 item-2">
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Desde</span>
-                                <q-input outlined v-model="ocupaciones[key].desde" mask="date" :rules="['date']">
+                                <q-input outlined v-model="ocupaciones[key].desde" mask="date">
                                   <template v-slot:append>
                                     <q-icon name="event" class="cursor-pointer">
                                       <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -667,7 +655,7 @@
                             </div>
                             <div class="sin_estilo ancho50">
                                 <span class="label_strong">Hasta</span>
-                                <q-input outlined v-model="ocupaciones[key].hasta" mask="date" :rules="['date']">
+                                <q-input outlined v-model="ocupaciones[key].hasta" mask="date">
                                   <template v-slot:append>
                                     <q-icon name="event" class="cursor-pointer">
                                       <q-popup-proxy cover transition-show="scale" transition-hide="scale">
