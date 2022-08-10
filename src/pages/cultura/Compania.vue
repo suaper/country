@@ -3,7 +3,7 @@
 
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta q-pd-md centrar text-center relative">
-            <div class="center text-center q-my-lg titulos">Staff y Compañía</div>
+            <div class="center text-center q-my-lg titulos">Staff</div>
             <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1000 centrar flex_companias uss justify-center">
