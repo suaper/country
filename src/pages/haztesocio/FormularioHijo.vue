@@ -96,7 +96,6 @@
                     outlined
                     label="Nombre del Colegio"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].colegios[cKey].nombre"
                   />
                 </div>
@@ -107,7 +106,6 @@
                     outlined
                     label="Dirección del Colegio"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].colegios[cKey].direccion"
                   />
                 </div>
@@ -120,7 +118,6 @@
                     outlined
                     label="Digite los años cursados en este colegio"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].colegios[cKey].years"
                     />
                 </div>
@@ -128,7 +125,7 @@
                 <div class="ancho50 item-2">
                   <div class="sin_estilo ancho50">
                     <span class="label_strong">Desde</span>
-                    <q-input outlined v-model="hijos[hijoKey].colegios[cKey].desde" mask="date" :rules="['date']">
+                    <q-input outlined v-model="hijos[hijoKey].colegios[cKey].desde" mask="date">
                       <template v-slot:append>
                         <q-icon name="event" class="cursor-pointer">
                           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -144,7 +141,7 @@
                   </div>
                   <div class="sin_estilo ancho50">
                     <span class="label_strong">Hasta</span>
-                    <q-input outlined v-model="hijos[hijoKey].colegios[cKey].hasta" mask="date" :rules="['date']">
+                    <q-input outlined v-model="hijos[hijoKey].colegios[cKey].hasta" mask="date">
                       <template v-slot:append>
                         <q-icon name="event" class="cursor-pointer">
                           <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -168,7 +165,6 @@
                     label="Año que cursa actualmente"
                     lazy-rules
                     v-model="hijos[hijoKey].colegios[cKey].current"
-                    :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
                   />
                 </div>
               </div>
@@ -184,7 +180,6 @@
                     outlined
                     label="Nombre de la universidad"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].universidades[uKey].nombre"
                   />
                 </div>
@@ -195,7 +190,6 @@
                     outlined
                     label="Ciudad"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].universidades[uKey].ciudad"
                   />
                 </div>
@@ -208,7 +202,6 @@
                     outlined
                     label="Carrera profesional"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].universidades[uKey].carrera"
                   />
                 </div>
@@ -219,7 +212,6 @@
                     outlined
                     label="Título que recibió"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].universidades[uKey].titulo"
                   />
                 </div>
@@ -231,7 +223,6 @@
                     outlined
                     label="Año / Semestre que cursa actualmente"
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                     v-model="hijos[hijoKey].universidades[uKey].year"
                   />
                 </div>
@@ -248,7 +239,6 @@
                     outlined
                     label="Indicar Institución, Carrera, Título, años estudio, etc."
                     lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Digite el número de personas']"
                     v-model="hijos[hijoKey].otrosEstudios[oKey].nombre"
                   />
                 </div>
