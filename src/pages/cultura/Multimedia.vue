@@ -14,14 +14,13 @@
             </div>
             <div class="wrp_gallery_multimedia">
                 <q-carousel
-                v-model="slidecontent"
+                v-model="slideimagen"
                 transition-prev="slide-right"
                 transition-next="slide-left"
                 swipeable
                 animated
                 control-color="primary"
                 padding
-                arrows
                 height="250px"
                 class="galeria_multimedia"
                 >
@@ -39,11 +38,19 @@
                     </div>
                 </q-carousel-slide>
                 </q-carousel>
-                <div class="row justify-center botones">
-                    <q-btn-toggle
-                        glossy
-                        v-model="slidecontent"
-                        :options="options"
+                <div class="row justify-center">
+                    <q-pagination
+                      class="nuevo_paginador"
+                      v-model="slidecontent"
+                      :max-pages="5"
+                      :max="max"
+                      direction-links
+                      boundary-links
+                      :ellipses="false"
+                      icon-first="skip_previous"
+                      icon-last="skip_next"
+                      icon-prev="fast_rewind"
+                      icon-next="fast_forward"
                     />
                 </div>
             </div>
@@ -54,14 +61,13 @@
         <div class="center text-center q-my-md titulos">Videos</div>
             <div class="wrp_gallery_video">
                 <q-carousel
-                v-model="slidevideo"
+                v-model="slidedevideos"
                 transition-prev="slide-right"
                 transition-next="slide-left"
                 swipeable
                 animated
                 control-color="primary"
                 padding
-                arrows
                 height="470px"
                 class="galeria_video"
                 >
@@ -104,11 +110,19 @@
                 </q-carousel-slide>
 
                 </q-carousel>
-                <div class="row justify-center botones">
-                    <q-btn-toggle
-                        glossy
-                        v-model="slidevideo"
-                        :options="optionsVideo"
+                <div class="row justify-center">
+                    <q-pagination
+                      class="nuevo_paginador"
+                      v-model="slidevideo"
+                      :max-pages="5"
+                      :max="maxvideo"
+                      direction-links
+                      boundary-links
+                      :ellipses="false"
+                      icon-first="skip_previous"
+                      icon-last="skip_next"
+                      icon-prev="fast_rewind"
+                      icon-next="fast_forward"
                     />
                 </div>
             </div>
@@ -146,8 +160,8 @@ export default {
       currentVideo: '',
       info: {},
       pop_consultar: false,
-      slidecontent: 0,
-      slidevideo: 0,
+      slidecontent: 1,
+      slidevideo: 1,
       urlSite: 'https://pwccdev.mkbk.digital/',
       options: [],
       optionsVideo: [],
@@ -155,8 +169,16 @@ export default {
       slidersContentVideos: [],
       images: [],
       videos: [],
-      numberNotices: 1
+      numberNotices: 1,
+      slideimagen: 0,
+      slidedevideos: 0,
+      max: 0,
+      maxvideo: 0
     }
+  },
+  updated () {
+    this.slideimagen = this.slidecontent - 1
+    this.slidedevideos = this.slidevideo - 1
   },
   mounted () {
     if (Platform.is.desktop) {
@@ -176,6 +198,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/multimedia-cultura/cultura,charlas-culturales,danza-y-ballet/json', {
         callBack: (data) => {
+          console.log(data)
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {
               _this.videos.push(item)
@@ -183,7 +206,6 @@ export default {
               _this.images.push(item)
             }
           })
-
           const n = this.numberNotices
           _this.slidersContentImages = new Array(Math.ceil(_this.images.length / n))
             .fill()
@@ -193,6 +215,8 @@ export default {
             .fill()
             .map(_ => _this.videos.splice(0, n))
           _this.getOptions()
+          _this.max = _this.slidersContentImages.length
+          _this.maxvideo = _this.slidersContentVideos.length
           _this.$q.loading.hide()
         }
       })

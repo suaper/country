@@ -174,7 +174,7 @@ export default {
       urlSite: 'https://pwccdev.mkbk.digital/',
       obras: [],
       pop_consultar: false,
-      slidecontent: 1,
+      slidecontent: 0,
       events: [],
       dtevento: false,
       event: {},
