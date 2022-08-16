@@ -6,7 +6,7 @@
       <q-btn outline :disable="getDisable('/hazte-socio/hijos-ex-socios')"  @click="goItem('/hazte-socio/hijos-ex-socios')" color="submenu" label="Hijos de Ex Socios" />
       <q-btn outline :disable="getDisable('/hazte-socio/nuevos-socios')"  @click="goItem('/hazte-socio/nuevos-socios')" color="submenu" label="Nuevos Socios" />
       <q-btn outline :disable="getDisable('/hazte-socio/extranjeros-de-paso')"  @click="goItem('/hazte-socio/extranjeros-de-paso')" color="submenu" label="Extranjeros de Paso" />
-      <q-btn outline :disable="getDisable('/hazte-socio/senior')"  @click="goItem('/hazte-socio/senior')" color="submenu" label="Senior sin cargas" />
+      <q-btn outline :disable="getDisable('/hazte-socio/senior')"  @click="goItem('/hazte-socio/senior')" color="submenu" label="Senior sin Cargas" />
       <q-btn outline :disable="getDisable('/hazte-socio/familia-de-socios')"  @click="goItem('/hazte-socio/familia-de-socios')" color="submenu" label="Familia de Socios" />
       <q-btn outline :disable="getDisable('/hazte-socio/familia-rama-deportiva')"  @click="goItem('/hazte-socio/familia-rama-deportiva')" color="submenu" label="Familia de Rama Deportiva" />
     </q-btn-group>

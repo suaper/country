@@ -44,7 +44,7 @@
                     <tr>
                         <th>Categoría</th>
                         <th>Cuota Trimestral</th>
-                        <th>Cuota Trimestral</th>
+                        <th>Requisito</th>
                     </tr>
                     <tr v-for="(item, key) in cuotas" :key="key">
                         <td>{{ item.field_categoria_cuota }}</td>
