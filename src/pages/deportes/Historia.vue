@@ -31,7 +31,7 @@ export default {
     return {
       sliders: true,
       slide: '0',
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       path: '',
       subPath: '',
       info: {},

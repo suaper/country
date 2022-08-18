@@ -53,7 +53,7 @@ export default {
     return {
       sliders: true,
       key: 0,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       loadedEvents: false,
       events: [],
       allEvents: [],

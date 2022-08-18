@@ -74,7 +74,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [
         { field_portada_multimedia: '' },
         { field_portada_multimedia: '' },

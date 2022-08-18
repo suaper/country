@@ -52,7 +52,7 @@ export default {
   data () {
     return {
       month: '',
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       info: this.items,
       popupLineup: false,
       item: {}

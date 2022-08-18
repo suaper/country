@@ -171,7 +171,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       obras: [],
       pop_consultar: false,
       slidecontent: 1,

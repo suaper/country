@@ -53,7 +53,7 @@ export default {
       video: false,
       currentVideo: '',
       info: {},
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [],
       contactInfo: [],
       pop_consultar: false,

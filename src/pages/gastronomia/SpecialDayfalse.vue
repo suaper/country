@@ -249,7 +249,7 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [],
       pop_consultar: false,
       slidecontent: 1

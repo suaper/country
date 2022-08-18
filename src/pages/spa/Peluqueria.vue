@@ -148,7 +148,7 @@ export default {
       menServices: [],
       womanServices: [],
       personal: [],
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   },
   created () {

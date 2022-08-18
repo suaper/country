@@ -57,7 +57,7 @@ export default {
       },
       personal: [],
       secondPersonal: [],
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: []
     }
   },

@@ -57,7 +57,7 @@ export default {
         ]
       },
       items: [],
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   },
   created () {

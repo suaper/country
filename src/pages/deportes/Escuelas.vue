@@ -57,7 +57,7 @@ export default {
       slidecontent: 0,
       personal: [],
       filters: [],
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [],
       pop_reservar_spa: false,
       loadedPersonal: false,

@@ -159,7 +159,7 @@ export default {
       personal: [],
       contactInfo: [],
       secondPersonal: [],
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [],
       name: '',
       telefono: '',

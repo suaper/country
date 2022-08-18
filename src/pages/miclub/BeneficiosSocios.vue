@@ -59,7 +59,7 @@ export default {
       sliders: true,
       slide: 0,
       autoplay: true,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       info: {
         body: [
           {

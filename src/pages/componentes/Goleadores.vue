@@ -12,7 +12,7 @@
             <div class="item_galeria">
               <img :src="urlSite + subItem.field_imagen_goleador" />
               <div class="flex justify-start mini">
-                <img src="https://pwccdev.mkbk.digital/administrador/sites/default/files/2022-04/minimedalla.png" /><p class="Posicion">{{ subItem.field_posicion }}</p>
+                <img src="https://obt3.cl/administradorsites/default/files/2022-04/minimedalla.png" /><p class="Posicion">{{ subItem.field_posicion }}</p>
               </div>
             </div>
           </div>
@@ -39,7 +39,7 @@ export default {
       slide: 1,
       slidecontent: 0,
       sliderItems: this.items,
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   }
 }

@@ -63,7 +63,7 @@ export default {
       slide: 1,
       autoplay: true,
       directory: [],
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       president: [],
       gerent: []
     }

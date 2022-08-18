@@ -80,7 +80,7 @@ export default {
       slide: 0,
       info: {},
       slidecontent: 1,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       notices: [],
       pop_reservar_spa: false,
       numberNotices: 1,

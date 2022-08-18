@@ -350,7 +350,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [],
       howInscription: {
         field_portada_video: [

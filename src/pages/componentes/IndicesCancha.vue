@@ -67,7 +67,7 @@ export default {
   data () {
     return {
       items: this.info,
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   },
   methods: {

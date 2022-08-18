@@ -229,7 +229,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       multimediaHome: [],
       pop_consultar: false,
       slidecontent: 0,

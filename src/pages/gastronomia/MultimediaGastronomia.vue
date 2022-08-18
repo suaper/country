@@ -146,7 +146,7 @@ export default {
       pop_consultar: false,
       slidecontent: 0,
       slidevideo: 0,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       options: [],
       optionsVideo: [],
       slidersContentImages: [],

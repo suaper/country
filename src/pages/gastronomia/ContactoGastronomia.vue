@@ -75,7 +75,7 @@ export default {
       pop_consultar: false,
       telefono: '',
       email: '',
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       name: '',
       rut: '',
       personal: [],

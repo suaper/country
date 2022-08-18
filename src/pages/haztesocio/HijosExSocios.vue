@@ -84,7 +84,7 @@ export default {
         }
       ],
       pop_consultar: false,
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   },
   created () {

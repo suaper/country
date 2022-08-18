@@ -45,7 +45,7 @@ export default {
   data () {
     return {
       sliders: true,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       path: '',
       subPath: '',
       info: {},

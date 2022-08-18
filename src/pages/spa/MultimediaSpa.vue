@@ -147,7 +147,7 @@ export default {
       video: false,
       currentVideo: '',
       slidevideo: 0,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       options: [],
       optionsVideo: [],
       slidersContentImages: [],

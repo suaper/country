@@ -117,7 +117,7 @@ export default {
   name: 'Escuelas',
   data () {
     return {
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       info: [],
       formulario: false,
       name: '',

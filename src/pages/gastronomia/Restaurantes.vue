@@ -83,7 +83,7 @@ export default {
       sliders: true,
       slide: 1,
       items: [],
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       pop_consultar: false
     }
   },

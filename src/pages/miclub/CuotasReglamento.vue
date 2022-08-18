@@ -77,7 +77,7 @@ export default {
           {}
         ]
       },
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       pop_cuota: false,
       cuotas: []
     }

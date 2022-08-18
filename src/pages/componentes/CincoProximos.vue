@@ -87,7 +87,7 @@ export default {
       currentVideo: '',
       slide: 1,
       slidecontent: 0,
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       pop_reservar_spa: false,
       personal: {
         field_imagen_perfil: ''

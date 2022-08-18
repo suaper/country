@@ -203,7 +203,7 @@ export default {
       },
       pop_consultar: false,
       services: [],
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       imageMasajes: '',
       imageDepilacion: '',
       imageCosmeto: '',

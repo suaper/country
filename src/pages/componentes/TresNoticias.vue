@@ -41,7 +41,7 @@ export default {
   data () {
     return {
       notices: this.info,
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   },
   methods: {

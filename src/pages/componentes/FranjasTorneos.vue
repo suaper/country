@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       info: this.content,
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   }
 }

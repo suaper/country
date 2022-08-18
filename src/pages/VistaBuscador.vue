@@ -50,7 +50,7 @@ export default {
 
   data () {
     return {
-      urlSite: 'https://pwccdev.mkbk.digital/',
+      urlSite: 'https://obt3.cl/',
       filter: '',
       info: [],
       loadedInfo: false

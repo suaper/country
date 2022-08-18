@@ -86,7 +86,7 @@ export default {
     return {
       info: this.items,
       ranking: this.table,
-      urlSite: 'https://pwccdev.mkbk.digital/'
+      urlSite: 'https://obt3.cl/'
     }
   }
 }
