@@ -156,15 +156,9 @@ export default {
       currentVideo: '',
       info: {},
       pop_consultar: false,
-<<<<<<< HEAD
-      slidecontent: 0,
-      slidevideo: 0,
       urlSite: 'https://obt3.cl/',
-=======
       slidecontent: 1,
       slidevideo: 1,
-      urlSite: 'https://pwccdev.mkbk.digital/',
->>>>>>> 1c7f317fa62e8e7b9c5198533dbedafb7acd7a31
       options: [],
       optionsVideo: [],
       slidersContentImages: [],
