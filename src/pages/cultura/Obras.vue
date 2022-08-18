@@ -174,7 +174,7 @@ export default {
       urlSite: 'https://obt3.cl/',
       obras: [],
       pop_consultar: false,
-      slidecontent: 1,
+      slidecontent: 0,
       events: [],
       dtevento: false,
       event: {},
