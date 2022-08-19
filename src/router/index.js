@@ -5,13 +5,6 @@ import routes from './routes'
 
 Vue.use(VueRouter)
 
-import VueAnalytics from 'vue-analytics'
-
-Vue.use(VueAnalytics, {
-  id: 'UA-237083350-1',
-  routes
-})
-
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;
