@@ -52,7 +52,7 @@ export default {
   data () {
     return {
       month: '',
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       info: this.items,
       popupLineup: false,
       item: {}

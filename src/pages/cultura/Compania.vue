@@ -45,7 +45,7 @@ export default {
   name: 'Compania',
   data () {
     return {
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       info: [],
       card: false,
       currentItem: {}

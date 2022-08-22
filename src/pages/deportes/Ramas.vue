@@ -128,7 +128,7 @@ export default {
   data () {
     return {
       deporte: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       date: '2019/02/01',
       socio: 'line',
       terminos: false,

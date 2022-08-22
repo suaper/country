@@ -121,7 +121,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       options: [
         'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
       ],

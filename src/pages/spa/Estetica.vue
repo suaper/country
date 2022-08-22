@@ -203,7 +203,7 @@ export default {
       },
       pop_consultar: false,
       services: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       imageMasajes: '',
       imageDepilacion: '',
       imageCosmeto: '',

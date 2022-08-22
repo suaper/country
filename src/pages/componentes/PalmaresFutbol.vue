@@ -25,7 +25,7 @@ export default {
       slide: 1,
       slidecontent: 0,
       sliderItems: this.items,
-      urlSite: 'https://obt3.cl/'
+      urlSite: 'https://obt3.cl'
     }
   }
 }

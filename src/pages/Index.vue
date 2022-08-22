@@ -104,7 +104,7 @@ export default {
       video: false,
       currentVideo: '',
       banners: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       introHome: {
         field_video_youtube: []
       },

@@ -85,7 +85,7 @@ export default {
         }
       ],
       pop_consultar: false,
-      urlSite: 'https://obt3.cl/'
+      urlSite: 'https://obt3.cl'
     }
   },
   created () {

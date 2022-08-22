@@ -49,7 +49,7 @@ export default {
     return {
       sliders: true,
       slide: '0',
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       path: '',
       subPath: '',
       info: {},

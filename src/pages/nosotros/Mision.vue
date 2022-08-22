@@ -57,7 +57,7 @@ export default {
         ]
       },
       items: [],
-      urlSite: 'https://obt3.cl/'
+      urlSite: 'https://obt3.cl'
     }
   },
   created () {

@@ -148,7 +148,7 @@ export default {
       pop_consultar: false,
       slidecontent: 0,
       slidevideo: 0,
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       options: [],
       optionsVideo: [],
       slidersContentImages: [],

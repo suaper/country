@@ -37,7 +37,7 @@ export default {
 
   data () {
     return {
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       service: []
     }
   },

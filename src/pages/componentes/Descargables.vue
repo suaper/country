@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       descargables: this.info,
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       reglamentos: [],
       loadedReglamentos: false,
       key: 0

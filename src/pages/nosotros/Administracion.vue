@@ -57,7 +57,7 @@ export default {
       },
       personal: [],
       secondPersonal: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       multimediaHome: []
     }
   },

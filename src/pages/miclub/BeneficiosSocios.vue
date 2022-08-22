@@ -59,7 +59,7 @@ export default {
       sliders: true,
       slide: 0,
       autoplay: true,
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       info: {
         body: [
           {

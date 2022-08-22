@@ -54,7 +54,7 @@ export default {
       },
       memorial: [],
       secondPersonal: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       multimediaHome: []
     }
   },

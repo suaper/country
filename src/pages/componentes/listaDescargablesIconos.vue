@@ -41,7 +41,7 @@ export default {
       sliderItems: this.items,
       video: false,
       currentVideo: {},
-      urlSite: 'https://obt3.cl/'
+      urlSite: 'https://obt3.cl'
     }
   },
   methods: {

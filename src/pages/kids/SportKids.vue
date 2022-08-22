@@ -59,7 +59,7 @@ export default {
         ]
       },
       cronograma: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       multimediaHome: []
     }
   },

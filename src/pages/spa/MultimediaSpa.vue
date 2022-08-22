@@ -147,7 +147,7 @@ export default {
       video: false,
       currentVideo: '',
       slidevideo: 0,
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       options: [],
       optionsVideo: [],
       slidersContentImages: [],

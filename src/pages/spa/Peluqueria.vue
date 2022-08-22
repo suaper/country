@@ -148,7 +148,7 @@ export default {
       menServices: [],
       womanServices: [],
       personal: [],
-      urlSite: 'https://obt3.cl/'
+      urlSite: 'https://obt3.cl'
     }
   },
   created () {

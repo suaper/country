@@ -117,7 +117,7 @@ export default {
   name: 'Escuelas',
   data () {
     return {
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       info: [],
       formulario: false,
       name: '',

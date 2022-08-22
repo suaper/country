@@ -36,7 +36,7 @@ export default {
     return {
       sliders: true,
       slide: 1,
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       info: {
         body: [
           {

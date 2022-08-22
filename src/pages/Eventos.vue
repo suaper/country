@@ -45,7 +45,7 @@ export default {
           { uri: '' }
         ]
       },
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       pop_reservar_spa: false,
       video: false,
       currentVideo: ''

@@ -32,7 +32,7 @@ export default {
     return {
       name: this.title,
       personal: this.info,
-      urlSite: 'https://obt3.cl/'
+      urlSite: 'https://obt3.cl'
     }
   }
 }

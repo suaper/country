@@ -159,7 +159,7 @@ export default {
       name: '',
       telefono: '',
       email: '',
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       items: [],
       itemsCorporativo: [],
       fitnessTypes: [],

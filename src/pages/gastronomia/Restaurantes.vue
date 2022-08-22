@@ -83,7 +83,7 @@ export default {
       sliders: true,
       slide: 1,
       items: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       pop_consultar: false
     }
   },

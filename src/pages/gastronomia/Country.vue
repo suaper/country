@@ -77,7 +77,7 @@ export default {
       sliders: true,
       slide: 1,
       notices: [],
-      urlSite: 'https://obt3.cl/',
+      urlSite: 'https://obt3.cl',
       pop_consultar: false,
       slidecontent: 1,
       numberNotices: 1,
