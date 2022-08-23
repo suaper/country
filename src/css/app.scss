@@ -5642,7 +5642,12 @@ hr.form_linea{
     }
 }
 
-
+.buscador_home{
+    position: fixed;
+    z-index: 9999;
+    top: 24px;
+    right: 5%;
+}
 
 //Estilos para dispositivos moviles
 @media only screen and (max-width: 900px) and ( min-width:0px ) {
@@ -6385,7 +6390,12 @@ hr.form_linea{
     .view_danzas .back {
         position: absolute;
         left: -43px;
-        top: 0;
+        top: 5px;
+    }
+    .view_cotizar{
+        .view_danzas .back {
+            left: -1px;
+        }
     }
     .wrp_gallery_multimedia .multimedia_slider {
         width: auto;
@@ -6466,6 +6476,41 @@ hr.form_linea{
                 width: 100%;
             }
         }
+    }
+    .buscador_home{
+        position: fixed;
+        top: 26px;
+        right: inherit;
+        left: 2%;
+        z-index: 99999;
+        .buscador_general{
+            flex-direction: row-reverse;
+
+            label{
+                width: 166px;
+                position: relative;
+                padding: 0;
+                border: 1px solid #CA9E64;
+                background: #fff;
+            }
+        }
+    }
+    .pop_club.q-card__section{
+        padding-left: 0;
+    }
+    .pop_cuotas{
+        .q-btn{
+            position: absolute;
+            right: 13px;
+            top: 35px;
+        }
+    }
+    .espacio_movil{
+        line-height: 1.2;
+    }
+
+    .otro_espacio_movil{
+        padding-top: 1px;
     }
 }
 
@@ -6594,12 +6639,6 @@ hr.form_linea{
         margin: 7px 10px;
         padding: 2px;
     }
-}
-.buscador_home{
-    position: absolute;
-    z-index: 9999;
-    top: -110px;
-    right: 5%;
 }
 .generico{
     font-family: $font-text;

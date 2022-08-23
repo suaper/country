@@ -2,8 +2,8 @@
   <q-page class="flex flex-center view_hijos_socios view_danzas">
     <q-form @submit="irSiguiente()">
     <div class="q-pb-xl all_width gris_home">
-        <div class="setenta q-pd-md centrar text-center relative">
-            <div class="center text-center q-my-lg titulos">Antecedentes del Postulante</div>
+        <div class="setenta q-pd-md centrar text-center relative otro_espacio_movil">
+            <div class="center text-center q-my-lg titulos espacio_movil">Antecedentes del Postulante</div>
             <div class="back"> <q-btn onclick="history.back()" round color="white" icon="west" />Volver</div>
         </div>
         <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center view_form_cotizar">

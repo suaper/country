@@ -34,7 +34,7 @@
                                         <img :src="urlSite + itemNotice.field_portada_noticia" />
                                         <div class="info_bottom">
                                             <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
-                                            <p class="desc" v-html="itemNotice.title"></p>
+                                            <p class="desc" v-html="trimNotice(itemNotice.title)"></p>
                                             <q-btn @click="goNotice(itemNotice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -114,6 +114,18 @@ export default {
 
         return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
       }
+    },
+    trimNotice (title) {
+      var maxLength = 40
+      if (title.length > maxLength) {
+        console.log(title)
+        var trimmedString = title.substr(0, maxLength)
+        console.log(trimmedString)
+        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+        return trimmedString + '...'
+      }
+
+      return title
     },
     filterNotices (e, item) {
       e.preventDefault()
