@@ -197,11 +197,18 @@ export default {
         var dateParse = dateInput.replace('T', ' ')
         dateParse = dateParse.split(' ')
         var eventDate = dateParse[0].split('-')
+        var monthDate = parseInt(eventDate[1])
+        var yearDate = parseInt(eventDate[0])
+        var date = new Date(yearDate, monthDate, eventDate[2])
+        var calculatedMonth = date.getUTCMonth() - 1
+        if (monthDate === 12) {
+          date = new Date(dateInput)
+          calculatedMonth = date.getUTCMonth()
+        }
 
-        var date = new Date(eventDate[0], eventDate[1], eventDate[2])
         const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
-        return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
+        return eventDate[2] + ' ' + month[calculatedMonth] + '/' + date.getFullYear()
       }
     },
     getHour (dateInput) {
