@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center view_hijos_socios view_fitness">
+  <q-page class="flex flex-center view_hijos_socios view_fitness table_table">
     <Menuspa currentItem="/spa/centro-de-estetica"/>
     <div class="q-py-none all_width">
       <q-carousel

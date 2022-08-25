@@ -28,7 +28,7 @@
                                         <img :src="urlSite + notice.field_portada_noticia" />
                                         <div class="info_bottom">
                                             <span class="fecha">{{ notice.created }}</span>
-                                            <p class="desc" v-html="notice.title"></p>
+                                            <p class="desc" v-html="trimNotice(notice.title)"></p>
                                             <q-btn @click="goNotice(notice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -101,6 +101,18 @@ export default {
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
       this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
+    },
+    trimNotice (title) {
+      var maxLength = 80
+      if (title.length > maxLength) {
+        console.log(title)
+        var trimmedString = title.substr(0, maxLength)
+        console.log(trimmedString)
+        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+        return trimmedString + '...'
+      }
+
+      return title
     },
     getNotices () {
       var _this = this

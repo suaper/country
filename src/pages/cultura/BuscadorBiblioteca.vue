@@ -1,10 +1,10 @@
 <template>
-  <q-page class="flex flex-center view_quienes_somos">
+  <q-page class="flex flex-center view_quienes_somos new_m">
     <Menucultura currentItem="/cultura/biblioteca"/>
-    <div class="q-pb-md all_width gris_home view_danzas q-mt-xl q-mb-md">
+    <div class="q-pb-md all_width gris_home view_danzas q-mt-xl q-mb-md my_no_mo">
         <div class="setenta  centrar text-center relative">
             <div class="center text-center q-my-lg titulos">Buscador de Libros</div>
-            <div class="back"> <q-btn to="/cultura/biblioteca" round color="white" icon="west" />Volver</div>
+            <div class="back no_movil"> <q-btn to="/cultura/biblioteca" round color="white" icon="west" />Volver</div>
         </div>
     </div>
     <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">

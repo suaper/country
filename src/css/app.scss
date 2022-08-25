@@ -6163,6 +6163,15 @@ hr.form_linea{
                     td{
                         width: 100% !important;
                         height: 235px !important;
+                        display: block;
+                        margin: 10px 5px;
+                        img{
+                            height: auto !important;
+                            width: 100% !important;
+                        }
+                        .info_bottom{
+                            bottom: -8px;
+                        }
                     }
                 }
             }
@@ -6404,6 +6413,7 @@ hr.form_linea{
     }
     .wrp_gallery_multimedia .multimedia_slider {
         width: auto;
+        margin: 0px auto;
         .item_galeria{
             width: auto;
             .info_bottom{
@@ -6444,8 +6454,94 @@ hr.form_linea{
             margin: 10px auto;
         }
     }
-    .lista_resultados{
+    .wrp_actions_center_peluqueria{
+        flex-wrap: wrap;
+        justify-content: center;
+        li a {
+            margin: 7px 12px;
+            width: 90%;
+            padding: 10px 1px;
+        }
+    }
+    .table_horarios table tr td{
+        padding: 10px 5px;
+    }
+    .table_horarios table th {
+        padding: 10px 5px;
+    }
+    .table_responsive{
+        .contenido_pelu{
+            tr td {
+                width: 100%;
+                display: block;
+                img{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .table_table{
+        .contenido_pelu{
+            > tr > td {
+                width: 100%;
+                display: block;
+                img{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .flex_companias.uss{
+        justify-content: space-around;
+        .datos_staff_contacto{
+            width: 40%;
+            button{
+                margin-left: 0;
+            }
+        }
+    }
+    .new_m{
+        .my_no_mo{
+            margin-top: 0;
+        }
 
+        .no_movil{
+            display: none;
+        }
+        .wwsearcing{
+            flex-wrap: wrap;
+            margin: 15px 3px;
+
+            .search_box {
+                background: #fff;
+                width: 43%;
+                margin: 10px 6px;
+                img{
+                    max-width: 100%;
+                }
+                td{
+                    h5{
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }
+    .pop_descargar.list_biblioteca{
+        padding-left: 20px;
+    }
+    .pob_biblioteca .libro_icn:before{
+        display: none;
+    }
+    .row_search .wrp_search{
+        flex-wrap: wrap;
+        label{
+            width: 83%;
+        }
+        .q-icon {
+            right: 49px;
+            top: 45px;
+        }
     }
     .wwsearcing {
         flex-wrap: wrap;
