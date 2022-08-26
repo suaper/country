@@ -9,19 +9,10 @@ const datosConfiguracion = {
 const configService = {
   consumerStandar: (componente, endpoind, datosJson, opciones) => {
     componente.$q.loading.show()
-    var token = ''
     var basicAuth = 'Basic ' + btoa(datosConfiguracion.user + ':' + datosConfiguracion.password)
-    componente.$axios.get(datosConfiguracion.apiUrl + 'restws/session/token', {
-      headers: { Authorization: basicAuth }
-    })
-      .then((response) => {
-        token = response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
     componente.$axios.post(datosConfiguracion.apiUrl + endpoind, datosJson, {
-      headers: { Authorization: basicAuth, 'x-CSRF-Token': token }
+      headers: { Authorization: basicAuth }
     })
       .then((response) => {
         console.log(response)
