@@ -2170,7 +2170,7 @@ h6.peluqueria{
                 }
                 button{
                     margin: 5px 0 5px;
-                    text-transform: initial;
+                    text-transform: capitalize;
                     width: 130px;
                 }
                 .fecha{
@@ -2225,7 +2225,7 @@ h6.peluqueria{
                 }
                 button{
                     margin: 5px 0 5px;
-                    text-transform: initial;
+                    text-transform: capitalize;
                     width: 130px;
                 }
                 .fecha{
@@ -2279,7 +2279,7 @@ h6.peluqueria{
                 }
                 button{
                     margin: 5px 5px 5px;
-                    text-transform: initial;
+                    text-transform: capitalize;
                     .q-btn__wrapper:before{
                         box-shadow: none;
                     }
@@ -6743,4 +6743,12 @@ hr.form_linea{
 }
 .generico{
     font-family: $font-text;
+}
+.capital{
+    text-transform: capitalize;
+}
+.grande .wrp_gallery_country .country_slider {
+    .bg_white{
+        text-transform: capitalize;
+    }
 }

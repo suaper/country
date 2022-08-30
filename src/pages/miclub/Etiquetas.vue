@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menumiclub currentItem="/mi-club/etiquetas" />
+    <Menumiclub currentItem="/mi-club/normas-de-convivencia" />
     <div class="q-py-none all_width">
       <q-carousel
         animated
