@@ -22,7 +22,7 @@
         <p class="intro" v-html="info.field_cuota_trimestral[0].value" />
             <div class="q-pa-md row items-start q-gutter-md">
                 <q-btn outline
-                    class="azul q-my-md bg_white"
+                    class="azul q-my-md bg_white capital"
                     label="Revisa el valor correspondiente aquí"
                     icon-right="arrow_right_alt"
                     @click="pop_cuota = true"
