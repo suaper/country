@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <Menumiclub currentItem="/mi-club/cuotas-reglamento" />
+    <Menumiclub currentItem="/mi-club/cuotas-sociales" />
     <div class="q-py-none all_width">
       <q-carousel
         animated
