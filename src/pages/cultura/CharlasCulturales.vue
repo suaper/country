@@ -308,7 +308,7 @@ export default {
         var date = new Date(eventDate[0], eventDate[1], eventDate[2])
         const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
-        return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
+        return eventDate[2] + ' ' + month[date.getUTCMonth() - 2] + '/' + date.getFullYear()
       }
     },
     getHour (dateInput) {

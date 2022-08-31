@@ -1726,6 +1726,7 @@ h5.style_title{
                 color: #1F2660;
                 margin: 7px;
                 text-decoration: none;
+                text-transform: capitalize;
             }
             &:hover{
                 margin-top: 5px;
@@ -1951,6 +1952,7 @@ h5.style_title{
                     padding: 12px 14px;
                     margin: 0;
                     line-height: 1.1;
+                    text-transform: capitalize;
                 }
                 &:hover{
                     color: #fff;
@@ -2238,7 +2240,9 @@ h6.peluqueria{
         }
     }
 }
-
+.q-btn.bg_white_i{
+ text-transform: capitalize;
+}
 .wrp_gallery_multimedia{
     .galeria_multimedia{
         background: transparent;
@@ -2542,6 +2546,7 @@ h6.peluqueria{
             letter-spacing: 0px;
             font-weight: lighter;
             text-decoration: none;
+            text-transform: capitalize;
             color: #1F2660;
             margin-top: 0;
         }
@@ -2728,6 +2733,7 @@ h6.peluqueria{
                 color: #1F2660;
                 padding: 10px;
                 text-decoration: none;
+                text-transform: capitalize;
             }
         }
     }
@@ -3941,6 +3947,7 @@ ul.text_horarios{
                 color: #1F2660;
                 margin: 7px;
                 text-decoration: none;
+                text-transform: capitalize;
             }
             &:hover{
                 margin-top: 5px;
