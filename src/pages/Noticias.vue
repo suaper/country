@@ -116,7 +116,7 @@ export default {
       }
     },
     trimNotice (title) {
-      var maxLength = 80
+      var maxLength = 90
       if (title.length > maxLength) {
         console.log(title)
         var trimmedString = title.substr(0, maxLength)
