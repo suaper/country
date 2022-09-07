@@ -16,6 +16,7 @@
                       <q-input
                           outlined
                           v-model="name"
+                          ref="nameRef"
                           label="Nombres y Apellidos *"
                           lazy-rules
                           :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
@@ -116,11 +117,16 @@ export default {
             _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
           }
 
-          this.email = ''
-          this.name = ''
-          this.telefono = ''
-          this.rut = ''
+          console.log(this.$refs)
+
+          this.email = null
+          this.name = null
+          this.telefono = null
+          this.mensaje = null
+          this.rut = null
           this.pop_reservar_spa = false
+
+          this.$refs.nameRef.resetValidation()
         }
       })
     },

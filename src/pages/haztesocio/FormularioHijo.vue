@@ -402,6 +402,7 @@ export default {
           callBack: (data) => {
             if (data.status === 200) {
               _this.hijos[key].foto_encoded = data.url
+              _this.$.loading.hide()
             }
           }
         })
