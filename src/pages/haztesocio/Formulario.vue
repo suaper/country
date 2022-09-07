@@ -20,26 +20,37 @@
                             />
                         </div>
                         <div class="sin_estilos">
-                            <span class="label_strong">Apellido Completo</span>
+                            <span class="label_strong">Apellido Paterno</span>
                             <q-input
                                 outlined
-                                label="Apellido del Postulante*"
+                                label="Apellido Paterno*"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="data.apellido"
+                                v-model="data.apellido_paterno"
                             />
                          </div>
                     </div>
-
-                    <div class="ancho50 item-1">
-                        <span class="label_strong">Lugar de Nacimiento</span>
-                        <q-input
-                        outlined
-                        label="Ciudad de nacimiento"
-                        lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                        v-model="data.lugar_nacimiento"
-                    />
+                    <div class="ancho50 items-2">
+                        <div class="sin_estilos">
+                            <span class="label_strong">Apellido Materno</span>
+                            <q-input
+                                outlined
+                                label="Apellido Materno*"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                v-model="data.apellido_materno"
+                            />
+                        </div>
+                        <div class="sin_estilos">
+                            <span class="label_strong">Lugar de Nacimiento</span>
+                            <q-input
+                            outlined
+                            label="Ciudad de nacimiento"
+                            lazy-rules
+                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                            v-model="data.lugar_nacimiento"
+                        />
+                        </div>
                     </div>
                 </div>
                 <div class="roww">
@@ -115,42 +126,31 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="roww">
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Fono</span>
-                        <q-input
-                            outlined
-                            label="###"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.telefono"
-
-                        />
+                    <div class="ancho50 items-2">
+                        <div class="sin_estilos">
+                            <span class="label_strong">Celular</span>
+                            <q-input
+                                outlined
+                                label="###"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                v-model="data.celular"
+                            />
+                        </div>
+                        <div class="sin_estilos">
+                            <span class="label_strong">R.U.T. Nº</span>
+                            <q-input
+                                outlined
+                                label="###"
+                                lazy-rules
+                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
+                                v-model="data.rut"
+                            />
+                        </div>
                     </div>
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">Celular</span>
-                        <q-input
-                            outlined
-                            label="###"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.celular"
 
-                        />
-                    </div>
-                </div>
-                <div class="roww">
-                    <div class="ancho50 items-1">
-                        <span class="label_strong">R.U.T. Nº</span>
-                        <q-input
-                            outlined
-                            label="###"
-                            lazy-rules
-                            :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                            v-model="data.rut"
-
-                        />
-                    </div>
                     <div class="ancho50 items-1">
                         <span class="label_strong">Correo Electrónico</span>
                         <q-input
@@ -339,19 +339,6 @@
                         </div>
 
                         <div class="ancho50 ">
-                            <span class="label_strong">Lugar</span>
-                            <q-input
-                                outlined
-                                label="Dirección del Colegio"
-                                lazy-rules
-                                :rules="[ val => val && val.length > 0 || 'Campo requerido']"
-                                v-model="colegios[key].direccion"
-                            />
-                        </div>
-                    </div>
-
-                    <div class="roww">
-                        <div class="ancho50">
                             <span class="label_strong">Ciudad</span>
                             <q-input
                                 outlined
@@ -361,8 +348,10 @@
                                 v-model="colegios[key].ciudad"
                             />
                         </div>
+                    </div>
 
-                        <div class="ancho50 ">
+                    <div class="roww">
+                        <div class="ancho50">
                             <span class="label_strong">Pais</span>
                             <q-input
                                 outlined
@@ -372,10 +361,7 @@
                                 v-model="colegios[key].pais"
                             />
                         </div>
-                    </div>
-
-                    <div class="roww">
-                        <div class="ancho50 items-1">
+                        <div class="ancho50">
                             <span class="label_strong">Año de Egreso</span>
                             <q-input
                                 outlined
@@ -385,41 +371,6 @@
                                 v-model="colegios[key].years"
                             />
                         </div>
-
-                        <!--<div class="ancho50 item-2">
-                            <div class="sin_estilo ancho50">
-                                <span class="label_strong">Desde</span>
-                                <q-input outlined v-model="colegios[key].desde" mask="date" :rules="['date']">
-                                  <template v-slot:append>
-                                    <q-icon name="event" class="cursor-pointer">
-                                      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                                        <q-date v-model="colegios[key].desde">
-                                          <div class="row items-center justify-end">
-                                            <q-btn v-close-popup label="Close" color="primary" flat />
-                                          </div>
-                                        </q-date>
-                                      </q-popup-proxy>
-                                    </q-icon>
-                                  </template>
-                                </q-input>
-                            </div>
-                            <div class="sin_estilo ancho50">
-                                <span class="label_strong">Hasta</span>
-                                <q-input outlined v-model="colegios[key].hasta" mask="date" :rules="['date']">
-                                  <template v-slot:append>
-                                    <q-icon name="event" class="cursor-pointer">
-                                      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                                        <q-date v-model="colegios[key].hasta">
-                                          <div class="row items-center justify-end">
-                                            <q-btn v-close-popup label="Close" color="primary" flat />
-                                          </div>
-                                        </q-date>
-                                      </q-popup-proxy>
-                                    </q-icon>
-                                  </template>
-                                </q-input>
-                            </div>
-                        </div>-->
                     </div>
                 <hr class="form_linea">
                 </div>
