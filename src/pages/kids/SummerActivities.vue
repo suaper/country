@@ -238,6 +238,7 @@
                     <q-input
                         outlined
                         v-model="name"
+                        ref="nameRef"
                         label="Nombre *"
                         lazy-rules
                         :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
@@ -413,6 +414,8 @@ export default {
           this.telefono = ''
           this.rut = ''
           this.formulario = false
+
+          this.$refs.nameRef.resetValidation()
         }
       })
     },
@@ -433,9 +436,7 @@ export default {
     trimNotice (title) {
       var maxLength = 90
       if (title.length > maxLength) {
-        console.log(title)
         var trimmedString = title.substr(0, maxLength)
-        console.log(trimmedString)
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
         return trimmedString + '...'
       }
@@ -445,9 +446,7 @@ export default {
     trimNoticeDetalle (title) {
       var maxLength = 100
       if (title.length > maxLength) {
-        console.log(title)
         var trimmedString = title.substr(0, maxLength)
-        console.log(trimmedString)
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
         return trimmedString + '...'
       }
