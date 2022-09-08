@@ -292,16 +292,17 @@ export default {
       return title
     },
     trimNoticeDetalle (detalle) {
-      var maxLength = 100
-      if (detalle.length > maxLength) {
-        console.log(detalle)
-        var trimmedString = detalle.substr(0, maxLength)
-        console.log(trimmedString)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
-      }
+      if (typeof detalle !== 'undefined') {
+        var maxLength = 100
+        if (detalle.length > maxLength) {
+          var trimmedString = detalle.substr(0, maxLength)
+          console.log(trimmedString)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
 
-      return detalle
+        return detalle
+      }
     },
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
