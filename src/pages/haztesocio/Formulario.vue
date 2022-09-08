@@ -621,7 +621,9 @@
                                 </q-input>
                             </div>
                         </div>
-
+                        <div class="ancho50 item-2">
+                            <q-checkbox left-label v-model="data.actua" color="orange-4" val="si" label="A la fecha" />
+                        </div>
                     </div>
                   <hr class="form_linea">
                 </div>
