@@ -604,7 +604,7 @@
                                   </template>
                                 </q-input>
                             </div>
-                            <div class="sin_estilo ancho50">
+                            <div class="sin_estilo ancho50" v-if="!ocupaciones[key].actual && ocupaciones[key].actual !== ''">
                                 <span class="label_strong">Hasta</span>
                                 <q-input outlined v-model="ocupaciones[key].hasta" mask="date">
                                   <template v-slot:append>
@@ -622,7 +622,7 @@
                             </div>
                         </div>
                         <div class="ancho50 item-2">
-                            <q-checkbox left-label v-model="data.actua" color="orange-4" val="si" label="A la fecha" />
+                            <q-checkbox left-label v-model="ocupaciones[key].actual" color="orange-4" val="si" label="A la fecha" @input="setActual(key)"/>
                         </div>
                     </div>
                   <hr class="form_linea">
@@ -859,7 +859,8 @@ export default {
         nombre: '',
         cargo: '',
         desde: '',
-        hasta: ''
+        hasta: '',
+        actual: false
       },
       ocupaciones: [],
       otrasActividades: [
@@ -974,6 +975,9 @@ export default {
         type: 'negative',
         message: `${rejectedEntries.length} file(s) did not pass validation constraints`
       })
+    },
+    setActual (key) {
+      console.log(this.ocupaciones[key])
     }
   }
 }
