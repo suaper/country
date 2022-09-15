@@ -101,11 +101,15 @@ export default {
       }
 
       var url = '/eventos-deportes-calendario/' + _this.path + '/json/' + _this.currentItem
-      if ((_this.path === 'hockey' || _this.path === 'squash') && (_this.subPath !== 'calendario' || _this.subPath !== 'torneos')) {
+
+      if ((_this.path === 'hockey' || _this.path === 'squash' || _this.path !== 'rugby') && (_this.subPath !== 'calendario' || _this.subPath !== 'torneos')) {
         url = '/eventos/' + _this.path + '/json/'
       }
 
-      console.log(url)
+      if (_this.path === 'rugby' && _this.subPath === 'calendario') {
+        url = '/eventos/' + _this.path + '/json/'
+      }
+
       configServices.loadData(this, url, {
         callBack: (data) => {
           console.log(data)

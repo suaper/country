@@ -10,7 +10,7 @@
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione una categoría:</span>
-                  <q-select outlined class="q-mb-md" label="Escuela" v-model="escuela" :options="escuelas" @input="getItemsByEscuela(escuela)"/>
+                  <q-select outlined class="q-mb-md" label="Escuela" v-model="escuela" :options="escuelas"/>
                 </div>
             </div>
             <div class="w_35 q-mx-md">
@@ -180,8 +180,9 @@ export default {
       this.$q.loading.hide()
     },
     getItemsByNivel (escuela) {
+      console.log(this.escuela)
       var _this = this
-      configServices.loadData(this, '/intro-categorias-deportes-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+      configServices.loadData(this, '/intro-categorias-deportes-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id + '/' + this.escuela.id, {
         callBack: (data) => {
           _this.iniciacion = data
           _this.keyIniciacion = _this.keyIniciacion + 1
@@ -189,7 +190,7 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/profesores-deportes-nivel/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+      configServices.loadData(this, '/profesores-deportes-nivel/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id + '/' + this.escuela.id, {
         callBack: (data) => {
           _this.profesores = data
           _this.keyProfesores = _this.keyProfesores + 1
@@ -197,7 +198,7 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/horarios-inscripciones-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id, {
+      configServices.loadData(this, '/horarios-inscripciones-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id + '/' + this.escuela.id, {
         callBack: (data) => {
           _this.horarios = data
           _this.keyHorarios = _this.keyHorarios + 1
