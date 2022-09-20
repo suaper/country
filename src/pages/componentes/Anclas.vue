@@ -26,7 +26,11 @@
           <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item)">{{ item.title }}</a></li>
       </ul>
 
-      <ul class="wrp_actions_center_peluqueria" v-if="path !== 'hockey' && path !== 'liga-pwcc' && path !== 'futbol'">
+      <ul class="wrp_actions_center_peluqueria list_categoris_paddle" v-if="path === 'paddle'">
+          <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
+      </ul>
+
+      <ul class="wrp_actions_center_peluqueria" v-if="path !== 'hockey' && path !== 'liga-pwcc' && path !== 'paddle' && path !== 'futbol'">
           <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
     </div>
