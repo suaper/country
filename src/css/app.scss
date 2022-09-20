@@ -2089,7 +2089,8 @@ h6.peluqueria{
     border-radius: 10px;
     border: 1px solid #CA9E64;
     .galeri_event{
-        min-height: 220px;
+        min-height: 210px;
+        width: 100%;
 
         .th_top{
             th{
@@ -3863,6 +3864,8 @@ ul.text_horarios{
         font-size: 25px;
         color: #1F2660;
         opacity: 1;
+        display: flex;
+        align-self: start;
         p{
             text-align: left;
             font-size: 25px;
@@ -3873,6 +3876,10 @@ ul.text_horarios{
         a{
             text-decoration: none;
             color: #fff;
+        }
+        .enlace{
+            margin-left: 30px;
+            line-height: 1;
         }
     }
     .flotaleft{
@@ -6738,6 +6745,17 @@ hr.form_linea{
 .nuevo_paginador{
     .bg-primary{
         background: #fff!important;
+    }
+    .q-btn__wrapper{
+        color: #ca9e64 !important;
+        border: none !important;
+        background: none!important;
+        .q-btn__content{
+            background: none!important;
+        }
+    }
+    button{
+        background: none !important;
     }
 }
 .wrp_actions_center_peluqueria.menos_p.ulti_filter{

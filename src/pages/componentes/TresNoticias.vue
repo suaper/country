@@ -6,8 +6,8 @@
                   <img :src="urlSite + notices[0].field_imagen_noticia" />
               </td>
               <td>
-                  <h5 class="titulo_noticias">{{ notices[0].title }}</h5>
-                  <p v-html="notices[0].body"></p>
+                  <h5 class="titulo_noticias">{{ trimNotice(notices[0].title) }}</h5>
+                  <p v-html="trimNoticeDetalle(notices[0].body)"></p>
                   <q-btn @click="goNotice(notices[0])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
               </td>
           </tr>
@@ -15,15 +15,15 @@
       <table class="treintaycinco">
           <tr>
               <td>
-                  <h5 class="titulo_noticias">{{ notices[1].title }}</h5>
-                  <p v-html="notices[1].body"></p>
+                  <h5 class="titulo_noticias">{{ trimNotice(notices[1].title) }}</h5>
+                  <p v-html="trimNoticeDetalle(notices[1].body)"></p>
                   <q-btn @click="goNotice(notices[1])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
               </td>
           </tr>
           <tr>
               <td>
-                  <h5 class="titulo_noticias">{{ notices[2].title }}</h5>
-                  <p v-html="notices[2].body"></p>
+                  <h5 class="titulo_noticias">{{ trimNotice(notices[2].title) }}</h5>
+                  <p v-html="trimNoticeDetalle(notices[2].body)"></p>
                   <q-btn @click="goNotice(notices[2])" outline class="azul q-my-md centrar bg_white_i" label="Leer más" icon-right="arrow_right_alt"/>
               </td>
           </tr>
@@ -48,6 +48,30 @@ export default {
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
       this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
+    },
+    trimNotice (title) {
+      var maxLength = 90
+      if (title.length > maxLength) {
+        console.log(title)
+        var trimmedString = title.substr(0, maxLength)
+        console.log(trimmedString)
+        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+        return trimmedString + '...'
+      }
+
+      return title
+    },
+    trimNoticeDetalle (detalle) {
+      var maxLength = 90
+      if (detalle.length > maxLength) {
+        console.log(detalle)
+        var trimmedString = detalle.substr(0, maxLength)
+        console.log(trimmedString)
+        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+        return trimmedString + '...'
+      }
+
+      return detalle
     }
   }
 }

@@ -274,6 +274,8 @@ export default {
         callBack: (data) => {
           _this.bannerDeportes = data
           _this.loadedBannerDeportes = true
+
+          console.log(data)
         }
       })
     },

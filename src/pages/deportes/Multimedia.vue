@@ -14,7 +14,7 @@
             </div>
             <div class="wrp_gallery_multimedia">
                 <q-carousel
-                v-model="slidecontent"
+                v-model="slideimagen"
                 transition-prev="slide-right"
                 transition-next="slide-left"
                 swipeable
@@ -40,10 +40,18 @@
                 </q-carousel-slide>
                 </q-carousel>
                 <div class="row justify-center botones">
-                    <q-btn-toggle
-                        glossy
-                        v-model="slidecontent"
-                        :options="options"
+                    <q-pagination
+                      class="nuevo_paginador"
+                      v-model="slidecontent"
+                      :max-pages="5"
+                      :max="max"
+                      direction-links
+                      boundary-links
+                      :ellipses="false"
+                      icon-first="skip_previous"
+                      icon-last="skip_next"
+                      icon-prev="fast_rewind"
+                      icon-next="fast_forward"
                     />
                 </div>
             </div>
@@ -54,7 +62,7 @@
         <div class="center text-center q-my-md titulos">Videos</div>
             <div class="wrp_gallery_video">
                 <q-carousel
-                v-model="slidevideo"
+                v-model="slidedevideos"
                 transition-prev="slide-right"
                 transition-next="slide-left"
                 swipeable
@@ -105,10 +113,18 @@
 
                 </q-carousel>
                 <div class="row justify-center botones">
-                    <q-btn-toggle
-                        glossy
-                        v-model="slidevideo"
-                        :options="optionsVideo"
+                    <q-pagination
+                      class="nuevo_paginador"
+                      v-model="slidevideo"
+                      :max-pages="5"
+                      :max="maxvideo"
+                      direction-links
+                      boundary-links
+                      :ellipses="false"
+                      icon-first="skip_previous"
+                      icon-last="skip_next"
+                      icon-prev="fast_rewind"
+                      icon-next="fast_forward"
                     />
                 </div>
             </div>
@@ -146,8 +162,8 @@ export default {
       currentVideo: '',
       info: {},
       pop_consultar: false,
-      slidecontent: 0,
-      slidevideo: 0,
+      slidecontent: 1,
+      slidevideo: 1,
       urlSite: 'https://obt3.cl',
       options: [],
       optionsVideo: [],
@@ -156,8 +172,16 @@ export default {
       images: [],
       videos: [],
       path: '',
-      numberNotices: 1
+      numberNotices: 1,
+      slideimagen: 0,
+      slidedevideos: 0,
+      max: 0,
+      maxvideo: 0
     }
+  },
+  updated () {
+    this.slideimagen = this.slidecontent - 1
+    this.slidedevideos = this.slidevideo - 1
   },
   created () {
     if (Platform.is.desktop) {
@@ -196,6 +220,8 @@ export default {
             .fill()
             .map(_ => _this.videos.splice(0, n))
           _this.getOptions()
+          _this.max = _this.slidersContentImages.length
+          _this.maxvideo = _this.slidersContentVideos.length
           _this.$q.loading.hide()
         }
       })

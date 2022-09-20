@@ -38,7 +38,7 @@
                     </div>
                 </q-carousel-slide>
                 </q-carousel>
-                <div class="row justify-center">
+                <div class="row justify-center botones">
                     <q-pagination
                       class="nuevo_paginador"
                       v-model="slidecontent"
@@ -111,7 +111,7 @@
                 </q-carousel-slide>
 
                 </q-carousel>
-                <div class="row justify-center">
+                <div class="row justify-center botones">
                     <q-pagination
                       class="nuevo_paginador"
                       v-model="slidevideo"
@@ -170,6 +170,7 @@ export default {
       currentVideo: '',
       images: [],
       videos: [],
+      path: '',
       numberNotices: 1,
       slideimagen: 0,
       slidedevideos: 0,

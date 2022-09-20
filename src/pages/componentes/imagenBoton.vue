@@ -8,9 +8,9 @@
     </div>
 
     <div class="only-image" v-if="sport === 'rugby'">
-      <a :href="info.field_enlace_tienda[0].uri" target="_blank" >
+      <!-- <a :href="info.field_enlace_tienda[0].uri" target="_blank" > -->
         <img :src="info.field_imagen_tienda[0].url" />
-      </a>
+      <!-- </a> -->
     </div>
 
     <div class="only-image" v-if="sport === 'paddle' || sport === 'tennis'">

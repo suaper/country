@@ -10,7 +10,7 @@
                 <div class="centrar q-pb-xl  w_1200">
                     <div class="wrp_gallery_noticias">
                         <q-carousel
-                        v-model="slidecontent"
+                        v-model="slidenotice"
                         transition-prev="slide-right"
                         transition-next="slide-left"
                         swipeable
@@ -28,7 +28,7 @@
                                         <img :src="urlSite + itemNotice.field_imagen_noticia_3" />
                                         <div class="info_bottom">
                                             <span class="fecha" >{{ getDate(itemNotice.created) }}</span>
-                                            <p class="desc" v-html="itemNotice.body"></p>
+                                            <p class="desc" v-html="trimNotice(itemNotice.title)"></p>
                                             <q-btn @click="goNotice(itemNotice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
                                     </div>
@@ -41,6 +41,19 @@
                                 glossy
                                 v-model="slidecontent"
                                 :options="[]"
+                            />
+                            <q-pagination
+                              class="nuevo_paginador"
+                              v-model="slidecontent"
+                              :max="max"
+                              :max-pages="5"
+                              direction-links
+                              boundary-links
+                              :ellipses="false"
+                              icon-first="skip_previous"
+                              icon-last="skip_next"
+                              icon-prev="fast_rewind"
+                              icon-next="fast_forward"
                             />
                         </div>
                     </div>
@@ -67,13 +80,15 @@ export default {
       sliders: true,
       slide: 1,
       info: {},
-      slidecontent: 0,
+      slidecontent: 1,
       notices: [],
       filters: [],
       urlSite: 'https://obt3.cl',
       multimediaHome: [],
       pop_reservar_spa: false,
-      numberNotices: 1
+      numberNotices: 1,
+      slidenotice: 0,
+      max: 0
     }
   },
   created () {
@@ -103,9 +118,22 @@ export default {
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
+
+          _this.max = _this.notices.length
           _this.$q.loading.hide()
         }
       })
+    },
+    trimNotice (title) {
+      var maxLength = 90
+      if (title.length > maxLength) {
+        console.log(title)
+        var trimmedString = title.substr(0, maxLength)
+        console.log(trimmedString)
+        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+        return trimmedString + '...'
+      }
+      return title
     }
   }
 }
