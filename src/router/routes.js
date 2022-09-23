@@ -981,7 +981,7 @@ const routes = [
     ]
   },
   {
-    path: '/deportes/tennis/reservar-cancha',
+    path: '/deportes/tennis/reglamento',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/deportes/ReservarCancha.vue') }
