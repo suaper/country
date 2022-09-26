@@ -7,8 +7,7 @@
       </ul>
 
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'tennis'">
-          <li><a href="#" @click="goAnchor($event, '#escuela')">Escuela</a></li>
-          <li><a href="#" @click="goAnchor($event, '#rama')">Rama</a></li>
+
       </ul>
 
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'futbol'">

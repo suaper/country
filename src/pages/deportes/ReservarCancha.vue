@@ -1,6 +1,6 @@
  <template>
   <q-page class="flex flex-center view_quienes_somos">
-    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/reservar-cancha'"/>
+    <MenuDeporteInterno :currentItem="'/deportes/' + path + '/reglamento'"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
    <!--<div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar q-pt-md w_1200">
@@ -11,17 +11,19 @@
             </div>
         </div>
     </div>-->
+    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
+        <div class="centrar w_1200 nuevos_estilos_reglamento">
+            <div class="center text-center q-my-lg titulos">Tennis</div>
+            <ListaNumeros :items="listado" v-if="loadedListado"/>
+        </div>
+    </div>
     <div class="q-py-none all_width bg_amarillo wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
         <div class="q-py-md centrar text-center w_1200">
-        <div class="center text-center q-my-lg titulos">Tennis</div>
-        <h4 class="subtitle text-left q-my-md">Reglamento</h4>
+          <h4 class="subtitle text-left q-my-md">Reglamento</h4>
           <div class="row_2 fitnes_last">
             <div class="w_40">
                  <Reglamento :content="reglamentos" v-if="loadedReglamentos"/>
-            </div>
-            <div class="w_55">
-                <ListaNumeros :items="listado" v-if="loadedListado"/>
             </div>
           </div>
         </div>

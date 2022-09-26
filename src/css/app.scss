@@ -3420,7 +3420,42 @@ a.etiqueta_video{
         }
     }
 }
-
+.pop_teachers{
+    h2{
+        text-align: left;
+        display: block;
+        letter-spacing: 0px;
+        color: #7C7E91;
+        opacity: 1;
+        font-weight: bold;
+        line-height: 1.5;
+        font-size: 18px;
+        margin: 5px 0;
+        width: 100%;
+    }
+    strong{
+        text-align: left;
+        display: block;
+        letter-spacing: 0px;
+        color: #7C7E91;
+        opacity: 1;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    img{
+        max-width: 100%;
+        margin: 5px auto;
+        border-bottom: 1px solid #1F2660 ;
+    }
+    p{
+        margin-bottom: 5px;
+    }
+}
+.table_horarios_tennis{
+    button{
+        display: none;
+    }
+}
 .pop_compania{
     .desc_pop{
         strong{
@@ -3915,6 +3950,27 @@ ul.text_horarios{
 
 }
 
+.deportestaff{
+    >.flex{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        table.datos_staff_contacto{
+            img{
+                width: 118px;
+                height: 118px;
+                border-radius: 50%;
+            }
+            td{
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+}
 
 .wrap_botones_co{
     .wrp_actions_center_spa{
@@ -6778,5 +6834,13 @@ hr.form_linea{
 .grande .wrp_gallery_country .country_slider {
     .bg_white{
         text-transform: capitalize;
+    }
+}
+.nuevos_estilos_reglamento{
+    li{
+        border-left: none;
+        .contador, h6{
+            display: none;
+        }
     }
 }

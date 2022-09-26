@@ -5,7 +5,7 @@
     <div class="q-pb-md all_width bg_white">
         <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
-   <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
+    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Tennis</div>
             <DescDeporte :content="content" v-if="loadedContent" />

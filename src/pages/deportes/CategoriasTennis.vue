@@ -1,5 +1,5 @@
  <template>
-  <q-page class="flex flex-center view_quienes_somos">
+  <q-page class="flex flex-center view_quienes_somos equipo_tennis">
     <MenuDeporteInterno :currentItem="'/deportes/' + path + '/categorias'"/>
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
 
@@ -39,13 +39,13 @@
         <div class="centrar w_1100">
 
           <div class="row_2 centrar flex">
-              <div class="w_35 q-mx-md">
-              <h5 class="style_title q-my-lg" >Horarios e Inscripción</h5>
+              <div class="w_35 q-mx-md table_horarios_tennis">
+                  <h5 class="style_title q-my-lg" >Horarios</h5>
                   <TablaHorarios :items="horarios" :key="keyHorarios" v-if="loadedHorarios" :path="path"/>
               </div>
-              <div class="w_65 q-mx-md">
+              <!-- <div class="w_65 q-mx-md">
                   <Imagen :content="horarios" :key="keyHorarios" v-if="loadedHorarios" :path="subPath + '-' + path"/>
-              </div>
+              </div> -->
           </div>
         </div>
     </div>
@@ -58,7 +58,6 @@ import Banner from 'pages/componentes/Uno'
 import TituloLateral from 'pages/componentes/TituloLateral'
 import Profesores from 'pages/componentes/Profesores'
 import TablaHorarios from 'pages/componentes/TablaHorarios'
-import Imagen from 'pages/componentes/ImagenBoton'
 
 import configServices from '../../services/config'
 
@@ -69,8 +68,7 @@ export default {
     Banner,
     TituloLateral,
     Profesores,
-    TablaHorarios,
-    Imagen
+    TablaHorarios
   },
   data () {
     return {

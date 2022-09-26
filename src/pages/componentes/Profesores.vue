@@ -16,7 +16,7 @@
             </table>
         </div>
         <q-dialog v-model="teacher" persistent>
-          <q-card>
+          <q-card class="pop_teachers" >
             <q-card-section class="row items-center">
               <img :src="urlSite + teacherContent.field_imagen_profesor" >
               <h2>{{ teacherContent.field_nombre_y_apellidos }}</h2>
