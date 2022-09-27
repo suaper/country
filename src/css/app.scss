@@ -4027,7 +4027,7 @@ ul.text_horarios{
         width: 100%;
         tr{
             th{
-                text-align: left;
+                text-align: center;
                 font-weight: bold;
                 letter-spacing: 0px;
                 font-size: 15px;
@@ -4036,13 +4036,16 @@ ul.text_horarios{
                 padding: 7px;
             }
             td{
-                text-align: left;
+                text-align: center;
                 font-size: 15px;
                 letter-spacing: 0px;
                 color: #7C7E91;
                 opacity: 1;
                 border-bottom: 1px solid #CA9E64;
                 padding: 7px;
+                &:nth-child(3){
+                    text-align: left;
+                }
             }
             &:nth-child(2){
                 background: #CA9E64;
