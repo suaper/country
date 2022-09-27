@@ -10,7 +10,7 @@
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione una categoría:</span>
-                  <q-select outlined class="q-mb-md" label="Escuela" v-model="escuela" :options="escuelas"/>
+                  <q-select outlined class="q-mb-md" label="Escuela" v-model="escuela" :options="escuelas" @input="getLevels()"/>
                 </div>
             </div>
             <div class="w_35 q-mx-md">
@@ -113,6 +113,23 @@ export default {
     this.$q.loading.hide()
   },
   methods: {
+    getLevels (school) {
+      var _this = this
+      _this.niveles = []
+      configServices.loadData(this, '/niveles/' + this.escuela.id + '/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var level = {
+              id: item.tid,
+              label: item.name
+            }
+
+            _this.niveles.push(level)
+            _this.$q.loading.hide()
+          })
+        }
+      })
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
@@ -179,6 +196,7 @@ export default {
     },
     getItemsByNivel (escuela) {
       console.log(this.escuela)
+      console.log(escuela)
       var _this = this
       configServices.loadData(this, '/intro-categorias-deportes-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id + '/' + this.escuela.id, {
         callBack: (data) => {
