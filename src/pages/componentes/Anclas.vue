@@ -6,8 +6,8 @@
           <li><a href="#" v-show="subPath !== 'calendario'" @click="goAnchor($event, '#reglamentos')">Reglamentos</a></li>
       </ul>
 
-      <ul class="wrp_actions_center_peluqueria" v-if="path === 'tennis'">
-
+      <ul class="wrp_actions_center_peluqueria reverse_tennis" v-if="path === 'tennis'">
+        <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
 
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'futbol'">
@@ -29,7 +29,7 @@
           <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
 
-      <ul class="wrp_actions_center_peluqueria" v-if="path !== 'hockey' && path !== 'liga-pwcc' && path !== 'paddle' && path !== 'futbol'">
+      <ul class="wrp_actions_center_peluqueria" v-if="path !== 'hockey' && path !== 'liga-pwcc' && path !== 'paddle' && path !== 'futbol' && path !== 'tennis'">
           <li v-for="(item, key) in info" :key="key"><a href="#" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
     </div>
