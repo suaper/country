@@ -11,7 +11,7 @@
         <div class="img_noticia centrar w_1200 text-center" v-if="info.field_imagen_noticia.length !== 0"><img style="width: 800px;" :src="info.field_imagen_noticia[0].url" alt="#"></div>
         <div class="centrar w_1200 text_noticias" v-html="info.body[0].value"></div>
         <div class="centrar w_1200 text_noticias">
-          <table class="noticias">
+          <table class="noticias detalle_not">
             <tr>
               <td v-if="info.field_imagen_noticia_2.length !== 0"><img :src="info.field_imagen_noticia_2[0].url"></td>
               <td v-html="info.field_bloque_2_noticias[0].value"></td>
