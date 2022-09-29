@@ -52,7 +52,6 @@ export default {
     trimNotice (title) {
       var maxLength = 90
       if (title.length > maxLength) {
-        console.log(title)
         var trimmedString = title.substr(0, maxLength)
         console.log(trimmedString)
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
@@ -64,7 +63,6 @@ export default {
     trimNoticeDetalle (detalle) {
       var maxLength = 90
       if (detalle.length > maxLength) {
-        console.log(detalle)
         var trimmedString = detalle.substr(0, maxLength)
         console.log(trimmedString)
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))

@@ -195,8 +195,17 @@ export default {
         return hours + ':' + minutes + ' ' + dateAmPm
       }
     },
+    addCurrentClass (e) {
+      const collection = document.getElementsByClassName('anchor')
+      for (let index = 0; index < collection.length; index++) {
+        collection[index].classList.remove('anchor-active')
+      }
+      e.currentTarget.classList.add('anchor-active')
+    },
     filterItem (e, item) {
       e.preventDefault()
+      this.addCurrentClass(e)
+
       this.selectedItem = true
       this.currentItem = item.replace('#', '')
       this.getEvents()

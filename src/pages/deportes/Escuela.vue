@@ -26,7 +26,11 @@
         </div>
         <div class="centrar w_1100 sin_separador ">
             <div class="w_55">
-                <TablaPosiciones :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
+                <div class="wrp_busca_mes w_100 centrar select" v-if="path === 'squash'">
+                    <q-select outlined class="q-mb-xl" v-if="loadedRanking" v-model="tournament" label="Seleccione el Torneo" :options="filtersTournaments" @input="filterRankingByTournament(tournament)" />
+                </div>
+                <TableRanking v-if="path === 'squash' && loadedTournament" :key="key" :items="filterItems"/>
+                <TablaPosiciones v-if="path === 'futbol'" :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
             </div>
             <div class="w_35 margon_t">
                 <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>
@@ -45,6 +49,7 @@ import TablaPosiciones from 'pages/componentes/TablaPosiciones'
 import Staff from 'pages/componentes/OchoStaff'
 import ListaReglamentos from 'pages/componentes/ListaReglamentos'
 import configServices from '../../services/config'
+import TableRanking from 'pages/componentes/TableRanking'
 
 export default {
   name: 'Escuela',
@@ -55,7 +60,8 @@ export default {
     Banner,
     SoloTexto,
     Staff,
-    ListaReglamentos
+    ListaReglamentos,
+    TableRanking
   },
   data () {
     return {
@@ -84,7 +90,14 @@ export default {
       loadedCampeonatos: false,
       positions: [],
       loadedPositions: false,
-      keyPositions: 0
+      keyPositions: 0,
+      ranking: [],
+      loadedRanking: false,
+      loadedTournament: false,
+      filtersTournaments: [],
+      filterItems: [],
+      tournament: '',
+      key: 0
     }
   },
   mounted () {
@@ -94,6 +107,7 @@ export default {
 
     this.getInfo()
     this.getCategories()
+    this.getRanking()
     this.$q.loading.hide()
   },
   methods: {
@@ -148,6 +162,29 @@ export default {
         }
       })
     },
+    filterRankingByTournament (tournament) {
+      var _this = this
+      var items = JSON.stringify(this.ranking)
+      items = JSON.parse(items)
+
+      _this.filterItems = []
+
+      items.map((item, key) => {
+        if (item.title === tournament.label) {
+          _this.filterItems.push(item)
+        }
+      })
+
+      this.loadedTournament = true
+      this.sortItems()
+
+      this.key = this.key + 1
+    },
+    sortItems () {
+      this.filterItems[0].subServices.sort(function (a, b) {
+        return parseInt(a.field_ranking) - parseInt(b.field_ranking)
+      })
+    },
     getPositions (tournament) {
       var _this = this
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
@@ -156,6 +193,74 @@ export default {
 
           _this.loadedPositions = true
           _this.keyPositions = _this.keyPositions + 1
+          _this.$q.loading.hide()
+        }
+      })
+    },
+    getRanking () {
+      var _this = this
+      configServices.loadData(this, '/ranking-deportes/' + _this.path + '/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            if (item.title !== '') {
+              var filter = {
+                label: item.title
+              }
+              const isFound = _this.filtersTournaments.find((element, index) => {
+                if (element.label === item.title) {
+                  _this.filtersTournaments.splice(index, 1)
+                  return element
+                }
+              })
+              if (typeof isFound !== 'undefined') {
+                _this.filtersTournaments.push(filter)
+              } else {
+                _this.filtersTournaments.push(filter)
+              }
+            }
+          })
+
+          data.map((item, key) => {
+            var service = {
+              title: item.title,
+              image: item.field_imagen_ranking,
+              tournament: item.field_campeonato,
+              temporada: item.field_seleccione_la_temporada,
+              category: item.field_categoria_ranking,
+              subServices: [
+                {
+                  field_cambio: item.field_cambio,
+                  field_nombre_y_apellidos: item.field_nombre_y_apellidos,
+                  field_sube_baja: item.field_sube_baja,
+                  field_puntaje: item.field_puntaje,
+                  field_ranking: item.field_ranking
+                }
+              ]
+            }
+            const isFound = _this.ranking.find((element, index) => {
+              if (element.title === item.title) {
+                _this.ranking.splice(index, 1)
+                return element
+              }
+            })
+
+            if (isFound && typeof isFound !== 'undefined') {
+              isFound.subServices.push({
+                field_cambio: item.field_cambio,
+                field_nombre_y_apellidos: item.field_nombre_y_apellidos,
+                field_sube_baja: item.field_sube_baja,
+                field_puntaje: item.field_puntaje,
+                field_ranking: item.field_ranking
+              })
+
+              _this.ranking.push(isFound)
+            } else {
+              _this.ranking.push(service)
+            }
+          })
+
+          _this.loadedRanking = true
+
           _this.$q.loading.hide()
         }
       })

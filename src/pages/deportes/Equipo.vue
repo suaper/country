@@ -47,8 +47,17 @@ export default {
     this.getStaff()
   },
   methods: {
+    addCurrentClass (e) {
+      const collection = document.getElementsByClassName('anchor')
+      for (let index = 0; index < collection.length; index++) {
+        collection[index].classList.remove('anchor-active')
+      }
+      e.currentTarget.classList.add('anchor-active')
+    },
     filterStaff (e, item) {
       e.preventDefault()
+      this.addCurrentClass(e)
+
       if (item === 'all') {
         this.getStaff()
       } else {

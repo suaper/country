@@ -111,15 +111,69 @@ export default {
     this.getRanking()
   },
   methods: {
+    addCurrentClass (e) {
+      const collection = document.getElementsByClassName('anchor')
+      for (let index = 0; index < collection.length; index++) {
+        collection[index].classList.remove('anchor-active')
+      }
+      e.currentTarget.classList.add('anchor-active')
+    },
     filterRankingByCategorie (e, category) {
       e.preventDefault()
+      this.addCurrentClass(e)
       var _this = this
+
       var items = JSON.stringify(this.ranking)
       items = JSON.parse(items)
+
+      _this.filterItems = []
+      _this.filtersTournaments = []
+      _this.filterTemporadas = []
 
       items.map((item, key) => {
         if (item.category === category) {
           _this.filterItems.push(item)
+        }
+      })
+
+      items.map((item, key) => {
+        if (item.category === category) {
+          if (item.tournament !== '') {
+            var filter = {
+              label: item.tournament
+            }
+            const isFound = _this.filtersTournaments.find((element, index) => {
+              if (element.label === item.tournament) {
+                _this.filtersTournaments.splice(index, 1)
+                return element
+              }
+            })
+            if (typeof isFound !== 'undefined') {
+              _this.filtersTournaments.push(filter)
+            } else {
+              _this.filtersTournaments.push(filter)
+            }
+          }
+        }
+      })
+
+      items.map((item, key) => {
+        if (item.category === category) {
+          var filter = {
+            label: item.temporada
+          }
+          const isFound = _this.filterTemporadas.find((element, index) => {
+            if (element.label === item.temporada) {
+              _this.filterTemporadas.splice(index, 1)
+              return element
+            }
+          })
+
+          if (typeof isFound !== 'undefined') {
+            _this.filterTemporadas.push(filter)
+          } else {
+            _this.filterTemporadas.push(filter)
+          }
         }
       })
 
@@ -167,43 +221,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/ranking-deportes/' + _this.path + '/json', {
         callBack: (data) => {
-          data.map((item, key) => {
-            if (item.field_campeonato !== '') {
-              var filter = {
-                label: item.field_campeonato
-              }
-              const isFound = _this.filtersTournaments.find((element, index) => {
-                if (element.label === item.field_campeonato) {
-                  _this.filtersTournaments.splice(index, 1)
-                  return element
-                }
-              })
-              if (typeof isFound !== 'undefined') {
-                _this.filtersTournaments.push(filter)
-              } else {
-                _this.filtersTournaments.push(filter)
-              }
-            }
-          })
-
-          data.map((item, key) => {
-            var filter = {
-              label: item.field_seleccione_la_temporada
-            }
-            const isFound = _this.filterTemporadas.find((element, index) => {
-              if (element.label === item.field_seleccione_la_temporada) {
-                _this.filterTemporadas.splice(index, 1)
-                return element
-              }
-            })
-
-            if (typeof isFound !== 'undefined') {
-              _this.filterTemporadas.push(filter)
-            } else {
-              _this.filterTemporadas.push(filter)
-            }
-          })
-
           data.map((item, key) => {
             var filter = {
               title: item.field_categoria_ranking

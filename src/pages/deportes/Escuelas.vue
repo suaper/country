@@ -90,8 +90,16 @@ export default {
         })
       }
     },
+    addCurrentClass (e) {
+      const collection = document.getElementsByClassName('anchor')
+      for (let index = 0; index < collection.length; index++) {
+        collection[index].classList.remove('anchor-active')
+      }
+      e.currentTarget.classList.add('anchor-active')
+    },
     goToAnchor (e, item) {
       e.preventDefault()
+      this.addCurrentClass(e)
       const el = document.querySelector('#' + item.toLowerCase())
       var top = el.offsetTop
       window.scrollTo({

@@ -7,10 +7,10 @@
         <div class="centrar w_1200">
         <ul class="wrp_actions_center_peluqueria menos_p igualar ulti_filter">
             <li>
-                <a href="#" @click="filterNotices($event, 'all')" icon-right="arrow_right_alt">Todas las noticias</a>
+                <a href="#" class="anchor" @click="filterNotices($event, 'all')" icon-right="arrow_right_alt">Todas las noticias</a>
             </li>
-            <li v-for="(item, key) in filters" :key="key">
-                <a href="#" @click="filterNotices($event, item)" icon-right="arrow_right_alt">{{ item.title }}</a>
+            <li v-for="(item, key) in filters" :key="key" v-show="item.title !== ''">
+                <a href="#" class="anchor" @click="filterNotices($event, item)" icon-right="arrow_right_alt">{{ item.title }}</a>
             </li>
         </ul>
             <div class="q-py-md all_width gris_home wrp_club hazte_socio">
@@ -118,17 +118,24 @@ export default {
     trimNotice (title) {
       var maxLength = 90
       if (title.length > maxLength) {
-        console.log(title)
         var trimmedString = title.substr(0, maxLength)
-        console.log(trimmedString)
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
         return trimmedString + '...'
       }
 
       return title
     },
+    addCurrentClass (e) {
+      const collection = document.getElementsByClassName('anchor')
+      for (let index = 0; index < collection.length; index++) {
+        collection[index].classList.remove('anchor-active')
+      }
+      e.currentTarget.classList.add('anchor-active')
+    },
     filterNotices (e, item) {
       e.preventDefault()
+      this.addCurrentClass(e)
+
       if (item === 'all') {
         this.getNotices()
       } else {
