@@ -24,10 +24,10 @@
         </div>
     </div>
 
-    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
+    <!--<div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
         <h5 class="text-white fuente_normal font_40"><span class="fuente_titulo font_50" style="color:#E8C28F;">  Squash  /   </span> Tienda  <strong>oficial</strong></h5>
           <q-btn outline class="btn_bg_beige" label="Comprar" icon-right="arrow_right_alt"/>
-    </div>
+    </div> -->
 
     <div class="q-py-none all_width bg_amarillo wrp_club">
         <div class="row_wrap no-wrap flex justify-start">

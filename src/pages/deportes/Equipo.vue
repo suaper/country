@@ -1,5 +1,5 @@
  <template>
-  <q-page class="flex flex-center view_quienes_somos">
+  <q-page class="flex flex-center view_quienes_somos equipo_depportes">
     <MenuDeporteInterno :currentItem="'/deportes/' + path + '/equipo'"/>
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar q-py-md w_1100">
