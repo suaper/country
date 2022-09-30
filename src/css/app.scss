@@ -6904,6 +6904,12 @@ hr.form_linea{
 }
 table.detalle_not{
     img{
-        display: none;
+        max-width: 450px;
+    }
+}
+.text_noticias.strong{
+    font-weight: bold;
+    p{
+        color: #5d5f77;
     }
 }
