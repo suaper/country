@@ -1925,6 +1925,10 @@ h5.style_title{
             width: 90%;
             padding: 10px 20px;
             display: block;
+            &.anchor-active{
+                background: #1F2660 !important;
+                color: #fff;
+            }
         }
     }
     &.menos_p{

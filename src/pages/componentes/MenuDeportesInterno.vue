@@ -53,7 +53,7 @@
        <!-- Squash -->
        <q-btn :disable="getDisable('/deportes/squash')" v-if="path === 'squash'" @click="goItem('/deportes/squash')" outline color="submenu" label="Squash" />
        <q-btn :disable="getDisable('/deportes/squash/historia')" v-if="path === 'squash'" @click="goItem('/deportes/squash/historia')" outline color="submenu" label="Historia" />
-       <q-btn :disable="getDisable('/deportes/squash/escuelas')" v-if="path === 'squash'" @click="goItem('/deportes/squash/escuelas')" outline color="submenu" label="Escuela" />
+       <q-btn :disable="getDisable('/deportes/squash/escuelas')" v-if="path === 'squash'" @click="goItem('/deportes/squash/escuelas')" outline color="submenu" label=" Escuela y Ranking" />
        <q-btn :disable="getDisable('/deportes/squash/torneos')" v-if="path === 'squash'" @click="goItem('/deportes/squash/torneos')" outline color="submenu" label="Torneos" />
        <q-btn :disable="getDisable('/deportes/squash/noticias')" v-if="path === 'squash'" @click="goItem('/deportes/squash/noticias')" outline color="submenu" label="Noticias" />
        <q-btn :disable="getDisable('/deportes/squash/multimedia')" v-if="path === 'squash'" @click="goItem('/deportes/squash/multimedia')" outline color="submenu" label="Multimedia" />
