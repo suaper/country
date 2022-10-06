@@ -165,6 +165,7 @@ export default {
           const n = this.numberNotices
           var notices = []
           data.map((item, key) => {
+            notices.push(item)
             var filter = {
               title: item.field_categoria_noticia,
               id: item.field_categoria_noticia_1
