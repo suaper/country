@@ -4,13 +4,15 @@
     <div class="q-pb-md all_width bg_gris">
         <div class="centrar q-py-md w_1100">
             <div class="center text-center q-pt-md q-my-md titulos">Rama</div>
-            <Anclas :items="filters" :path="path" :goAnchor="goToAnchor"/>
+            <div class="sin_masculina">
+              <Anclas :items="filters" :path="path" :goAnchor="goToAnchor"/>
+            </div>
         </div>
-        <div class="centrar w_1200 q-pb-xl" id="rama-masculina">
+        <!--<div class="centrar w_1200 q-pb-xl" id="rama-masculina">
             <h4 class="subtitle">Rama Masculina Plantel</h4>
             <DescRama :content="personalMasculino" v-if="loadedPersonalMasculino"/>
             <StaffView :info="personalMasculino" v-if="loadedPersonalMasculino"/>
-        </div>
+        </div>-->
     </div>
     <div class="q-pb-md all_width bg_amarillo" id="rama-femenina">
         <div class="centrar w_1200 q-pb-xl">

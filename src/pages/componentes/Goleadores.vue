@@ -12,7 +12,7 @@
             <div class="item_galeria">
               <img :src="urlSite + subItem.field_imagen_goleador" />
               <div class="flex justify-start mini">
-                <img src="https://obt3.cladministradorsites/default/files/2022-04/minimedalla.png" /><p class="Posicion">{{ subItem.field_posicion }}</p>
+                <p class="Posicion text-center">{{ subItem.field_posicion }}</p>
               </div>
             </div>
           </div>

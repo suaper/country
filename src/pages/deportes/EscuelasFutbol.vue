@@ -18,7 +18,7 @@
                             <h5 class="text_normal">Rama Femenina</h5>
                             <TablaHorarios :items="horariosWoman" v-if="loadedHorarios" path="Escuelas - Rama Femenina"/>
                         </div>
-                        <div class="w_45">
+                        <div class="w_45 quitar_boton">
                             <h5 class="text_normal">Rama Masculina</h5>
                             <TablaHorarios :items="horariosMen" v-if="loadedHorarios" path="Escuelas - Rama Masculina"/>
                         </div>
