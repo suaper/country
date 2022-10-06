@@ -165,9 +165,6 @@ export default {
           const n = this.numberNotices
           var notices = []
           data.map((item, key) => {
-            if (key <= 30) {
-              notices.push(item)
-            }
             var filter = {
               title: item.field_categoria_noticia,
               id: item.field_categoria_noticia_1
