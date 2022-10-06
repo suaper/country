@@ -4167,10 +4167,13 @@ h5.text_normal{
 }
 .imagen_publicitaria{
     position: relative;
+    img{
+        max-width: 100%;
+    }
     .text_lover{
         background: #0c0c0b82;
         position: absolute;
-        bottom: 0;
+        bottom: 4px;
         left: 0;
         width: 100%;
         color: #fff;
@@ -4203,6 +4206,8 @@ h5.text_normal{
         letter-spacing: 0px;
         color: #1F2660;
         opacity: 1;
+        display: block;
+        width: 100%;
     }
 }
 .list_palmaresFutbol{
@@ -6911,5 +6916,19 @@ table.detalle_not{
     font-weight: bold;
     p{
         color: #5d5f77;
+    }
+}
+.quitar_boton{
+    button{
+        display: none;
+    }
+}
+.sin_masculina{
+    ul {
+        li {
+            &:last-child{
+                display: none;
+            }
+        }
     }
 }

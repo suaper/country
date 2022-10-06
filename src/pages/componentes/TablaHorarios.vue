@@ -12,7 +12,7 @@
         </table>
         <div class="texto_normal" v-html="info[0].field_detalle_inscripcion"></div>
         <div class="text-left q-px-md">
-            <q-btn  @click="formulario = true" type="submit" class="azul q-my-md bg_white_i" label="Ver Más" icon-right="arrow_right_alt"/>
+            <q-btn  @click="formulario = true" type="submit" class="azul q-my-md bg_white_i" label="Más información" icon-right="arrow_right_alt"/>
         </div>
         <q-dialog v-model="formulario" >
         <q-card style="width: 700px; max-width: 80vw;" class="pop_mi_c pob_biblioteca bg_beige pop_escuelas">

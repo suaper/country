@@ -3,10 +3,17 @@
     <MenuDeporteInterno :currentItem="'/deportes/' + path + '/calendario'" v-if="path !== 'squash'"/>
     <MenuDeporteInterno :currentItem="'/deportes/' + path + '/torneos'" v-if="path === 'squash'"/>
 
-    <div class="q-pb-md all_width bg_gris">
+    <div class="q-pb-md all_width bg_gris" v-if=" path != 'futbol'">
         <div class="centrar w_1100 centrar_anclas">
             <div class="center text-center q-pt-md q-my-lg titulos">Calendario</div>
             <Anclas :goAnchor="filterItem" :path="path" :subPath="subPath"/>
+            <Fechas :info="events" v-if="loadedEvents" :eventsByMonth="getEventsByMonth" :key="key" :eventMonth="month"/>
+        </div>
+    </div>
+
+    <div class="q-pb-md all_width bg_gris" v-if="path === 'futbol'">
+        <div class="centrar w_1100 centrar_anclas">
+            <div class="center text-center q-pt-md q-my-lg titulos">Calendario</div>
             <Fechas :info="events" v-if="loadedEvents" :eventsByMonth="getEventsByMonth" :key="key" :eventMonth="month"/>
         </div>
     </div>
