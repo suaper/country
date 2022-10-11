@@ -22,7 +22,7 @@
       </ul>
 
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'liga-pwcc'">
-          <li v-for="(item, key) in info" :key="key"><a href="#" class="anchor" @click="goAnchor($event, item)">{{ item.title }}</a></li>
+          <li v-for="(item, key) in info" :key="key"><a href="#" :class="(key === 0) ? 'anchor anchor-active' : 'anchor'" @click="goAnchor($event, item)">{{ item.title }}</a></li>
       </ul>
 
       <ul class="wrp_actions_center_peluqueria list_categoris_paddle" v-if="path === 'paddle'">

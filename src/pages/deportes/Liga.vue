@@ -148,6 +148,13 @@ export default {
     this.getInfo()
   },
   methods: {
+    addCurrentClass (e) {
+      const collection = document.getElementsByClassName('anchor')
+      for (let index = 0; index < collection.length; index++) {
+        collection[index].classList.remove('anchor-active')
+      }
+      e.currentTarget.classList.add('anchor-active')
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/intro-internas-deportes/' + _this.subPath + '/json', {
@@ -167,13 +174,18 @@ export default {
             }
 
             _this.filterCategories.push(filter)
+            _this.filterInformation('', _this.filterCategories[0])
           })
           _this.$q.loading.hide()
         }
       })
     },
     filterInformation (e, category) {
-      e.preventDefault()
+      if (e !== '') {
+        e.preventDefault()
+        this.addCurrentClass(e)
+      }
+
       var _this = this
       var intro = JSON.stringify(this.intros)
       intro = JSON.parse(intro)
@@ -185,6 +197,8 @@ export default {
           _this.keyContent = _this.keyContent + 1
         }
       })
+
+      _this.teams = []
 
       configServices.loadData(this, '/equipos-futbol/' + category.id + '/json', {
         callBack: (data) => {
