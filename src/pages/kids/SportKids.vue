@@ -15,7 +15,7 @@
     </div>
     <div class="q-pb-xl all_width gris_home">
         <div class="setenta cien_movil q-pd-md q-mb-xl centrar text-center ma_to_30 ma_bo_30">
-            <div class="center text-center q-my-lg titulos">Sport Kids</div>
+            <div class="center text-center q-my-lg titulos">Sports Kids</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
 
             <div class="right sesenta cien_movil q-mb-xl centrar wrp_table ma_to_50">

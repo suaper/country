@@ -6932,3 +6932,25 @@ table.detalle_not{
         }
     }
 }
+
+.wrp_gallery_video .new_multi .item_cien {
+    tr{
+        display: flex;
+        justify-content: space-between;
+    }
+    .first{
+        width: 50%;
+        padding: 10px;
+        .info_bottom{
+            left: 9px;
+            width: 97%;
+            min-height: 75px;
+        }
+        img{
+            height: 100%;
+        }
+    }
+}
+.justify-start{
+    justify-content: flex-start;
+}
