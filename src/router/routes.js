@@ -379,7 +379,7 @@ const routes = [
     ]
   },
   {
-    path: '/kids/sport-kids',
+    path: '/kids/sports-kids',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/kids/SportKids.vue') }
