@@ -27,7 +27,7 @@
                 </div>
               </div>
               <div class="flex justify-start mini">
-                <p class="Posicion text-center">q{{ subItem.field_posicion }}</p>
+                <p class="Posicion text-center">{{ subItem.field_posicion }}</p>
               </div>
             </div>
           </div>
