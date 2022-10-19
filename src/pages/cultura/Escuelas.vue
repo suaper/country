@@ -30,10 +30,7 @@
                                 <span>{{ item.field_jornada }}</span>
                             </li>
                             <li>
-                                <q-btn outline class="azul q-my-md centrar bg_white_i" @click="openPopForm(item)" label="Inscribirme" icon-right="arrow_right_alt"/>
-                            </li>
-                            <li>
-                                <q-btn outline class="azul q-my-md centrar btn_bg_beige text-white" @click="openPopForm()" label="Clase de prueba" icon-right="arrow_right_alt"/>
+                                <q-btn outline class="azul q-my-md centrar bg_white_i" @click="openPopForm(item)" label="Más Información" icon-right="arrow_right_alt"/>
                             </li>
                         </ul>
                     </div>

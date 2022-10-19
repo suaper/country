@@ -22,7 +22,7 @@
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio wrp_noticias">
         <div class="centrar w_1200">
-            <h4 class="subtitle">Country al día</h4>
+            <h4 class="subtitle">Food News</h4>
             <div class="row flex justify-center  items-start">
                 <table class="sesenta">
                     <tr>
