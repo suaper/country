@@ -1,8 +1,6 @@
 <template>
     <div class="filters">
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'hockey'">
-          <li><a href="#" class="anchor" @click="goAnchor($event, '#escuela')">Damas</a></li>
-          <li><a href="#" class="anchor" @click="goAnchor($event, '#varones')">Varones</a></li>
           <li><a href="#" class="anchor" v-show="subPath !== 'calendario'" @click="goAnchor($event, '#reglamentos')">Reglamentos</a></li>
       </ul>
 

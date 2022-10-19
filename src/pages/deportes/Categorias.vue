@@ -31,12 +31,6 @@
             </div>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo" id="reglamentos">
-        <div class="centrar w_1100">
-            <h5 class="style_title q-my-lg" >Reglamentos</h5>
-            <ListaReglamentos :content="reglamentos" v-if="loadedReglamentos"/>
-        </div>
-    </div>
   </q-page>
 </template>
 
@@ -45,7 +39,6 @@ import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
 import Anclas from 'pages/componentes/Anclas'
 import TablaClasificacion from 'pages/componentes/TableClasificacion'
-import ListaReglamentos from 'pages/componentes/ListaReglamentos'
 import SoloTexto from 'pages/componentes/SoloTexto'
 import configServices from '../../services/config'
 
@@ -56,8 +49,7 @@ export default {
     Banner,
     Anclas,
     TablaClasificacion,
-    SoloTexto,
-    ListaReglamentos
+    SoloTexto
   },
   data () {
     return {

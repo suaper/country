@@ -6,7 +6,7 @@
         <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
     <div class="q-pb-md all_width bg_gris">
-        <div class="centrar w_1100">
+        <div class="centrar w_1100 sin_enlace">
             <div class="center text-center q-my-lg titulos">Hockey</div>
             <DescHockey :info="content" v-if="loadedContent"/>
         </div>

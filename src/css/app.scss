@@ -7002,4 +7002,10 @@ table.detalle_not{
         }
     }
 }
-
+.sin_enlace a{
+    pointer-events: none;
+}
+.q-pagination.nuevo_paginador > .justify-center button{
+    width: 31px !important;
+    min-width: 31px!important;
+}

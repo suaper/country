@@ -2,6 +2,9 @@
   <q-page class="flex flex-center view_quienes_somos">
     <MenuDeporteInterno currentItem="/deportes/natacion" />
     <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
+    <div class="q-pb-md all_width bg_white">
+        <Patrocinadores :images="images" v-if="loadedImages" />
+    </div>
    <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Natación</div>
@@ -14,13 +17,8 @@
             <Noticias :info="notices" v-if="loadedNotices"/>
         </div>
     </div>
-   <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
-        <div class="centrar w_1200">
-            <Multimedia :path="path"/>
-        </div>
-    </div>
 
-    <div class="q-py-none all_width bg_amarillo wrp_club">
+    <div class="q-py-none all_width bg_gris wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
         <div class="q-py-md centrar text-center w_1200">
           <div class="row_2 fitnes_last">
@@ -41,8 +39,8 @@
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
 import DescDeporte from 'pages/componentes/SoloTexto'
+import Patrocinadores from 'pages/componentes/Dos'
 import Noticias from 'pages/componentes/TresNoticias'
-import Multimedia from 'pages/componentes/Multimedia'
 import Contacto from 'pages/componentes/SieteContacto'
 import Staff from 'pages/componentes/OchoStaff'
 import configServices from '../../services/config'
@@ -54,7 +52,7 @@ export default {
     Banner,
     DescDeporte,
     Noticias,
-    Multimedia,
+    Patrocinadores,
     Contacto,
     Staff
   },

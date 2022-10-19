@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="q-pb-md all_width bg_white">
+    <div class="q-pb-md all_width bg_white" v-if=" path != 'hockey'">
       <Patrocinadores :images="images" v-if="loadedImages" />
     </div>
   </q-page>

@@ -48,7 +48,6 @@
       <q-btn :disable="getDisable('/deportes/natacion/natacion-para-bebes')" v-if="path === 'natacion'" @click="goItem('/deportes/natacion/natacion-para-bebes')" outline color="submenu" label="Natación para Bebés" />
       <q-btn :disable="getDisable('/deportes/natacion/actividades')" v-if="path === 'natacion'" @click="goItem('/deportes/natacion/actividades')" outline color="submenu" label="Actividades" />
       <q-btn :disable="getDisable('/deportes/natacion/noticias')" v-if="path === 'natacion'" @click="goItem('/deportes/natacion/noticias')" outline color="submenu" label="Noticias" />
-      <q-btn :disable="getDisable('/deportes/natacion/multimedia')" v-if="path === 'natacion'" @click="goItem('/deportes/natacion/multimedia')" outline color="submenu" label="Multimedia" />
       <q-btn :disable="getDisable('/deportes/natacion/contacto')" v-if="path === 'natacion'" @click="goItem('/deportes/natacion/contacto')" outline color="submenu" label="Contacto" />
        <!-- Squash -->
        <q-btn :disable="getDisable('/deportes/squash')" v-if="path === 'squash'" @click="goItem('/deportes/squash')" outline color="submenu" label="Squash" />

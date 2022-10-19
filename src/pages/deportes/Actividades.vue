@@ -9,12 +9,12 @@
             <Eventos :info="events" v-if="loadedEvents"/>
         </div>
     </div>
-    <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
+    <!-- <div class="q-py-xl all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1100 bg_amarillo">
             <h4 class="subtitle q-my-md">Descargables</h4>
             <Descargables :info="descargables" v-if="loadedDescargables" />
         </div>
-    </div>
+    </div> -->
   </q-page>
 </template>
 
@@ -22,7 +22,6 @@
 import MenuDeporteInterno from 'pages/componentes/MenuDeportesInterno'
 import Banner from 'pages/componentes/Uno'
 import Eventos from 'pages/componentes/CincoProximos.vue'
-import Descargables from 'pages/componentes/Descargables'
 import configServices from '../../services/config'
 
 export default {
@@ -30,8 +29,7 @@ export default {
   components: {
     MenuDeporteInterno,
     Banner,
-    Eventos,
-    Descargables
+    Eventos
   },
   data () {
     return {

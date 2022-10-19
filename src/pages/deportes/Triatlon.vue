@@ -2,7 +2,7 @@
   <q-page class="flex flex-center view_quienes_somos">
    <MenuDeporteInterno currentItem="/deportes/natacion/triatlon" />
    <Banner :banner="info" :bannerSlide="slide" v-if="loadedInfo"/>
-   <div class="q-pb-md all_width bg_gris wrp_club hazte_socio">
+   <div class="q-pb-md all_width bg_gris wrp_club hazte_socio sin_enlace">
         <div class="centrar w_1200">
             <div class="center text-center q-my-lg titulos">Triatlón</div>
             <DescTriatlon :info="content" v-if="loadedContent"/>
