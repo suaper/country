@@ -12,9 +12,9 @@
       </div>
       <div class="q-pb-md all_width bg_amarillo" v-for="(item, key) in personal" :key="'not-golf-'+key" :id="item.title.toLowerCase()" v-show="path !== 'golf'">
           <div class="centrar q-py-md w_1100 escuelas">
-              <div class="style_title q-my-lg flex flex-staf align-center">
+              <div class="style_title q-my-lg flex flex-staf align-center prueba">
                   <h5 class="q-my-none">{{ item.title }}</h5>
-                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Contacto" icon-right="arrow_right_alt"/>
+                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Más Información" icon-right="arrow_right_alt"/>
               </div>
               <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
           </div>

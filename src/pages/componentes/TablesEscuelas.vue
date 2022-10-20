@@ -1,12 +1,12 @@
 <template>
     <div class="wrp_table_ranking">
         <div class="wrp_table_ranking">
-            <table class="bg_white">
+            <table class="bg_white escuelas_alineado">
                 <tr>
                     <th v-if="permisos.categ">Categoría</th>
                     <th v-if="permisos.edad">Edad</th>
-                    <th v-if="permisos.horario">Horarios</th>
-                    <th v-if="permisos.staff">Staff</th>
+                    <th class="horarios" v-if="permisos.horario">Horarios</th>
+                    <th class="staff" v-if="permisos.staff">Staff</th>
                     <th v-if="permisos.resena">Reseña</th>
                 </tr>
                 <tr>

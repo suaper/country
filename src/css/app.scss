@@ -7009,3 +7009,25 @@ table.detalle_not{
     width: 31px !important;
     min-width: 31px!important;
 }
+.q-footer ul li a{
+    color: #fff;
+    text-decoration: none;
+}
+.wrp_table_ranking .escuelas_alineado{
+    tr{
+        td{
+            text-align: left;
+            &:nth-child(1){
+                width: 15%;
+            }
+        }
+        th{
+            &.staff{
+                width: 23%;
+            }
+            &.horarios{
+                width: 30%;
+            }
+        }
+    }
+}
