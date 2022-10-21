@@ -17,8 +17,8 @@
             </ul>
         </div>
         <div class="row flex w_100 justify-between">
-            <div class="w_50 table_campeonato">
-                <h5 class="text_normal">Ranking</h5>
+            <!-- <div class="w_50 table_campeonato">
+                <h5 class="text_normal">Leaderboard</h5>
                 <div class="marco_table">
                     <div class="row flex w_100 justify-betwen cabe">
                         <img alt="img2" src="img/logo-country-club.png" class="q-mt-lg">
@@ -41,9 +41,9 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-            <div class="w_50 table_campeonato">
-                <h5 class="text_normal">Jugador Destacado</h5>
+            </div> -->
+            <div class="w_100 table_campeonato">
+                <h5 class="text_normal">Leaderboard</h5>
                 <div class="jugador_desacado">
                     <img :src="urlSite + info.field_jugador_destacado" class="cien">
                     <div class="wrp_over">
