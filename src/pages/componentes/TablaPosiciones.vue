@@ -65,7 +65,8 @@ export default {
   props: {
     items: Array,
     obtainPositions: Function,
-    positions: Array
+    positions: Array,
+    path: String
   },
   data () {
     return {

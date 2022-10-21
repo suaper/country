@@ -22,7 +22,7 @@
         <div class="centrar w_1100 fila_separador ">
             <div class="w_55">
                 <h5 class="style_title q-my-lg ">Tabla de posiciones</h5>
-                <TablaPosiciones :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
+                <TablaPosiciones :path="path" :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
             </div>
             <div class="w_35">
                 <h5 class="style_title q-my-lg ">Palmarés</h5>
