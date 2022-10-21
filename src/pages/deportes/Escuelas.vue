@@ -14,7 +14,7 @@
           <div class="centrar q-py-md w_1100 escuelas">
               <div class="style_title q-my-lg flex flex-staf align-center prueba">
                   <h5 class="q-my-none">{{ item.title }}</h5>
-                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Más Información" icon-right="arrow_right_alt"/>
+                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Más Información" :to="'/deportes/' + item.button.toLowerCase() + '/contacto'" icon-right="arrow_right_alt"/>
               </div>
               <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
           </div>
@@ -82,7 +82,15 @@ export default {
         var _this = this
         configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/' + filter, {
           callBack: (data) => {
-            _this.personal = data
+            data.map((item, key) => {
+              item.button = item.title
+              item.button.replaceAll('á', 'a')
+              item.button.replaceAll('é', 'e')
+              item.button.replaceAll('í', 'i')
+              item.button.replaceAll('ó', 'o')
+              item.button.replaceAll('ú', 'u')
+              _this.personal.push(item)
+            })
             _this.loadedPersonal = true
             _this.key = _this.key + 1
             _this.$q.loading.hide()
@@ -168,8 +176,16 @@ export default {
               staff = false
             }
 
+            item.button = item.title
+            item.button = item.button.replace('á', 'a')
+            item.button = item.button.replace('é', 'e')
+            item.button = item.button.replace('í', 'i')
+            item.button = item.button.replace('ó', 'o')
+            item.button = item.button.replace('ú', 'u')
+
             var service = {
               title: item.title,
+              button: item.button,
               permissions: {
                 categ: categ,
                 edad: edad,
