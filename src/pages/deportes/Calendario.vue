@@ -252,7 +252,8 @@ export default {
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
         callBack: (data) => {
           _this.positions = data
-
+          console.log(_this)
+          console.log(this.path)
           _this.loadedPositions = true
           _this.keyPositions = _this.keyPositions + 1
           _this.$q.loading.hide()
