@@ -22,7 +22,7 @@
             <q-input
                 outlined
                 v-model="category"
-                label="Seleccione la categoría *"
+                label="Rut *"
             />
             <q-input
               outlined
@@ -69,7 +69,7 @@ export default {
         name: this.name,
         lastname: '',
         phone: this.telefono,
-        category: this.category,
+        // category: this.category,
         message: this.mensaje
       }
       configServices.consumerStandar(this, 'pwcc-rest/post', data, {
@@ -83,7 +83,7 @@ export default {
           this.email = ''
           this.name = ''
           this.telefono = ''
-          this.category = ''
+          // this.category = ''
           this.pop_reservar_spa = false
         }
       })

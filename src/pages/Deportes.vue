@@ -142,7 +142,7 @@
                       <q-input
                           outlined
                           v-model="sport"
-                          label="Seleccione un deporte *"
+                          label="Rut*"
                       />
                       <q-input
                           outlined

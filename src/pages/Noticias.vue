@@ -1,5 +1,8 @@
 <template>
   <q-page class="flex flex-center view_quienes_somos view_danza">
+    <div class="buscador_home">
+      <Buscador />
+    </div>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
             <div class="center text-center q-my-lg titulos">Noticias</div>
@@ -74,9 +77,11 @@
 
 import configServices from '../services/config'
 import { Platform } from 'quasar'
+import Buscador from 'pages/submenus/Buscador.vue'
 
 export default {
   name: 'Noticias',
+  components: { Buscador },
   data () {
     return {
       sliders: true,

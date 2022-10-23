@@ -9,7 +9,7 @@
       <q-btn :disable="getDisable('/deportes/golf/campeones')" v-if="path === 'golf'" @click="goItem('/deportes/golf/campeones')" outline color="submenu" label="Campeones" />
       <q-btn :disable="getDisable('/deportes/golf/cancha')" v-if="path === 'golf'" @click="goItem('/deportes/golf/cancha')" outline color="submenu" label="Cancha" />
       <q-btn :disable="getDisable('/deportes/golf/casilla')" v-if="path === 'golf'" @click="goItem('/deportes/golf/casilla')" outline color="submenu" label="Casilla" />
-      <q-btn :disable="getDisable('/deportes/golf/campeonatos')" v-if="path === 'golf'" @click="goItem('/deportes/golf/campeonatos')" outline color="submenu" label="Campeonatos" />
+      <!-- <q-btn :disable="getDisable('/deportes/golf/campeonatos')" v-if="path === 'golf'" @click="goItem('/deportes/golf/campeonatos')" outline color="submenu" label="Campeonatos" /> -->
       <q-btn :disable="getDisable('/deportes/golf/escuelas')" v-if="path === 'golf'" @click="goItem('/deportes/golf/escuelas')" outline color="submenu" label="Escuela" />
       <q-btn :disable="getDisable('/deportes/golf/noticias')" v-if="path === 'golf'" @click="goItem('/deportes/golf/noticias')" outline color="submenu" label="Noticias" />
       <q-btn :disable="getDisable('/deportes/golf/multimedia')" v-if="path === 'golf'" @click="goItem('/deportes/golf/multimedia')" outline color="submenu" label="Multimedia" />
