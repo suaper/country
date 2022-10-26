@@ -231,7 +231,7 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/node/1070?_format=json', {
+      configServices.loadData(this, '/node/9282?_format=json', {
         callBack: (data) => {
           _this.instagram = data
         }
