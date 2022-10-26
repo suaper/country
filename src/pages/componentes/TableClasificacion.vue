@@ -9,7 +9,7 @@
             </tr>
             <tr v-for="(item, key) in info[0].subServices" :key="key">
                 <td>{{ item.training }}</td>
-                <td v-if="subPath === 'natacion-para-bebes'">1</td><!-- validar para que salga solo en natacion para bebes-->
+                <td v-if="subPath === 'natacion-para-bebes'">{{ item.edad }}</td><!-- validar para que salga solo en natacion para bebes-->
                 <td>{{ item.date }}</td>
                 <td>{{ item.teacher }}</td>
             </tr>

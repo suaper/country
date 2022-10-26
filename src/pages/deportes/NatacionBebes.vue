@@ -112,6 +112,7 @@ export default {
                 {
                   training: item.field_entranamiento,
                   date: item.field_horarios,
+                  edad: item.field_edad,
                   teacher: item.field_profesor_a
                 }
               ]
@@ -127,6 +128,7 @@ export default {
               isFound.subServices.push({
                 training: item.field_entranamiento,
                 date: item.field_horarios,
+                edad: item.field_edad,
                 teacher: item.field_profesor_a
               })
 
