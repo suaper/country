@@ -275,7 +275,7 @@ export default {
         }
       })
 
-      configServices.loadData(this, '/node/723?_format=json', {
+      configServices.loadData(this, '/node/9293?_format=json', {
         callBack: (data) => {
           _this.image = data
           _this.loadedImage = true

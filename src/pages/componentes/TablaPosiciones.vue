@@ -18,24 +18,26 @@
           </tr>
         </div>
         <div v-if="path === 'hockey'" class="wrp_table_clasificacion sidebe">
-          <tr>
-            <th>Pos</th>
-            <th>Equipo</th>
-            <th>PTS</th>
-            <th>PJ</th>
-            <th>PG</th>
-            <th>PE</th>
-            <th>PP</th>
-          </tr>
-          <tr v-for="(item, key) in itemsPositions" :key="key">
-              <td>{{ item.field_posicion }}</td>
-              <td>{{ item.field_equipo }}</td>
-              <td>{{ item.field_puntos }}</td>
-              <td>{{ item.field_pj }}</td>
-              <td>{{ item.field_ganados }}</td>
-              <td>{{ item.field_empatados }}</td>
-              <td>{{ item.field_perdidos }}</td>
-          </tr>
+          <table class="agrande">
+            <tr>
+              <th>Pos</th>
+              <th>Equipo</th>
+              <th>PTS</th>
+              <th>PJ</th>
+              <th>PG</th>
+              <th>PE</th>
+              <th>PP</th>
+            </tr>
+            <tr v-for="(item, key) in itemsPositions" :key="key">
+                <td>{{ item.field_posicion }}</td>
+                <td>{{ item.field_equipo }}</td>
+                <td>{{ item.field_puntos }}</td>
+                <td>{{ item.field_pj }}</td>
+                <td>{{ item.field_ganados }}</td>
+                <td>{{ item.field_empatados }}</td>
+                <td>{{ item.field_perdidos }}</td>
+            </tr>
+          </table>
         </div>
         <div v-if="path !== 'squash' && path !== 'hockey'" class="wrp_table_clasificacion nodebe">
             <table>

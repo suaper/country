@@ -19,7 +19,7 @@
     </div>
 
     <div class="q-py-xl all_width bg_amarillo" v-if="path === 'hockey'">
-        <div class="centrar w_1100 fila_separador ">
+        <div class="centrar w_1100 fila_separador agrandar">
             <div class="w_55">
                 <h5 class="style_title q-my-lg ">Tabla de posiciones</h5>
                 <TablaPosiciones :path="path" :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
@@ -251,9 +251,8 @@ export default {
       var _this = this
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
         callBack: (data) => {
+          console.log(data)
           _this.positions = data
-          console.log(_this)
-          console.log(this.path)
           _this.loadedPositions = true
           _this.keyPositions = _this.keyPositions + 1
           _this.$q.loading.hide()
