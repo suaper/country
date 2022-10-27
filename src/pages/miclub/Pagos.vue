@@ -52,7 +52,7 @@ export default {
   methods: {
     getInfo () {
       var _this = this
-      configServices.loadData(this, '/node/1060?_format=json', {
+      configServices.loadData(this, '/node/9324?_format=json', {
         callBack: (data) => {
           _this.info = data
           _this.loadedInfo = true
