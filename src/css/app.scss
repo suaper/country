@@ -7031,3 +7031,18 @@ table.detalle_not{
         }
     }
 }
+.bg_white_iazul{
+    border: 1px solid #05142d;
+    height: 37px;
+    width: auto;
+    text-decoration: none;
+    display: flex;
+    background: #fff;
+    align-items: center;
+    padding: 9px;
+    border-radius: 3px;
+    color: #05142d;
+    i{
+        font-size: 21px;
+    }
+}

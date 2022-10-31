@@ -16,7 +16,7 @@
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-        <h4 class="subtitle q-my-md">Campeonato Actual</h4>
+        <h4 class="subtitle q-my-md">Abierto Prince of Wales Country Club 2022</h4>
           <CampeonatoActual :items="currentTournament" :table="rankingDeportes" v-if="loadedCurrentTournament"/>
         </div>
     </div>

@@ -43,7 +43,7 @@
                 </div>
             </div> -->
             <div class="w_100 table_campeonato">
-                <h5 class="text_normal">Leaderboard</h5>
+                <!--<h5 class="text_normal">Leaderboard</h5>-->
                 <div class="jugador_desacado">
                     <img :src="urlSite + info.field_jugador_destacado" class="cien">
                     <div class="wrp_over">
@@ -56,19 +56,28 @@
         </div>
         <ul class="botones_horizontal">
             <li>
-                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Bases" icon-right="arrow_right_alt"/>
+                <a class="bg_white_iazul" href="https://abierto.pwcc.cl/2022/" target="_blank">
+                    Home
+                    <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
+                </a>
             </li>
             <li>
-                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Listado de Inscritos" icon-right="arrow_right_alt"/>
+                <a class="bg_white_iazul" href="https://abierto.pwcc.cl/2022/listado-inscritos" target="_blank">
+                    Inscritos
+                    <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
+                </a>
             </li>
             <li>
-                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Inscripciones" icon-right="arrow_right_alt"/>
+                <a class="bg_white_iazul" href="https://abierto.pwcc.cl/2022/salidas" target="_blank">
+                    Salidas
+                    <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
+                </a>
             </li>
             <li>
-                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Inscripciones" icon-right="arrow_right_alt"/>
-            </li>
-            <li>
-                <q-btn outline class="azul q-my-md centrar bg_white_i" label="Ver Salidas" icon-right="arrow_right_alt"/>
+                <a class="bg_white_iazul" href="https://abierto.pwcc.cl/2022/resultados" target="_blank">
+                    Resultados
+                    <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
+                </a>
             </li>
         </ul>
     </div>
