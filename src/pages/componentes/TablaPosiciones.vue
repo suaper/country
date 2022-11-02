@@ -68,12 +68,13 @@ export default {
     items: Array,
     obtainPositions: Function,
     positions: Array,
-    path: String
+    path: String,
+    tournamentSelect: Object
   },
   data () {
     return {
       tournaments: this.items,
-      tournament: '',
+      tournament: this.tournamentSelect,
       itemsPositions: this.positions
     }
   }

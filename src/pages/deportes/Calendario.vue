@@ -22,7 +22,7 @@
         <div class="centrar w_1100 fila_separador agrandar">
             <div class="w_55">
                 <h5 class="style_title q-my-lg ">Tabla de posiciones</h5>
-                <TablaPosiciones :path="path" :items="campeonatos" :positions="positions" :key="keyPositions" :obtainPositions="getPositions"/>
+                <TablaPosiciones :path="path" :items="campeonatos" :positions="positions" :key="keyPositions" :tournamentSelect="tournament" :obtainPositions="getPositions"/>
             </div>
             <div class="w_35">
                 <h5 class="style_title q-my-lg ">Palmarés</h5>
@@ -82,8 +82,11 @@ export default {
       loadedImages: false,
       selectedItem: false,
       month: '',
-      numberNotices: 1
-
+      numberNotices: 1,
+      tournament: {
+        id: 0,
+        label: ''
+      }
     }
   },
   created () {
@@ -251,7 +254,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/tabla-posiciones/' + tournament.id + '/json', {
         callBack: (data) => {
-          console.log(data)
+          _this.tournament = tournament
           _this.positions = data
           _this.loadedPositions = true
           _this.keyPositions = _this.keyPositions + 1
