@@ -5,7 +5,7 @@
                 <a href="#">
                     <img :src="content.field_portada_video[0].url"/>
                     <div class="info_bottom text-center">
-                        <p class="desc">Triatlón</p>
+                        <p class="desc">Hockey</p>
                         <span class="text_white" v-html="content.field_descripcion_video[0].value"></span>
                     </div>
                   </a>

@@ -37,8 +37,6 @@
                         </div>
                     </div>
                 </div>
-
-                <q-btn outline @click="openPopForm()" class="azul q-my-md centrar bg_white_i" label="Más Información" icon-right="arrow_right_alt"/>
             </div>
 
             <div class="right cuarentaycinco wrp_table">
@@ -440,7 +438,6 @@ export default {
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
         return trimmedString + '...'
       }
-
       return title
     },
     trimNoticeDetalle (title) {

@@ -37,8 +37,6 @@
                         </div>
                     </div>
                 </div>
-
-              <q-btn outline @click="openPopForm()" class="azul q-my-md centrar bg_white_i" label="Más Información" icon-right="arrow_right_alt"/>
             </div>
 
             <div class="right cuarentaycinco wrp_table">

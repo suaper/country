@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center view_hijos_socios view_kids">
-    <Menukids currentItem="/kids/sport-kids"/>
+    <Menukids currentItem="/kids/sports-kids"/>
     <div class="q-py-none all_width">
       <q-carousel
         animated

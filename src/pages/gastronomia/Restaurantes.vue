@@ -102,6 +102,11 @@ export default {
           this.currentTitle = item.title
           this.text = true
           break
+        case 'Protocolos':
+          this.currentText = item.info
+          this.currentTitle = item.title
+          this.text = true
+          break
         case 'Reservas':
           window.open(item.link)
           break
