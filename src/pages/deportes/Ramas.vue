@@ -26,6 +26,7 @@
                         <q-checkbox keep-color v-model="deporte" val="Hockey" label="Hockey" color="orange-4" />
                         <q-checkbox keep-color v-model="deporte" val="Rugby" label="Rugby" color="orange-4" />
                         <q-checkbox keep-color v-model="deporte" val="Natación" label="Natación" color="orange-4" />
+                        <q-checkbox keep-color v-model="deporte" val="Natación" label="Danza" color="orange-4" />
                     </div>
                     <div class="wrp_one">
                         <q-checkbox keep-color v-model="deporte" val="Squash" label="Squash" color="orange-4" />

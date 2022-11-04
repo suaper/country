@@ -303,6 +303,7 @@ h5.style_title{
         }
     }
 }
+
 .first_row_home{
     >div{
         width: 50%;
@@ -392,7 +393,7 @@ h5.style_title{
             &:hover{
                 &:after{
                     width: 100%;
-                    height: 98%;
+                    height: 99%;
                     background: #0c164eba;
                     z-index: 9;
                     left: 0;
@@ -7044,5 +7045,77 @@ table.detalle_not{
     color: #05142d;
     i{
         font-size: 21px;
+    }
+}
+span.protocolo_pregunta{
+    font-weight: bolder;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-left: 15px;
+    text-align: justify;
+}
+span.protocolo_respuesta {
+    margin-bottom: 5px;
+    padding-left: 20px;
+    text-align: justify;
+}
+.denuncias_tabs{
+    .hover_iframe{
+        position: relative;
+        &:before{
+            content: "";
+        }
+        &:hover{
+            &:before{
+                width: 560px;
+                height: 315px;
+                background: #1027a552;;
+                z-index: 9;
+                position: absolute;
+                content: "";
+                pointer-events: none;
+            }
+        }
+
+    }
+    iframe{
+        margin: 0px auto;
+        &:before{
+            width: 100%;
+            height: 315px;
+            background: red;
+            z-index: 9;
+            content: "";
+        }
+    }
+}
+.center{
+    text-align: center;
+}
+.row_ilistas_pdfs{
+    .box_download{
+        flex-wrap: nowrap;
+        max-width: 100%;
+
+        .text{
+            a{
+                margin: 10px;
+                display: block;
+            }
+        }
+    }
+}
+.form_denuncias .fitnes_last .form_fitness{
+    width: 100%;
+}
+.denuncias_tabs{
+    h6 {
+        font-size: 44px;
+        font-weight: 300;
+        font-family: "Cormorant Garamond", serif;
+        letter-spacing: -0.88px;
+        color: #1F2660;
+        opacity: 1;
+        margin: 30px 22px 50px;
     }
 }

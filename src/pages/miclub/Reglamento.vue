@@ -16,7 +16,7 @@
     </div>
     <div class="q-pb-md all_width gris_home" v-if="loadedInfo">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">Reglamento</div>
+            <div class="center text-center q-my-lg titulos">DECRETO 22</div>
             <p class="intro text-center" v-html="info.body[0].value"></p>
         </div>
         <div class="q-pa-md row items-start w_1200 centrar q-gutter-md">

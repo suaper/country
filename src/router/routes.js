@@ -85,6 +85,13 @@ const routes = [
     ]
   },
   {
+    path: '/mi-club/denuncias',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages//miclub/Denuncias.vue') }
+    ]
+  },
+  {
     path: '/mi-club/clubes-intercambio',
     component: () => import('layouts/MainLayout.vue'),
     children: [
