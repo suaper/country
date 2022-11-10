@@ -12,6 +12,7 @@
       <q-btn :disable="getDisable('/deportes/futbol')" @click="goItem('/deportes/futbol')" outline color="submenu" label="Fútbol" />
       <q-btn :disable="getDisable('/deportes/ramas')" @click="goItem('/deportes/ramas')" outline color="submenu" label="Ramas" />
       <q-btn :disable="getDisable('/deportes/escuelas')" @click="goItem('/deportes/escuelas')" outline color="submenu" label="Escuelas" />
+      <q-btn :disable="getDisable('/deportes/multimedia')" @click="goItem('/deportes/multimedia')" outline color="submenu" label="Multimedia" />
       <q-btn :disable="getDisable('/deportes/calendario')" @click="goItem('/deportes/calendario')" outline color="submenu" label="Calendario" />
     </q-btn-group>
     <Buscador />

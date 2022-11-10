@@ -260,11 +260,19 @@ export default {
         var dateParse = dateInput.replace('T', ' ')
         dateParse = dateParse.split(' ')
         var eventDate = dateParse[0].split('-')
+        var monthDate = parseInt(eventDate[1])
+        if (eventDate[1] === '12') {
+          monthDate = 11
+        }
 
-        var date = new Date(eventDate[0], eventDate[1], eventDate[2])
+        var date = new Date(eventDate[0], monthDate, eventDate[2])
+
         const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+        if (monthDate === 11) {
+          return eventDate[2] + ' ' + month[monthDate] + '/' + date.getFullYear()
+        }
 
-        return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
+        return eventDate[2] + ' ' + month[monthDate - 11] + '/' + date.getFullYear()
       }
     },
     getHour (dateInput) {

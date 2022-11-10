@@ -10,7 +10,7 @@
         <div class="centrar w_1200">
         <ul class="wrp_actions_center_peluqueria menos_p igualar ulti_filter">
             <li>
-                <a href="#" class="anchor" @click="filterNotices($event, 'all')" icon-right="arrow_right_alt">Todas las noticias</a>
+                <a href="#" class="anchor anchor-active" @click="filterNotices($event, 'all')" icon-right="arrow_right_alt">Todas las noticias</a>
             </li>
             <li v-for="(item, key) in filters" :key="key" v-show="item.title !== ''">
                 <a href="#" class="anchor" @click="filterNotices($event, item)" icon-right="arrow_right_alt">{{ item.title }}</a>

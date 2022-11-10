@@ -27,7 +27,7 @@
                                     <div class="item_galeria">
                                         <img :src="urlSite + notice.field_portada_noticia" />
                                         <div class="info_bottom">
-                                            <span class="fecha">{{ notice.created }}</span>
+                                            <span class="fecha">{{ getDate(notice.created )}}</span>
                                             <p class="desc" v-html="trimNotice(notice.title)"></p>
                                             <q-btn @click="goNotice(notice)" class="text_azul centrar bg_white btn_centrar" label="Leer más" icon-right="arrow_right_alt"/>
                                         </div>
@@ -98,6 +98,18 @@ export default {
     this.getNotices()
   },
   methods: {
+    getDate (dateInput) {
+      if (typeof dateInput !== 'undefined') {
+        var dateParse = dateInput.replace('T', ' ')
+        dateParse = dateParse.split(' ')
+        var eventDate = dateParse[0].split('-')
+
+        var date = new Date(eventDate[0], eventDate[1], eventDate[2])
+        const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+        return eventDate[2] + ' ' + month[date.getUTCMonth() - 1] + '/' + date.getFullYear()
+      }
+    },
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
       this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))

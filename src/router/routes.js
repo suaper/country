@@ -596,6 +596,13 @@ const routes = [
     ]
   },
   {
+    path: '/deportes/multimedia',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/deportes/MultimediaGeneral.vue') }
+    ]
+  },
+  {
     path: '/deportes/golf',
     component: () => import('layouts/MainLayout.vue'),
     children: [
