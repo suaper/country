@@ -11,14 +11,11 @@
                     <div class="wrp_gallery_noticias">
                         <q-carousel
                         v-model="slidenotice"
-                        transition-prev="slide-right"
-                        transition-next="slide-left"
                         swipeable
                         navigation
                         animated
                         control-color="primary"
                         padding
-                        arrows
                         class="galeria_noticias"
                         >
                         <q-carousel-slide :name="key" class="column" v-for="(item, key) in notices" :key="key">
@@ -90,6 +87,9 @@ export default {
       slidenotice: 0,
       max: 0
     }
+  },
+  updated () {
+    this.slidenotice = this.slidecontent - 1
   },
   created () {
     if (Platform.is.desktop) {

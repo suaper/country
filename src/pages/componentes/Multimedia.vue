@@ -10,16 +10,16 @@
                 <table class="esquma_inferior">
                 <tr>
                 <td class="tg-0pky" rowspan="2">
-                    <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
+                    <a @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
                         <span class="text-white">{{ multimediaHome[4].title }}</span>
                         <span class="desc_white" v-html="multimediaHome[4].body"></span>
                     </div></a>
                 </td>
-                <td class="tg-1pky"><a href="#" @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"><div class="wrp_over">
+                <td class="tg-1pky"><a @click="openItem($event, multimediaHome[2])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[2].field_portada_multimedia"><div class="wrp_over">
                       <span class="text-white">{{ multimediaHome[2].title }}</span>
                       <span class="desc_white" v-html="multimediaHome[2].body"></span>
                     </div></a></td>
-                <td class="tg-2pky" rowspan="2"><a href="#" @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"><div class="wrp_over">
+                <td class="tg-2pky" rowspan="2"><a @click="openItem($event, multimediaHome[1])"><img class="q-mx-none" alt="img2" :src="urlSite + multimediaHome[1].field_portada_multimedia"><div class="wrp_over">
                       <span class="text-white">{{ multimediaHome[1].title }}</span>
                       <span class="desc_white" v-html="multimediaHome[1].body"></span>
                       <q-btn outline type="submit" class="azul centrar mt_10 bg_white_home" label="ver" icon-right="arrow_right_alt"/>
@@ -39,6 +39,17 @@
                 </table>
             </div>
         </div>
+        <q-dialog v-model="video" persistent>
+          <q-card>
+            <q-card-section class="row items-center">
+              <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + currentVideo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </q-card-section>
+
+            <q-card-actions align="right">
+              <q-btn flat label="Cerrar" color="primary" v-close-popup />
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
     </div>
 </template>
 

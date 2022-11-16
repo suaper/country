@@ -21,8 +21,6 @@
                     <div class="wrp_gallery_noticias">
                         <q-carousel
                         v-model="slidenotice"
-                        transition-prev="slide-right"
-                        transition-next="slide-left"
                         swipeable
                         navigation
                         animated
