@@ -16,7 +16,7 @@
     </div>
     <div class="q-pb-md all_width gris_home denuncias_tabs" v-if="loadedInfo">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-lg titulos">DECRETO 22</div>
+            <div class="center text-center q-my-lg titulos">DECRETO <span class="masmas">22</span></div>
         </div>
         <div class="tabs_denuncias centrar" style="max-width: 800px">
         <q-card>

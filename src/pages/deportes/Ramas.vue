@@ -105,7 +105,7 @@
                 </div>
                 <div class="row-actions between flex">
                     <div class="left terms">
-                        <q-checkbox required v-model="terminos" color="orange-4" label="Acepto Términos y Condiciones" :rules="[val => !!val || 'Campo requerido']" />
+                        <!--<q-checkbox required v-model="terminos" color="orange-4" label="Acepto Términos y Condiciones" :rules="[val => !!val || 'Campo requerido']" /> -->
                     </div>
                       <div class="right ok">
                         <q-btn type="submit" outline class="azul q-my-md centrar bg_white_i" label="Enviar Datos"  icon-right="arrow_right_alt"/>
@@ -149,9 +149,9 @@ export default {
     onSubmit () {
       var _this = this
 
-      if (!this.terminos) {
-        return _this.$swal('Debe aceptar los términos y condiciones')
-      }
+      // if (!this.terminos) {
+      //   return _this.$swal('Debe aceptar los términos y condiciones')
+      // }
 
       if (this.quantity === '') {
         return _this.$swal('Debe seleccionar la cantidad de participantes')
