@@ -73,6 +73,32 @@
 
 <script>
 
+const LRU = require('lru-cache')
+
+const options = {
+  max: 500,
+
+  // for use with tracking overall storage size
+  maxSize: 5000,
+  sizeCalculation: (value, key) => {
+    return 1
+  },
+  // how long to live in ms
+  ttl: 1000 * 60 * 5,
+
+  // return stale items before removing from cache?
+  allowStale: false,
+
+  updateAgeOnGet: false,
+  updateAgeOnHas: false,
+
+  // async method to use for cache.fetch(), for
+  // stale-while-revalidate type of behavior
+  fetchMethod: async (key, staleValue, { options, signal }) => {}
+}
+
+const cache = new LRU(options)
+
 import configServices from '../services/config'
 import { Platform } from 'quasar'
 import Buscador from 'pages/submenus/Buscador.vue'
@@ -143,18 +169,28 @@ export default {
         this.getNotices()
       } else {
         var _this = this
-        configServices.loadData(this, '/noticias-categorias/' + item.id + '/json', {
-          callBack: (data) => {
-            const n = this.numberNotices
-            _this.notices = new Array(Math.ceil(data.length / n))
-              .fill()
-              .map(_ => data.splice(0, n))
+        var sessionNotices = cache.get('notices-' + item.id)
 
-            _this.max = _this.notices.length
+        if (sessionNotices === '' || typeof sessionNotices === 'undefined' || sessionNotices === null) {
+          configServices.loadData(this, '/noticias-categorias/' + item.id + '/json', {
+            callBack: (data) => {
+              const n = this.numberNotices
+              _this.notices = new Array(Math.ceil(data.length / n))
+                .fill()
+                .map(_ => data.splice(0, n))
 
-            _this.$q.loading.hide()
-          }
-        })
+              _this.max = _this.notices.length
+
+              cache.set('notices-' + item.id, JSON.stringify(_this.notices))
+
+              _this.$q.loading.hide()
+            }
+          })
+        } else {
+          sessionNotices = JSON.parse(sessionNotices)
+          _this.notices = sessionNotices
+          _this.max = _this.notices.length
+        }
       }
     },
     goNotice (notice) {
@@ -163,39 +199,50 @@ export default {
     },
     getNotices () {
       var _this = this
-      configServices.loadData(this, '/noticias-todas/json', {
-        callBack: (data) => {
-          const n = this.numberNotices
-          var notices = []
-          data.map((item, key) => {
-            notices.push(item)
-            var filter = {
-              title: item.field_categoria_noticia,
-              id: item.field_categoria_noticia_1
-            }
-            const isFound = _this.filters.find((element, index) => {
-              if (element.title === item.field_categoria_noticia) {
-                _this.filters.splice(index, 1)
-                return element
+
+      var sessionNotices = cache.get('notices')
+
+      if (sessionNotices === '' || typeof sessionNotices === 'undefined' || sessionNotices === null) {
+        configServices.loadData(this, '/noticias-todas/json', {
+          callBack: (data) => {
+            const n = this.numberNotices
+            var notices = []
+            data.map((item, key) => {
+              notices.push(item)
+              var filter = {
+                title: item.field_categoria_noticia,
+                id: item.field_categoria_noticia_1
+              }
+              const isFound = _this.filters.find((element, index) => {
+                if (element.title === item.field_categoria_noticia) {
+                  _this.filters.splice(index, 1)
+                  return element
+                }
+              })
+
+              if (typeof isFound !== 'undefined') {
+                _this.filters.push(filter)
+              } else {
+                _this.filters.push(filter)
               }
             })
 
-            if (typeof isFound !== 'undefined') {
-              _this.filters.push(filter)
-            } else {
-              _this.filters.push(filter)
-            }
-          })
+            _this.notices = new Array(Math.ceil(notices.length / n))
+              .fill()
+              .map(_ => notices.splice(0, n))
 
-          _this.notices = new Array(Math.ceil(notices.length / n))
-            .fill()
-            .map(_ => notices.splice(0, n))
+            cache.set('notices', JSON.stringify(_this.notices))
 
-          _this.max = _this.notices.length
+            _this.max = _this.notices.length
 
-          _this.$q.loading.hide()
-        }
-      })
+            _this.$q.loading.hide()
+          }
+        })
+      } else {
+        sessionNotices = JSON.parse(sessionNotices)
+        _this.notices = sessionNotices
+        _this.max = _this.notices.length
+      }
     }
   }
 }
