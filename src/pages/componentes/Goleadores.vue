@@ -5,7 +5,7 @@
   </div>
   <div class="wrp_gallery_multimedia goleadores">
     <q-carousel v-model="slidecontent" transition-prev="slide-right" transition-next="slide-left" swipeable animated
-      control-color="primary" padding arrows height="250px" class="galeria_multimedia">
+      control-color="primary" padding arrows height="290px" class="galeria_multimedia">
       <q-carousel-slide class="column no-wrap" :name="key" v-for="(item, key) in sliderItems" :key="key">
         <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
           <div class="multimedia_slider" v-for="(subItem, subKey) in item" :key="subKey">

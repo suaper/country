@@ -22,7 +22,14 @@
                     <p class="q-mt-md" v-html="item.body"></p>
                     <hr class="hr_restaurante">
 
-                    <ul class="wrp_actions_center_restaurante">
+                    <ul class="wrp_actions_center_restaurante gazebo" v-if="item.title === 'Gazebo'">
+                      <li v-for="(subItem, subKey) in item.items" :key="subKey">
+                          <a href="#" @click="goToAction($event, subItem)" ><img :src="urlSite + subItem.icon"></a>
+                          <strong>{{ subItem.title }}</strong>
+                      </li>
+                    </ul>
+
+                    <ul class="wrp_actions_center_restaurante gazebo" v-if="item.title !== 'Gazebo'">
                       <li v-for="(subItem, subKey) in item.items" :key="subKey">
                           <a href="#" @click="goToAction($event, subItem)" ><img :src="urlSite + subItem.icon"></a>
                           <strong>{{ subItem.type }}</strong>

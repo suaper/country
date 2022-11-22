@@ -7122,6 +7122,18 @@ span.protocolo_respuesta {
 .masmas{
     font-size: 80px;
 }
+.sin_sombra{
+    .imagen_publicitaria .text_lover{
+        background: none;
+    }
+}
+.enla{
+    p{
+        a{
+            color: #1f2660;
+        }
+    }
+}
 @media only screen and (max-width: 600px) and ( min-width:0px ) {
     .banner_top.q-carousel{
         height: 110px;

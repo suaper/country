@@ -2,7 +2,7 @@
   <q-page class="flex flex-center view_quienes_somos view_ramas">
   <Menudeportes currentItem="/deportes/ramas"/>
    <div class="q-py-xl all_width bg_gris wrp_club hazte_socio">
-        <div class="centrar w_1100" v-if="loadedInfo">
+        <div class="centrar w_1100 enla" v-if="loadedInfo">
             <div class="center text-center q-my-lg titulos">{{ info.title[0].value }}</div>
                <p v-html="info.body[0].value"></p>
         </div>

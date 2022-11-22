@@ -8,7 +8,7 @@
             <div class="center text-center q-my-lg titulos">Escuelas</div>
 
             <div class="row_2 centrar flex all_width">
-                <div class="w_25 q-mx-md">
+                <div class="w_25 q-mx-md sin_sombra">
                     <ImagenPublicitaria :content="horarios" :path="path" v-if="loadedHorarios"/>
                 </div>
                 <div class="w_70 q-mx-md">
