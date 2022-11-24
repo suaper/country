@@ -116,7 +116,7 @@ const routes = [
     path: '/mi-club/cuotas-sociales',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/miclub/CuotasReglamento.vue') }
+      { path: '', component: () => import('pages/miclub/Cuotas.vue') }
     ]
   },
   {

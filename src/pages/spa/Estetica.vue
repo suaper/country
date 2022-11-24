@@ -52,7 +52,7 @@
                         <tr v-for="(subItem, key) in item.subServices" :key="key">
                             <td :class="(subItem.duplicate) ? 'sin_borde' : ''">{{ (!subItem.duplicate) ? subItem.title : ''}}</td>
                             <td>{{ subItem.time }} Minutos</td>
-                            <td>$ {{ addCommas(subItem.price) }}</td>
+                            <td>{{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -80,7 +80,7 @@
                         </tr>
                         <tr v-for="(subItem, key) in item.subServices" :key="key">
                             <td>{{ subItem.title }}</td>
-                            <td>$ {{ addCommas(subItem.price) }}</td>
+                            <td>{{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -101,7 +101,7 @@
                         </tr>
                         <tr v-for="(subItem, key) in item.subServices" :key="key">
                             <td>{{ subItem.title }}</td>
-                            <td>$ {{ addCommas(subItem.price) }}</td>
+                            <td>{{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -128,7 +128,7 @@
                         </tr>
                         <tr v-for="(subItem, key) in item.subServices" :key="key">
                             <td>{{ subItem.title }}</td>
-                            <td>$ {{ addCommas(subItem.price) }}</td>
+                            <td>{{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -149,7 +149,7 @@
                         </tr>
                         <tr v-for="(subItem, key) in item.subServices" :key="key">
                             <td>{{ subItem.title }}</td>
-                            <td>$ {{ addCommas(subItem.price) }}</td>
+                            <td>{{ addCommas(subItem.price) }}</td>
                         </tr>
                     </table>
                   </td>
@@ -229,7 +229,15 @@ export default {
     },
     addCommas (x) {
       if (typeof x !== 'undefined') {
-        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+        const formatter = new Intl.NumberFormat('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+
+          // These options are needed to round to whole numbers if that's what you want.
+          minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+          maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+        })
+        return formatter.format(parseInt(x))
       }
     },
     getInfo () {

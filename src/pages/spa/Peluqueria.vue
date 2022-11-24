@@ -40,7 +40,7 @@
                             </tr>
                             <tr v-for="(subItem) in item.subServices" :key="subItem.title" v-show="subItem.price !== ''">
                                 <td> {{ subItem.title }} </td>
-                                <td>$ {{ addCommas(subItem.price) }} </td>
+                                <td>{{ addCommas(subItem.price) }} </td>
                             </tr>
                             <tr v-for="(subItem, subKey) in item.subServices" :key="subKey" v-show="subItem.price === ''">
                                 <td colspan="2">Está sujeto a evaluación de pelo, largo y cantidad.</td>
@@ -70,7 +70,7 @@
                         </tr>
                         <tr v-for="(subItem) in item.subServices" :key="subItem.title" v-show="subItem.price !== ''">
                             <td> {{ subItem.title }} </td>
-                            <td>$ {{ addCommas(subItem.price) }} </td>
+                            <td>{{ addCommas(subItem.price) }} </td>
                         </tr>
                         <tr v-for="(subItem, subKey) in item.subServices" :key="subKey" v-show="subItem.price === ''">
                             <td colspan="2">Está sujeto a evaluación de pelo, largo y cantidad.</td>
@@ -171,7 +171,15 @@ export default {
     },
     addCommas (x) {
       if (typeof x !== 'undefined') {
-        return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+        const formatter = new Intl.NumberFormat('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+
+          // These options are needed to round to whole numbers if that's what you want.
+          minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+          maximumFractionDigits: 0 // (causes 2500.99 to be printed as $2,501)
+        })
+        return formatter.format(parseInt(x))
       }
     },
     getInfo () {
