@@ -19,17 +19,8 @@
             <div class="q-py-md all_width gris_home wrp_club hazte_socio">
                 <div class="centrar q-pb-xl  w_1200">
                     <div class="wrp_gallery_noticias">
-                        <q-carousel
-                        v-model="slidenotice"
-                        swipeable
-                        navigation
-                        animated
-                        control-color="primary"
-                        padding
-                        class="galeria_noticias"
-                        >
-                        <q-carousel-slide :name="key" class="column" v-for="(item, key) in notices" :key="key">
-                            <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
+                      <div class="notices colum" :name="key" v-for="(item, key) in notices" :key="key">
+                        <div class="row fit justify-between items-center q-gutter-xs q-col-gutter no-wrap">
                                 <div class="noticia_slider" v-for="(itemNotice, keyNotice) in item" :key="keyNotice">
                                     <div class="item_galeria">
                                         <img :src="urlSite + itemNotice.field_portada_noticia" />
@@ -41,8 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </q-carousel-slide>
-                        </q-carousel>
+                      </div>
                         <div class="row justify-center botones">
                             <q-btn-toggle
                                 glossy
@@ -61,6 +51,7 @@
                               icon-last="skip_next"
                               icon-prev="fast_rewind"
                               icon-next="fast_forward"
+                              @input="setPager"
                             />
                         </div>
                     </div>
@@ -72,33 +63,6 @@
 </template>
 
 <script>
-
-const LRU = require('lru-cache')
-
-const options = {
-  max: 500,
-
-  // for use with tracking overall storage size
-  maxSize: 5000,
-  sizeCalculation: (value, key) => {
-    return 1
-  },
-  // how long to live in ms
-  ttl: 1000 * 60 * 5,
-
-  // return stale items before removing from cache?
-  allowStale: false,
-
-  updateAgeOnGet: false,
-  updateAgeOnHas: false,
-
-  // async method to use for cache.fetch(), for
-  // stale-while-revalidate type of behavior
-  fetchMethod: async (key, staleValue, { options, signal }) => {}
-}
-
-const cache = new LRU(options)
-
 import configServices from '../services/config'
 import { Platform } from 'quasar'
 import Buscador from 'pages/submenus/Buscador.vue'
@@ -119,7 +83,10 @@ export default {
       pop_reservar_spa: false,
       numberNotices: 1,
       slidenotice: 0,
-      max: 0
+      max: 0,
+      filtered: false,
+      filter: {},
+      e: {}
     }
   },
   updated () {
@@ -129,9 +96,30 @@ export default {
     if (Platform.is.desktop) {
       this.numberNotices = 3
     }
+
+    this.getNumberNotices()
     this.getNotices()
+    this.getCategories()
   },
   methods: {
+    setPager () {
+      console.log(this.filtered)
+      if (this.filtered) {
+        return this.filterNotices('', this.filter)
+      }
+      this.getNotices()
+    },
+    getNumberNotices () {
+      var _this = this
+      var data = {
+        type: 'numberNotices'
+      }
+      configServices.consumerStandar(this, 'pwcc-rest/post', data, {
+        callBack: (data) => {
+          _this.max = Math.round(data.notices / this.numberNotices)
+        }
+      })
+    },
     getDate (dateInput) {
       if (typeof dateInput !== 'undefined') {
         var dateParse = dateInput.replace('T', ' ')
@@ -162,87 +150,118 @@ export default {
       e.currentTarget.classList.add('anchor-active')
     },
     filterNotices (e, item) {
-      e.preventDefault()
-      this.addCurrentClass(e)
+      if (e !== '') {
+        e.preventDefault()
+        this.addCurrentClass(e)
+        this.slidecontent = 1
+        this.slidenotice = 0
+      }
+
+      this.filtered = true
+      this.filter = item
 
       if (item === 'all') {
         this.getNotices()
       } else {
         var _this = this
-        var sessionNotices = cache.get('notices-' + item.id)
-
-        if (sessionNotices === '' || typeof sessionNotices === 'undefined' || sessionNotices === null) {
-          configServices.loadData(this, '/noticias-categorias/' + item.id + '/json', {
-            callBack: (data) => {
-              const n = this.numberNotices
-              _this.notices = new Array(Math.ceil(data.length / n))
-                .fill()
-                .map(_ => data.splice(0, n))
-
-              _this.max = _this.notices.length
-
-              cache.set('notices-' + item.id, JSON.stringify(_this.notices))
-
-              _this.$q.loading.hide()
-            }
-          })
-        } else {
-          sessionNotices = JSON.parse(sessionNotices)
-          _this.notices = sessionNotices
-          _this.max = _this.notices.length
+        var data = {
+          type: 'numberNoticesCategory',
+          categoria: item.id
         }
+        configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
+          callBack: (data) => {
+            if (data.notices) {
+              _this.max = _this.max = Math.round(data.numberNotices / this.numberNotices)
+            }
+          }
+        })
+
+        var pager = this.slidecontent
+        if (pager > 0) {
+          pager = pager - 1
+        }
+
+        console.log(pager)
+
+        configServices.loadData(this, '/noticias-categorias/' + item.id + '/json?page=' + pager, {
+          callBack: (data) => {
+            const n = this.numberNotices
+            _this.notices = new Array(Math.ceil(data.length / n))
+              .fill()
+              .map(_ => data.splice(0, n))
+
+            _this.$q.loading.hide()
+          }
+        })
       }
     },
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
       this.$router.push('/detalle-noticia/' + notice.title.toLowerCase().replaceAll(' ', '-'))
     },
-    getNotices () {
+    getCategories () {
       var _this = this
 
-      var sessionNotices = cache.get('notices')
+      configServices.loadData(this, '/categorias-noticias/json', {
+        callBack: (data) => {
+          data.map((item, key) => {
+            var filter = {
+              title: item.name,
+              id: item.tid
+            }
 
-      if (sessionNotices === '' || typeof sessionNotices === 'undefined' || sessionNotices === null) {
-        configServices.loadData(this, '/noticias-todas/json', {
-          callBack: (data) => {
-            const n = this.numberNotices
-            var notices = []
-            data.map((item, key) => {
-              notices.push(item)
-              var filter = {
-                title: item.field_categoria_noticia,
-                id: item.field_categoria_noticia_1
-              }
-              const isFound = _this.filters.find((element, index) => {
-                if (element.title === item.field_categoria_noticia) {
-                  _this.filters.splice(index, 1)
-                  return element
+            var data = {
+              type: 'numberNoticesCategory',
+              categoria: item.tid
+            }
+
+            configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
+              callBack: (data) => {
+                _this.$q.loading.show()
+
+                if (data.notices) {
+                  const isFound = _this.filters.find((element, index) => {
+                    if (element.title === item.name) {
+                      _this.filters.splice(index, 1)
+                      return element
+                    }
+                  })
+
+                  if (typeof isFound !== 'undefined') {
+                    _this.filters.push(filter)
+                  } else {
+                    _this.filters.push(filter)
+                  }
                 }
-              })
-
-              if (typeof isFound !== 'undefined') {
-                _this.filters.push(filter)
-              } else {
-                _this.filters.push(filter)
+                _this.$q.loading.hide()
               }
             })
-
-            _this.notices = new Array(Math.ceil(notices.length / n))
-              .fill()
-              .map(_ => notices.splice(0, n))
-
-            cache.set('notices', JSON.stringify(_this.notices))
-
-            _this.max = _this.notices.length
-
-            _this.$q.loading.hide()
-          }
-        })
-      } else {
-        sessionNotices = JSON.parse(sessionNotices)
-        _this.notices = sessionNotices
-        _this.max = _this.notices.length
+          })
+        }
+      })
+    },
+    getNotices () {
+      var _this = this
+      var pager = this.slidecontent
+      if (pager > 0) {
+        pager = pager - 1
       }
+
+      configServices.loadData(this, '/noticias-todas/json?page=' + pager, {
+        callBack: (data) => {
+          const n = this.numberNotices
+          var notices = []
+          data.map((item, key) => {
+            notices.push(item)
+          })
+
+          _this.notices = new Array(Math.ceil(notices.length / n))
+            .fill()
+            .map(_ => notices.splice(0, n))
+
+          _this.$q.loading.hide()
+        }
+      })
     }
   }
 }
