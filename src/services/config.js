@@ -50,7 +50,7 @@ const configService = {
   loadData: (componente, endpoind, opciones, headers) => {
     componente.$q.loading.show()
     var basicAuth = 'Basic ' + btoa(datosConfiguracion.user + ':' + datosConfiguracion.password)
-    componente.$axios.get(datosConfiguracion.apiUrl + endpoind, { headers: { Authorization: basicAuth, Accept: 'application/json', 'Content-Type': 'application/json' } })
+    componente.$axios.get(datosConfiguracion.apiUrl + endpoind, { headers: { Authorization: basicAuth, Accept: 'application/json', 'Content-Type': 'application/json', 'x-access-token': basicAuth } })
       .then((response) => {
         if (response.data === '0') {
           componente.$q.notify({
