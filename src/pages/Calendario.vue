@@ -3,7 +3,7 @@
     <Menucalendario currentItem="/calendario"/>
     <div class="q-pb-md all_width gris_home">
         <div class="cincuenta q-pd-md centrar text-center">
-            <div class="center text-center q-my-xl titulos">Calendario Cultura</div>
+            <div class="center text-center q-my-xl titulos">Calendario Social’</div>
         </div>
         <div class="w_1200 centrar">
             <ul class="wrp_actions_calendario">
