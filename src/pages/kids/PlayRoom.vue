@@ -20,25 +20,37 @@
         </div>
     </div>
     <div class="q-py-xl all_width bg_amarillo wrp_club">
-        <div class="row_wrap no-wrap">
+        <div class="row_wrap no-wrap flex">
+          <div class="staff_general w_50">
             <h3 class="q-my-none">Staff</h3>
-              <div class="staff_general">
-                 <div class="flex" style="justify-content: space-between;">
-                    <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key" v-show="personal.nid === '384'">
-                        <tr>
-                            <td>
-                                <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
-                            </td>
-                            <td>
-                                <p><strong>{{ personal.field_nombre_staff }}</strong></p>
-                                <p><strong> {{ personal.field_cargo_staff }} </strong></p>
-                                <p>{{ personal.field_correo_staff }}</p>
-                                <p>{{ personal.field_numero_staff }}</p>
-                            </td>
-                        </tr>
-                    </table>
+              <div class="flex" style="justify-content: space-between;">
+                <table class="datos_staff_contacto" v-for="(personal, key) in personal" :key="key" v-show="personal.nid === '384'">
+                    <tr>
+                        <td>
+                            <img class="raius" :src="urlSite + personal.field_imagen_perfil" />
+                        </td>
+                        <td>
+                            <p><strong>{{ personal.field_nombre_staff }}</strong></p>
+                            <p><strong> {{ personal.field_cargo_staff }} </strong></p>
+                            <p>{{ personal.field_correo_staff }}</p>
+                            <p>{{ personal.field_numero_staff }}</p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+          </div>
+          <div class="w_50">
+            <h3 class="q-my-none q-mb-md">Protocolo</h3>
+            <div class="q-pa-md row items-start w_1200 centrar q-gutter-md">
+                <div class="box_download flex bg_white">
+                    <img src="../../assets/MiClub/i-pdf.svg">
+                    <div class="text">
+                        <span class="bold">Protocolo</span>
+                        <a href="https://obt3.cl/administrador/sites/default/files/2022-08/REGLAMENTO%20%20SOCIOS%202022.pdf" target="_blank"><span>Ver o descargar</span></a>
+                    </div>
                 </div>
             </div>
+          </div>
       </div>
     </div>
      <!--<div class="q-py-xl all_width bg_amarillo wrp_club">

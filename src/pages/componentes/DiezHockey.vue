@@ -5,7 +5,8 @@
                 <a href="#">
                     <img :src="content.field_portada_video[0].url"/>
                     <div class="info_bottom text-center">
-                        <p class="desc">Hockey</p>
+                        <p class="desc" v-if="path === 'hockey'">Hockey</p>
+                        <p class="desc" v-if="path !== 'hockey'">Triatlon</p>
                         <span class="text_white" v-html="content.field_descripcion_video[0].value"></span>
                     </div>
                   </a>
@@ -20,7 +21,17 @@
 export default {
   name: 'DiezHockey',
   props: {
-    info: Object
+    info: Object,
+    path: String,
+    subPath: String
+  },
+  mounted () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
+    this.subPath = currentPath[3]
+
+    this.getInfo()
+    this.$q.loading.hide()
   },
   data () {
     return {

@@ -10,7 +10,7 @@
                     <th>Slope</th>
                 </tr>
                 <tr>
-                    <td>123.00</td>
+                    <td>132</td>
                 </tr>
             </table>
             <table class="t_roja">
@@ -18,7 +18,7 @@
                     <th>Slope</th>
                 </tr>
                 <tr>
-                    <td>123.00</td>
+                    <td>130</td>
                 </tr>
             </table>
             <table class="t_blanca">
@@ -34,7 +34,7 @@
                     <th>Rating</th>
                 </tr>
                 <tr>
-                    <td>123.00</td>
+                    <td>72.9</td>
                 </tr>
             </table>
             <table  class="t_roja">
@@ -42,7 +42,7 @@
                     <th>Rating</th>
                 </tr>
                 <tr>
-                    <td>123.00</td>
+                    <td>70.6</td>
                 </tr>
             </table>
             <table  class="t_blanca">
@@ -50,7 +50,7 @@
                     <th>Rating</th>
                 </tr>
                 <tr>
-                    <td>123.00</td>
+                    <td>73.6</td>
                 </tr>
             </table>
         </div>
