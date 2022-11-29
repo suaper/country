@@ -129,12 +129,16 @@ export default {
         default:
           var mostrarEn = item.field_mostra_en_[0].value.split(' ')
           if (mostrarEn.length > 1) {
-            this.$router.push('/deportes/' + mostrarEn[1].toLowerCase() + '/' + mostrarEn[0].toLowerCase())
+            if (typeof item.field_seleccionar_deporte !== 'undefined') {
+              this.$router.push('/' + item.field_mostra_en_[0].value.replaceAll(' ', '-').toLowerCase())
+            } else {
+              this.$router.push('/deportes/' + mostrarEn[1].toLowerCase() + '/' + mostrarEn[0].toLowerCase())
+            }
           } else {
             if (typeof item.field_seleccionar_deporte !== 'undefined') {
               this.$router.push('/deportes/' + item.field_mostra_en_[0].value)
             } else {
-              this.$router.push('/' + item.field_mostra_en_[0].value)
+              this.$router.push('/' + item.field_mostra_en_[0].value.replaceAll(' ', '-'))
             }
           }
           break

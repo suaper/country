@@ -6,7 +6,7 @@
                     <th>Año</th>
                     <th>Nombre</th>
                 </tr>
-                <tr v-for="(item, key) in info[current - 1]" :key="key">
+                <tr v-for="(item, key) in info[current - 1]" :key="key" v-show="item.field_nombre_y_apellidos !== ''">
                     <td>{{ item.field_ano }}</td>
                     <td>{{ item.field_nombre_y_apellidos }}</td>
                 </tr>

@@ -7,50 +7,10 @@
         <div class="info flex flex-start">
             <table :class="getClass(key)" v-for="(item, key) in items" :key="key">
                 <tr>
-                    <th>Slope</th>
+                    <th>{{ item.field_selecc }}</th>
                 </tr>
                 <tr>
-                    <td>132</td>
-                </tr>
-            </table>
-            <table class="t_roja">
-                <tr>
-                    <th>Slope</th>
-                </tr>
-                <tr>
-                    <td>130</td>
-                </tr>
-            </table>
-            <table class="t_blanca">
-                <tr>
-                    <th>Slope</th>
-                </tr>
-                <tr>
-                    <td>123.00</td>
-                </tr>
-            </table>
-            <table  class="t_azul">
-                <tr>
-                    <th>Rating</th>
-                </tr>
-                <tr>
-                    <td>72.9</td>
-                </tr>
-            </table>
-            <table  class="t_roja">
-                <tr>
-                    <th>Rating</th>
-                </tr>
-                <tr>
-                    <td>70.6</td>
-                </tr>
-            </table>
-            <table  class="t_blanca">
-                <tr>
-                    <th>Rating</th>
-                </tr>
-                <tr>
-                    <td>73.6</td>
+                    <td>{{ item.field_valor_rango }}</td>
                 </tr>
             </table>
         </div>
@@ -67,21 +27,22 @@ export default {
   data () {
     return {
       items: this.info,
-      urlSite: 'https://obt3.cl'
+      urlSite: 'https://obt3.cl',
+      itemKey: 0
     }
   },
   methods: {
     getClass (key) {
       key = key + 1
-      var result = key / 3
+      var result = key % 3
       result = result.toFixed(1)
       result = parseFloat(result)
       if (result === 1) {
-        return 't_roja'
-      } else if (result === 0.3) {
         return 't_azul'
-      } else {
+      } else if (result === 2) {
         return 't_blanca'
+      } else {
+        return 't_roja'
       }
     }
   }

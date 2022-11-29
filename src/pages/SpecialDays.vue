@@ -272,7 +272,7 @@ export default {
           return eventDate[2] + ' ' + month[monthDate] + '/' + date.getFullYear()
         }
 
-        return eventDate[2] + ' ' + month[monthDate - 11] + '/' + date.getFullYear()
+        return eventDate[2] + ' ' + month[monthDate - 1] + '/' + date.getFullYear()
       }
     },
     getHour (dateInput) {

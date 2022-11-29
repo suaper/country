@@ -119,7 +119,7 @@ export default {
     },
     getStaff () {
       var _this = this
-      configServices.loadData(this, '/slider-deportes/' + _this.path + '/json', {
+      configServices.loadData(this, '/slider-deportes/' + _this.subPath + '-' + _this.path + '/json', {
         callBack: (data) => {
           _this.info = data[0]
           _this.slide = data[0].field_slider_sport[0].target_uuid
