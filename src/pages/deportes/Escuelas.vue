@@ -14,7 +14,7 @@
           <div class="centrar q-py-md w_1100 escuelas">
               <div class="style_title q-my-lg flex flex-staf align-center prueba">
                   <h5 class="q-my-none">{{ item.title }}</h5>
-                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Más Información" :to="'/deportes/' + item.button.toLowerCase() + '/contacto'" icon-right="arrow_right_alt"/>
+                  <q-btn class="azul q-my-none q-mx-md bg_white_i" label="Más Información" :to="(item.title === 'Danza')? '/cultura/danza' : '/deportes/' + item.button.toLowerCase() + '/contacto'" icon-right="arrow_right_alt"/>
               </div>
               <TablesEscuelas :items="item.subServices" :permissions="item.permissions"/>
           </div>
