@@ -7,7 +7,7 @@
             <Anclas :items="filters" :path="path" :goAnchor="goToAnchor"/>
         </div>
         <div class="centrar w_1200 q-pb-xl" id="comite-golf">
-            <h4 class="subtitle">Comité de golf</h4>
+            <h4 class="subtitle">Comité de Golf</h4>
             <DescRama :content="personalComiteGolf" v-if="loadedComiteGolf"/>
             <StaffView :info="personalComiteGolf" v-if="loadedComiteGolf"/>
         </div>
