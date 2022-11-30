@@ -249,27 +249,27 @@
 
           <q-tab-panel name="responsables">
             <h6>Responsables Institucionales</h6>
-              <div class="row_info_doscol">
+              <div class="row_info_doscol users_denuncias">
                 <ul class="info_usuario">
                   <li class="name">
-                    <span>Paz Echeverria</span>
+                    <span>Denise Maringer</span>
                   </li>
                   <li class="cargo">
-                    <span>Directora Ejecutiva</span>
+                    <span>Gerente de Deportes</span>
                   </li>
                   <li class="correo">
-                    <span>pecheverria@chilegolf.cl</span>
+                    <a href="mailto:dmaringer@pwcc.cl">dmaringer@pwcc.cl</a>
                   </li>
                 </ul>
                 <ul class="info_usuario">
                   <li class="name">
-                    <span>Paz Echeverria</span>
+                    <span>Camila Ríos (subrogante)</span>
                   </li>
                   <li class="cargo">
-                    <span>Directora Ejecutiva</span>
+                    <span>Jefa de Operaciones Deportivas</span>
                   </li>
                   <li class="correo">
-                    <span>pecheverria@chilegolf.cl</span>
+                    <a href="mailto:Camilarios@pwcc.cl">Camilarios@pwcc.cl</a>
                   </li>
                 </ul>
               </div>

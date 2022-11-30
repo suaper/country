@@ -10,13 +10,13 @@
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione una categoría:</span>
-                  <q-select outlined class="q-mb-md" label="Escuela" v-model="escuela" :options="escuelas" @input="getLevels()"/>
+                  <q-select outlined class="q-mb-md" label="Seleccione una categoría:" v-model="escuela" :options="escuelas" @input="getLevels()"/>
                 </div>
             </div>
             <div class="w_35 q-mx-md">
                 <div class="wrp_busca_mes w_100 centrar select">
                   <span class=" label_select">Seleccione un nivel:</span>
-                  <q-select outlined class="q-mb-xl" label="Iniciación" v-model="nivel" :options="niveles" @input="getItemsByNivel(nivel)" />
+                  <q-select outlined class="q-mb-xl" label="Seleccione un nivel:" v-model="nivel" :options="niveles" @input="getItemsByNivel(nivel)" />
                 </div>
             </div>
             </div>

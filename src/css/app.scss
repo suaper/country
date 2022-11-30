@@ -7134,6 +7134,32 @@ span.protocolo_respuesta {
         }
     }
 }
+.users_denuncias{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    ul{
+        li{
+            list-style: none;
+            position: relative;
+            font-size: 15px;
+            color: #7c7e91;
+            &:before{
+                content: "";
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                position: absolute;
+                left: -17px;
+                top: 8px;
+                background-color: #ca9e64;
+            }
+            a{
+                color: #111e51;
+            }
+        }
+    }
+}
 @media only screen and (max-width: 600px) and ( min-width:0px ) {
     .banner_top.q-carousel{
         height: 110px;
