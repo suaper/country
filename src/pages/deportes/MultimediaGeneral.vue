@@ -194,27 +194,25 @@ export default {
     },
     getMultimediaTodas () {
       var _this = this
-      configServices.loadData(this, '/multimedia-secciones-deportes/todas/json', {
+      configServices.loadData(this, '/multimedia-secciones-deportes-imagenes/todas/json', {
         callBack: (data) => {
-          data.map((item, key) => {
-            if (item.field_tipo_de_multimedia === 'Video') {
-              _this.videos.push(item)
-            } else {
-              _this.images.push(item)
-            }
-          })
-
           const n = this.numberNotices
-          _this.slidersContentImages = new Array(Math.ceil(_this.images.length / n))
+          _this.slidersContentImages = new Array(Math.ceil(data.length / n))
             .fill()
-            .map(_ => _this.images.splice(0, n))
+            .map(_ => data.splice(0, n))
 
-          const m = this.numberVideos
-          _this.slidersContentVideos = new Array(Math.ceil(_this.videos.length / m))
-            .fill()
-            .map(_ => _this.videos.splice(0, m))
-          _this.getOptions()
           _this.max = _this.slidersContentImages.length
+        }
+      })
+
+      configServices.loadData(this, '/multimedia-secciones-deportes-videos/todas/json', {
+        callBack: (data) => {
+          const m = this.numberVideos
+          _this.slidersContentVideos = new Array(Math.ceil(data.length / m))
+            .fill()
+            .map(_ => data.splice(0, m))
+
+          _this.getOptions()
           _this.maxvideo = _this.slidersContentVideos.length
           _this.$q.loading.hide()
         }
