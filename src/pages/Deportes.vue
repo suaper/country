@@ -77,7 +77,7 @@
     <div class="q-py-xl all_width bg_gris wrp_club">
         <div class="row_wrap no-wrap flex justify-start">
             <h3 class="q-my-none">Multimedia</h3>
-            <q-btn class="q-ml-lg" outline color="indigo-10" icon-right="east" label="Ver más" />
+            <q-btn class="q-ml-lg" outline color="indigo-10" to="/deportes/multimedia" icon-right="east" label="Ver más" />
       </div>
 
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
