@@ -42,9 +42,22 @@ export default {
     }
   },
   created () {
+    var _this = this
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
+
     this.getStaff()
+
+    if (this.path === 'tennis') {
+      configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/escuela', {
+        callBack: (data) => {
+          _this.personal = data
+          _this.loadedPersonal = true
+          _this.key = _this.key + 1
+          _this.$q.loading.hide()
+        }
+      })
+    }
   },
   methods: {
     addCurrentClass (e) {
@@ -94,10 +107,11 @@ export default {
               _this.filters.push(filter)
             }
           })
-
-          _this.personal = data
-          _this.loadedPersonal = true
-          _this.$q.loading.hide()
+          if (this.path !== 'futbol' && this.path !== 'tennis') {
+            _this.personal = data
+            _this.loadedPersonal = true
+            _this.$q.loading.hide()
+          }
         }
       })
     }

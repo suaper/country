@@ -5,7 +5,11 @@
       </ul>
 
       <ul class="wrp_actions_center_peluqueria reverse_tennis" v-if="path === 'tennis'">
-        <li v-for="(item, key) in info" :key="key"><a href="#" class="anchor" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
+        <li v-for="(item, key) in info" :key="key"><a href="#" :class="(key === 0) ? 'anchor anchor-active' : 'anchor'" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
+      </ul>
+
+      <ul class="wrp_actions_center_peluqueria reverse_tennis" v-if="path === 'futbol'">
+        <li v-for="(item, key) in info" :key="key"><a href="#" :class="(key === 1) ? 'anchor anchor-active' : 'anchor'" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
 
       <ul class="wrp_actions_center_peluqueria" v-if="path === 'golf'">
@@ -22,7 +26,7 @@
           <li v-for="(item, key) in info" :key="key"><a href="#" class="anchor" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
 
-      <ul class="wrp_actions_center_peluqueria" v-if="path !== 'hockey' && path !== 'liga-pwcc' && path !== 'paddle'  && path !== 'tennis'">
+      <ul class="wrp_actions_center_peluqueria" v-if="path !== 'hockey' && path !== 'liga-pwcc' && path !== 'paddle' && path !== 'tennis' && path !== 'futbol'">
           <li v-for="(item, key) in info" :key="key"><a href="#" class="anchor" @click="goAnchor($event, item.title)">{{ item.title }}</a></li>
       </ul>
     </div>
