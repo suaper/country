@@ -56,12 +56,12 @@
         </div>
         <ul class="botones_horizontal">
             <li>
-                <a class="bg_white_iazul" href="https://abierto.pwcc.cl/2022/" target="_blank">
+                <a class="bg_white_iazul" :href="info.field_ver_listado_de_inscritos" target="_blank">
                     Home
                     <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
                 </a>
             </li>
-            <li>
+            <!--<li>
                 <a class="bg_white_iazul" href="https://abierto.pwcc.cl/2022/listado-inscritos" target="_blank">
                     Inscritos
                     <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
@@ -78,7 +78,7 @@
                     Resultados
                     <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>

@@ -91,7 +91,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/multimedia-secciones/' + this.path + '/json', {
         callBack: (data) => {
-          console.log(data)
           _this.multimediaHome = []
 
           const videos = []

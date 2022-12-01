@@ -16,7 +16,7 @@
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200">
-        <h4 class="subtitle q-my-md">Abierto Prince of Wales Country Club 2022</h4>
+        <h4 class="subtitle q-my-md">Campeonato Padre e Hijo 2022</h4>
           <CampeonatoActual :items="currentTournament" :table="rankingDeportes" v-if="loadedCurrentTournament"/>
         </div>
     </div>
@@ -44,7 +44,7 @@
                 <Contacto />
                 <Staff :info="personal" v-if="loadedPersonal"/>
             </div>
-            <div class="w_35">
+            <div class="w_35" v-if="loadedInstagram">
               <iframe width="320" height="460" :src="'https://www.instagram.com/p/' + instagram.field_instagram_golf[0].value + '/embed'" frameborder="0"></iframe>
             </div>
           </div>
@@ -131,6 +131,7 @@ export default {
       content: {},
       notices: [],
       loadedNotices: false,
+      loadedInstagram: false,
       path: '',
       player: {},
       loadedPlayer: false,
@@ -252,6 +253,7 @@ export default {
       configServices.loadData(this, '/node/9282?_format=json', {
         callBack: (data) => {
           _this.instagram = data
+          _this.loadedInstagram = true
         }
       })
 
@@ -287,14 +289,15 @@ export default {
           var datetime = data[0].field_fecha_campeonato.split(' ')
           var date = datetime[0].split('-')
           var formatedDate = {
-            day: date[0],
+            day: date[2],
             month: date[1],
-            year: date[2],
+            year: date[0],
             hour: datetime[1]
           }
 
           data[0].datetime = formatedDate
           _this.currentTournament = data[0]
+          _this.loadedCurrentTournament = true
         }
       })
 

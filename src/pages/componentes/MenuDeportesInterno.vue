@@ -95,7 +95,6 @@ export default {
   },
   created () {
     this.path = localStorage.getItem('sport')
-    console.log(this.path)
   },
   methods: {
     goItem (route) {
