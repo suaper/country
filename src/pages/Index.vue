@@ -86,6 +86,29 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
+
+    <q-dialog v-model="popHome">
+      <q-card class="my-card">
+        <q-card-section class="row items-center q-pb-none">
+            <div class="text-h6">Titulo</div>
+            <q-space />
+            <q-btn icon="close" flat round dense v-close-popup />
+        </q-card-section>
+        <q-card-section class="pop_club">
+          <div class="wrap_flex_pop">
+            <div class="left_w50">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam libero dignissim justo blandit, vel efficitur justo aliquet. Etiam ac erat quis est laoreet ornare a porttitor dolor. Vestibulum tincidunt a est ac auctor
+              </p>
+            </div>
+
+            <div class="right_w50">
+              <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -102,6 +125,7 @@ export default {
       slide: 1,
       autoplay: true,
       video: false,
+      popHome: false,
       currentVideo: '',
       banners: [],
       urlSite: 'https://obt3.cl',

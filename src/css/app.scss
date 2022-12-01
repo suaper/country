@@ -7160,6 +7160,18 @@ span.protocolo_respuesta {
         }
     }
 }
+.wrap_flex_pop{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .left_w50{
+        width: 49%;
+    }
+    .right_w50{
+        width: 49%;
+    }
+}
 @media only screen and (max-width: 600px) and ( min-width:0px ) {
     .banner_top.q-carousel{
         height: 110px;
