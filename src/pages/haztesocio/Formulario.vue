@@ -86,7 +86,7 @@
                             <span class="label_normal">Calle</span>
                             <q-input
                                 outlined
-                                label="Américo Vespucio"
+                                label="Calle"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.calle"
@@ -108,7 +108,7 @@
                             <span class="label_normal">No.</span>
                             <q-input
                                 outlined
-                                label="Américo Vespucio"
+                                label="###"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.departamento"
@@ -117,7 +117,7 @@
                             <span class="label_normal">Comuna</span>
                             <q-input
                                 outlined
-                                label="Nombre de la Comuna"
+                                label="Comuna"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="data.comuna"
@@ -268,7 +268,7 @@
                             <span class="label_normal">Calle</span>
                             <q-input
                                 outlined
-                                label="Américo Vespucio"
+                                label="Calle"
                                 lazy-rules
                                 v-model="data.direccion_empresa"
                             />
@@ -287,14 +287,14 @@
                             <span class="label_normal">No.</span>
                             <q-input
                                 outlined
-                                label="Américo Vespucio"
+                                label="###"
                                 lazy-rules
                                 v-model="data.departamento_empresa"
                             />
                             <span class="label_normal">Comuna</span>
                             <q-input
                                 outlined
-                                label="Nombre de la Comuna"
+                                label="Comuna"
                                 lazy-rules
                                 v-model="data.comuna_empresa"
                             />
@@ -342,7 +342,7 @@
                             <span class="label_strong">Ciudad</span>
                             <q-input
                                 outlined
-                                label="Nombre del Colegio"
+                                label="Ciudad"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="colegios[key].ciudad"
@@ -355,7 +355,7 @@
                             <span class="label_strong">Pais</span>
                             <q-input
                                 outlined
-                                label="Dirección del Colegio"
+                                label="Pais"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="colegios[key].pais"
@@ -365,7 +365,7 @@
                             <span class="label_strong">Año de Egreso</span>
                             <q-input
                                 outlined
-                                label="Digite los años cursados en este colegio"
+                                label="Año de Egreso"
                                 lazy-rules
                                 :rules="[ val => val && val.length > 0 || 'Campo requerido']"
                                 v-model="colegios[key].years"

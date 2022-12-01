@@ -14,7 +14,7 @@
         :autoplay="autoplay"
         v-if="banners.length"
       >
-        <q-carousel-slide v-for="banner in banners" :key="banner.title" :name="banner.title" :img-src="urlSite + banner.field_slider_home" />
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-py-md all_width gris_home">
@@ -126,6 +126,11 @@ export default {
       autoplay: true,
       video: false,
       popHome: false,
+      info: {
+        body: [
+          { value: '' }
+        ]
+      },
       currentVideo: '',
       banners: [],
       urlSite: 'https://obt3.cl',
@@ -140,8 +145,18 @@ export default {
     this.getBanners()
     this.getIntroHome()
     this.getMultimediaHome()
+    this.getInfo()
   },
   methods: {
+    getInfo () {
+      var _this = this
+      configServices.loadData(this, '/node/3?_format=json', {
+        callBack: (data) => {
+          _this.info = data
+          _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+    },
     getBanners () {
       var _this = this
       configServices.loadData(this, 'slider-home/json', {

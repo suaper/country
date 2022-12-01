@@ -8,7 +8,7 @@
         <div class="q-py-md w_1100 centrar flex_escuelas flex_obras justify-center view_form_cotizar is_hijo">
         <q-form
         @submit="irSiguiente">
-            <div class="roww">
+            <!--<div class="roww">
                 <div class="ancho50 items-1">
                     <span class="label_strong">Firma de autorización</span>
                     <q-file outlined v-model="data.firmafoto" @input="uploadPhoto()" accept="image/*" @rejected="onRejected">
@@ -20,9 +20,9 @@
                 <div class="ancho50 items-1">
                     <q-checkbox v-model="terminos" label="Acepto términos y Condiciones y tratamiento de datos." />
                 </div>
-            </div>
+            </div> -->
             <div class="action_next">
-                <q-btn outline @click="irSiguiente" class="azul centrar mt_10 bg_white_home" label="Enviar" icon-right="add"/>
+                <q-btn outline @click="irSiguiente" class="azul centrar mt_10 bg_white_home" label="Enviar" icon-right="send"/>
             </div>
         </q-form>
         </div>
@@ -38,7 +38,6 @@ export default {
   data () {
     return {
       eshijos: '',
-      terminos: false,
       data: {}
     }
   },
@@ -65,39 +64,39 @@ export default {
           _this.$router.push('/hazte-socio')
         }
       })
-    },
-    uploadPhoto () {
-      var _this = this
-      var reader = new FileReader()
-      reader.readAsDataURL(this.data.firmafoto)
-
-      reader.onload = function () {
-        var base64result = reader.result.split(',')[1]
-        var data = {
-          type: 'saveImage',
-          data: base64result,
-          mime: _this.data.firmafoto.type,
-          name: _this.data.firmafoto.name
-        }
-        configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
-          callBack: (data) => {
-            if (data.status === 200) {
-              _this.data.postulacion_foto = data.url
-            }
-          }
-        })
-      }
-
-      reader.onerror = function () {
-        console.log(reader.error)
-      }
-    },
-    onRejected (rejectedEntries) {
-      this.$q.notify({
-        type: 'negative',
-        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
-      })
     }
+    // uploadPhoto () {
+    //   var _this = this
+    //   var reader = new FileReader()
+    //   reader.readAsDataURL(this.data.firmafoto)
+
+    //   reader.onload = function () {
+    //     var base64result = reader.result.split(',')[1]
+    //     var data = {
+    //       type: 'saveImage',
+    //       data: base64result,
+    //       mime: _this.data.firmafoto.type,
+    //       name: _this.data.firmafoto.name
+    //     }
+    //     configServices.consumerStandar(_this, 'pwcc-rest/post', data, {
+    //       callBack: (data) => {
+    //         if (data.status === 200) {
+    //           _this.data.postulacion_foto = data.url
+    //         }
+    //       }
+    //     })
+    //   }
+
+    //   reader.onerror = function () {
+    //     console.log(reader.error)
+    //   }
+    // },
+    // onRejected (rejectedEntries) {
+    //   this.$q.notify({
+    //     type: 'negative',
+    //     message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+    //   })
+    // }
   }
 }
 </script>
