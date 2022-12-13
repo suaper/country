@@ -5,8 +5,8 @@
                 <a href="#">
                     <img :src="content.field_portada_video[0].url"/>
                     <div class="info_bottom text-center">
-                        <p class="desc" v-if="path === 'hockey'">Hockey</p>
-                        <p class="desc" v-if="path !== 'hockey'">Triatlon</p>
+                        <p class="desc" v-if="path !== 'natacion'">Hockey</p>
+                        <p class="desc" v-if="path === 'natacion'">Triatlon</p>
                         <span class="text_white" v-html="content.field_descripcion_video[0].value"></span>
                     </div>
                   </a>

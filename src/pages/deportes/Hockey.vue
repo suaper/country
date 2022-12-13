@@ -124,12 +124,21 @@ export default {
       notices: [],
       loadedNotices: false,
       path: '',
+      subPath: '',
       player: {},
       loadedPlayer: false,
       loadedEvents: false,
       loadedPersonal: false,
       instagram: {}
     }
+  },
+  mounted () {
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
+    this.subPath = currentPath[3]
+
+    this.getInfo()
+    this.$q.loading.hide()
   },
   created () {
     const currentPath = this.$route.path.split('/')

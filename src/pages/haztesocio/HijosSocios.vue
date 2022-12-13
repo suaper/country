@@ -31,7 +31,7 @@
         <div class="centrar w_1200">
             <h4 class="subtitle">Cuota Trimestral</h4>
             <p class="intro text-left" v-html="info[0].field_cuota_trimestral"></p>
-            <q-btn outline @click="pop_consultar = true" class="azul q-my-md centrar bg_white_i" label="Revisar el valor correspondiente aquí" icon-right="arrow_right_alt"/>
+            <!-- <q-btn outline @click="pop_consultar = true" class="azul q-my-md centrar bg_white_i" label="Revisar el valor correspondiente aquí" icon-right="arrow_right_alt"/> -->
         </div>
     </div>
     <q-dialog v-model="pop_consultar" >

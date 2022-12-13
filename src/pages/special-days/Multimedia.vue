@@ -198,8 +198,6 @@ export default {
             .fill()
             .map(_ => _this.videos.splice(0, m))
 
-          console.log(m)
-
           _this.getOptions()
           _this.max = _this.slidersContentImages.length
           _this.maxvideo = _this.slidersContentVideos.length
