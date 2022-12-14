@@ -159,6 +159,7 @@ export default {
       images: [],
       videos: [],
       numberNotices: 1,
+      numberVideos: 2,
       slideimagen: 0,
       slidedevideos: 0,
       max: 0,
@@ -169,11 +170,13 @@ export default {
     this.slideimagen = this.slidecontent - 1
     this.slidedevideos = this.slidevideo - 1
   },
-  mounted () {
+  created () {
     if (Platform.is.desktop) {
       this.numberNotices = 3
       this.numberVideos = 2
     }
+    const currentPath = this.$route.path.split('/')
+    this.path = currentPath[2]
     this.getMultimedia()
   },
   methods: {

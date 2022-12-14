@@ -21,7 +21,6 @@
                 animated
                 control-color="primary"
                 padding
-                arrows
                 height="250px"
                 class="galeria_multimedia"
                 >

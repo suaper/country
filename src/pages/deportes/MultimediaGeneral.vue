@@ -164,6 +164,7 @@ export default {
       videos: [],
       path: '',
       numberNotices: 1,
+      numberVideos: 1,
       slideimagen: 0,
       slidedevideos: 0,
       max: 0,

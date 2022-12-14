@@ -6749,6 +6749,25 @@ hr.form_linea{
     .otro_espacio_movil{
         padding-top: 1px;
     }
+    .botones{
+        .nuevo_paginador{
+            >div.justify-center{
+                flex-wrap: nowrap;
+            }
+        }
+    }
+    .wrp_gallery_video .botones button{
+        margin: 4px 1px;
+    }
+    .q-pagination.nuevo_paginador > .justify-center button{
+        margin: 0px 3px;
+        width: 29px !important;
+        min-width: 29px !important;
+    }
+    .wrp_gallery_multimedia .botones button{
+        margin: 6px 2px;
+        min-width: 28px !important;
+    }
 }
 
 .solomovil{
