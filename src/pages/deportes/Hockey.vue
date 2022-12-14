@@ -71,6 +71,7 @@ import Proximos from 'pages/componentes/CincoProximos'
 import Contacto from 'pages/componentes/SieteContacto'
 import Staff from 'pages/componentes/OchoStaff'
 import configServices from '../../services/config'
+import { Platform } from 'quasar'
 
 export default {
   name: 'Hockey',
@@ -129,7 +130,8 @@ export default {
       loadedPlayer: false,
       loadedEvents: false,
       loadedPersonal: false,
-      instagram: {}
+      instagram: {},
+      numberNotices: 1
     }
   },
   mounted () {
@@ -141,6 +143,9 @@ export default {
     this.$q.loading.hide()
   },
   created () {
+    if (Platform.is.desktop) {
+      this.numberNotices = 3
+    }
     const currentPath = this.$route.path.split('/')
     this.path = currentPath[2]
 
@@ -278,7 +283,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/eventos/' + this.path + '/json', {
         callBack: (data) => {
-          const n = 3
+          const n = _this.numberNotices
           _this.events = new Array(Math.ceil(data.length / n))
             .fill()
             .map(_ => data.splice(0, n))
