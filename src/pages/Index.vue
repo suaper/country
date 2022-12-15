@@ -90,20 +90,16 @@
     <q-dialog v-model="popHome">
       <q-card class="my-card">
         <q-card-section class="row items-center q-pb-none">
-            <div class="text-h6">Titulo</div>
+            <div class="text-h6">{{ popupHome.title[0].value }}</div>
             <q-space />
             <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
         <q-card-section class="pop_club">
           <div class="wrap_flex_pop">
-            <div class="left_w50">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam libero dignissim justo blandit, vel efficitur justo aliquet. Etiam ac erat quis est laoreet ornare a porttitor dolor. Vestibulum tincidunt a est ac auctor
-              </p>
-            </div>
+            <div class="left_w50" v-html="popupHome.body[0].value"></div>
 
             <div class="right_w50">
-              <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
+              <q-img :src="popupHome.field_imagen_popup[0].url" />
             </div>
           </div>
         </q-card-section>
@@ -137,7 +133,8 @@ export default {
       introHome: {
         field_video_youtube: []
       },
-      multimediaHome: []
+      multimediaHome: [],
+      popupHome: {}
     }
   },
   created () {
@@ -154,6 +151,16 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
+        }
+      })
+
+      configServices.loadData(this, '/node/82?_format=json', {
+        callBack: (data) => {
+          _this.popupHome = data
+          if (_this.popupHome.status[0].value === true) {
+            _this.popHome = true
+          }
+          console.log(_this.popupHome)
         }
       })
     },
