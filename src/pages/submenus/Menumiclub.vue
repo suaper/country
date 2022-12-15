@@ -6,7 +6,7 @@
       <q-btn outline :disable="getDisable('/mi-club/normas-de-convivencia')" @click="goItem('/mi-club/normas-de-convivencia')" color="submenu" label="Normas de Convivencia" />
       <!-- <q-btn outline :disable="getDisable('/mi-club/cuotas-sociales')" @click="goItem('/mi-club/cuotas-sociales')" color="submenu" label="Cuotas Sociales" /> -->
       <q-btn outline :disable="getDisable('/mi-club/pagos')" @click="goItem('/mi-club/pagos')"  color="submenu" label="Pagos" />
-      <q-btn outline :disable="getDisable('/mi-club/beneficios-socios')" @click="goItem('/mi-club/beneficios-socios')"  color="submenu" label="Beneficios" />
+      <!--<q-btn outline :disable="getDisable('/mi-club/beneficios-socios')" @click="goItem('/mi-club/beneficios-socios')"  color="submenu" label="Beneficios" />-->
       <q-btn outline :disable="getDisable('/mi-club/clubes-intercambio')" color="submenu" label="Clubes de Intercambio" @click="goItem('/mi-club/clubes-intercambio')"/>
       <q-btn outline :disable="getDisable('/mi-club/denuncias')" @click="goItem('/mi-club/denuncias')" color="submenu" label="Comite Maas" />
     </q-btn-group>

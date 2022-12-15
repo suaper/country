@@ -121,7 +121,7 @@ export default {
       slide: 1,
       autoplay: true,
       video: false,
-      popHome: true,
+      popHome: false,
       info: {
         body: [
           { value: '' }
@@ -134,7 +134,7 @@ export default {
         field_video_youtube: []
       },
       multimediaHome: [],
-      popupHome: {}
+      popupHome: false
     }
   },
   created () {
@@ -157,9 +157,9 @@ export default {
       configServices.loadData(this, '/node/82?_format=json', {
         callBack: (data) => {
           _this.popupHome = data
-          if (_this.popupHome.status[0].value === true) {
-            _this.popHome = true
-          }
+          // if (_this.popupHome.status[0].value === true) {
+          //   _this.popHome = true
+          // }
           console.log(_this.popupHome)
         }
       })
