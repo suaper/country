@@ -125,7 +125,7 @@ export default {
       slide: 1,
       autoplay: true,
       video: false,
-      popHome: false,
+      popHome: true,
       info: {
         body: [
           { value: '' }
