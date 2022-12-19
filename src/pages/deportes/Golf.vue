@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
-        <div class="centrar w_1200">
+        <div class="centrar w_1200 actual">
         <h4 class="subtitle q-my-md">Campeonato Padre e Hijo 2022</h4>
           <CampeonatoActual :items="currentTournament" :table="rankingDeportes" v-if="loadedCurrentTournament"/>
         </div>

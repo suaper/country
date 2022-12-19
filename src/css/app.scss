@@ -7215,11 +7215,11 @@ span.protocolo_respuesta {
             }
             a{
                 color: #111e51;
-            }
+            }  
         }
     }
 }
-.wrap_flex_pop{
+.wrap_flex_pop {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -7229,6 +7229,21 @@ span.protocolo_respuesta {
     }
     .right_w50{
         width: 49%;
+    }
+}
+.actual{
+    .jugador_desacado{
+        text-align: center;
+        img{
+            width: 80%;
+            margin: 10px auto;
+        }
+        &:after{
+            display: none;
+        }
+        .wrp_over{
+            display: none;
+        }
     }
 }
 @media only screen and (max-width: 600px) and ( min-width:0px ) {

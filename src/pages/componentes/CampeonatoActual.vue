@@ -57,7 +57,7 @@
         <ul class="botones_horizontal">
             <li>
                 <a class="bg_white_iazul" :href="info.field_ver_listado_de_inscritos" target="_blank">
-                    Home
+                    Leer Más
                     <i aria-hidden="true" role="img" class="material-icons q-icon notranslate on-right">arrow_right_alt</i>
                 </a>
             </li>
