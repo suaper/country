@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center view_quienes_somos">
+  <q-page class="flex flex-center view_quienes_somos view_bilioteca">
     <Menucultura currentItem="/cultura/biblioteca"/>
     <div class="q-py-none all_width">
       <q-carousel
@@ -27,7 +27,7 @@
             </table>
         </div>
     </div>
-    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul">
+    <div class="franja_azul full-width row wrap justify-center items-center content-center bg_azul title_buscad">
         <h5 class="text-white">Buscador de Libros</h5>
         <q-btn to="/cultura/buscador-libros" outline  class="btn_bg_beige" label="Ver Libros Disponibles" icon-right="arrow_right_alt"/>
     </div>

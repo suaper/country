@@ -323,7 +323,7 @@
                         ref="nameRef"
                         label="Nombres y Apellidos *"
                         lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
+                        :rules="[ val => val && val.length > 0 || 'Por favor complete el campo']"
                     />
                     <q-input
                         outlined
