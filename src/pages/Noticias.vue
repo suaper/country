@@ -127,7 +127,7 @@ export default {
         var eventDate = dateParse[0].split('-')
         var monthDate = parseInt(eventDate[1])
 
-        if (Buscador === '12') {
+        if (eventDate[1] === '12') {
           monthDate = 11
           eventDate[1] = '11'
         }
