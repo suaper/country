@@ -59,14 +59,32 @@ export default {
       pop_cuota: false,
       cuotas: [],
       id: '',
-      loadedInfo: false
+      loadedInfo: false,
+      title: ''
     }
   },
   created () {
-    this.id = localStorage.getItem('noticeId')
-    this.getInfo()
+    var id = localStorage.getItem('noticeId')
+    if (typeof id === 'undefined' || id === '' || id === null) {
+      var url = window.location.pathname.split('/')
+      this.title = url[2]
+      this.getItemByTitle()
+    } else {
+      this.id = localStorage.getItem('noticeId')
+      this.getInfo()
+    }
   },
   methods: {
+    getItemByTitle () {
+      var _this = this
+      configServices.loadData(this, '/noticias-titulo/' + this.title, {
+        callBack: (data) => {
+          _this.id = data[0].nid
+          _this.getInfo()
+          _this.$q.loading.hide()
+        }
+      })
+    },
     getInfo () {
       var _this = this
       configServices.loadData(this, '/node/' + _this.id + '?_format=json', {

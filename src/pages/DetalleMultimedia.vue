@@ -141,8 +141,15 @@ export default {
     }
   },
   created () {
-    this.id = localStorage.getItem('multimediaId')
-    this.getInfo()
+    var id = localStorage.getItem('multimediaId')
+    if (typeof id === 'undefined' || id === '' || id === null) {
+      var url = window.location.pathname.split('/')
+      this.title = url[2]
+      this.getItemByTitle()
+    } else {
+      this.id = localStorage.getItem('multimediaId')
+      this.getInfo()
+    }
   },
   methods: {
     openLightbox (e, key, index) {
@@ -152,6 +159,16 @@ export default {
         index = index + 9
       }
       this.$refs.lightbox.showImage(index)
+    },
+    getItemByTitle () {
+      var _this = this
+      configServices.loadData(this, '/noticias-titulo/' + this.title, {
+        callBack: (data) => {
+          _this.id = data[0].nid
+          _this.getInfo()
+          _this.$q.loading.hide()
+        }
+      })
     },
     getInfo () {
       var _this = this

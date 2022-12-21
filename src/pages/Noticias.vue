@@ -190,8 +190,6 @@ export default {
           pager = pager - 1
         }
 
-        console.log(pager)
-
         configServices.loadData(this, '/noticias-categorias/' + item.id + '/json?page=' + pager, {
           callBack: (data) => {
             const n = this.numberNotices
