@@ -57,7 +57,7 @@ export default {
       slidecontent: 0,
       personal: [],
       filters: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       multimediaHome: [],
       pop_reservar_spa: false,
       loadedPersonal: false,

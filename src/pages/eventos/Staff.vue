@@ -68,7 +68,7 @@ export default {
         }
       ],
       pop_consultar: false,
-      urlSite: 'https://obt3.cl'
+      urlSite: 'https://www.pwcc.cl'
     }
   },
   created () {

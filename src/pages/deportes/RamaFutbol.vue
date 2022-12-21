@@ -48,7 +48,7 @@ export default {
       slidecontent: 0,
       notices: [],
       filters: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       personalFemenino: [],
       pop_reservar_spa: false,
       loadedPersonalFemenino: false,

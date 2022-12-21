@@ -155,7 +155,7 @@ export default {
       pop_consultar: false,
       slidecontent: 1,
       slidevideo: 1,
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       options: [],
       optionsVideo: [],
       slidersContentImages: [],

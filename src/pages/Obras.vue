@@ -58,7 +58,7 @@ export default {
   name: 'Obras',
   data () {
     return {
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       multimediaHome: [],
       formulario: false
     }

@@ -53,7 +53,7 @@ export default {
       video: false,
       currentVideo: '',
       info: {},
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       multimediaHome: [],
       contactInfo: [],
       pop_consultar: false,

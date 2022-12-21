@@ -370,7 +370,7 @@ export default {
       sliders: true,
       tab: 'presentacion',
       slide: 1,
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       name: '',
       telefono: '',
       email: '',

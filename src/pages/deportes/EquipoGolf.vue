@@ -53,7 +53,7 @@ export default {
       slidecontent: 0,
       notices: [],
       filters: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       personalComiteGolf: [],
       pop_reservar_spa: false,
       loadedComiteGolf: false,

@@ -80,7 +80,7 @@ export default {
       slidecontent: 1,
       notices: [],
       filters: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       multimediaHome: [],
       pop_reservar_spa: false,
       numberNotices: 1,

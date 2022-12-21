@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       info: this.items,
-      urlSite: 'https://obt3.cl'
+      urlSite: 'https://www.pwcc.cl'
     }
   }
 }

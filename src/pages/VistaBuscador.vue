@@ -50,7 +50,7 @@ export default {
 
   data () {
     return {
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       filter: '',
       info: [],
       loadedInfo: false

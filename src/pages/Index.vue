@@ -129,7 +129,7 @@ export default {
       },
       currentVideo: '',
       banners: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       introHome: {
         field_video_youtube: []
       },

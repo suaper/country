@@ -138,7 +138,7 @@ export default {
       slide: 1,
       info: {},
       pop_consultar: false,
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       slidecontent: 1,
       slidevideo: 1,
       options: [],
