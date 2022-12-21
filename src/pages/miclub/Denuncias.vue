@@ -249,30 +249,30 @@
 
           <q-tab-panel name="responsables">
             <h6>Responsables Institucionales</h6>
-              <div class="row_info_doscol users_denuncias">
-                <ul class="info_usuario">
-                  <li class="name">
-                    <span>Denise Maringer</span>
-                  </li>
-                  <li class="cargo">
-                    <span>Gerente de Deportes</span>
-                  </li>
-                  <li class="correo">
-                    <a href="mailto:dmaringer@pwcc.cl">dmaringer@pwcc.cl</a>
-                  </li>
-                </ul>
-                <ul class="info_usuario">
-                  <li class="name">
-                    <span>Camila Ríos (subrogante)</span>
-                  </li>
-                  <li class="cargo">
-                    <span>Jefa de Operaciones Deportivas</span>
-                  </li>
-                  <li class="correo">
-                    <a href="mailto:Camilarios@pwcc.cl">Camilarios@pwcc.cl</a>
-                  </li>
-                </ul>
-              </div>
+            <div class="row_info_doscol users_denuncias">
+              <ul class="info_usuario">
+                <li class="name">
+                  <span>Gonzalo Muñoz Armendáriz</span>
+                </li>
+                <li class="name">
+                  <span>Claudia Onetto Maitland </span>
+                </li>
+                <li class="name">
+                  <span>Miguel Maldonado Espinoza</span>
+                </li>
+              </ul>
+              <ul class="info_usuario">
+                <li class="name">
+                  <span>Catalina Bustos Peña</span>
+                </li>
+                <li class="name">
+                  <span>Juan Pablo Vásquez Leiva</span>
+                </li>
+                <li class="name">
+                  <span>Denise Maringer Durán (Investigadora)</span>
+                </li>
+              </ul>
+            </div>
           </q-tab-panel>
           <q-tab-panel name="documentos">
             <h6>Documentos</h6>
