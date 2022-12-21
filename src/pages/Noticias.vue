@@ -127,13 +127,14 @@ export default {
         var eventDate = dateParse[0].split('-')
         var monthDate = parseInt(eventDate[1])
 
-        if (eventDate[1] === '12') {
+        if (Buscador === '12') {
           monthDate = 11
+          eventDate[1] = '11'
         }
 
         var date = new Date(eventDate[0], eventDate[1], eventDate[2])
+        console.log(eventDate)
         const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-
         if (monthDate === 11) {
           return eventDate[2] + ' ' + month[monthDate] + '/' + date.getFullYear()
         }

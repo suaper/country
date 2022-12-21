@@ -181,6 +181,7 @@ export default {
 
         if (eventDate[1] === '12') {
           monthDate = 11
+          eventDate[1] = '11'
         }
 
         var date = new Date(eventDate[0], eventDate[1], eventDate[2])
