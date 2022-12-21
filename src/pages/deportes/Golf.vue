@@ -16,7 +16,7 @@
     </div>
     <div class="q-pb-md all_width bg_amarillo wrp_club hazte_socio">
         <div class="centrar w_1200 actual">
-        <h4 class="subtitle q-my-md">Campeonato Padre e Hijo 2022</h4>
+        <h4 class="subtitle q-my-md">El PWCC despide un 2022 con grandes campeonatos de golf</h4>
           <CampeonatoActual :items="currentTournament" :table="rankingDeportes" v-if="loadedCurrentTournament"/>
         </div>
     </div>

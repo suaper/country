@@ -100,11 +100,35 @@ export default {
     this.getNotices()
   },
   methods: {
-    getDate (dateInput) {
+    getMonth (dateInput) {
       var date = new Date(dateInput)
-      const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
-      var day = (date.getDay() < 10) ? '0' + date.getDay() : date.getDay()
-      return day + ' ' + month[date.getUTCMonth()] + '/' + date.getFullYear()
+      return this.options[date.getUTCMonth()]
+    },
+    getDate (dateInput) {
+      if (typeof dateInput !== 'undefined') {
+        var dateParse = dateInput.replace('T', ' ')
+        dateParse = dateParse.split(' ')
+        var eventDate = dateParse[0].split('-')
+        var monthDate = parseInt(eventDate[1])
+
+        if (eventDate[1] === '12') {
+          monthDate = 11
+        }
+
+        var date = new Date(eventDate[0], eventDate[1], eventDate[2])
+        const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
+        if (monthDate === 11) {
+          return eventDate[2] + ' ' + month[monthDate] + '/' + date.getFullYear()
+        }
+
+        return eventDate[2] + ' ' + month[monthDate - 1] + '/' + date.getFullYear()
+      }
+    },
+    formatAMPM (date) {
+      var hours = date.getHours()
+      var ampm = hours >= 12 ? 'pm' : 'am'
+      return ampm
     },
     goNotice (notice) {
       localStorage.setItem('noticeId', notice.nid)
