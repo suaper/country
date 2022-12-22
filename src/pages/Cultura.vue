@@ -71,6 +71,7 @@
                   @submit="onSubmit"
                   @reset="onReset"
                   class="q-gutter-md"
+                  ref="form"
               >
                   <q-input
                       outlined
@@ -249,7 +250,7 @@ export default {
           this.rut = ''
           this.pop_reservar_spa = false
 
-          this.$refs.nameRef.resetValidation()
+          this.$refs.form.reset()
         }
       })
     },

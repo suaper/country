@@ -158,6 +158,7 @@
               <q-form
                   @submit="onSubmit"
                   @reset="onReset"
+                  ref="form"
                   class="q-gutter-md"
               >
                   <q-input
@@ -229,6 +230,7 @@
               <q-form
                   @submit="onSubmit"
                   @reset="onReset"
+                  ref="form"
                   class="q-gutter-md form_biblioteca"
                   >
 
@@ -424,9 +426,7 @@ export default {
           this.rut = ''
           this.formulario = false
 
-          console.log(this.$refs)
-
-          this.$refs.nameRef.resetValidation()
+          this.$refs.form.reset()
         }
       })
     },

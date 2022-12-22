@@ -11,6 +11,7 @@
                   <q-form
                       @submit="onSubmit"
                       @reset="onReset"
+                      ref="form"
                       class="q-gutter-md"
                   >
                       <q-input
@@ -117,16 +118,13 @@ export default {
             _this.$swal('Estamos presentando problemas técnicos intente nuevamente más tarde')
           }
 
-          console.log(this.$refs)
-
           this.email = null
           this.name = null
           this.telefono = null
           this.mensaje = null
           this.rut = null
           this.pop_reservar_spa = false
-
-          this.$refs.nameRef.resetValidation()
+          this.$refs.form.reset()
         }
       })
     },

@@ -10,6 +10,7 @@
                   <q-form
                       @submit="onSubmit"
                       @reset="onReset"
+                      ref="form"
                       class="q-gutter-md"
                   >
                       <q-input
@@ -127,8 +128,7 @@ export default {
           this.telefono = ''
           this.rut = ''
           this.pop_reservar_spa = false
-
-          this.$refs.nameRef.resetValidation()
+          this.$refs.form.reset()
         }
       })
     },

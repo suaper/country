@@ -159,6 +159,7 @@
                   @submit="onSubmit"
                   @reset="onReset"
                   class="q-gutter-md"
+                  ref="form"
               >
                   <q-input
                       outlined
@@ -370,6 +371,9 @@ export default {
     this.getNotices()
     this.getMultimediaHome()
   },
+  mounted () {
+    console.log(this.$refs)
+  },
   methods: {
     openPopForm (item) {
       this.currentItem = item
@@ -413,7 +417,7 @@ export default {
           this.rut = ''
           this.formulario = false
 
-          this.$refs.nameRef.resetValidation()
+          this.$refs.form.reset()
         }
       })
     },
