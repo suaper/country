@@ -122,7 +122,6 @@ export default {
 
       configServices.loadData(this, url, {
         callBack: (data) => {
-          console.log(data)
           const n = this.numberNotices
           _this.allEvents = data
 

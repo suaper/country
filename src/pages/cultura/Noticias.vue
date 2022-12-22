@@ -117,9 +117,7 @@ export default {
     trimNotice (title) {
       var maxLength = 90
       if (title.length > maxLength) {
-        console.log(title)
         var trimmedString = title.substr(0, maxLength)
-        console.log(trimmedString)
         trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
         return trimmedString + '...'
       }
@@ -130,7 +128,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/noticias/cultura/json', {
         callBack: (data) => {
-          console.log(data)
           const n = this.numberNotices
           _this.notices = new Array(Math.ceil(data.length / n))
             .fill()

@@ -179,7 +179,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/multimedia-secciones/special-days/json', {
         callBack: (data) => {
-          console.log(data)
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {
               _this.videos.push(item)

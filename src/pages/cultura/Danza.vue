@@ -241,7 +241,6 @@ export default {
     },
     goItem (e, item) {
       e.preventDefault()
-      console.log(item)
       switch (item) {
         case 'Escuelas':
           this.$router.push('/cultura/danza/escuelas-y-rama')

@@ -179,7 +179,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/multimedia-cultura/cultura,charlas-culturales,danza-y-ballet/json', {
         callBack: (data) => {
-          console.log(data)
           data.map((item, key) => {
             if (item.field_tipo_de_multimedia === 'Video') {
               _this.videos.push(item)
@@ -194,7 +193,6 @@ export default {
 
           const m = this.numberVideos
 
-          console.log(_this.videos)
           _this.slidersContentVideos = new Array(Math.ceil(_this.videos.length / m))
             .fill()
             .map(_ => _this.videos.splice(0, m))

@@ -87,8 +87,6 @@ export default {
       })
     },
     goToPage (item) {
-      console.log(item.nid[0].value)
-      console.log(item.type[0].target_id)
       switch (item.type[0].target_id) {
         case 'pagos_club':
           this.$router.push('/mi-club/pagos')

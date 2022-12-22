@@ -371,9 +371,6 @@ export default {
     this.getNotices()
     this.getMultimediaHome()
   },
-  mounted () {
-    console.log(this.$refs)
-  },
   methods: {
     openPopForm (item) {
       this.currentItem = item

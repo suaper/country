@@ -194,9 +194,6 @@ export default {
       configServices.loadData(this, '/multimedia-secciones/eventos/json', {
         callBack: (data) => {
           data.map((item, key) => {
-            console.log(item.title)
-
-            console.log(item.field_tipo_de_multimedia)
             if (item.field_tipo_de_multimedia === 'Video') {
               _this.videos.push(item)
             } else {

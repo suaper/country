@@ -195,8 +195,6 @@ export default {
       this.$q.loading.hide()
     },
     getItemsByNivel (escuela) {
-      console.log(this.escuela)
-      console.log(escuela)
       var _this = this
       configServices.loadData(this, '/intro-categorias-deportes-niveles/' + _this.subPath + '-' + _this.path + '/json/' + escuela.id + '/' + this.escuela.id, {
         callBack: (data) => {

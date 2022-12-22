@@ -38,7 +38,6 @@ export default {
       if (this.eshijos === 'no') {
         this.$router.push('/hazte-socio/eshijo')
       } else {
-        console.log('hola')
         this.$router.push('/hazte-socio/formularioconyugue')
       }
     }

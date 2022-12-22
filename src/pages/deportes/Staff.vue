@@ -51,7 +51,6 @@ export default {
     if (this.path === 'futbol') {
       configServices.loadData(this, '/personal-staff-deportes-filters/' + _this.path + '/escuela', {
         callBack: (data) => {
-          console.log(data)
           _this.personal = data
           _this.loadedPersonal = true
           _this.key = _this.key + 1

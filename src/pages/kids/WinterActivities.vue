@@ -371,7 +371,6 @@ export default {
     this.getInfo()
     this.getNotices()
     this.getMultimediaHome()
-    console.log(this.$refs)
   },
   methods: {
     openPopForm (item) {

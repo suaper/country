@@ -167,7 +167,6 @@ export default {
       var _this = this
       configServices.loadData(this, '/escuelas/json', {
         callBack: (data) => {
-          console.log(data)
           _this.info = data
           _this.$q.loading.hide()
         }

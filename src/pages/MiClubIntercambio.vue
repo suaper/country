@@ -190,7 +190,6 @@ export default {
 
       configServices.loadData(this, '/node/1103?_format=json', {
         callBack: (data) => {
-          console.log(data)
           _this.imageOne = data.field_imagen_blqoue_club[0].url
         }
       })
