@@ -158,6 +158,7 @@
               <q-form
                   @submit="onSubmit"
                   @reset="onReset"
+                  ref="form"
                   class="q-gutter-md"
               >
                   <q-input
@@ -229,18 +230,19 @@
               <q-form
                   @submit="onSubmit"
                   @reset="onReset"
+                  ref="form"
                   class="q-gutter-md form_biblioteca"
                   >
 
                   <div class="row_2">
                     <q-input
-                        outlined
-                        v-model="name"
-                        ref="nameRef"
-                        label="Nombre *"
-                        lazy-rules
-                        :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
-                    />
+                          outlined
+                          v-model="name"
+                          ref="name"
+                          label="Nombres y Apellidos *"
+                          lazy-rules
+                          :rules="[ val => val && val.length > 0 || 'Por favor diligencie el campo']"
+                      />
                     <q-input
                         outlined
                         v-model="apellido"
@@ -369,6 +371,7 @@ export default {
     this.getInfo()
     this.getNotices()
     this.getMultimediaHome()
+    console.log(this.$refs)
   },
   methods: {
     openPopForm (item) {
@@ -423,7 +426,7 @@ export default {
           this.rut = ''
           this.formulario = false
 
-          this.$refs.nameRef.resetValidation()
+          this.$refs.form.reset()
         }
       })
     },
@@ -466,20 +469,24 @@ export default {
     },
     trimNotice (title) {
       var maxLength = 90
-      if (title.length > maxLength) {
-        var trimmedString = title.substr(0, maxLength)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
+      if (typeof title !== 'undefined') {
+        if (title.length > maxLength) {
+          var trimmedString = title.substr(0, maxLength)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
       }
 
       return title
     },
     trimNoticeDetalle (title) {
       var maxLength = 100
-      if (title.length > maxLength) {
-        var trimmedString = title.substr(0, maxLength)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
+      if (typeof title !== 'undefined') {
+        if (title.length > maxLength) {
+          var trimmedString = title.substr(0, maxLength)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
       }
       return title
     },
