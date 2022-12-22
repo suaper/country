@@ -185,7 +185,6 @@ export default {
         }
 
         var date = new Date(eventDate[0], eventDate[1], eventDate[2])
-        console.log(eventDate)
         const month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
         if (monthDate === 11) {
           return eventDate[2] + ' ' + month[monthDate] + '/' + date.getFullYear()
