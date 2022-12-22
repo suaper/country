@@ -87,7 +87,7 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-if="popHome">
+    <q-dialog v-if="popHome" persistent>
       <q-card class="my-card">
         <q-card-section class="row items-center q-pb-none">
             <div class="text-h6">{{ popupHome.title[0].value }}</div>
