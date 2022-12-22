@@ -433,19 +433,24 @@ export default {
     },
     trimNotice (title) {
       var maxLength = 90
-      if (title.length > maxLength) {
-        var trimmedString = title.substr(0, maxLength)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
+      if (typeof title !== 'undefined') {
+        if (title.length > maxLength) {
+          var trimmedString = title.substr(0, maxLength)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
       }
+
       return title
     },
     trimNoticeDetalle (title) {
       var maxLength = 100
-      if (title.length > maxLength) {
-        var trimmedString = title.substr(0, maxLength)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
+      if (typeof title !== 'undefined') {
+        if (title.length > maxLength) {
+          var trimmedString = title.substr(0, maxLength)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
       }
       return title
     },
