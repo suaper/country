@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       info: this.content,
-      urlSite: 'https://obt3.cl'
+      urlSite: 'https://www.pwcc.cl'
     }
   }
 }

@@ -90,7 +90,7 @@ export default {
       sliders: true,
       slide: 1,
       items: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       pop_consultar: false
     }
   },

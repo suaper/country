@@ -203,7 +203,7 @@ export default {
       },
       pop_consultar: false,
       services: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       imageMasajes: '',
       imageDepilacion: '',
       imageCosmeto: '',

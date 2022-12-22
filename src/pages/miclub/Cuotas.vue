@@ -77,7 +77,7 @@ export default {
           {}
         ]
       },
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       pop_cuota: false,
       cuotas: []
     }

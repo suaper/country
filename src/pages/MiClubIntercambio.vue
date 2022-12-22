@@ -163,7 +163,7 @@ export default {
       info: {},
       clubsI: [],
       clubsN: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       medium: false,
       medium2: false,
       itemMedium: {},

@@ -60,7 +60,7 @@ export default {
     return {
       sliders: true,
       key: 0,
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       loadedEvents: false,
       events: [],
       allEvents: [],

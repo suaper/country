@@ -169,7 +169,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       multimediaHome: [],
       pop_reservar_spa: false,
       name: '',

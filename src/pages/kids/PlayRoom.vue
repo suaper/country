@@ -46,7 +46,7 @@
                     <img src="../../assets/MiClub/i-pdf.svg">
                     <div class="text">
                         <span class="bold">Protocolo</span>
-                        <a href="https://obt3.cl/administrador/sites/default/files/2022-11/PROTOCOLO_PLAYROOM.pdf" target="_blank"><span>Ver o descargar</span></a>
+                        <a href="https://www.pwcc.cl/administrador/sites/default/files/2022-11/PROTOCOLO_PLAYROOM.pdf" target="_blank"><span>Ver o descargar</span></a>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@ export default {
       personal: [],
       contactInfo: [],
       secondPersonal: [],
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       multimediaHome: [],
       name: '',
       telefono: '',

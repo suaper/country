@@ -171,7 +171,7 @@ export default {
           { value: '' }
         ]
       },
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       obras: [],
       pop_consultar: false,
       slidecontent: 0,

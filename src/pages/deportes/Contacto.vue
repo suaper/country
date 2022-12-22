@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       sliders: true,
-      urlSite: 'https://obt3.cl',
+      urlSite: 'https://www.pwcc.cl',
       personal: {
         field_imagen_perfil: ''
       },

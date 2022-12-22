@@ -25,7 +25,7 @@ export default {
   data () {
     return {
       player: this.info,
-      urlSite: 'https://obt3.cl'
+      urlSite: 'https://www.pwcc.cl'
     }
   }
 }

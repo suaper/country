@@ -66,7 +66,7 @@
             <a @click="goToAnchor($event, '#home')" href="#"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-boton-subir.svg"></a>
           </li>
           <li>
-            <a target="_blank" href="https://www.facebook.com/pages/PWCC-Prince-of-Wales-Country-Club/185321531516457"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-facebook.svg"></a>
+            <a target="_blank" href=" https://www.facebook.com/EsVidadeCountry"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-facebook.svg"></a>
           </li>
           <li>
             <a target="_blank" href="https://www.instagram.com/countryclubchile/?hl=es-la"> <img class="q-mt-lg" alt="img2" src="../assets/Home/i-instagram.svg"></a>
