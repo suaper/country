@@ -87,7 +87,7 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-model="popHome">
+    <q-dialog v-if="popHome">
       <q-card class="my-card">
         <q-card-section class="row items-center q-pb-none">
             <div class="text-h6">{{ popupHome.title[0].value }}</div>
@@ -160,7 +160,6 @@ export default {
           // if (_this.popupHome.status[0].value === true) {
           //   _this.popHome = true
           // }
-          console.log(_this.popupHome)
         }
       })
     },
