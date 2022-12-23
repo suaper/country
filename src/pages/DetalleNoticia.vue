@@ -64,15 +64,9 @@ export default {
     }
   },
   created () {
-    var id = localStorage.getItem('noticeId')
-    if (typeof id === 'undefined' || id === '' || id === null) {
-      var url = window.location.pathname.split('/')
-      this.title = url[2]
-      this.getItemByTitle()
-    } else {
-      this.id = localStorage.getItem('noticeId')
-      this.getInfo()
-    }
+    var url = window.location.pathname.split('/')
+    this.title = url[2]
+    this.getItemByTitle()
   },
   methods: {
     getItemByTitle () {
