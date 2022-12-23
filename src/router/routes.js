@@ -568,6 +568,13 @@ const routes = [
     ]
   },
   {
+    path: '/detalle-multimedia/:title',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/DetalleMultimedia.vue') }
+    ]
+  },
+  {
     path: '/calendario',
     component: () => import('layouts/MainLayout.vue'),
     children: [

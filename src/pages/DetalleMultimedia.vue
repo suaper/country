@@ -141,15 +141,15 @@ export default {
     }
   },
   created () {
-    var id = localStorage.getItem('multimediaId')
-    if (typeof id === 'undefined' || id === '' || id === null) {
-      var url = window.location.pathname.split('/')
-      this.title = url[2]
-      this.getItemByTitle()
-    } else {
+    // var id = localStorage.getItem('multimediaId')
+    // if (typeof id === 'undefined' || id === '' || id === null) {
+    var url = window.location.pathname.split('/')
+    this.title = url[2]
+    this.getItemByTitle()
+    /* } else {
       this.id = localStorage.getItem('multimediaId')
       this.getInfo()
-    }
+    } */
   },
   methods: {
     openLightbox (e, key, index) {
@@ -166,7 +166,6 @@ export default {
         callBack: (data) => {
           _this.id = data[0].nid
           _this.getInfo()
-          _this.$q.loading.hide()
         }
       })
     },
@@ -174,6 +173,7 @@ export default {
       var _this = this
       configServices.loadData(this, '/node/' + _this.id + '?_format=json', {
         callBack: (data) => {
+          console.log(data)
           var imgs = JSON.stringify(data.field_galeria_)
           imgs = JSON.parse(imgs)
 
