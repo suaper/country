@@ -170,8 +170,7 @@ export default {
   methods: {
     openItem (multimedia) {
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        localStorage.setItem('multimediaId', multimedia.nid)
-        this.$router.push('/detalle-multimedia')
+        this.$router.push('/detalle-multimedia/' + multimedia.title.toLowerCase().replaceAll(' ', '-'))
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
         this.currentVideo = currentVideo[1]
