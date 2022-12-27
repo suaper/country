@@ -72,7 +72,7 @@
 
       <div class="row_wrap no-wrap flex justify-between fsecond_row_home">
         <div class="q-py-md">
-          <table class="esquma_inferior">
+          <table class="esquma_inferior" v-if="multimediaHome.length" >
             <tr>
               <td class="tg-0pky" rowspan="2">
                 <a href="#" @click="openItem($event, multimediaHome[4])"><img class="q-mx-none" alt="img1" :src="urlSite + multimediaHome[4].field_portada_multimedia"><div class="wrp_over">
@@ -333,20 +333,23 @@ export default {
     },
     trimNotice (title) {
       var maxLength = 90
-      if (title.length > maxLength) {
-        var trimmedString = title.substr(0, maxLength)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
+      if (typeof title !== 'undefined') {
+        if (title.length > maxLength) {
+          var trimmedString = title.substr(0, maxLength)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
       }
-
       return title
     },
     trimNoticeDetalle (title) {
       var maxLength = 100
-      if (title.length > maxLength) {
-        var trimmedString = title.substr(0, maxLength)
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
-        return trimmedString + '...'
+      if (typeof title !== 'undefined') {
+        if (title.length > maxLength) {
+          var trimmedString = title.substr(0, maxLength)
+          trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')))
+          return trimmedString + '...'
+        }
       }
       return title
     },
@@ -377,8 +380,7 @@ export default {
     openItem (e, multimedia) {
       e.preventDefault()
       if (multimedia.field_tipo_de_multimedia === 'Imagen') {
-        localStorage.setItem('multimediaId', multimedia.nid)
-        this.$router.push('/detalle-multimedia')
+        this.$router.push('/detalle-multimedia/' + multimedia.title.toLowerCase().replaceAll(' ', '-'))
       } else {
         var currentVideo = multimedia.field_video_youtube.split('=')
         this.currentVideo = currentVideo[1]
