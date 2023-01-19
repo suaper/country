@@ -322,6 +322,7 @@ export default {
             }
 
             _this.services.push(service)
+            console.log(_this)
           })
         }
       })
