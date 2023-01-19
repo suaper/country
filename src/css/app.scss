@@ -5787,7 +5787,18 @@ hr.form_linea{
 
 //Estilos para dispositivos moviles
 @media only screen and (max-width: 900px) and ( min-width:0px ) {
+  .titles_noti{
+    line-height: 1;
+  }
+  .row_search .wrp_search{
+    width: 93%;
+    .q-icon{
+      top: 0;
+    }
+  }
   .noticias.detalle_not{
+    width: 97%;
+    margin: 10px auto;
     tr{
       display: flex;
       flex-direction: column;

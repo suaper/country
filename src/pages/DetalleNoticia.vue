@@ -6,7 +6,7 @@
             <div class="back"> <q-btn round color="white" onclick="history.back()" icon="west" />Volver</div>
         </div>
         <div class="centrar w_1200">
-          <div class="center text-center q-my-lg titulo2 q-mt-2">{{ info.title[0].value }}</div>
+          <div class="center text-center q-my-lg titulo2 titles_noti q-mt-2">{{ info.title[0].value }}</div>
         </div>
         <div class="img_noticia centrar w_1200 text-center" v-if="info.field_imagen_noticia.length !== 0"><img style="width: 800px;" :src="info.field_imagen_noticia[0].url" alt="#"></div>
         <div class="centrar w_1200 text_noticias strong" v-html="info.body[0].value"></div>
