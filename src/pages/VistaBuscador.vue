@@ -87,6 +87,8 @@ export default {
       })
     },
     goToPage (item) {
+      const title = item.title[0].value
+
       switch (item.type[0].target_id) {
         case 'pagos_club':
           this.$router.push('/mi-club/pagos')
@@ -108,11 +110,11 @@ export default {
           break
         case 'multimedia_general':
           localStorage.setItem('multimediaId', item.nid[0].value)
-          this.$router.push('/detalle-multimedia')
+          this.$router.push('/detalle-multimedia' + title.toLowerCase().replaceAll(' ', '-'))
           break
         case 'noticias':
           localStorage.setItem('noticeId', item.nid[0].value)
-          this.$router.push('/detalle-noticia')
+          this.$router.push('/detalle-noticia/' + title.toLowerCase().replaceAll(' ', '-'))
           break
         case 'seccion_mision':
           this.$router.push('/quienes-somos/mision')
