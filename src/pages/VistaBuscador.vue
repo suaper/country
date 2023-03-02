@@ -6,7 +6,7 @@
             <div class="back"> <q-btn to="/cultura" round color="white" icon="west" />Volver</div>
         </div>
     </div>
-    <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center">
+    <div class="q-py-md w_1200 centrar flex_escuelas flex_obras justify-center buscad">
         <div class="row_search">
             <div class="wrp_search vista flex">
                 <h5>Buscador</h5>
