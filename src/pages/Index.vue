@@ -87,19 +87,23 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-if="popHome" persistent>
+    <q-dialog v-model="popupHome" v-if="popHome" persistent>
       <q-card class="my-card">
         <q-card-section class="row items-center q-pb-none">
-            <div class="text-h6">{{ popupHome.title[0].value }}</div>
+          <div class="text-h6">URGENTE CIERRE TEMPORAL DEL CLUB</div>
+            <!--<div class="text-h6">{{ popupHome.title[0].value }}</div>-->
             <q-space />
             <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
         <q-card-section class="pop_club">
           <div class="wrap_flex_pop">
-            <div class="left_w50" v-html="popupHome.body[0].value"></div>
+            <div class="left_w50"><p>Debido a una rotura de matriz de agua nos vemos obligados al cierre temporal del Club para efectuar las reparaciones pertinentes.
+              Al menos hasta el mediodía nos mantendremos con el Club cerrado y acceso Las Arañas restringido.</p>
+            </div>
+             <!--<div class="left_w50" v-html="popupHome.body[0].value"></div>-->
 
             <div class="right_w50">
-              <q-img :src="popupHome.field_imagen_popup[0].url" />
+              <q-img src="https://www.pwcc.cl/administrador/sites/default/files/2023-03/img_comunicado.jpg" />
             </div>
           </div>
         </q-card-section>
@@ -121,7 +125,7 @@ export default {
       slide: 1,
       autoplay: true,
       video: false,
-      popHome: false,
+      popHome: true,
       info: {
         body: [
           { value: '' }
@@ -151,15 +155,6 @@ export default {
         callBack: (data) => {
           _this.info = data
           _this.slide = data.field_slider_home[0].target_uuid
-        }
-      })
-
-      configServices.loadData(this, '/node/82?_format=json', {
-        callBack: (data) => {
-          _this.popupHome = data
-          // if (_this.popupHome.status[0].value === true) {
-          //   _this.popHome = true
-          // }
         }
       })
     },
