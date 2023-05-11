@@ -84,6 +84,18 @@
               <strong>Contáctenos</strong>
               <p v-html="info.body[0].value"></p>
             </li>
+            <li class="centrar_">
+              <strong>Canal de Denuncia</strong>
+              <table>
+                <tr>
+                  <td>
+                    <a target="_blank" href="https://etica.resguarda.com/pwcc/es/main.html">
+                      <q-icon class="inlac" name="open_in_new"></q-icon>
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </li>
             <li>
               <strong>Cómo llegar</strong>
               <table  v-if="loadedEnlaces">
@@ -96,12 +108,12 @@
                 </tr>
               </table>
             </li>
-            <li>
+            <li class="wrwep">
               <table>
                 <tr>
                   <td>
                     <a target="_blank" :href="info.field_enlace[0].uri">
-                      <img class="q-mx-none" alt="img2" :src="info.field_imagen_pago[0].url">
+                      <img class="q-mx-none webpa" alt="img2" :src="info.field_imagen_pago[0].url">
                     </a>
                   </td>
                 </tr>
