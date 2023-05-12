@@ -87,18 +87,18 @@
       </q-card>
     </q-dialog>
 
-    <q-dialog v-if="popHome" persistent>
+    <q-dialog v-model="popHome" persistent>
       <q-card class="my-card">
         <q-card-section class="row items-center q-pb-none">
-          <!--<div class="text-h6">{{ popupHome.title[0].value }}</div>-->
+          <div class="text-h6">{{ popupHome.title[0].value }}</div>
           <q-space />
           <q-btn icon="close" flat round dense v-close-popup />
         </q-card-section>
         <q-card-section class="pop_club">
           <div class="wrap_flex_pop">
-            <!--<div class="left_w50" v-html="popupHome.body[0].value"></div>-->
+            <div class="left_w50" v-html="popupHome.body[0].value"></div>
             <div class="right_w50">
-              <!--<q-img :src="popupHome.field_imagen_popup[0].url" />-->
+              <q-img :src="popupHome.field_imagen_popup[0].url" />
             </div>
           </div>
         </q-card-section>
@@ -120,7 +120,7 @@ export default {
       slide: 1,
       autoplay: true,
       video: false,
-      popHome: true,
+      popHome: false,
       popupHome: false,
       info: {
         body: [
@@ -161,6 +161,7 @@ export default {
           _this.popupHome = data
           if (_this.popupHome.status[0].value === true) {
             _this.popHome = true
+            console.log(_this.popHome)
             console.log(_this.popupHome)
           }
         }
