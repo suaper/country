@@ -14,7 +14,7 @@
         :autoplay="autoplay"
         v-if="banners.length"
       >
-        <!--<q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />-->
+        <q-carousel-slide v-for="(banner, key) in info.field_slider_home" :key="key" :name="banner.target_uuid" :img-src="banner.url" />
       </q-carousel>
     </div>
     <div class="q-py-md all_width gris_home">
@@ -88,7 +88,7 @@
     </q-dialog>
 
     <q-dialog v-model="popHome" persistent>
-      <q-card class="my-card">
+      <q-card class="my-card" v-if="loadPopupHome">
         <q-card-section class="row items-center q-pb-none">
           <div class="text-h6">{{ popupHome.title[0].value }}</div>
           <q-space />
@@ -122,6 +122,7 @@ export default {
       video: false,
       popHome: false,
       popupHome: false,
+      loadPopupHome: false,
       info: {
         body: [
           { value: '' }
@@ -161,8 +162,7 @@ export default {
           _this.popupHome = data
           if (_this.popupHome.status[0].value === true) {
             _this.popHome = true
-            console.log(_this.popHome)
-            console.log(_this.popupHome)
+            _this.loadPopupHome = true
           }
         }
       })
