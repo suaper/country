@@ -86,24 +86,25 @@
         </q-card-actions>
       </q-card>
     </q-dialog>
-
-    <q-dialog v-model="popHome" persistent>
-      <q-card class="my-card" v-if="loadPopupHome">
-        <q-card-section class="row items-center q-pb-none">
-          <div class="text-h6">{{ popupHome.title[0].value }}</div>
-          <q-space />
-          <q-btn icon="close" flat round dense v-close-popup />
-        </q-card-section>
-        <q-card-section class="pop_club">
-          <div class="wrap_flex_pop">
-            <div class="left_w50" v-html="popupHome.body[0].value"></div>
-            <div class="right_w50">
-              <q-img :src="popupHome.field_imagen_popup[0].url" />
+    <div v-if="popHome">
+      <q-dialog v-model="popHome" persistent>
+        <q-card class="my-card">
+          <q-card-section class="row items-center q-pb-none">
+            <div class="text-h6">{{ popupHome.title[0].value }}</div>
+            <q-space />
+            <q-btn icon="close" flat round dense v-close-popup />
+          </q-card-section>
+          <q-card-section class="pop_club">
+            <div class="wrap_flex_pop">
+              <div class="left_w50" v-html="popupHome.body[0].value"></div>
+              <div class="right_w50">
+                <q-img :src="popupHome.field_imagen_popup[0].url" />
+              </div>
             </div>
-          </div>
-        </q-card-section>
-      </q-card>
-    </q-dialog>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+    </div>
   </q-page>
 </template>
 
@@ -160,7 +161,8 @@ export default {
       configServices.loadData(this, '/node/82?_format=json', {
         callBack: (data) => {
           _this.popupHome = data
-          if (_this.popupHome.status[0].value === true) {
+          console.log(data)
+          if (_this.popupHome.field_activar[0].value === true) {
             _this.popHome = true
             _this.loadPopupHome = true
           }
